@@ -1,0 +1,23 @@
+.menu_monthi {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+/* .btn {
+  float: left;
+  padding: 8px 0;
+  webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 5px 0px rgb(0 0 0 / 50%);
+  border-radius: 5px;
+  width: 13.8%;
+  text-align: center;
+  cursor: pointer;
+  color: black;
+} */
+
+.monthiactive,
+.btn:hover {
+  background-color: #2d6cde;
+  color: #fff;
+}

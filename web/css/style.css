@@ -52,9 +52,9 @@ body {
 
 a {
   color: #2d6cdf;
-  -webkit-transition: 0.5s;
+  /* -webkit-transition: 0.5s;
   -o-transition: 0.5s;
-  transition: 0.5s;
+  transition: 0.5s; */
 }
 a:hover,
 a:active,
@@ -424,7 +424,6 @@ figure {
 
 #fh5co-course-categories,
 #fh5co-counter,
-#fh5co-course,
 #fh5co-register,
 #fh5co-pricing,
 #fh5co-testimonial,
@@ -432,7 +431,11 @@ figure {
 #fh5co-about,
 #fh5co-staff,
 #fh5co-contact,
-#fh5co-footer {
+#fh5co-footer  {
+  padding: 7em 0;
+  clear: both;
+}
+#fh5co-course{
   padding: 7em 0;
   clear: both;
 }
@@ -549,6 +552,7 @@ figure {
 }
 
 .course {
+  height: 350px;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -587,6 +591,9 @@ figure {
 .course .desc {
   padding: 1.7em;
   background: #fafafa;
+}
+.course .desc p {
+  display: grid;
 }
 .course .desc h3 {
   font-size: 18px;
@@ -696,31 +703,31 @@ figure {
 .fh5co-contact-info ul li a {
   color: rgba(0, 0, 0, 0.8);
 }
-
+.fh1co-heading {
+  margin-bottom: 1em;
+}
 .fh5co-heading {
   margin-bottom: 5em;
 }
-.fh5co-heading h2 {
+.heading_luyenthi h2 {
   font-size: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   line-height: 1.5;
   color: #000;
   text-transform: uppercase;
   position: relative;
 }
-.fh5co-heading h2:after {
-  position: absolute;
-  top: 40px;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.heading_luyenthi h2:after {
   content: "";
-  width: 50px;
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  width: 180px;
   height: 1px;
-  margin: 0 auto;
-  background: rgba(0, 0, 0, 0.08);
+  background-color: #111;
+  transform: translateX(-50%);
 }
-.fh5co-heading p {
+.heading_luyenthi p {
   font-size: 14px;
 }
 

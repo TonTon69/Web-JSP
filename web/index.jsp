@@ -65,6 +65,8 @@
         <!-- Theme style  -->
         <link rel="stylesheet" href="css/style.css" />
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+
         <!-- Modernizr JS -->
         <script src="js/modernizr-2.6.2.min.js"></script>
         <!-- FOR IE9 below -->
@@ -461,14 +463,14 @@
         <script src="js/main.js"></script>
         <script>
             var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
-
+            
             // default example
             simplyCountdown(".simply-countdown-one", {
                 year: d.getFullYear(),
                 month: d.getMonth() + 1,
                 day: d.getDate(),
             });
-
+            
             //jQuery example
             $("#simply-countdown-losange").simplyCountdown({
                 year: d.getFullYear(),

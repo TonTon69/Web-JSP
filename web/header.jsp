@@ -50,7 +50,7 @@
                             <ul>
                                 <li class="active"><a href="index.jsp">Trang chủ</a></li>
                                 <li class="has-dropdown">
-                                    <a href="blog.html">Luyện thi</a>
+                                    <a href="luyenthi.jsp">Luyện thi</a>
                                     <ul class="dropdown">
                                         <li><a href="#">Toán</a></li>
                                         <li><a href="#">Lý</a></li>
