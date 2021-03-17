@@ -435,8 +435,8 @@ figure {
   padding: 7em 0;
   clear: both;
 }
-#fh5co-course{
-  padding: 7em 0;
+#fh5co-course{  
+  padding: 2em 0 7em 0;
   clear: both;
 }
 @media screen and (max-width: 768px) {
