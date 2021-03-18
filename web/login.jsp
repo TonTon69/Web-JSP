@@ -5,45 +5,66 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<html>
+<html lang="en">
     <head>
-        <title>Đăng ký tài khoản</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-        <!-- Custom Theme files -->
-        <link href="css/regform.css" rel="stylesheet" type="text/css" media="all" />
-        <!-- //Custom Theme files -->
-        <!-- web font -->
-        <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
-        <!-- //web font -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Đăng nhập</title>
+        <!-- Font Icon -->
+        <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+        <!-- Main css -->
+        <link rel="stylesheet" href="css/regform.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     </head>
     <body>
-        <!-- main -->
-        <div class="main-w3layouts wrapper">
-            <h1>Đăng nhập</h1>
-            <div class="main-agileinfo">
-                <div class="agileits-top">
-                    <form action="#" method="post">
-                        <input class="text email" type="email" name="email" placeholder="Email" required="">
-                        <input class="text" type="password" name="password" placeholder="Mật Khẩu" required="">
-                        <input type="submit" value="Đăng nhập">
-                    </form>
-                    <p>Bạn chưa có tài khoản? <a href="register.jsp"> Đăng ký!</a></p>
+        <div class="main">
+            <!-- Sign in  Form -->
+            <section class="sign-in">
+                <div class="container">
+                    <div class="signin-content">
+                        <div class="signin-image">
+                            <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
+                            <a href="register.jsp" class="signup-image-link">Bạn chưa có tài khoản? Đăng ký</a>
+                        </div>
+
+                        <div class="signin-form">
+                            <h2 class="form-title">Đăng nhập</h2>
+                            <form method="POST" class="register-form" id="login-form">
+                                <div class="form-group">
+                                    <label for="email"><i class="zmdi zmdi-email material-icons-email"></i></label>
+                                    <input type="email" name="email" id="email" placeholder="Email"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                    <input type="password" name="your_pass" id="your_pass" placeholder="Mật khẩu"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                                    <label for="remember-me" class="label-agree-term"><span><span></span></span>Nhớ mật khẩu</label>
+                                </div>
+                                <div class="form-group form-button">
+                                    <input type="submit" name="signin" id="signin" class="form-submit" value="Đăng nhập"/>
+                                </div>
+                            </form>
+                            <div class="social-login">
+                                <span class="social-label">Đăng nhập bằng</span>
+                                <ul class="socials">
+                                    <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                                    <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                                    <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <ul class="colorlib-bubbles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+            </section>
         </div>
+        <!-- JS -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="js/main.js"></script>
     </body>
 </html>
