@@ -150,7 +150,7 @@
                                     </a>
                                     <div class="desc">
                                         <h3>
-                                            <a href="#"
+                                            <a href="detail.jsp"
                                                >THI THỬ 2018 – CHUYÊN LÊ QUÝ ĐÔN – ĐIỆN BIÊN (LẦN 2)
                                             </a
                                             >
