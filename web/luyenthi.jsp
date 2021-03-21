@@ -105,35 +105,35 @@
                                 <a href="">
                                     <button class="btn">
                                         <i class="fa fa-graduation-cap"></i>
-                                        Tất cả
+                                        Toán học
                                         <span>(100)</span>
                                     </button>
                                 </a>
                                 <a href="">
                                     <button class="btn">
                                         <i class="fa fa-graduation-cap"></i>
-                                        Tất cả
+                                        Vật lý
                                         <span>(100)</span>
                                     </button>
                                 </a>
                                 <a href="">
                                     <button class="btn">
                                         <i class="fa fa-graduation-cap"></i>
-                                        Tất cả
+                                        Hóa học
                                         <span>(100)</span>
                                     </button>
                                 </a>
                                 <a href="">
                                     <button class="btn">
                                         <i class="fa fa-graduation-cap"></i>
-                                        Tất cả
+                                        Sinh học
                                         <span>(100)</span>
                                     </button>
                                 </a>
                                 <a href="">
                                     <button class="btn">
                                         <i class="fa fa-graduation-cap"></i>
-                                        Tất cả
+                                        Tiếng Anh
                                         <span>(100)</span>
                                     </button>
                                 </a>
@@ -152,7 +152,7 @@
                                         <h3>
                                             <a href="#"
                                                >THI THỬ 2018 – CHUYÊN LÊ QUÝ ĐÔN – ĐIỆN BIÊN (LẦN 2)
-                                                aaaaa</a
+                                            </a
                                             >
                                         </h3>
                                         <p>
@@ -179,7 +179,7 @@
                                         </p>
                                         <span
                                             ><a href="#" class="btn btn-primary btn-sm btn-course"
-                                            >Vào thi</a
+                                            >xem chi tiết</a
                                             ></span
                                         >
                                     </div>
