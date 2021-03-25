@@ -19,7 +19,7 @@ public class DBConnect {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             cons = (Connection) DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/QuizOnline", "root", "root");
+                    "jdbc:mysql://localhost:3306/quizonline", "root", "root");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -27,6 +27,10 @@ public class DBConnect {
     }
     public static void main(String[] args) {
         System.out.println(getConnecttion());
+    }
+
+    public static java.sql.Connection getConnection() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -37,11 +37,11 @@
                             <form method="POST" class="register-form" id="login-form">
                                 <div class="form-group">
                                     <label for="email"><i class="zmdi zmdi-email material-icons-email"></i></label>
-                                    <input type="email" name="email" id="email" placeholder="Email"/>
+                                    <input type="email" name="email" id="email" placeholder="Email" required="yes" />
                                 </div>
                                 <div class="form-group">
                                     <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                    <input type="password" name="your_pass" id="your_pass" placeholder="Mật khẩu"/>
+                                    <input type="password" name="your_pass" id="your_pass" placeholder="Mật khẩu" required="yes" maxlength="30" />
                                 </div>
                                 <div class="form-group">
                                     <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
