@@ -76,11 +76,11 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <form method=\"POST\" class=\"register-form\" id=\"login-form\">\n");
       out.write("                                <div class=\"form-group\">\n");
       out.write("                                    <label for=\"email\"><i class=\"zmdi zmdi-email material-icons-email\"></i></label>\n");
-      out.write("                                    <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\"/>\n");
+      out.write("                                    <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" required=\"yes\" />\n");
       out.write("                                </div>\n");
       out.write("                                <div class=\"form-group\">\n");
       out.write("                                    <label for=\"your_pass\"><i class=\"zmdi zmdi-lock\"></i></label>\n");
-      out.write("                                    <input type=\"password\" name=\"your_pass\" id=\"your_pass\" placeholder=\"Mật khẩu\"/>\n");
+      out.write("                                    <input type=\"password\" name=\"your_pass\" id=\"your_pass\" placeholder=\"Mật khẩu\" required=\"yes\" maxlength=\"30\" />\n");
       out.write("                                </div>\n");
       out.write("                                <div class=\"form-group\">\n");
       out.write("                                    <input type=\"checkbox\" name=\"remember-me\" id=\"remember-me\" class=\"agree-term\" />\n");

@@ -10,11 +10,23 @@ package model;
  * @author Admin
  */
 public class Administrator {
-    private int adminID;    
+
+    private int adminID;
     private String fullName;
     private String email;
     private String password;
     private String role;
+
+    public Administrator() {
+    }
+
+    public Administrator(int adminID, String fullName, String email, String password, String role) {
+        this.adminID = adminID;
+        this.fullName = fullName;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 
     public int getAdminID() {
         return adminID;
@@ -56,15 +68,7 @@ public class Administrator {
         this.role = role;
     }
 
-    public Administrator() {
+    public void setAdminEmail(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public Administrator(int adminID, String fullName, String email, String password, String role) {
-        this.adminID = adminID;
-        this.fullName = fullName;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-    }
-    
 }

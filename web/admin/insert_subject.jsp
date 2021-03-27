@@ -1,7 +1,7 @@
 <%-- 
-    Document   : manager_subject
-    Created on : Mar 24, 2021, 8:35:28 PM
-    Author     : admin
+    Document   : insert_subject
+    Created on : Mar 27, 2021, 9:27:39 PM
+    Author     : Admin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -36,48 +36,20 @@
                     <jsp:include page="header.jsp"></jsp:include>
                         <!-- Begin Page Content -->
                         <div class="container-fluid">
-                            <h3>QUẢN LÝ MÔN HỌC</h3>
-                            <div class="d-flex mb-4">
-                                <a href="insert_subject.jsp" class="btn btn-primary">
-                                    <i class="fas fa-plus"></i>
-                                    Thêm mới môn học
-                                </a>
-                                <a href="" class="btn btn-success ml-2">
-                                    <i class="fas fa-file-excel"></i>
-                                    Xuất excel
-                                </a>
+                            <h3>THÊM MỚI MÔN HỌC</h3>
+                            <div>
+                                <i class="fas fa-list"></i>
+                                <a href="manager_subject.jsp">Quay về quản lý môn học</a>
                             </div>
-                            <span>Tất cả (5)</span>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Tên</th>
-                                        <th>Ngày tạo</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Toán học</td>
-                                        <td>26/04/2021</td>
-                                        <td style="width: 162px">
-                                            <a href="" class="btn btn-primary">
-                                               <i class="far fa-edit"></i>
-                                            </a>
-                                            <a href="" class="btn btn-secondary">
-                                               <i class="far fa-eye"></i>
-                                            </a>
-                                            <a href="" class="btn btn-danger">
-                                               <i class="far fa-trash-alt"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <br/>
+                            <form>
+                                <div class="form-group col-md-4" style="padding-left: 0">
+                                    <label for="name">Tên môn học</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Nhập tên môn học...">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Thêm mới</button>
+                            </form>
                         </div>
-                        <!-- /.container-fluid -->
                     </div>
                     <!-- End of Main Content -->
 

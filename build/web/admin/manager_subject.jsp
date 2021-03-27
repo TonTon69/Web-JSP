@@ -38,7 +38,7 @@
                         <div class="container-fluid">
                             <h3>QUẢN LÝ MÔN HỌC</h3>
                             <div class="d-flex mb-4">
-                                <a href="" class="btn btn-primary">
+                                <a href="insert_subject.jsp" class="btn btn-primary">
                                     <i class="fas fa-plus"></i>
                                     Thêm mới môn học
                                 </a>

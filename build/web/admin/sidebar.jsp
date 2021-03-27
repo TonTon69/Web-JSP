@@ -51,7 +51,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="manager_subject.jsp">Danh sách môn học</a>
-                        <a class="collapse-item" href="cards.html">Thêm mới môn học</a>
+                        <a class="collapse-item" href="insert_subject.jsp">Thêm mới môn học</a>
                     </div>
                 </div>
             </li>

@@ -33,8 +33,8 @@
                     }, 1000);
                 });
                 function check_email_ajax(email) {
-//                    $("#admin-result").html('<img src="../images/loader.gif" />');
-                    $.post('CheckEmailServlet', {'email': email}, function (data) {
+                    $("#admin-result").html('<img src="../images/loader.gif" />');
+                    $.post("CheckEmailServlet", {"email": email}, function (data) {
                         $("#admin-result").html(data);
                     });
                 }
@@ -80,6 +80,7 @@
                 </div>
             </section>
         </div>
+
         <script src="../vendor/jquery/jquery.min.js"></script>
         <script src="../js/regform.js"></script>
     </body>
