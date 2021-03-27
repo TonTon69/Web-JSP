@@ -32,5 +32,10 @@ public class SubjectDAO {
             return false;
         }
     }
-
+     public static void main(String[] args) throws SQLException {
+         SubjectDAO subjectDAO = new SubjectDAO();
+         for (int i = 10; i < 15; i++) {
+             subjectDAO.insert(new Subject(i, "Subject" + i));
+         }
+    }
 }

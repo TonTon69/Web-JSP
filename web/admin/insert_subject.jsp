@@ -43,9 +43,21 @@
                             </div>
                             <br/>
                             <form>
-                                <div class="form-group col-md-4" style="padding-left: 0">
-                                    <label for="name">Tên môn học</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Nhập tên môn học...">
+                                <div class="row">
+                                    <div class="form-group col-md-4">
+                                        <label for="name">Tên môn học</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Nhập tên môn học...">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="icon">Icon</label>
+                                        <input type="text" class="form-control" id="icon" placeholder="Nhập icon...">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-8">
+                                        <label for="description">Mô tả</label>
+                                        <textarea type="text" class="form-control" id="description" placeholder="Nhập mô tả..."></textarea>
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Thêm mới</button>
                             </form>
