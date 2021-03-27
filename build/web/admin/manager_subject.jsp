@@ -4,6 +4,10 @@
     Author     : admin
 --%>
 
+<%@page import="model.Subject"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dao.SubjectDAO"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,7 +19,7 @@
         <meta name="author" content="">
 
         <title>HAT Admin - Dashboard</title>
-
+        <c:set var="root" value="${pageContext.request.contextPath}" />
         <!-- Custom fonts for this template-->
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link
@@ -26,6 +30,10 @@
         <link href="css/sb-admin-2.min.css" rel="stylesheet">
     </head>
     <body id="page-top">
+        <%
+            SubjectDAO subjectDAO = new SubjectDAO();
+            ArrayList<Subject> listSubject = subjectDAO.getListSubject();
+        %>
         <div id="wrapper">
             <jsp:include page="sidebar.jsp"></jsp:include>
                 <div id="content-wrapper" class="d-flex flex-column">
@@ -37,49 +45,59 @@
                         <!-- Begin Page Content -->
                         <div class="container-fluid">
                             <h3>QUẢN LÝ MÔN HỌC</h3>
+
                             <div class="d-flex mb-4">
                                 <a href="insert_subject.jsp" class="btn btn-primary">
-                                    <i class="fas fa-plus"></i>
-                                    Thêm mới môn học
-                                </a>
-                                <a href="" class="btn btn-success ml-2">
-                                    <i class="fas fa-file-excel"></i>
-                                    Xuất excel
-                                </a>
-                            </div>
-                            <span>Tất cả (5)</span>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Tên</th>
-                                        <th>Ngày tạo</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Toán học</td>
-                                        <td>26/04/2021</td>
-                                        <td style="width: 162px">
-                                            <a href="" class="btn btn-primary">
-                                               <i class="far fa-edit"></i>
-                                            </a>
-                                            <a href="" class="btn btn-secondary">
-                                               <i class="far fa-eye"></i>
-                                            </a>
-                                            <a href="" class="btn btn-danger">
-                                               <i class="far fa-trash-alt"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                <i class="fas fa-plus"></i>
+                                Thêm mới môn học
+                            </a>
+                            <a href="" class="btn btn-success ml-2">
+                                <i class="fas fa-file-excel"></i>
+                                Xuất excel
+                            </a>
                         </div>
-                        <!-- /.container-fluid -->
+                        <!--<span>Tất cả (5)</span>-->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã</th>
+                                    <th>Tên</th>
+                                    <th>Icon</th>
+                                    <th>Mô tả</th>
+                                    <th>Ngày tạo</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <%
+                                int count = 0;
+                                for (Subject subject : listSubject) {
+                                    count++;
+                            %>
+                            <tbody>
+                                <tr>
+                                    <th scope="row"><%=count%></th>
+                                    <td><%=subject.getSubjectID()%></td>
+                                    <td><%=subject.getSubjectName()%></td>
+                                    <td><%=subject.getSubjectIcon()%></td>
+                                    <td style="width: 600px"><%=subject.getDescription()%></td>
+                                    <td><%=subject.getCreatedate()%></td>
+                                    <td>
+                                        <a href="" class="btn btn-primary">
+                                            <i class="far fa-edit"></i>
+                                        </a>
+                                        <a href="" class="btn btn-danger">
+                                            <i class="far fa-trash-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <%}%>
+                        </table>
                     </div>
-                    <!-- End of Main Content -->
+                    <!-- /.container-fluid -->
+                </div>
+                <!-- End of Main Content -->
 
                 <jsp:include page="footer.jsp"></jsp:include>
 

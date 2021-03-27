@@ -4,9 +4,17 @@
         <servlet-name>CheckEmailServlet</servlet-name>
         <servlet-class>controller.CheckEmailServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManagerSubjectServlet</servlet-name>
+        <servlet-class>controller.ManagerSubjectServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CheckEmailServlet</servlet-name>
         <url-pattern>/CheckEmailServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerSubjectServlet</servlet-name>
+        <url-pattern>/ManagerSubjectServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
