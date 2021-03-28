@@ -7,7 +7,6 @@ package connect;
 
 import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 
 /**
  *
@@ -29,21 +28,4 @@ public class DBConnect {
     public static void main(String[] args) {
         System.out.println(getConnecttion());
     }
-
-    public static java.sql.Connection getConnection() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static java.sql.Connection getDBConnection() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static ResultSet getDBResultSet(java.sql.Connection connection, String sql) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static void closeResultSet(ResultSet resultSet) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

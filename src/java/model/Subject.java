@@ -5,23 +5,31 @@
  */
 package model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
  * @author Admin
  */
 public class Subject {
+
     private int subjectID;
     private String subjectName;
     private String subjectIcon;
     private String description;
-    private Date createdate;
+    private Timestamp createdate;
 
     public Subject() {
     }
 
-    public Subject(int subjectID, String subjectName, String subjectIcon, String description, Date createdate) {
+    public Subject(String subjectName, String subjectIcon, String description, Timestamp createdate) {
+        this.subjectName = subjectName;
+        this.subjectIcon = subjectIcon;
+        this.description = description;
+        this.createdate = createdate;
+    }
+  
+    public Subject(int subjectID, String subjectName, String subjectIcon, String description, Timestamp createdate) {
         this.subjectID = subjectID;
         this.subjectName = subjectName;
         this.subjectIcon = subjectIcon;
@@ -61,11 +69,11 @@ public class Subject {
         this.description = description;
     }
 
-    public Date getCreatedate() {
+    public Timestamp getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(Date createdate) {
+    public void setCreatedate(Timestamp createdate) {
         this.createdate = createdate;
     }
 

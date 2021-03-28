@@ -17,11 +17,11 @@ public class CheckEmailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (adminDAO.checkEmail(request.getParameter("email"))) {
-            response.getWriter().write("<img src=\"images/not-available.png\" />");
-        } else {
-            response.getWriter().write("<img src=\"images/available.png\" />");
-        }
+//        if (adminDAO.checkEmail(request.getParameter("email"))) {
+//            response.getWriter().write("<img src=\"images/not-available.png\" />");
+//        } else {
+//            response.getWriter().write("<img src=\"images/available.png\" />");
+//        }
     }
 //    protected void doPost(HttpServletRequest request, HttpServletResponse response)
 //            throws ServletException, IOException {

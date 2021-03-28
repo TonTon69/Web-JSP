@@ -26,14 +26,12 @@
         <link href="css/sb-admin-2.min.css" rel="stylesheet">
     </head>
     <body id="page-top">
-
         <%
             String error = "";
             if (request.getParameter("error") != null) {
                 error = (String) request.getParameter("error");
             }
         %>
-
         <div id="wrapper">
             <jsp:include page="sidebar.jsp"></jsp:include>
                 <div id="content-wrapper" class="d-flex flex-column">
@@ -44,33 +42,33 @@
                     <jsp:include page="header.jsp"></jsp:include>
                         <!-- Begin Page Content -->
                         <div class="container-fluid">
-                            <h3>THÊM MỚI MÔN HỌC</h3>
+                            <h3>CẬP NHẬT MÔN HỌC</h3>
                             <div>
                                 <i class="fas fa-list"></i>
                                 <a href="manager_subject.jsp">Quay về quản lý môn học</a>
                             </div>
                             <br/>
-                            <form action="../admin/ManagerSubjectServlet" method="post">
+                            <form action="/hatquiz/ManagerSubjectServlet" method="post">
                                 <div class="row">
                                     <div class="form-group col-md-4">
                                         <label for="name">Tên môn học</label>
-                                        <input type="text" class="form-control" name="name" id="name" placeholder="Nhập tên môn học...">
+                                        <input type="text" class="form-control" value="<%=request.getParameter("sub_name")%>" name="name" id="name" />
                                     <%=error%>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="icon">Icon</label>
-                                    <input type="text" class="form-control" name="icon" id="icon" placeholder="Nhập icon...">
+                                    <input type="text" class="form-control" name="icon" id="icon" value="<%=request.getParameter("sub_icon")%>" >
                                     <%=error%>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-8">
                                     <label for="description">Mô tả</label>
-                                    <textarea type="text" class="form-control" name="description" id="description" placeholder="Nhập mô tả..."></textarea>
+                                    <textarea type="text" class="form-control" name="description" id="description" value="<%=request.getParameter("sub_des")%>" ></textarea>
                                     <%=error%>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Thêm mới</button>
+                            <button type="submit" class="btn btn-primary">Lưu lại</button>
                         </form>
                     </div>
                 </div>

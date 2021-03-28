@@ -11,29 +11,17 @@ package model;
  */
 public class Administrator {
 
-    private int adminID;
     private String fullName;
     private String email;
     private String password;
-    private String role;
 
     public Administrator() {
     }
 
-    public Administrator(int adminID, String fullName, String email, String password, String role) {
-        this.adminID = adminID;
+    public Administrator( String fullName, String email, String password) {
         this.fullName = fullName;
         this.email = email;
         this.password = password;
-        this.role = role;
-    }
-
-    public int getAdminID() {
-        return adminID;
-    }
-
-    public void setAdminID(int adminID) {
-        this.adminID = adminID;
     }
 
     public String getFullName() {
@@ -58,14 +46,6 @@ public class Administrator {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public void setAdminEmail(String string) {

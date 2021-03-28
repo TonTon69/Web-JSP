@@ -23,23 +23,32 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript">
-            $(document).ready(function () {
-                var x_timer;
-                $("#email").keyup(function (e) {
-                    clearTimeout(x_timer);
-                    var ad_email = $(this).val();
-                    x_timer = setTimeout(function () {
-                        check_email_ajax(ad_email);
-                    }, 1000);
-                });
-                function check_email_ajax(email) {
-                    $("#admin-result").html('<img src="../images/loader.gif" />');
-                    $.post("CheckEmailServlet", {"email": email}, function (data) {
-                        $("#admin-result").html(data);
-                    });
+            function validate()
+            {
+                var fullname = document.form.fullname.value;
+                var email = document.form.email.value;
+                var password = document.form.password.value;
+                var conpassword = document.form.conpassword.value;
+
+                if (fullname == null || fullname == "")
+                {
+                    alert("Họ và tên không được để trống");
+                    return false;
+                } else if (email == null || email == "")
+                {
+                    alert("Email không được để trống");
+                    return false;
+                } else if (password.length < 6)
+                {
+                    alert("Mật khẩu ít nhất phải có 6 kí tự");
+                    return false;
+                } else if (password != conpassword)
+                {
+                    alert("Nhập lại mật khẩu không khớp");
+                    return false;
                 }
-            });
-        </script>
+            }
+        </script> 
     </head>
     <body>
         <div class="main">
@@ -48,27 +57,28 @@
                     <div class="signup-content">
                         <div class="signup-form">
                             <h2 class="form-title">Đăng ký quản trị</h2>
-                            <form method="POST" action="AdminServlet" class="register-form" id="register-form">
+                            <form action="AdminServlet" method="post" onsubmit="return validate()" class="register-form" id="register-form">
                                 <div class="form-group">
                                     <label for="fullname"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                    <input type="text" name="fullname" id="fullname" placeholder="Họ tên" maxlength="50" required="yes"/>
+                                    <input type="text" name="fullname" id="fullname" placeholder="Họ tên" maxlength="50" />
                                 </div>
                                 <div class="form-group">
                                     <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                    <input type="email" name="email" id="email" placeholder="Email" maxlength="50" required="yes"/>
+                                    <input type="email" name="email" id="email" placeholder="Email" maxlength="50" />
                                     <span id="admin-result"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                    <input type="password" name="pass" id="pass" placeholder="Mật khẩu" maxlength="30" required="yes" />
+                                    <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                                    <input type="password" name="password" id="password" placeholder="Mật khẩu" maxlength="30" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                    <input type="password" name="re_pass" id="re_pass" placeholder="Nhập lại mật khẩu" maxlength="30" required="yes" />
+                                    <label for="conpassword"><i class="zmdi zmdi-lock-outline"></i></label>
+                                    <input type="password" name="conpassword" id="conpassword" placeholder="Nhập lại mật khẩu" maxlength="30" />
                                 </div>
+                                <%=(request.getAttribute("errMessage") == null) ? ""
+                                        : request.getAttribute("errMessage")%>
                                 <div class="form-group form-button">
-                                    <input type="hidden" name="signup" id="signup" class="form-submit" value="Đăng ký"/>
-                                    <input type="submit" name="signup" id="signup" class="form-submit" value="Đăng ký"/>
+                                        <input type="submit" name="signup" id="signup" class="form-submit" value="Đăng ký"/>
                                 </div>
                             </form>
                         </div>

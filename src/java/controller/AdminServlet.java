@@ -7,12 +7,10 @@ package controller;
 
 import dao.AdminDAO;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import model.Administrator;
 
 /**
@@ -21,34 +19,50 @@ import model.Administrator;
  */
 public class AdminServlet extends HttpServlet {
 
-    AdminDAO adminDAO = new AdminDAO();
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+    }
+
+    public AdminServlet() {
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String command = request.getParameter("command");
-        String url = "";
-        Administrator ad = new Administrator();
-        HttpSession session = request.getSession();
-        switch (command) {
-            case "login":
-                ad = adminDAO.login(request.getParameter("email"), request.getParameter("password"));
-                if (ad != null) {
-                    session.setAttribute("admin", ad);
-                    url = "/index.jsp";
-                }else{
-                    session.setAttribute("error", "Email hoặc mật khẩu không đúng!");
-                    url = "/login.jsp";
-                }
-                break;
+
+        // Sao chép tất cả các tham số đầu vào sang các biến cục bộ
+        String fullname = request.getParameter("fullname");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+
+        Administrator admin = new Administrator();
+        admin.setFullName(fullname);
+        admin.setEmail(email);
+        admin.setPassword(password);
+
+        AdminDAO adminDAO = new AdminDAO();
+        //chèn dữ liệu vào cơ sở dữ liệu.
+        String adminRegister = adminDAO.registerAdmin(admin);
+        if (adminRegister.equals("SUCCESS")) // Khi thành công, chuyển sang trang đăng nhập
+        {
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        } else // Khi không thành công, hiển thị một thông báo lỗi
+        {
+            request.setAttribute("errMessage", adminRegister);
+            request.getRequestDispatcher("register.jsp").forward(request, response);
         }
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
-        rd.forward(request, response);
     }
+
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 
 }
