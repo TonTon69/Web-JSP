@@ -101,6 +101,5 @@ public class SubjectDAO {
 //        for (int i = 1; i < 10; i++) {
 //            dao.insert(new Subject(i, "Subject", "a", "a", new Timestamp(System.currentTimeMillis())));
 //        }
-        System.out.println(dao.delete(1));
     }
 }

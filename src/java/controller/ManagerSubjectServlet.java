@@ -21,6 +21,8 @@ import model.Subject;
  * @author Admin
  */
 public class ManagerSubjectServlet extends HttpServlet {
+    
+    SubjectDAO subjectDAO = new SubjectDAO();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,28 +41,9 @@ public class ManagerSubjectServlet extends HttpServlet {
         }
     }
 
-    SubjectDAO subjectDAO = new SubjectDAO();
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
-        response.setCharacterEncoding("utf-8");
-        String command = request.getParameter("command");
-        String subject_id = request.getParameter("sub_id");
-        String url = "";
-        try {
-//            switch (command) {
-//
-//                case "delete":
-//                    subjectDAO.delete(Long.parseLong(subject_id));
-//                    url = "/admin/manager_category.jsp";
-//                    break;
-//            }
-        } catch (Exception e) {
-        }
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
-        rd.forward(request, response);
     }
 
     @Override
@@ -86,7 +69,7 @@ public class ManagerSubjectServlet extends HttpServlet {
                         break;
                     case "update":
                         subjectDAO.update(new Subject(name, icon, des, new Timestamp(System.currentTimeMillis())));
-                        url = "/admin/manager_category.jsp";
+                        url = "/admin/manager_subject.jsp";
                         break;
                 }
             } else {
