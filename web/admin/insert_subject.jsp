@@ -47,26 +47,26 @@
                             <h3>THÊM MỚI MÔN HỌC</h3>
                             <div>
                                 <i class="fas fa-list"></i>
-                                <a href="manager_subject.jsp">Quay về quản lý môn học</a>
+                                <a href="${root}/admin/manager_subject.jsp">Quay về quản lý môn học</a>
                             </div>
                             <br/>
                             <form action="/hatquiz/ManagerSubjectServlet" method="post">
                                 <div class="row">
                                     <div class="form-group col-md-4">
                                         <label for="name">Tên môn học</label>
-                                        <input type="text" class="form-control" name="name" id="name" placeholder="Nhập tên môn học...">
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Nhập tên môn học..." required="yes" >
                                     <%=error%>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="icon">Icon</label>
-                                    <input type="text" class="form-control" name="icon" id="icon" placeholder="Nhập icon...">
+                                    <input type="text" class="form-control" name="icon" id="icon" placeholder="Nhập icon..." required="yes">
                                     <%=error%>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-8">
                                     <label for="description">Mô tả</label>
-                                    <textarea type="text" class="form-control" name="description" id="description" placeholder="Nhập mô tả..."></textarea>
+                                    <textarea type="text" class="form-control" name="description" id="description" placeholder="Nhập mô tả..." required="yes"></textarea>
                                     <%=error%>
                                 </div>
                             </div>
