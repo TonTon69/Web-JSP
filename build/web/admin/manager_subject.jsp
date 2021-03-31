@@ -49,27 +49,27 @@
 
                             <div class="d-flex mb-4">
                                 <a href="${root}/admin/insert_subject.jsp" class="btn btn-primary">
-                                    <i class="fas fa-plus"></i>
-                                    Thêm mới môn học
-                                </a>
-                                <a href="" class="btn btn-success ml-2">
-                                    <i class="fas fa-file-excel"></i>
-                                    Xuất excel
-                                </a>
-                            </div>
-                            <!--<span>Tất cả (5)</span>-->
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>STT</th>
-                                        <th>Mã</th>
-                                        <th>Tên</th>
-                                        <th>Icon</th>
-                                        <th>Mô tả</th>
-                                        <th>Ngày tạo</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
+                                <i class="fas fa-plus"></i>
+                                Thêm mới môn học
+                            </a>
+                            <a href="" class="btn btn-success ml-2">
+                                <i class="fas fa-file-excel"></i>
+                                Xuất excel
+                            </a>
+                        </div>
+                        <!--<span>Tất cả (5)</span>-->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã</th>
+                                    <th>Tên</th>
+                                    <th>Icon</th>
+                                    <th>Mô tả</th>
+                                    <th>Ngày tạo</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
                             <%
                                 int count = 0;
                                 for (Subject subject : listSubject) {
@@ -84,10 +84,10 @@
                                     <td style="width: 600px"><%=subject.getDescription()%></td>
                                     <td><%=subject.getCreatedate()%></td>
                                     <td>
-                                        <a href="update_subject.jsp?command=update&subjet_id=<%=subject.getSubjectID()%>" class="btn btn-primary">
+                                        <a href="${root}/admin/update_subject.jsp?command=update&subjet_id=<%=subject.getSubjectID()%>" class="btn btn-primary">
                                             <i class="far fa-edit"></i>
                                         </a>
-                                        <a href="" class="btn btn-danger">
+                                        <a href="${root}/ManagerSubjectServlet?command=delete&subjet_id=<%=subject.getSubjectID()%>" class="btn btn-danger">
                                             <i class="far fa-trash-alt"></i>
                                         </a>
                                     </td>

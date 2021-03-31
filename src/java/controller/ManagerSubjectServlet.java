@@ -21,7 +21,7 @@ import model.Subject;
  * @author Admin
  */
 public class ManagerSubjectServlet extends HttpServlet {
-    
+
     SubjectDAO subjectDAO = new SubjectDAO();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -44,6 +44,26 @@ public class ManagerSubjectServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
+        String command = request.getParameter("command");
+        String url = "", error = "";
+        try {
+            if (error.length() == 0) {
+                switch (command) {
+                    case "delete":
+                        subjectDAO.delete(Integer.parseInt(request.getParameter("subjet_id")));
+                        url = "/admin/manager_subject.jsp";
+                        break;
+                }
+            } else {
+                url = "/admin/insert_subject.jsp";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();;
+        }
+        RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+        rd.forward(request, response);
     }
 
     @Override
@@ -51,6 +71,7 @@ public class ManagerSubjectServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
+        String subject_id = request.getParameter("sub_id");
         String command = request.getParameter("command");
         String name = request.getParameter("name");
         String icon = request.getParameter("icon");
@@ -68,7 +89,7 @@ public class ManagerSubjectServlet extends HttpServlet {
                         url = "/admin/manager_subject.jsp";
                         break;
                     case "update":
-                        subjectDAO.update(new Subject(name, icon, des, new Timestamp(System.currentTimeMillis())));
+                        subjectDAO.update(new Subject(Integer.parseInt(subject_id), name, icon, des, new Timestamp(System.currentTimeMillis())));
                         url = "/admin/manager_subject.jsp";
                         break;
                 }
@@ -81,10 +102,5 @@ public class ManagerSubjectServlet extends HttpServlet {
         RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
         rd.forward(request, response);
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

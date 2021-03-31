@@ -68,7 +68,9 @@
                                     <%=error%>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Lưu lại</button>
+                            <input type="hidden" name="command" value="update">                                
+                            <input type="hidden" name="sub_id" value="<%=request.getParameter("sub_id")%>">
+                            <input type="submit" class="btn btn-primary" value="Lưu lại">
                         </form>
                     </div>
                 </div>
@@ -86,8 +88,8 @@
 
             <!-- Logout Modal-->
         <jsp:include page="logout_modal.jsp"></jsp:include>
-        <!-- Bootstrap core JavaScript-->
-        <script src="${root}/vendor/jquery/jquery.min.js"></script>
+            <!-- Bootstrap core JavaScript-->
+            <script src="${root}/vendor/jquery/jquery.min.js"></script>
         <script src="${root}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         <!-- Core plugin JavaScript-->
