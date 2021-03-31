@@ -47,17 +47,13 @@ public class ManagerSubjectServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         String command = request.getParameter("command");
-        String url = "", error = "";
+        String url = "";
         try {
-            if (error.length() == 0) {
-                switch (command) {
-                    case "delete":
-                        subjectDAO.delete(Integer.parseInt(request.getParameter("subjet_id")));
-                        url = "/admin/manager_subject.jsp";
-                        break;
-                }
-            } else {
-                url = "/admin/insert_subject.jsp";
+            switch (command) {
+                case "delete":
+                    subjectDAO.delete(Integer.parseInt(request.getParameter("subjet_id")));
+                    url = "/admin/manager_subject.jsp";
+                    break;
             }
         } catch (Exception e) {
             e.printStackTrace();;
@@ -71,30 +67,21 @@ public class ManagerSubjectServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
-        String subject_id = request.getParameter("sub_id");
         String command = request.getParameter("command");
-        String name = request.getParameter("name");
-        String icon = request.getParameter("icon");
-        String des = request.getParameter("description");
-        String url = "", error = "";
-        if (name.equals("")) {
-            error = "Vui lòng nhập tên môn học";
-            request.setAttribute("error", error);
-        }
+        String sub_name = request.getParameter("name");
+        String sub_icon = request.getParameter("icon");
+        String sub_description = request.getParameter("description");
+        String url = "";
         try {
-            if (error.length() == 0) {
-                switch (command) {
-                    case "insert":
-                        subjectDAO.insert(new Subject(name, icon, des, new Timestamp(System.currentTimeMillis())));
-                        url = "/admin/manager_subject.jsp";
-                        break;
-                    case "update":
-                        subjectDAO.update(new Subject(Integer.parseInt(subject_id), name, icon, des, new Timestamp(System.currentTimeMillis())));
-                        url = "/admin/manager_subject.jsp";
-                        break;
-                }
-            } else {
-                url = "/admin/insert_subject.jsp";
+            switch (command) {
+                case "insert":
+                    subjectDAO.insert(new Subject(sub_name, sub_icon, sub_description, new Timestamp(System.currentTimeMillis())));
+                    url = "/admin/manager_subject.jsp";
+                    break;
+                case "update":
+                    subjectDAO.update(new Subject(Integer.parseInt(request.getParameter("sub_id")), sub_name, sub_icon, sub_description, new Timestamp(System.currentTimeMillis())));
+                    url = "/admin/manager_subject.jsp";
+                    break;
             }
         } catch (Exception e) {
             e.printStackTrace();;

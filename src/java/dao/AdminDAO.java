@@ -8,7 +8,10 @@ package dao;
 import connect.DBConnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Administrator;
 
 /**
@@ -16,6 +19,23 @@ import model.Administrator;
  * @author Admin
  */
 public class AdminDAO {
+
+    public boolean checkEmail(String email) {
+        Connection con = DBConnect.getConnecttion();
+        String query = "SELECT * FROM administrator WHERE ad_email = '" + email + "'";
+        PreparedStatement ps;
+        try {
+            ps = con.prepareCall(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                con.close();
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SubjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
     public String registerAdmin(Administrator admin) {
         String fullName = admin.getFullName();

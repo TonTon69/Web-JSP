@@ -50,7 +50,7 @@
                                 <a href="${root}/admin/manager_subject.jsp">Quay về quản lý môn học</a>
                             </div>
                             <br/>
-                            <form action="/hatquiz/ManagerSubjectServlet" method="post">
+                            <form action="${root}/ManagerSubjectServlet" method="post">
                                 <div class="row">
                                     <div class="form-group col-md-4">
                                         <label for="name">Tên môn học</label>

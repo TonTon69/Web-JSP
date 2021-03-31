@@ -48,23 +48,23 @@
                                 <a href="manager_subject.jsp">Quay về quản lý môn học</a>
                             </div>
                             <br/>
-                            <form action="/hatquiz/ManagerSubjectServlet" method="post">
-                                <div class="row">
-                                    <div class="form-group col-md-4">
-                                        <label for="name">Tên môn học</label>
-                                        <input type="text" class="form-control" value="<%=request.getParameter("sub_name")%>" name="name" id="name" />
-                                    <%=error%>
+                            <form action="${root}/ManagerSubjectServlet" method="post">
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label for="name">Tên môn học</label>
+                                    <input type="text" class="form-control" value="<%=request.getParameter("name")%>" name="name" id="name" />
+                                    <%=error%>  
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="icon">Icon</label>
-                                    <input type="text" class="form-control" name="icon" id="icon" value="<%=request.getParameter("sub_icon")%>" >
+                                    <input type="text" class="form-control" name="icon" id="icon" value="<%=request.getParameter("icon")%>" />
                                     <%=error%>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-8">
                                     <label for="description">Mô tả</label>
-                                    <textarea type="text" class="form-control" name="description" id="description" value="<%=request.getParameter("sub_des")%>" ></textarea>
+                                    <textarea type="text" class="form-control" name="description" id="description" value="<%=request.getParameter("description")%>" ></textarea>
                                     <%=error%>
                                 </div>
                             </div>
