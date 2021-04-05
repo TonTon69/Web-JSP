@@ -58,10 +58,10 @@
                     <div class="signup-content">
                         <div class="signup-form">
                             <h2 class="form-title">Đăng ký quản trị</h2>
-                            <form action="AdminServlet" method="post" onsubmit="validate()" class="register-form" id="register-form">
+                            <form action="${root}/AdminServlet" method="post" class="register-form" id="register-form">
                                 <div class="form-group">
-                                    <label for="fullname"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                    <input type="text" name="fullname" id="fullname" placeholder="Họ tên" maxlength="50" required="yes"/>
+                                    <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                    <input type="text" name="name" id="name" placeholder="Họ tên" maxlength="50" required="yes"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="email"><i class="zmdi zmdi-email"></i></label>
@@ -70,29 +70,49 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="password"><i class="zmdi zmdi-lock"></i></label>
-                                    <input type="password" name="password" id="password" placeholder="Mật khẩu" maxlength="30" />
+                                    <input type="password" name="password" id="password" placeholder="Mật khẩu" maxlength="30" required="yes" />
                                 </div>
                                 <div class="form-group">
                                     <label for="conpassword"><i class="zmdi zmdi-lock-outline"></i></label>
-                                    <input type="password" name="conpassword" id="conpassword" placeholder="Nhập lại mật khẩu" maxlength="30" />
+                                    <input type="password" name="conpassword" id="conpassword" placeholder="Nhập lại mật khẩu" maxlength="30" required="yes" />
                                 </div>
                                 <%=(request.getAttribute("errMessage") == null) ? ""
                                         : request.getAttribute("errMessage")%>
                                 <div class="form-group form-button">
-                                    <input type="hidden" name="command" value="Đăng ký"/>
+                                    <input type="hidden" name="command" value="insert" />
                                     <input type="submit" name="signup" id="signup" class="form-submit" value="Đăng ký"/>
                                 </div>
                             </form>
                         </div>
                         <div class="signup-image">
-                            <figure><img src="../images/signup-image.jpg" alt="sing up image"></figure>
-                            <a href="login.jsp" class="signup-image-link">Bạn đã có tài khoản? Đăng nhập</a>
+                            <figure><img src="${root}/images/signup-image.jpg" alt="sing up image"></figure>
+                            <a href="${root}/admin/login.jsp" class="signup-image-link">Bạn đã có tài khoản? Đăng nhập</a>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
-
+        <!--        <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#register-form").validate({
+                            rules: {
+                                email: {
+                                    required: true,
+                                    email: true
+                                },
+                                password: "required",
+                            },
+                            messages: {
+                                email: {
+                                    required: "Please enter email",
+                                    email: "Please enter a valid email address"
+                                },
+                                password: "Please enter password"
+                            }
+                        });
+        
+                    });
+                </script>-->
         <script src="../vendor/jquery/jquery.min.js"></script>
         <script src="../js/regform.js"></script>
     </body>

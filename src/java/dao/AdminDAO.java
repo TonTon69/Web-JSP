@@ -37,30 +37,41 @@ public class AdminDAO {
         return false;
     }
 
-    public String registerAdmin(Administrator admin) {
-        String fullName = admin.getFullName();
-        String email = admin.getEmail();
-        String password = admin.getPassword();
-
-        Connection con = null;
-        PreparedStatement preparedStatement = null;
+    // phương thức thêm tài khoản
+    public boolean registerAdmin(Administrator ad) {
+        Connection con = DBConnect.getConnecttion();
         try {
-            con = DBConnect.getConnecttion();
-            String query = "insert into administrator(ad_id,ad_name,ad_email,ad_pass) values (NULL,?,?,?)";
-            preparedStatement = con.prepareStatement(query); //chèn nhiều dữ liệu
-            preparedStatement.setString(1, fullName);
-            preparedStatement.setString(2, email);
-            preparedStatement.setString(3, password);
-
-            int i = preparedStatement.executeUpdate();
-
-            if (i != 0) // Chỉ để đảm bảo dữ liệu đã được chèn vào cơ sở dữ liệu
-            {
-                return "SUCCESS";
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            String sql = "INSERT INTO administrator(ad_name, ad_email, ad_pass) VALUES(?,?,?)";
+            PreparedStatement ps = con.prepareCall(sql);
+            ps.setString(1, ad.getFullName());
+            ps.setString(2, ad.getEmail());
+            ps.setString(3, ad.getPassword());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "Rất tiếc .. Đã xảy ra lỗi ở đó ..!";  // On failure, send a message from here.
+        return false;
+    }
+
+//    Check Login method
+    public Administrator checkLogin(String email, String password) {
+        Connection con = DBConnect.getConnecttion();
+        String sql = "select * from administrator where ad_email ='" + email + "' and ad_pass ='" + password + "' ";
+        PreparedStatement ps;
+        try {
+            ps = (PreparedStatement) con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Administrator ad = new Administrator();
+                ad.setFullName(rs.getString("ad_name"));
+                ad.setEmail(rs.getString("ad_email"));
+                con.close();
+                return ad;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

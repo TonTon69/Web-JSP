@@ -3,7 +3,7 @@
     Created on : Mar 24, 2021, 9:22:22 PM
     Author     : Admin
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,13 +13,42 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Đăng nhập</title>
         <!-- Font Icon -->
-        <link rel="stylesheet" href="../fonts/material-icon/css/material-design-iconic-font.min.css">
+        <c:set var="root" value="${pageContext.request.contextPath}"/>
+        <link rel="stylesheet" href="${root}/fonts/material-icon/css/material-design-iconic-font.min.css">
         <!-- Main css -->
-        <link rel="stylesheet" href="../css/regform.css">
+        <link rel="stylesheet" href="${root}/css/regform.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#login-form").validate({
+                    rules: {
+                        email: {
+                            required: true,
+                            email: true
+                        },
+
+                        password: "required",
+                    },
+                    messages: {
+                        email: {
+                            required: "Please enter email",
+                            email: "Please enter a valid email address"
+                        },
+                        password: "Please enter password"
+                    }
+                });
+
+            });
+        </script>
     </head>
     <body>
         <div class="main">
@@ -28,31 +57,24 @@
                 <div class="container">
                     <div class="signin-content">
                         <div class="signin-image">
-                            <figure><img src="../images/signin-image.jpg" alt="sing up image"></figure>
-                            <a href="register.jsp" class="signup-image-link">Bạn chưa có tài khoản? Đăng ký</a>
+                            <figure><img src="${root}/images/signin-image.jpg" alt="sing up image"></figure>
+                            <a href="${root}/admin/register.jsp" class="signup-image-link">Bạn chưa có tài khoản? Đăng ký</a>
                         </div>
 
                         <div class="signin-form">
                             <h2 class="form-title">Đăng nhập quản trị</h2>
-                            <form action="AdminServlet" method="POST" class="register-form" id="login-form">
-                                <%if (session.getAttribute("error") != null) {%>
-                                <div>
-                                    <p style="color: red"><%=session.getAttribute("error")%></p>
-                                </div>
-                                <%}%>
+                            <form action="${root}/AdminServlet" method="POST" class="register-form" id="login-form">
                                 <div class="form-group">
                                     <label for="email"><i class="zmdi zmdi-email material-icons-email"></i></label>
-                                    <input type="email" name="email" id="email" placeholder="Email" required="yes" />
+                                    <input type="email" name="email" id="email" placeholder="Email"  />
                                 </div>
                                 <div class="form-group">
                                     <label for="password"><i class="zmdi zmdi-lock"></i></label>
-                                    <input type="password" name="password" id="password" placeholder="Mật khẩu" required="yes" maxlength="30" />
+                                    <input type="password" name="password" id="password" placeholder="Mật khẩu" maxlength="30" />
+                                    ${message}
                                 </div>
-<!--                                <div class="form-group">
-                                    <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                                    <label for="remember-me" class="label-agree-term"><span><span></span></span>Nhớ mật khẩu</label>
-                                </div>-->
                                 <div class="form-group form-button">
+                                    <input type="hidden" name="command" value="login" />
                                     <input type="submit" name="signin" id="signin" class="form-submit" value="Đăng nhập"/>
                                 </div>
                             </form>
@@ -70,7 +92,7 @@
             </section>
         </div>
         <!-- JS -->
-        <script src="../vendor/jquery/jquery.min.js"></script>
-        <script src="../js/main.js"></script>
+        <script src="${root}/vendor/jquery/jquery.min.js"></script>
+        <script src="${root}/js/main.js"></script>
     </body>
 </html>

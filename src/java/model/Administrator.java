@@ -11,6 +11,7 @@ package model;
  */
 public class Administrator {
 
+    private int id;
     private String fullName;
     private String email;
     private String password;
@@ -18,10 +19,30 @@ public class Administrator {
     public Administrator() {
     }
 
-    public Administrator( String fullName, String email, String password) {
+    public Administrator(int id, String fullName, String email, String password) {
+        this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.password = password;
+    }
+
+    public Administrator(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public Administrator(String fullName, String email, String password) {
+        this.fullName = fullName;
+        this.email = email;
+        this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFullName() {
@@ -46,9 +67,5 @@ public class Administrator {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public void setAdminEmail(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
