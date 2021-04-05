@@ -27,28 +27,7 @@
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("#login-form").validate({
-                    rules: {
-                        email: {
-                            required: true,
-                            email: true
-                        },
 
-                        password: "required",
-                    },
-                    messages: {
-                        email: {
-                            required: "Please enter email",
-                            email: "Please enter a valid email address"
-                        },
-                        password: "Please enter password"
-                    }
-                });
-
-            });
-        </script>
     </head>
     <body>
         <div class="main">
@@ -66,13 +45,19 @@
                             <form action="${root}/AdminServlet" method="POST" class="register-form" id="login-form">
                                 <div class="form-group">
                                     <label for="email"><i class="zmdi zmdi-email material-icons-email"></i></label>
-                                    <input type="email" name="email" id="email" placeholder="Email"  />
+                                    <input type="email" name="email" id="email" placeholder="Email" required="yes"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="password"><i class="zmdi zmdi-lock"></i></label>
-                                    <input type="password" name="password" id="password" placeholder="Mật khẩu" maxlength="30" />
-                                    ${message}
+                                    <input type="password" name="password" id="password" placeholder="Mật khẩu" maxlength="30" required="yes" />
                                 </div>
+                                <%if (session.getAttribute("error") != null) {%>
+                                <div>
+                                    <p style="color: red">
+                                        <%=session.getAttribute("error")%>
+                                    </p>
+                                </div>                                    
+                                <%}%>
                                 <div class="form-group form-button">
                                     <input type="hidden" name="command" value="login" />
                                     <input type="submit" name="signin" id="signin" class="form-submit" value="Đăng nhập"/>

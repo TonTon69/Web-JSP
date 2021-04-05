@@ -3,15 +3,27 @@
     Created on : Mar 24, 2021, 7:58:18 PM
     Author     : admin
 --%>
-
+<%@page import="model.Administrator"%>
+<%@page import="dao.AdminDAO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <c:set var="root" value="${pageContext.request.contextPath}"/>
     </head>
     <body>
+        <%
+            Administrator ad = new Administrator();
+            if (session.getAttribute("admin") != null) {
+                ad = (Administrator) session.getAttribute("admin");
+            } else {
+                ad.setFullName("");
+            }
+        %>
+
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -184,9 +196,9 @@
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=ad.getFullName() %></span>
                         <img class="img-profile rounded-circle"
-                             src="../images/undraw_profile.svg">
+                             src="${root}/images/undraw_profile.svg">
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
