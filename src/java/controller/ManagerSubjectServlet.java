@@ -68,6 +68,7 @@ public class ManagerSubjectServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         String command = request.getParameter("command");
+        String sub_id = request.getParameter("SubjectID");        
         String sub_name = request.getParameter("name");
         String sub_icon = request.getParameter("icon");
         String sub_description = request.getParameter("description");
@@ -79,7 +80,7 @@ public class ManagerSubjectServlet extends HttpServlet {
                     url = "/admin/manager_subject.jsp";
                     break;
                 case "update":
-                    subjectDAO.update(new Subject(Integer.parseInt(request.getParameter("sub_id")), sub_name, sub_icon, sub_description, new Timestamp(System.currentTimeMillis())));
+                    subjectDAO.update(new Subject(Integer.parseInt(sub_id), sub_name, sub_icon, sub_description, new Timestamp(System.currentTimeMillis())));
                     url = "/admin/manager_subject.jsp";
                     break;
             }

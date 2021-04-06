@@ -22,7 +22,7 @@ public class AdminDAO {
 
     public boolean checkEmail(String email) {
         Connection con = DBConnect.getConnecttion();
-        String query = "SELECT * FROM administrator WHERE ad_email = '" + email + "'";
+        String query = "SELECT * FROM administrator WHERE Email = '" + email + "'";
         PreparedStatement ps;
         try {
             ps = con.prepareCall(query);
@@ -41,7 +41,7 @@ public class AdminDAO {
     public boolean registerAdmin(Administrator ad) {
         Connection con = DBConnect.getConnecttion();
         try {
-            String sql = "INSERT INTO administrator(ad_name, ad_email, ad_pass) VALUES(?,?,?)";
+            String sql = "INSERT INTO administrator(FullName, Email, Password) VALUES(?,?,?)";
             PreparedStatement ps = con.prepareCall(sql);
             ps.setString(1, ad.getFullName());
             ps.setString(2, ad.getEmail());
@@ -57,15 +57,15 @@ public class AdminDAO {
 //    Check Login method
     public Administrator checkLogin(String email, String password) {
         Connection con = DBConnect.getConnecttion();
-        String sql = "select * from administrator where ad_email ='" + email + "' and ad_pass ='" + password + "' ";
+        String sql = "select * from administrator where Email ='" + email + "' and Password ='" + password + "' ";
         PreparedStatement ps;
         try {
             ps = (PreparedStatement) con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Administrator ad = new Administrator();
-                ad.setFullName(rs.getString("ad_name"));
-                ad.setEmail(rs.getString("ad_email"));
+                ad.setFullName(rs.getString("FullName"));
+                ad.setEmail(rs.getString("Email"));
                 con.close();
                 return ad;
             }

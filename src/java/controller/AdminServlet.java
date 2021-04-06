@@ -47,7 +47,7 @@ public class AdminServlet extends HttpServlet {
                     session.setAttribute("admin", ad);
                     url = "/admin/index.jsp";
                 } else {
-                    session.setAttribute("error","Email hoặc mật khẩu không đúng!");
+                    session.setAttribute("error", "Email hoặc mật khẩu không đúng!");
                     url = "/admin/login.jsp";
                 }
                 break;

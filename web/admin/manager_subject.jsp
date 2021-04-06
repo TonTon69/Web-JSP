@@ -80,7 +80,7 @@
                                     <th scope="row"><%=count%></th>
                                     <td><%=subject.getSubjectID()%></td>
                                     <td><%=subject.getSubjectName()%></td>
-                                    <td><%=subject.getSubjectIcon()%></td>
+                                    <td> <i class="<%=subject.getSubjectIcon()%>"></i> </td>
                                     <td style="width: 600px"><%=subject.getDescription()%></td>
                                     <td><%=subject.getCreatedate()%></td>
                                     <td>

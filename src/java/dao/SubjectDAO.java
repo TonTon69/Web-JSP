@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Subject;
@@ -31,14 +32,32 @@ public class SubjectDAO {
         ArrayList<Subject> list = new ArrayList<>();
         while (rs.next()) {
             Subject subject = new Subject();
-            subject.setSubjectID(rs.getInt("sub_id"));
-            subject.setSubjectName(rs.getString("sub_name"));
-            subject.setSubjectIcon(rs.getString("sub_icon"));
-            subject.setDescription(rs.getString("sub_description"));
-            subject.setCreatedate(rs.getTimestamp("create_date"));
+            subject.setSubjectID(rs.getInt("SubjectID"));
+            subject.setSubjectName(rs.getString("SubjectName"));
+            subject.setSubjectIcon(rs.getString("Icon"));
+            subject.setDescription(rs.getString("Description"));
+            subject.setCreatedate(rs.getTimestamp("CreateDate"));
             list.add(subject);
         }
         return list;
+    }
+
+    public Subject getSubjectByID(int id) throws Exception {
+        Subject su = null;
+        Connection connection = DBConnect.getConnecttion();
+        String sql = "select * from subject where SubjectID=?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            int sid = rs.getInt("subjectID");
+            String name = rs.getString("subjectName");
+            String icon = rs.getString("subjectIcon");
+            String des = rs.getString("description");
+            Timestamp createdate = rs.getTimestamp("createdate");
+            su = new Subject(sid, name, icon, des, createdate);
+        }
+        return su;
     }
 
     //Them moi
@@ -62,9 +81,9 @@ public class SubjectDAO {
 
     //cap nhat
     public boolean update(Subject s) throws SQLException {
-        Connection connection = DBConnect.getConnecttion();
-        String sql = "UPDATE subject SET sub_name = ?, sub_icon = ?, sub_description = ?, create_date = ? WHERE sub_id = ?";
         try {
+            Connection connection = DBConnect.getConnecttion();
+            String sql = "update subject set SubjectName = ?, Icon = ?, Description = ?, CreateDate = ? WHERE SubjectID = ?";
             PreparedStatement ps = connection.prepareCall(sql);
             ps.setString(1, s.getSubjectName());
             ps.setString(2, s.getSubjectIcon());
@@ -81,7 +100,7 @@ public class SubjectDAO {
     //xoa
     public boolean delete(int sub_id) throws SQLException {
         Connection con = DBConnect.getConnecttion();
-        String sql = "DELETE FROM subject WHERE sub_id = ?";
+        String sql = "DELETE FROM subject WHERE SubjectID = ?";
         try {
             PreparedStatement ps = con.prepareCall(sql);
             ps.setInt(1, sub_id);
@@ -97,7 +116,6 @@ public class SubjectDAO {
 //        for (Subject ds : dao.getListSubject()) {
 //            System.out.println(ds.getSubjectID() + " - " + ds.getSubjectName());
 //        }
-
 //        for (int i = 1; i < 10; i++) {
 //            dao.insert(new Subject(i, "Subject", "a", "a", new Timestamp(System.currentTimeMillis())));
 //        }
