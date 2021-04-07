@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="model.Quiz"%>
+<%@page import="model.Subject"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.QuizDAO"%>
 
@@ -58,44 +59,55 @@
                             </a>
                         </div>
                         <!--<span>Tất cả (5)</span>-->
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Mã</th>
-                                    <th>Tên</th>
-                                    <th>Thời gian làm bài</th>
-                                    <th>Tổng số câu hỏi</th>                                    
-                                    <th>Ảnh</th>
-                                    <th>Ngày tạo</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <%
-                                int count = 0;
-                                for (Quiz quiz : listQuiz) {
-                                    count++;
-                            %>
-                            <tbody>
-                                <tr>
-                                    <th scope="row"><%=count%></th>
-                                    <td><%=quiz.getQuizID()%></td>
-                                    <td><%=quiz.getQuizName()%></td>
-                                    <td><%=quiz.getTime()%>"></td>
-                                    <td><%=quiz.getTotalQuestion()%></td>                                    
-                                    <td><%=quiz.getImage()%></td>
-                                    <td><%=quiz.getCreatedate()%></td>
-                                    <td>
-                                        <a href="${root}/admin/update_quiz.jsp?command=update&quiz_id=<%=quiz.getQuizID()%>" class="btn btn-primary">
-                                            <i class="far fa-edit"></i>
-                                        </a>
-                                        <a href="${root}/ManagerQuizServlet?command=delete&quiz_id=<%=quiz.getQuizID()%>" class="btn btn-danger">
-                                            <i class="far fa-trash-alt"></i>
-                                        </a>
-                                    </td>
-                            </tbody>
-                            <%}%>
-                        </table>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">DANH SÁCH ĐỀ THI</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>STT</th>
+                                                <th>Mã đề</th>                                                
+                                                <th>Mã môn</th>
+                                                <th style="width: 380px">Tên</th>
+                                                <th>Thời gian</th>
+                                                <th>Tổng số câu</th>                                    
+                                                <th>Ảnh</th>
+                                                <th>Ngày tạo</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <%
+                                            int count = 0;
+                                            for (Quiz quiz : listQuiz) {
+                                                count++;
+                                        %>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row"><%=count%></th>
+                                                <td><%=quiz.getQuizID()%></td>
+                                                <td><%=quiz.getSubjectID()%></td>
+                                                <td><%=quiz.getQuizName()%></td>
+                                                <td><%=quiz.getTime()%> phút</td>
+                                                <td><%=quiz.getTotalQuestion()%> câu</td>                                    
+                                                <td><image src="${root}/<%=quiz.getImage()%>" style="width: 60px" /></td>
+                                                <td><%=quiz.getCreatedate()%></td>
+                                                <td>
+                                                    <a href="${root}/admin/update_quiz.jsp?command=update&quiz_id=<%=quiz.getQuizID()%>" class="btn btn-primary">
+                                                        <i class="far fa-edit"></i>
+                                                    </a>
+                                                    <a href="${root}/ManagerQuizServlet?command=delete&quiz_id=<%=quiz.getQuizID()%>" class="btn btn-danger">
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </a>
+                                                </td>
+                                        </tbody>
+                                        <%}%>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.container-fluid -->
                 </div>

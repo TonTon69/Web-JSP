@@ -13,7 +13,8 @@ import model.Quiz;
  * @author Admin
  */
 public class QuizDAO {
-     // get danh sách đề thi
+
+    // get danh sách đề thi 
     public ArrayList<Quiz> getListQuiz() throws SQLException {
         Connection connection = DBConnect.getConnecttion();
         String sql = "SELECT * FROM quiz";
@@ -22,11 +23,11 @@ public class QuizDAO {
         ArrayList<Quiz> list = new ArrayList<>();
         while (rs.next()) {
             Quiz q = new Quiz();
-            q.setQuizID(rs.getInt("QuizID"));            
+            q.setQuizID(rs.getInt("QuizID"));
             q.setSubjectID(rs.getInt("SubjectID"));
             q.setQuizName(rs.getString("QuizName"));
-            q.setTime(rs.getInt("Time"));            
-            q.setTotalQuestion(rs.getInt("TotalQuestion"));            
+            q.setTime(rs.getInt("Time"));
+            q.setTotalQuestion(rs.getInt("TotalQuestion"));
             q.setImage(rs.getString("Image"));
             q.setCreatedate(rs.getTimestamp("CreateDate"));
             list.add(q);

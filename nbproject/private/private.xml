@@ -3,30 +3,34 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/header.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/update_subject.jsp</file>
             <file>file:/D:/IT/web/java/WebEduc/web/admin/logout_modal.jsp</file>
             <file>file:/D:/IT/web/java/WebEduc/web/WEB-INF/web.xml</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/manager_subject.jsp</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/connect/DBConnect.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/footer.jsp</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/controller/ManagerSubjectServlet.java</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/model/Administrator.java</file>
             <file>file:/D:/IT/web/java/WebEduc/web/admin/content.jsp</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/dao/SubjectDAO.java</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/dao/AdminDAO.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/src/java/controller/AdminServlet.java</file>
             <file>file:/D:/IT/web/java/WebEduc/web/admin/insert_subject.jsp</file>
             <file>file:/D:/IT/web/java/WebEduc/web/admin/register.jsp</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/model/Subject.java</file>
             <file>file:/D:/IT/web/java/WebEduc/web/admin/login.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/src/java/model/Quiz.java</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/admin/index.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/header.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/src/java/tools/MD5.java</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/admin/header.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/admin/update_subject.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/admin/manager_quiz.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/admin/manager_subject.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/admin/footer.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/src/java/dao/QuizDAO.java</file>
+            <file>file:/D:/IT/web/java/WebEduc/src/java/controller/AdminServlet.java</file>
             <file>file:/D:/IT/web/java/WebEduc/web/admin/sidebar.jsp</file>
             <file>file:/D:/IT/web/java/WebEduc/web/register.jsp</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/controller/CheckEmailServlet.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/index.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/header.jsp</file>
             <file>file:/D:/IT/web/java/WebEduc/web/login.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/src/java/tools/MD5.java</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/admin/insert_quiz.jsp</file>
         </group>
     </open-files>
 </project-private>

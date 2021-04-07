@@ -58,7 +58,6 @@
                                 Xuất excel
                             </a>
                         </div>
-                        <!--<span>Tất cả (5)</span>-->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">DANH SÁCH MÔN HỌC</h6>
@@ -136,7 +135,7 @@
         <script src="${root}/vendor/datatables/jquery.dataTables.min.js"></script>
         <script src="${root}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-<!--         Page level custom scripts 
-        <script src="${root}/js/demo/datatables-demo.js"></script>-->
+        <!--         Page level custom scripts 
+                <script src="${root}/js/demo/datatables-demo.js"></script>-->
     </body>
 </html>
