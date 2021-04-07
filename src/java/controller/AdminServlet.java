@@ -35,8 +35,7 @@ public class AdminServlet extends HttpServlet {
             case "insert":
                 admin.setFullName(name);
                 admin.setEmail(email);
-                admin.setPassword(password);
-//                admin.setPassword(request.getParameter(MD5.encryption("password")));
+                admin.setPassword(MD5.encryption(password));
                 adminDAO.registerAdmin(admin);
                 session.setAttribute("admin", admin);
                 url = "/admin/login.jsp";

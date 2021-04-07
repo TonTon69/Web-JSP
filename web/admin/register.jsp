@@ -34,7 +34,7 @@
                     }, 1000);
                 });
                 function check_email_admin_ajax(email) {
-                    $("#ad-result").html('<img src="../images/loader.gif" />');
+                    $("#ad-result").html('<img src="${root}/images/loader.gif" />');
                     $.post('${root}/CheckEmailServlet', {'email': email}, function (data) {
                         $("#ad-result").html(data);
                     });
@@ -76,6 +76,13 @@
                                     <label for="conpassword"><i class="zmdi zmdi-lock-outline"></i></label>
                                     <input type="password" name="conpassword" id="conpassword" placeholder="Nhập lại mật khẩu" maxlength="30" required="yes" />
                                 </div>
+                                <%if (session.getAttribute("errorPass") != null) {%>
+                                <div>
+                                    <p style="color: red">
+                                        <%=session.getAttribute("errorPass")%>
+                                    </p>
+                                </div>                                    
+                                <%}%>
                                 <%=(request.getAttribute("errMessage") == null) ? ""
                                         : request.getAttribute("errMessage")%>
                                 <div class="form-group form-button">
