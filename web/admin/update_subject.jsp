@@ -41,37 +41,41 @@
                     <jsp:include page="header.jsp"></jsp:include>
                         <!-- Begin Page Content -->
                         <div class="container-fluid">
-                        <%
-                            Subject s = new SubjectDAO().getSubjectByID(Integer.parseInt(request.getParameter("subjectID")));
-                        %>
-                        <h3>CẬP NHẬT MÔN HỌC</h3>
-                        <div>
-                            <i class="fas fa-list"></i>
-                            <a href="manager_subject.jsp">Quay về quản lý môn học</a>
-                        </div>
-                        <br/>
 
-                        <form action="${root}/ManagerSubjectServlet" method="post">
-                            <div class="row">
-                                <div class="form-group col-md-4">
-                                    <label for="name">Tên môn học</label>
-                                    <input type="text" class="form-control" name="name" id="name" value="<%=s.getSubjectName()%>" >
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="icon">Icon</label>
-                                    <input type="text" class="form-control" name="icon" id="icon" value="<%=s.getSubjectIcon()%>" >
-                                </div>
+                            <h3>QUẢN LÝ MÔN HỌC</h3>
+                            <div>
+                                <i class="fas fa-undo-alt"></i>
+                                <a href="manager_subject.jsp">Quay về danh sách môn học</a>
                             </div>
-                            <div class="row">
-                                <div class="form-group col-md-8">
-                                    <label for="description">Mô tả</label>
-                                    <textarea type="text" class="form-control" name="description" id="description" value="<%=s.getDescription()%>" ></textarea>
+                            <br/>
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT MÔN HỌC</h6>
                                 </div>
+                                <div class="card-body">
+                                    <form action="${root}/ManagerSubjectServlet" method="post">
+                                    <div class="row">
+                                        <div class="form-group col-md-4">
+                                            <label for="name">Tên môn học</label>
+                                            <input type="text" class="form-control" name="name" id="name" value="<%=request.getParameter("SubjectName")%>" >
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="icon">Icon</label>
+                                            <input type="text" class="form-control" name="icon" id="icon" value="<%=request.getParameter("Icon")%>" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-8">
+                                            <label for="description">Mô tả</label>
+                                            <textarea type="text" class="form-control" name="description" id="description" rows="6" value="<%=request.getParameter("Description")%>" ></textarea>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="command" value="update"> 
+                                    <input type="hidden" name="SubjetID" value="<%=request.getParameter("SubjetID")%>"> 
+                                    <input type="submit" class="btn btn-primary" value="Lưu lại">
+                                </form>
                             </div>
-                            <input type="hidden" name="command" value="update"> 
-                            <input type="hidden" name="subjetID" value="<%=request.getParameter("subjetID")%>"> 
-                            <input type="submit" class="btn btn-primary" value="Lưu lại">
-                        </form>
+                        </div>
                     </div>
                 </div>
                 <!-- End of Main Content -->

@@ -29,6 +29,7 @@
 
         <!-- Custom styles for this template-->
         <link href="${root}/css/sb-admin-2.min.css" rel="stylesheet">
+        <link href="${root}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     </head>
     <body id="page-top">
         <%
@@ -58,42 +59,52 @@
                             </a>
                         </div>
                         <!--<span>Tất cả (5)</span>-->
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Mã</th>
-                                    <th>Tên</th>
-                                    <th>Icon</th>
-                                    <th>Mô tả</th>
-                                    <th>Ngày tạo</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <%
-                                int count = 0;
-                                for (Subject subject : listSubject) {
-                                    count++;
-                            %>
-                            <tbody>
-                                <tr>
-                                    <th scope="row"><%=count%></th>
-                                    <td><%=subject.getSubjectID()%></td>
-                                    <td><%=subject.getSubjectName()%></td>
-                                    <td> <i class="<%=subject.getSubjectIcon()%>"></i> </td>
-                                    <td style="width: 600px"><%=subject.getDescription()%></td>
-                                    <td><%=subject.getCreatedate()%></td>
-                                    <td>
-                                        <a href="${root}/admin/update_subject.jsp?command=update&subjet_id=<%=subject.getSubjectID()%>" class="btn btn-primary">
-                                            <i class="far fa-edit"></i>
-                                        </a>
-                                        <a href="${root}/ManagerSubjectServlet?command=delete&subjet_id=<%=subject.getSubjectID()%>" class="btn btn-danger">
-                                            <i class="far fa-trash-alt"></i>
-                                        </a>
-                                    </td>
-                            </tbody>
-                            <%}%>
-                        </table>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">DANH SÁCH MÔN HỌC</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>STT</th>
+                                                <th>Mã</th>
+                                                <th>Tên</th>
+                                                <th>Icon</th>
+                                                <th>Mô tả</th>
+                                                <th>Ngày tạo</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <%
+                                            int count = 0;
+                                            for (Subject subject : listSubject) {
+                                                count++;
+                                        %>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row"><%=count%></th>
+                                                <td><%=subject.getSubjectID()%></td>
+                                                <td><%=subject.getSubjectName()%></td>
+                                                <td> <i class="<%=subject.getSubjectIcon()%>"></i> </td>
+                                                <td style="width: 600px"><%=subject.getDescription()%></td>
+                                                <td><%=subject.getCreatedate()%></td>
+                                                <td>
+                                                    <a href="${root}/admin/update_subject.jsp?command=update&subjet_id=<%=subject.getSubjectID()%>" class="btn btn-primary">
+                                                        <i class="far fa-edit"></i>
+                                                    </a>
+                                                    <a href="${root}/ManagerSubjectServlet?command=delete&subjet_id=<%=subject.getSubjectID()%>" class="btn btn-danger">
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <%}%>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.container-fluid -->
                 </div>
@@ -122,10 +133,10 @@
         <script src="${root}/js/sb-admin-2.min.js"></script>
 
         <!-- Page level plugins -->
-        <script src="${root}/vendor/chart.js/Chart.min.js"></script>
+        <script src="${root}/vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="${root}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="${root}/js/demo/chart-area-demo.js"></script>
-        <script src="${root}/js/demo/chart-pie-demo.js"></script>
+<!--         Page level custom scripts 
+        <script src="${root}/js/demo/datatables-demo.js"></script>-->
     </body>
 </html>
