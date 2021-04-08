@@ -32,7 +32,7 @@ public class AdminServlet extends HttpServlet {
         Administrator admin = new Administrator();
         HttpSession session = request.getSession();
         switch (command) {
-            case "insert":
+            case "register":
                 admin.setFullName(name);
                 admin.setEmail(email);
                 admin.setPassword(MD5.encryption(password));
