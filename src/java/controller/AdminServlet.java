@@ -41,7 +41,7 @@ public class AdminServlet extends HttpServlet {
                 url = "/admin/login.jsp";
                 break;
             case "login":
-                Administrator ad = adminDAO.checkLogin(email, password);
+                Administrator ad = adminDAO.checkLogin(email, MD5.encryption(password));
                 if (ad != null) {
                     session.setAttribute("admin", ad);
                     url = "/admin/index.jsp";
