@@ -110,13 +110,4 @@ public class SubjectDAO {
         return false;
     }
 
-    public static void main(String[] args) throws SQLException {
-        SubjectDAO dao = new SubjectDAO();
-//        for (Subject ds : dao.getListSubject()) {
-//            System.out.println(ds.getSubjectID() + " - " + ds.getSubjectName());
-//        }
-//        for (int i = 1; i < 10; i++) {
-//            dao.insert(new Subject(i, "Subject", "a", "a", new Timestamp(System.currentTimeMillis())));
-//        }
-    }
 }
