@@ -53,10 +53,6 @@
                                 <i class="fas fa-plus"></i>
                                 Thêm mới môn học
                             </a>
-                            <a href="" class="btn btn-success ml-2">
-                                <i class="fas fa-file-excel"></i>
-                                Xuất excel
-                            </a>
                         </div>
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
@@ -90,10 +86,10 @@
                                                 <td style="width: 600px"><%=subject.getDescription()%></td>
                                                 <td><%=subject.getCreatedate()%></td>
                                                 <td>
-                                                    <a href="${root}/admin/update_subject.jsp?command=update&subjet_id=<%=subject.getSubjectID()%>" class="btn btn-primary">
+                                                    <a href="${root}/admin/update_subject.jsp?command=update&subject_id=<%=subject.getSubjectID()%>" class="btn btn-primary">
                                                         <i class="far fa-edit"></i>
                                                     </a>
-                                                    <a href="${root}/ManagerSubjectServlet?command=delete&subjet_id=<%=subject.getSubjectID()%>" class="btn btn-danger">
+                                                    <a href="${root}/ManagerSubjectServlet?command=delete&subject_id=<%=subject.getSubjectID()%>" class="btn btn-danger">
                                                         <i class="far fa-trash-alt"></i>
                                                     </a>
                                                 </td>

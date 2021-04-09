@@ -1,11 +1,7 @@
-<%-- 
-    Document   : insert_subject
-    Created on : Mar 27, 2021, 9:27:39 PM
-    Author     : Admin
---%>
 <%@page import="model.Subject"%>
 <%@page import="connect.DBConnect"%>
 <%@page import="dao.SubjectDAO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -53,25 +49,29 @@
                                     <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT MÔN HỌC</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form action="${root}/ManagerSubjectServlet" method="post">
+                                <%
+                                    String id = request.getParameter("subject_id");
+                                    Subject s = new SubjectDAO().getSubjectByID(Integer.parseInt(id));
+                                %>
+                                <form action="${root}/ManagerSubjectServlet" method="post">
                                     <div class="row">
                                         <div class="form-group col-md-4">
                                             <label for="name">Tên môn học</label>
-                                            <input type="text" class="form-control" name="name" id="name" value="<%=request.getParameter("SubjectName")%>" >
+                                            <input type="text" class="form-control" name="name" id="name" value="<%=s.getSubjectName()%>" >
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="icon">Icon</label>
-                                            <input type="text" class="form-control" name="icon" id="icon" value="<%=request.getParameter("Icon")%>" >
+                                            <input type="text" class="form-control" name="icon" id="icon" value="<%=s.getSubjectIcon()%>" >
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-8">
                                             <label for="description">Mô tả</label>
-                                            <textarea type="text" class="form-control" name="description" id="description" rows="6" value="<%=request.getParameter("Description")%>" ></textarea>
+                                            <textarea type="text" class="form-control" name="description" id="description" rows="6"><%=s.getDescription()%></textarea>
                                         </div>
                                     </div>
                                     <input type="hidden" name="command" value="update"> 
-                                    <input type="hidden" name="SubjetID" value="<%=request.getParameter("SubjetID")%>"> 
+                                    <input type="hidden" name="subject_id" value="<%=request.getParameter("subject_id")%>"> 
                                     <input type="submit" class="btn btn-primary" value="Lưu lại">
                                 </form>
                             </div>

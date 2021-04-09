@@ -51,7 +51,7 @@ public class ManagerSubjectServlet extends HttpServlet {
         try {
             switch (command) {
                 case "delete":
-                    subjectDAO.delete(Integer.parseInt(request.getParameter("subjet_id")));
+                    subjectDAO.delete(Integer.parseInt(request.getParameter("subject_id")));
                     url = "/admin/manager_subject.jsp";
                     break;
             }
@@ -68,7 +68,7 @@ public class ManagerSubjectServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         String command = request.getParameter("command");
-        String sub_id = request.getParameter("SubjectID");        
+        String sub_id = request.getParameter("subject_id");
         String sub_name = request.getParameter("name");
         String sub_icon = request.getParameter("icon");
         String sub_description = request.getParameter("description");

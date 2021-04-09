@@ -49,11 +49,11 @@ public class SubjectDAO {
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
-            int sid = rs.getInt("subjectID");
-            String name = rs.getString("subjectName");
-            String icon = rs.getString("subjectIcon");
-            String des = rs.getString("description");
-            Timestamp createdate = rs.getTimestamp("createdate");
+            int sid = rs.getInt("SubjectID");
+            String name = rs.getString("SubjectName");
+            String icon = rs.getString("Icon");
+            String des = rs.getString("Description");
+            Timestamp createdate = rs.getTimestamp("CreateDate");
             su = new Subject(sid, name, icon, des, createdate);
         }
         return su;
