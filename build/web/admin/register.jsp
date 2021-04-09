@@ -1,8 +1,6 @@
-<%-- 
-    Document   : register
-    Created on : Mar 24, 2021, 9:24:18 PM
-    Author     : admin
---%>
+<%@page import="model.Administrator"%>
+<%@page import="connect.DBConnect"%>
+<%@page import="dao.AdminDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -41,8 +39,8 @@
                 }
             });
             function validate() {
-                var fullname_valid = /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ"ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$/;
-                var fullname = document.getElementById("name");
+                var fullname_valid = /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/;
+                var fullname = document.getElementById("name");                
                 var password = document.getElementById("password");
                 var conpassword = document.getElementById("conpassword");
                 if (!fullname_valid.test(fullname.value))
@@ -110,7 +108,7 @@
                             </form>
                         </div>
                         <div class="signup-image">
-                            <figure><img src="${root}/images/signup-image.jpg" alt="sing up image"></figure>
+                            <figure><img src="${root}/images/signup-image.jpg" alt="sing up                                                            image"></figure>
                             <a href="${root}/admin/login.jsp" class="signup-image-link">Bạn đã có tài khoản? Đăng nhập</a>
                         </div>
                     </div>
