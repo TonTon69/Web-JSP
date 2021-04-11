@@ -8,10 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Quiz;
 
-/**
- *
- * @author Admin
- */
 public class QuizDAO {
 
     // get danh sách đề thi 

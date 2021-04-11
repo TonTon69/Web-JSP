@@ -20,6 +20,10 @@
         <servlet-name>ManagerUserServlet</servlet-name>
         <servlet-class>controller.ManagerUserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManagerQuestionServlet</servlet-name>
+        <servlet-class>controller.ManagerQuestionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManagerSubjectServlet</servlet-name>
         <url-pattern>/ManagerSubjectServlet</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>ManagerUserServlet</servlet-name>
         <url-pattern>/ManagerUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerQuestionServlet</servlet-name>
+        <url-pattern>/ManagerQuestionServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

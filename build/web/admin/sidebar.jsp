@@ -60,7 +60,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-folder-open"></i>
-                    <span>Đề thi</span>
+                    <span>&nbsp;Đề thi</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
@@ -70,7 +70,20 @@
                     </div>
                 </div>
             </li>
-            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseQuestions"
+                   aria-expanded="true" aria-controls="collapseQuestions">
+                    <i class="fas fa-question-circle"></i>
+                    <span>&nbsp;Câu hỏi</span>
+                </a>
+                <div id="collapseQuestions" class="collapse" aria-labelledby="headingUtilities"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="${root}/admin/manager_question.jsp">Danh sách câu hỏi</a>
+                        <a class="collapse-item" href="${root}/admin/insert_question.jsp">Thêm mới câu hỏi</a>
+                    </div>
+                </div>
+            </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStudents"
                    aria-expanded="true" aria-controls="collapseStudents">
