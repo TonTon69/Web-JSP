@@ -35,6 +35,11 @@
         <%
             AdminDAO adminDAO = new AdminDAO();
             ArrayList<Administrator> listAdmin = adminDAO.getListAdmin();
+            
+            Administrator ad = (Administrator) session.getAttribute("admin");
+            if(ad == null){
+                response.sendRedirect("login.jsp");
+            }
         %>
         <div id="wrapper">
             <jsp:include page="sidebar.jsp"></jsp:include>
@@ -86,10 +91,9 @@
                                                 <td><%=ad.getPassword()%></td>
                                                 <td>
                                                     <% if (ad.getStatus() == false) {%> 
-                                                    <%=ad.getStatus()%>
                                                     <span class="badge badge-danger">New</span>
                                                     <%} else {%>
-                                                    <%=ad.getStatus()%>
+                                                    <span class="badge badge-success">Allowed</span>
                                                     <%}%>
                                                 </td>
                                                 <td>

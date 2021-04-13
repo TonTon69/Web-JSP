@@ -1,3 +1,4 @@
+<%@page import="model.Administrator"%>
 <%@page import="model.Subject"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.SubjectDAO"%>
@@ -29,6 +30,11 @@
         <%
             SubjectDAO subjectDAO = new SubjectDAO();
             ArrayList<Subject> listSubject = subjectDAO.getListSubject();
+
+            Administrator ad = (Administrator) session.getAttribute("admin");
+            if (ad == null) {
+                response.sendRedirect("login.jsp");
+            }
         %>
         <div id="wrapper">
             <jsp:include page="sidebar.jsp"></jsp:include>

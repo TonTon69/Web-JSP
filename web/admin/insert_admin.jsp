@@ -1,3 +1,4 @@
+<%@page import="model.Administrator"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,6 +27,10 @@
             String error = "";
             if (request.getParameter("error") != null) {
                 error = (String) request.getParameter("error");
+            }
+            Administrator ad = (Administrator) session.getAttribute("admin");
+            if(ad == null){
+                response.sendRedirect("login.jsp");
             }
         %>
 
@@ -71,7 +76,7 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="status">Trạng thái</label>
-                                            <input type="text" class="form-control" name="status" id="status" placeholder="Nhập 'true'-cho phép ; 'false'-không cho phép" required="yes">
+                                            <input type="text" class="form-control" name="status" id="status" placeholder="Nhập 'true'-cho phép , 'false'-không cho phép" required="yes">
                                             <%=error%>
                                         </div>
                                     </div>

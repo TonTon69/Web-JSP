@@ -1,8 +1,4 @@
-<%-- 
-    Document   : index
-    Created on : Mar 24, 2021, 8:01:41 PM
-    Author     : admin
---%>
+<%@page import="model.Administrator"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,6 +22,14 @@
 
     </head>
     <body id="page-top">
+
+        <% 
+            Administrator ad = (Administrator) session.getAttribute("admin");
+            if (ad == null) {
+                response.sendRedirect("login.jsp");
+            }
+        %>
+
         <div id="wrapper">
             <jsp:include page="sidebar.jsp"></jsp:include>
             <jsp:include page="content.jsp"></jsp:include>
@@ -38,8 +42,8 @@
 
             <!-- Logout Modal-->
         <jsp:include page="logout_modal.jsp"></jsp:include>
-        <!-- Bootstrap core JavaScript-->
-        <script src="${root}/vendor/jquery/jquery.min.js"></script>
+            <!-- Bootstrap core JavaScript-->
+            <script src="${root}/vendor/jquery/jquery.min.js"></script>
         <script src="${root}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         <!-- Core plugin JavaScript-->

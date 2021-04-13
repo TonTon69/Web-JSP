@@ -1,3 +1,4 @@
+<%@page import="model.Administrator"%>
 <%@page import="model.User"%>
 <%@page import="connect.DBConnect"%>
 <%@page import="dao.UserDAO"%>
@@ -26,7 +27,12 @@
         <link href="${root}/css/sb-admin-2.min.css" rel="stylesheet">
     </head>
     <body id="page-top">
-
+        <%
+            Administrator ad = (Administrator) session.getAttribute("admin");
+            if (ad == null) {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <div id="wrapper">
             <jsp:include page="sidebar.jsp"></jsp:include>
                 <div id="content-wrapper" class="d-flex flex-column">

@@ -4,6 +4,7 @@
     Author     : admin
 --%>
 
+<%@page import="model.Administrator"%>
 <%@page import="model.Quiz"%>
 <%@page import="model.Subject"%>
 <%@page import="java.util.ArrayList"%>
@@ -35,6 +36,11 @@
         <%
             QuizDAO quizDAO = new QuizDAO();
             ArrayList<Quiz> listQuiz = quizDAO.getListQuiz();
+
+            Administrator ad = (Administrator) session.getAttribute("admin");
+            if (ad == null) {
+                response.sendRedirect("login.jsp");
+            }
         %>
         <div id="wrapper">
             <jsp:include page="sidebar.jsp"></jsp:include>

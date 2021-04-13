@@ -26,7 +26,12 @@
         <link href="${root}/css/sb-admin-2.min.css" rel="stylesheet">
     </head>
     <body id="page-top">
-
+        <%
+            Administrator ad = (Administrator) session.getAttribute("admin");
+            if (ad == null) {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <div id="wrapper">
             <jsp:include page="sidebar.jsp"></jsp:include>
                 <div id="content-wrapper" class="d-flex flex-column">
@@ -74,7 +79,7 @@
                                             <input type="text" class="form-control" name="status" id="status" placeholder="Nhập 'true'-cho phép ; 'false'-không cho phép" required="yes" value="<%=ad.getStatus()%>">
                                         </div>
                                     </div>
-                                    
+
                                     <input type="hidden" name="command" value="update"> 
                                     <input type="hidden" name="admin_id" value="<%=request.getParameter("admin_id")%>"> 
                                     <input type="submit" class="btn btn-primary" value="Lưu lại">

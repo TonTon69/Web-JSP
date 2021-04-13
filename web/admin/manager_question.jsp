@@ -4,6 +4,7 @@
     Author     : admin
 --%>
 
+<%@page import="model.Administrator"%>
 <%@page import="model.Question"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.QuestionDAO"%>
@@ -56,6 +57,11 @@
         <%
             QuestionDAO questionDAO = new QuestionDAO();
             ArrayList<Question> listQuestion = questionDAO.getListQuestion();
+
+            Administrator ad = (Administrator) session.getAttribute("admin");
+            if (ad == null) {
+                response.sendRedirect("login.jsp");
+            }
         %>
         <div id="wrapper">
             <jsp:include page="sidebar.jsp"></jsp:include>

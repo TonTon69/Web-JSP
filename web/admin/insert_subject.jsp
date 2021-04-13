@@ -3,6 +3,7 @@
     Created on : Mar 27, 2021, 9:27:39 PM
     Author     : Admin
 --%>
+<%@page import="model.Administrator"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -31,6 +32,10 @@
             String error = "";
             if (request.getParameter("error") != null) {
                 error = (String) request.getParameter("error");
+            }
+            Administrator ad = (Administrator) session.getAttribute("admin");
+            if(ad == null){
+                response.sendRedirect("login.jsp");
             }
         %>
 

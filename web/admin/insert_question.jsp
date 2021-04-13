@@ -1,3 +1,4 @@
+<%@page import="model.Administrator"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.SubjectDAO"%>
 <%@page import="model.Subject"%>
@@ -28,6 +29,11 @@
         <%
             SubjectDAO subjectDAO = new SubjectDAO();
             ArrayList<Subject> listSubject = subjectDAO.getListSubject();
+            
+            Administrator ad = (Administrator) session.getAttribute("admin");
+            if(ad == null){
+                response.sendRedirect("login.jsp");
+            }
         %>
 
         <div id="wrapper">
