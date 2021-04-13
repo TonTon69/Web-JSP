@@ -2,6 +2,9 @@ package controller;
 
 import dao.AdminDAO;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,19 +21,35 @@ public class AdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
+        String command = request.getParameter("command");
+        String url = "";
+        try {
+            switch (command) {
+                case "delete":
+                    adminDAO.delete(Integer.parseInt(request.getParameter("admin_id")));
+                    url = "/admin/manager_admin.jsp";
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();;
+        }
+        RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+        rd.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
+        String admin_id = request.getParameter("admin_id");
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String command = request.getParameter("command");
+        String status = request.getParameter("status");
         String url = "";
         Administrator admin = new Administrator();
         HttpSession session = request.getSession();
@@ -39,9 +58,12 @@ public class AdminServlet extends HttpServlet {
                 admin.setFullName(name);
                 admin.setEmail(email);
                 admin.setPassword(MD5.encryption(password));
+                //mặc định trạng thái là false, admin tối cao sẽ cấp cho bạn thành true để được quyền quản trị
+                admin.setStatus(Boolean.FALSE);
                 adminDAO.registerAdmin(admin);
                 session.setAttribute("admin", admin);
-                url = "/admin/login.jsp";
+                session.setAttribute("success", "Đăng ký thành công. Vui lòng đợi admin xét duyệt quyền!");
+                url = "/admin/register.jsp";
                 break;
             case "login":
                 Administrator ad = adminDAO.checkLogin(email, MD5.encryption(password));
@@ -53,6 +75,24 @@ public class AdminServlet extends HttpServlet {
                     url = "/admin/login.jsp";
                 }
                 break;
+            case "insert": {
+                try {
+                    adminDAO.insert(new Administrator(name, email, MD5.encryption(password), Boolean.parseBoolean(status)));
+                } catch (SQLException ex) {
+                    Logger.getLogger(AdminServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            url = "/admin/manager_admin.jsp";
+            break;
+            case "update": {
+                try {
+                    adminDAO.update(new Administrator(Integer.parseInt(admin_id), name, email, MD5.encryption(password), Boolean.parseBoolean(status)));
+                } catch (SQLException ex) {
+                    Logger.getLogger(AdminServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            url = "/admin/manager_admin.jsp";
+            break;
         }
         RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
         rd.forward(request, response);

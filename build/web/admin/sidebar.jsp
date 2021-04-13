@@ -84,6 +84,22 @@
                     </div>
                 </div>
             </li>
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdmins"
+                   aria-expanded="true" aria-controls="collapseAdmins">
+                    <i class="fas fa-users-cog"></i>
+                    <span>Quản trị</span>
+                </a>
+                <div id="collapseAdmins" class="collapse" aria-labelledby="headingUtilities"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="${root}/admin/manager_admin.jsp">Danh sách quản trị</a>
+                        <a class="collapse-item" href="${root}/admin/insert_admin.jsp">Thêm mới quản trị</a>
+                    </div>
+                </div>
+            </li>
+            
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStudents"
                    aria-expanded="true" aria-controls="collapseStudents">

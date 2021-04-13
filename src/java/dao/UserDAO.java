@@ -41,7 +41,7 @@ public class UserDAO {
         return list;
     }
 
-      public User getUserByID(int id) throws Exception {
+    public User getUserByID(int id) throws Exception {
         User u = null;
         Connection connection = DBConnect.getConnecttion();
         String sql = "select * from user where UserID=?";
@@ -59,6 +59,7 @@ public class UserDAO {
         }
         return u;
     }
+
     //Them moi
     public boolean insert(User u) throws SQLException {
         try {

@@ -98,6 +98,13 @@
                                     <label for="conpassword"><i class="zmdi zmdi-lock-outline"></i></label>
                                     <input type="password" name="conpassword" id="conpassword" placeholder="Nhập lại mật khẩu" maxlength="30" required="yes" />
                                 </div>
+                                <%if (session.getAttribute("success") != null) {%>
+                                <div>
+                                    <p style="color: red">
+                                        <%=session.getAttribute("success")%>
+                                    </p>
+                                </div>                                    
+                                <%}%>
                                 <div class="form-group form-button">
                                     <input type="hidden" name="command" value="register" />
                                     <input type="submit" name="signup" id="signup" class="form-submit" value="Đăng ký"/>
