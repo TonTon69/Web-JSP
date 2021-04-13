@@ -3,6 +3,12 @@
     Created on : Mar 24, 2021, 8:01:00 PM
     Author     : admin
 --%>
+<%@page import="model.Administrator"%>
+<%@page import="dao.AdminDAO"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="connect.DBConnect"%>
+<%@page import="java.sql.Connection"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -84,22 +90,58 @@
                     </div>
                 </div>
             </li>
-            
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdmins"
                    aria-expanded="true" aria-controls="collapseAdmins">
                     <i class="fas fa-users-cog"></i>
                     <span>Quản trị</span>
+                    <span class="badge badge-danger badge-counter">
+                        <%
+                            try {
+                                Connection connection = DBConnect.getConnecttion();
+                                String sql = "SELECT COUNT(*) FROM administrator WHERE STATUS = false";
+                                PreparedStatement ps = connection.prepareCall(sql);
+                                ResultSet rs = ps.executeQuery();
+                                String Countrow = "";
+                                while (rs.next()) {
+                                    Countrow = rs.getString(1);
+                                    out.println(Countrow);
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        %>
+                    </span>
+
                 </a>
                 <div id="collapseAdmins" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="${root}/admin/manager_admin.jsp">Danh sách quản trị</a>
+                        <a class="collapse-item" href="${root}/admin/manager_admin.jsp">Danh sách quản trị
+                            <span class="badge badge-danger">
+                                <%
+                                    try {
+                                        Connection connection = DBConnect.getConnecttion();
+                                        String sql = "SELECT COUNT(*) FROM administrator WHERE STATUS = false";
+                                        PreparedStatement ps = connection.prepareCall(sql);
+                                        ResultSet rs = ps.executeQuery();
+                                        String Countrow = "";
+                                        while (rs.next()) {
+                                            Countrow = rs.getString(1);
+                                            out.println(Countrow);
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                %>
+                            </span>
+                        </a>
                         <a class="collapse-item" href="${root}/admin/insert_admin.jsp">Thêm mới quản trị</a>
                     </div>
                 </div>
             </li>
-            
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStudents"
                    aria-expanded="true" aria-controls="collapseStudents">

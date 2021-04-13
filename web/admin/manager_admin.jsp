@@ -84,7 +84,14 @@
                                                 <td><%=ad.getFullName()%></td>
                                                 <td><%=ad.getEmail()%></td>
                                                 <td><%=ad.getPassword()%></td>
-                                                <td><%=ad.getStatus()%></td>
+                                                <td>
+                                                    <% if (ad.getStatus() == false) {%> 
+                                                    <%=ad.getStatus()%>
+                                                    <span class="badge badge-danger">New</span>
+                                                    <%} else {%>
+                                                    <%=ad.getStatus()%>
+                                                    <%}%>
+                                                </td>
                                                 <td>
                                                     <a href="${root}/admin/update_admin.jsp?command=update&admin_id=<%=ad.getId()%>" class="btn btn-primary">
                                                         <i class="far fa-edit"></i>

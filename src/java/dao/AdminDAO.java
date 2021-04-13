@@ -76,7 +76,7 @@ public class AdminDAO {
         }
         return null;
     }
-    
+
     // get danh sách admin
     public ArrayList<Administrator> getListAdmin() throws SQLException {
         Connection connection = DBConnect.getConnecttion();
@@ -95,6 +95,7 @@ public class AdminDAO {
         }
         return list;
     }
+
     public Administrator getAdminByID(int id) throws Exception {
         Administrator ad = null;
         Connection connection = DBConnect.getConnecttion();
@@ -163,4 +164,5 @@ public class AdminDAO {
         }
         return false;
     }
+
 }
