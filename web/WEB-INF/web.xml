@@ -24,6 +24,10 @@
         <servlet-name>ManagerQuestionServlet</servlet-name>
         <servlet-class>controller.ManagerQuestionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProcessFileExcel</servlet-name>
+        <servlet-class>controller.ProcessFileExcel</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManagerSubjectServlet</servlet-name>
         <url-pattern>/ManagerSubjectServlet</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>ManagerQuestionServlet</servlet-name>
         <url-pattern>/ManagerQuestionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcessFileExcel</servlet-name>
+        <url-pattern>/ProcessFileExcel</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : manager_subject
-    Created on : Mar 24, 2021, 8:35:28 PM
-    Author     : admin
---%>
-
 <%@page import="model.Subject"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.SubjectDAO"%>

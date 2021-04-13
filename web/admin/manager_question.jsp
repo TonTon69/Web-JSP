@@ -30,8 +30,29 @@
         <!-- Custom styles for this template-->
         <link href="${root}/css/sb-admin-2.min.css" rel="stylesheet">
         <link href="${root}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+        <!--import excel-->
+        <script src="${root}/lib_excel/agu.js"></script>
+        <script src="${root}/lib_excel/xlsx.js"></script>
+        <script src="${root}/lib_excel/xlsx-model.js"></script>
+        <script src="${root}/lib_excel/script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#btnExcel').on('click', function (e) {
+                    var val = $('pre').text();
+//                    window.location.href('Excel?text='+val);
+                    $.post('ProcessFileExcel', {
+                        data: val,
+                        chucNang: 'Question'
+                    });
+//                    window.open(encodeURIComponent("Excel?text="+val));
+                });
+            });
+        </script>
     </head>
-    <body id="page-top">
+    <body id="page-top" ng-app="xlsxApp" ng-controller="xlsxCtrl">
         <%
             QuestionDAO questionDAO = new QuestionDAO();
             ArrayList<Question> listQuestion = questionDAO.getListQuestion();
@@ -49,11 +70,30 @@
                             <h3>QUẢN LÝ CÂU HỎI</h3>
 
                             <div class="d-flex mb-4">
-                                <a href="${root}/admin/insert_question.jsp" class="btn btn-primary">
+                                <a href="${root}/admin/insert_question.jsp" class="btn btn-primary mr-2">
                                 <i class="fas fa-plus"></i>
                                 Thêm mới câu hỏi
                             </a>
+                            <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseImportExcel" aria-expanded="false" aria-controls="collapseImportExcel">
+                                <i class="fas fa-file-import"></i> Import file excel
+                            </button>
                         </div>
+                        <div class="collapse" id="collapseImportExcel">
+                            <div class="card card-body">
+                                Bạn chọn hoặc kéo thả file excel của bạn vào đây (Lưu ý: file excel phù hợp là file có những nội dung phù hợp bảng table đã có phía dưới,
+                                tức là có tên cột, có dữ liệu từng hàng, kiểu dữ liệu phù hợp, nếu dữ liệu lổi hệ thống sẽ loại bỏ những hàng lổi ra)
+                            </div>
+                            <div class="row">
+                                <div style="margin:10px">
+                                    <input type="file" class="form-control" xlsx-model="excel" multiple>
+                                </div>
+                                <form action="${root}/ProcessFileExcel" method="post" style="margin:10px">
+                                    <button id="btnExcel" class="btn btn-success" name="file">Import</button>
+                                </form>
+                                <pre ng-show="excel" class="hidden">{{excel| json}}</pre>
+                            </div>
+                        </div>
+
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">DANH SÁCH CÂU HỎI</h6>

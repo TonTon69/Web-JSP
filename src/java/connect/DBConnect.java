@@ -16,6 +16,7 @@ public class DBConnect {
         }
         return cons;
     }
+
     public static void main(String[] args) {
         System.out.println(getConnecttion());
     }

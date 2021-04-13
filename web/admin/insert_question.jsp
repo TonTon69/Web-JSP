@@ -61,7 +61,7 @@
                                                 <%
                                                     for (Subject s : listSubject) {
                                                 %>
-                                                <option value="<%=s.getSubjectID()%>"><%=s.getSubjectName()%></option>  
+                                                <option name="subjectID" value="<%=s.getSubjectID()%>"><%=s.getSubjectName()%></option>  
                                                 <%
 
                                                     }

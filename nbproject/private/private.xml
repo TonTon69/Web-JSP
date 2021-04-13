@@ -4,6 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/IT/web/java/WebEduc/web/admin/logout_modal.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/src/java/controller/ProcessFileExcel.java</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/WEB-INF/web.xml</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/connect/DBConnect.java</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/controller/ManagerSubjectServlet.java</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/model/Administrator.java</file>
@@ -35,9 +37,11 @@
             <file>file:/D:/IT/web/java/WebEduc/src/java/dao/QuizDAO.java</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/controller/AdminServlet.java</file>
             <file>file:/D:/IT/web/java/WebEduc/web/admin/sidebar.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/footer.jsp</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/model/User.java</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/dao/QuestionDAO.java</file>
             <file>file:/D:/IT/web/java/WebEduc/web/register.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/src/java/dao/FileDAO.java</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/controller/CheckEmailServlet.java</file>
             <file>file:/D:/IT/web/java/WebEduc/web/admin/manager_question.jsp</file>
             <file>file:/D:/IT/web/java/WebEduc/web/login.jsp</file>
