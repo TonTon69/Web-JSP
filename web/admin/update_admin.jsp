@@ -27,8 +27,8 @@
     </head>
     <body id="page-top">
         <%
-            Administrator ad = (Administrator) session.getAttribute("admin");
-            if (ad == null) {
+            Administrator admin = (Administrator) session.getAttribute("admin");
+            if (admin == null) {
                 response.sendRedirect("login.jsp");
             }
         %>
