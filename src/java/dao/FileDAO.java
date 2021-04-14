@@ -72,7 +72,7 @@ public class FileDAO {
             //Lấy ra từng giá trị của hàng,tạo ra object tương ứng,truyền giá trị của hàng vào thuộc tính
             for (int j = 0; j < listBig.size(); j++) {
                 list = getStringDoubleDot(listBig.get(j));
-                mapOBJ.put(list.get(0), new Question(Integer.parseInt(list.get(0)), Integer.parseInt(list.get(1)), Integer.parseInt(list.get(2)), list.get(3), list.get(4), list.get(5), list.get(6), list.get(7), list.get(8), Integer.parseInt(list.get(9)), list.get(10), list.get(11), new Timestamp(System.currentTimeMillis())));
+                mapOBJ.put(list.get(0), new Question(Integer.parseInt(list.get(0)), Integer.parseInt(list.get(1)), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6), list.get(7), Integer.parseInt(list.get(8)), list.get(9), list.get(10), new Timestamp(System.currentTimeMillis())));
             }
         }
         return mapOBJ;

@@ -60,14 +60,14 @@
                                 <form action="${root}/ManagerQuestionServlet" method="post">
                                     <div class="row">
                                         <div class="form-group col-md-3">
-                                            <label for="subjectID">Môn học</label>
+                                            <label for="subject">Môn học</label>
                                             <!-- <input type="text" class="form-control" name="subjectID" id="subjectID" required="yes" >-->
-                                            <select class="form-control">  
+                                            <select id="subject" name="subject" class="form-control">  
                                                 <option value="none">--Chọn môn học--</option>  
                                                 <%
                                                     for (Subject s : listSubject) {
                                                 %>
-                                                <option name="subjectID" value="<%=s.getSubjectID()%>"><%=s.getSubjectName()%></option>  
+                                                <option value="<%=s.getSubjectID()%>"><%=s.getSubjectName()%></option>  
                                                 <%
 
                                                     }
@@ -82,25 +82,25 @@
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-3">
-                                            <label for="qa">Q_A</label>
+                                            <label for="qa">Option 1</label>
                                             <input type="text" class="form-control" name="qa" id="qa" required="yes" >
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label for="qb">Q_B</label>
+                                            <label for="qb">Option 2</label>
                                             <input type="text" class="form-control" name="qb" id="qb" required="yes">
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label for="qc">Q_C</label>
+                                            <label for="qc">Option 3</label>
                                             <input type="text" class="form-control" name="qc" id="qc" required="yes">
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label for="qd">Q_D</label>
+                                            <label for="qd">Option 4</label>
                                             <input type="text" class="form-control" name="qd" id="qd" required="yes">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-3">
-                                            <label for="qtrue">Q_True</label>
+                                            <label for="qtrue">Đáp án đúng</label>
                                             <input type="text" class="form-control" name="qtrue" id="qtrue" required="yes" >
                                         </div>
                                         <div class="form-group col-md-3">
@@ -109,7 +109,7 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="image">Ảnh</label>
-                                            <input type="file" class="form-control" name="image" id="image" >
+                                            <input type="text" class="form-control" name="image" id="image" >
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="audio">Audio</label>

@@ -6,7 +6,6 @@ public class Question {
 
     private int questionID;
     private int subjectID;
-    private int quizID;
     private String content;
     private String qA;
     private String qB;
@@ -21,10 +20,9 @@ public class Question {
     public Question() {
     }
 
-    public Question(int questionID, int subjectID, int quizID, String content, String qA, String qB, String qC, String qD, String qTrue, int level, String image, String audio, Timestamp createdate) {
+    public Question(int questionID, int subjectID, String content, String qA, String qB, String qC, String qD, String qTrue, int level, String image, String audio, Timestamp createdate) {
         this.questionID = questionID;
         this.subjectID = subjectID;
-        this.quizID = quizID;
         this.content = content;
         this.qA = qA;
         this.qB = qB;
@@ -50,32 +48,8 @@ public class Question {
         this.audio = audio;
         this.createdate = createdate;
     }
-
-    public Question(int subjectID, String content, String qA, String qB, String qC, String qD, String qTrue, Timestamp createdate) {
-        this.subjectID = subjectID;
-        this.content = content;
-        this.qA = qA;
-        this.qB = qB;
-        this.qC = qC;
-        this.qD = qD;
-        this.qTrue = qTrue;
-        this.createdate = createdate;
-    }
-
-    public Question(int questionID, int subjectID, String content, String qA, String qB, String qC, String qD, String qTrue, int level, String image, String audio, Timestamp createdate) {
-        this.questionID = questionID;
-        this.subjectID = subjectID;
-        this.content = content;
-        this.qA = qA;
-        this.qB = qB;
-        this.qC = qC;
-        this.qD = qD;
-        this.qTrue = qTrue;
-        this.level = level;
-        this.image = image;
-        this.audio = audio;
-        this.createdate = createdate;
-    }
+    
+    
 
     public int getQuestionID() {
         return questionID;
@@ -91,14 +65,6 @@ public class Question {
 
     public void setSubjectID(int subjectID) {
         this.subjectID = subjectID;
-    }
-
-    public int getQuizID() {
-        return quizID;
-    }
-
-    public void setQuizID(int quizID) {
-        this.quizID = quizID;
     }
 
     public String getContent() {

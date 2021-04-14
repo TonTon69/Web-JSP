@@ -24,7 +24,6 @@ public class QuestionDAO {
             Question q = new Question();
             q.setQuestionID(rs.getInt("QuestionID"));
             q.setSubjectID(rs.getInt("SubjectID"));
-            q.setQuizID(rs.getInt("QuizID"));
             q.setContent(rs.getString("Content"));
             q.setqA(rs.getString("Q_A"));
             q.setqB(rs.getString("Q_B"));
@@ -39,7 +38,7 @@ public class QuestionDAO {
         }
         return list;
     }
-    
+
     public Question getQuestionByID(int id) throws Exception {
         Question q = null;
         Connection connection = DBConnect.getConnecttion();
@@ -50,7 +49,6 @@ public class QuestionDAO {
         if (rs.next()) {
             int qid = rs.getInt("QuestionID");
             int sid = rs.getInt("SubjectID");
-            int quizid = rs.getInt("QuizID");
             String content = rs.getString("Content");
             String qa = rs.getString("Q_A");
             String qb = rs.getString("Q_B");
@@ -61,58 +59,57 @@ public class QuestionDAO {
             String image = rs.getString("Image");
             String audio = rs.getString("Audio");
             Timestamp createdate = rs.getTimestamp("CreateDate");
-            q = new Question(qid, sid, quizid, content, qa, qb, qc, qd, qtrue, level, image, audio, createdate);
+            q = new Question(qid, sid, content, qa, qb, qc, qd, qtrue, level, image, audio, createdate);
         }
         return q;
     }
 
     //Them moi
-    public boolean insert(Question s) throws SQLException {
+    public boolean insert(Question q) throws SQLException {
         try {
             Connection connection = DBConnect.getConnecttion();
-            String sql = "INSERT INTO question VALUE(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO question VALUE(?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareCall(sql);
-            ps.setInt(1, s.getQuestionID());
-            ps.setInt(2, s.getSubjectID());
-            ps.setInt(3, s.getQuizID());
-            ps.setString(4, s.getContent());
-            ps.setString(5, s.getqA());
-            ps.setString(6, s.getqB());
-            ps.setString(7, s.getqC());
-            ps.setString(8, s.getqD());
-            ps.setString(9, s.getqTrue());
-            ps.setInt(10, s.getLevel());
-            ps.setString(11, s.getImage());
-            ps.setString(12, s.getAudio());
-            ps.setTimestamp(13, new Timestamp(System.currentTimeMillis()));
+            ps.setInt(1, q.getQuestionID());
+            ps.setInt(2, q.getSubjectID());
+            ps.setString(3, q.getContent());
+            ps.setString(4, q.getqA());
+            ps.setString(5, q.getqB());
+            ps.setString(6, q.getqC());
+            ps.setString(7, q.getqD());
+            ps.setString(8, q.getqTrue());
+            ps.setInt(9, q.getLevel());
+            ps.setString(10, q.getImage());
+            ps.setString(11, q.getAudio());
+            ps.setTimestamp(12, new Timestamp(System.currentTimeMillis()));
             int temp = ps.executeUpdate();
             return temp == 1;
         } catch (SQLException ex) {
-            Logger.getLogger(SubjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuestionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
 
     //cap nhat
-    public boolean update(Question s) throws SQLException {
+    public boolean update(Question q) throws SQLException {
         try {
             Connection connection = DBConnect.getConnecttion();
             String sql = "update question set Content=?,Q_A=?,Q_B=?,Q_C=?,Q_D=?,Q_True=?,Level=?,Image=?,Audio=?,CreateDate=? WHERE QuestionID = ?";
             PreparedStatement ps = connection.prepareCall(sql);
-            ps.setString(1, s.getContent());
-            ps.setString(2, s.getqA());
-            ps.setString(3, s.getqB());
-            ps.setString(4, s.getqC());
-            ps.setString(5, s.getqD());
-            ps.setString(6, s.getqTrue());
-            ps.setInt(7, s.getLevel());
-            ps.setString(8, s.getImage());
-            ps.setString(9, s.getAudio());
+            ps.setString(1, q.getContent());
+            ps.setString(2, q.getqA());
+            ps.setString(3, q.getqB());
+            ps.setString(4, q.getqC());
+            ps.setString(5, q.getqD());
+            ps.setString(6, q.getqTrue());
+            ps.setInt(7, q.getLevel());
+            ps.setString(8, q.getImage());
+            ps.setString(9, q.getAudio());
             ps.setTimestamp(10, new Timestamp(System.currentTimeMillis()));
-            ps.setInt(11, s.getQuestionID());
+            ps.setInt(11, q.getQuestionID());
             return ps.executeUpdate() == 1;
         } catch (SQLException ex) {
-            Logger.getLogger(SubjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuestionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -126,7 +123,7 @@ public class QuestionDAO {
             ps.setInt(1, question_id);
             return ps.executeUpdate() == 1;
         } catch (SQLException ex) {
-            Logger.getLogger(SubjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuestionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }

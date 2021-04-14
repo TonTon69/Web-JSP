@@ -112,7 +112,6 @@
                                                 <th>STT</th>
                                                 <th>Mã</th>
                                                 <th>Mã MH</th>
-                                                <th>Mã đề</th>
                                                 <th>Câu hỏi</th>
                                                 <th>A</th>
                                                 <th>B</th>
@@ -136,8 +135,7 @@
                                                 <th scope="row"><%=count%></th>
                                                 <td><%=q.getQuestionID()%></td>
                                                 <td><%=q.getSubjectID()%></td>
-                                                <td><%=q.getQuizID()%></td>
-                                                <td><%=q.getContent()%></td>
+                                                <td><%=q.getContent().substring(0, 30)%>...</td>
                                                 <td><%=q.getqA()%></td>
                                                 <td><%=q.getqB()%></td>
                                                 <td><%=q.getqC()%></td>

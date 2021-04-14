@@ -76,7 +76,12 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="status">Trạng thái</label>
-                                            <input type="text" class="form-control" name="status" id="status" placeholder="Nhập 'true'-cho phép , 'false'-không cho phép" required="yes">
+                                            <!--<input type="text" class="form-control" name="status" id="status" placeholder="Nhập 'true'-cho phép , 'false'-không cho phép" required="yes">-->
+                                            <select id="status" name="status" class="form-control">  
+                                                <option value="none">--Duyệt quyền quản trị--</option>  
+                                                <option value="true">Cho phép</option>  
+                                                <option value="false">Không cho phép</option>  
+                                            </select>  
                                             <%=error%>
                                         </div>
                                     </div>
