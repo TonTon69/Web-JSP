@@ -30,7 +30,6 @@ public class QuestionDAO {
             q.setqC(rs.getString("Q_C"));
             q.setqD(rs.getString("Q_D"));
             q.setqTrue(rs.getString("Q_True"));
-            q.setLevel(rs.getInt("Level"));
             q.setImage(rs.getString("Image"));
             q.setAudio(rs.getString("Audio"));
             q.setCreatedate(rs.getTimestamp("CreateDate"));
@@ -55,11 +54,10 @@ public class QuestionDAO {
             String qc = rs.getString("Q_C");
             String qd = rs.getString("Q_D");
             String qtrue = rs.getString("Q_True");
-            int level = rs.getInt("Level");
             String image = rs.getString("Image");
             String audio = rs.getString("Audio");
             Timestamp createdate = rs.getTimestamp("CreateDate");
-            q = new Question(qid, sid, content, qa, qb, qc, qd, qtrue, level, image, audio, createdate);
+            q = new Question(qid, sid, content, qa, qb, qc, qd, qtrue, image, audio, createdate);
         }
         return q;
     }
@@ -68,17 +66,17 @@ public class QuestionDAO {
     public boolean insert(Question q) throws SQLException {
         try {
             Connection connection = DBConnect.getConnecttion();
-            String sql = "INSERT INTO question VALUE(?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO question VALUE(?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareCall(sql);
             ps.setInt(1, q.getQuestionID());
             ps.setInt(2, q.getSubjectID());
-            ps.setString(3, q.getContent());
-            ps.setString(4, q.getqA());
-            ps.setString(5, q.getqB());
-            ps.setString(6, q.getqC());
-            ps.setString(7, q.getqD());
-            ps.setString(8, q.getqTrue());
-            ps.setInt(9, q.getLevel());
+            ps.setInt(3, q.getQuizID());
+            ps.setString(4, q.getContent());
+            ps.setString(5, q.getqA());
+            ps.setString(6, q.getqB());
+            ps.setString(7, q.getqC());
+            ps.setString(8, q.getqD());
+            ps.setString(9, q.getqTrue());
             ps.setString(10, q.getImage());
             ps.setString(11, q.getAudio());
             ps.setTimestamp(12, new Timestamp(System.currentTimeMillis()));
@@ -94,7 +92,7 @@ public class QuestionDAO {
     public boolean update(Question q) throws SQLException {
         try {
             Connection connection = DBConnect.getConnecttion();
-            String sql = "update question set Content=?,Q_A=?,Q_B=?,Q_C=?,Q_D=?,Q_True=?,Level=?,Image=?,Audio=?,CreateDate=? WHERE QuestionID = ?";
+            String sql = "update question set Content=?,Q_A=?,Q_B=?,Q_C=?,Q_D=?,Q_True=?,Image=?,Audio=?,CreateDate=? WHERE QuestionID = ?";
             PreparedStatement ps = connection.prepareCall(sql);
             ps.setString(1, q.getContent());
             ps.setString(2, q.getqA());
@@ -102,11 +100,10 @@ public class QuestionDAO {
             ps.setString(4, q.getqC());
             ps.setString(5, q.getqD());
             ps.setString(6, q.getqTrue());
-            ps.setInt(7, q.getLevel());
-            ps.setString(8, q.getImage());
-            ps.setString(9, q.getAudio());
-            ps.setTimestamp(10, new Timestamp(System.currentTimeMillis()));
-            ps.setInt(11, q.getQuestionID());
+            ps.setString(7, q.getImage());
+            ps.setString(8, q.getAudio());
+            ps.setTimestamp(9, new Timestamp(System.currentTimeMillis()));
+            ps.setInt(10, q.getQuestionID());
             return ps.executeUpdate() == 1;
         } catch (SQLException ex) {
             Logger.getLogger(QuestionDAO.class.getName()).log(Level.SEVERE, null, ex);

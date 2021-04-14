@@ -69,7 +69,6 @@
                                     <div class="row">
                                         <div class="form-group col-md-3">
                                             <label for="subject">Môn học</label>
-                                            <!-- <input type="text" class="form-control" name="subjectID" id="subjectID" required="yes" >-->
                                             <select id="subject" name="subject" class="form-control">  
                                                 <option value="none">--Chọn môn học--</option>  
                                                 <%

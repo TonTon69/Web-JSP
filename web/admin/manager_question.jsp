@@ -1,9 +1,3 @@
-<%-- 
-    Document   : manager_subject
-    Created on : Mar 24, 2021, 8:35:28 PM
-    Author     : admin
---%>
-
 <%@page import="model.Administrator"%>
 <%@page import="model.Question"%>
 <%@page import="java.util.ArrayList"%>
@@ -32,28 +26,8 @@
         <link href="${root}/css/sb-admin-2.min.css" rel="stylesheet">
         <link href="${root}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-        <!--import excel-->
-        <script src="${root}/lib_excel/agu.js"></script>
-        <script src="${root}/lib_excel/xlsx.js"></script>
-        <script src="${root}/lib_excel/xlsx-model.js"></script>
-        <script src="${root}/lib_excel/script.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#btnExcel').on('click', function (e) {
-                    var val = $('pre').text();
-//                    window.location.href('Excel?text='+val);
-                    $.post('ProcessFileExcel', {
-                        data: val,
-                        chucNang: 'Question'
-                    });
-//                    window.open(encodeURIComponent("Excel?text="+val));
-                });
-            });
-        </script>
     </head>
-    <body id="page-top" ng-app="xlsxApp" ng-controller="xlsxCtrl">
+    <body id="page-top">
         <%
             QuestionDAO questionDAO = new QuestionDAO();
             ArrayList<Question> listQuestion = questionDAO.getListQuestion();
@@ -80,11 +54,11 @@
                                 <i class="fas fa-plus"></i>
                                 Thêm mới câu hỏi
                             </a>
-                            <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseImportExcel" aria-expanded="false" aria-controls="collapseImportExcel">
+<!--                            <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseImportExcel" aria-expanded="false" aria-controls="collapseImportExcel">
                                 <i class="fas fa-file-import"></i> Import file excel
-                            </button>
+                            </button>-->
                         </div>
-                        <div class="collapse" id="collapseImportExcel">
+<!--                        <div class="collapse" id="collapseImportExcel">
                             <div class="card card-body">
                                 Bạn chọn hoặc kéo thả file excel của bạn vào đây (Lưu ý: file excel phù hợp là file có những nội dung phù hợp bảng table đã có phía dưới,
                                 tức là có tên cột, có dữ liệu từng hàng, kiểu dữ liệu phù hợp, nếu dữ liệu lổi hệ thống sẽ loại bỏ những hàng lổi ra)
@@ -98,7 +72,7 @@
                                 </form>
                                 <pre ng-show="excel" class="hidden">{{excel| json}}</pre>
                             </div>
-                        </div>
+                        </div>-->
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
@@ -118,7 +92,6 @@
                                                 <th>C</th>
                                                 <th>D</th>
                                                 <th>True</th>
-                                                <th>Level</th>
                                                 <th>Ảnh</th>
                                                 <th>Audio</th>
                                                 <th>Ngày tạo</th>
@@ -141,8 +114,7 @@
                                                 <td><%=q.getqC()%></td>
                                                 <td><%=q.getqD()%></td>
                                                 <td><%=q.getqTrue()%></td>
-                                                <td><%=q.getLevel()%></td>
-                                                <td><%=q.getImage()%></td>
+                                                <td><image src="<%=q.getImage()%>" style="width: 60px" /></td>
                                                 <td><%=q.getAudio()%></td>
                                                 <td><%=q.getCreatedate()%></td>
                                                 <td>

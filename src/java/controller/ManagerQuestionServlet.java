@@ -16,7 +16,7 @@ public class ManagerQuestionServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8"); 
+        response.setContentType("text/html;charset=UTF-8");
     }
 
     @Override
@@ -48,24 +48,24 @@ public class ManagerQuestionServlet extends HttpServlet {
         String command = request.getParameter("command");
         String q_id = request.getParameter("question_id");
         String s_id = request.getParameter("subject");
+        String qz_id = request.getParameter("quiz");
         String qcontent = request.getParameter("content");
         String q_a = request.getParameter("qa");
         String q_b = request.getParameter("qb");
         String q_c = request.getParameter("qc");
         String q_d = request.getParameter("qd");
         String q_true = request.getParameter("qtrue");
-        String qlevel = request.getParameter("level");
         String qimage = request.getParameter("image");
         String qaudio = request.getParameter("audio");
         String url = "";
         try {
             switch (command) {
                 case "insert":
-                    questionDAO.insert(new Question(Integer.parseInt(s_id), qcontent, q_a, q_b, q_c, q_d, q_true, Integer.parseInt(qlevel), qimage, qaudio, new Timestamp(System.currentTimeMillis())));
+                    questionDAO.insert(new Question(Integer.parseInt(s_id), Integer.parseInt(qz_id), qcontent, q_a, q_b, q_c, q_d, q_true, qimage, qaudio, new Timestamp(System.currentTimeMillis())));
                     url = "/admin/manager_question.jsp";
                     break;
                 case "update":
-                    questionDAO.update(new Question(Integer.parseInt(q_id), Integer.parseInt(s_id), qcontent, q_a, q_b, q_c, q_d, q_true, Integer.parseInt(qlevel), qimage, qaudio, new Timestamp(System.currentTimeMillis())));
+                    questionDAO.update(new Question(Integer.parseInt(q_id), qcontent, q_a, q_b, q_c, q_d, q_true, qimage, qaudio, new Timestamp(System.currentTimeMillis())));
                     url = "/admin/manager_question.jsp";
                     break;
             }

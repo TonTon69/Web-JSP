@@ -25,10 +25,6 @@
         <servlet-class>controller.ManagerQuestionServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ProcessFileExcel</servlet-name>
-        <servlet-class>controller.ProcessFileExcel</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ManagerQuizServlet</servlet-name>
         <servlet-class>controller.ManagerQuizServlet</servlet-class>
     </servlet>
@@ -55,10 +51,6 @@
     <servlet-mapping>
         <servlet-name>ManagerQuestionServlet</servlet-name>
         <url-pattern>/ManagerQuestionServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ProcessFileExcel</servlet-name>
-        <url-pattern>/ProcessFileExcel</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ManagerQuizServlet</servlet-name>
