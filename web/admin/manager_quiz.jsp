@@ -77,7 +77,7 @@
                                                 <th>STT</th>
                                                 <th>Mã đề</th>                                                
                                                 <th>Mã môn</th>
-                                                <th style="width: 380px">Tên</th>
+                                                <th style="width: 380px">Tên đề</th>
                                                 <th>Thời gian</th>
                                                 <th>Tổng số câu</th>                                    
                                                 <th>Ảnh</th>
@@ -98,7 +98,7 @@
                                                 <td><%=quiz.getQuizName()%></td>
                                                 <td><%=quiz.getTime()%> phút</td>
                                                 <td><%=quiz.getTotalQuestion()%> câu</td>                                    
-                                                <td><image src="${root}/<%=quiz.getImage()%>" style="width: 60px" /></td>
+                                                <td><image src="<%=quiz.getImage()%>" alt="<%=quiz.getQuizName()%>" style="width: 60px" /></td>
                                                 <td><%=quiz.getCreatedate()%></td>
                                                 <td>
                                                     <a href="${root}/admin/update_quiz.jsp?command=update&quiz_id=<%=quiz.getQuizID()%>" class="btn btn-primary">

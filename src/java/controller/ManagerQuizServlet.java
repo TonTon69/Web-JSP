@@ -8,11 +8,13 @@ package controller;
 import dao.QuizDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Quiz;
 
 /**
  *
@@ -63,7 +65,32 @@ public class ManagerQuizServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
+        String command = request.getParameter("command");
+        String qz_id = request.getParameter("quiz_id");
+        String s_id = request.getParameter("subject");
+        String qz_name = request.getParameter("name");
+        String qz_time = request.getParameter("time");
+        String qz_totalquestion = request.getParameter("totalquestion");
+        String qz_image = request.getParameter("image");
+        String url = "";
+        try {
+            switch (command) {
+                case "insert":
+                    quizDAO.insert(new Quiz(Integer.parseInt(s_id), qz_name, Integer.parseInt(qz_time), Integer.parseInt(qz_totalquestion), qz_image, new Timestamp(System.currentTimeMillis())));
+                    url = "/admin/manager_quiz.jsp";
+                    break;
+                case "update":
+                    quizDAO.update(new Quiz(Integer.parseInt(qz_id), qz_name, Integer.parseInt(qz_time), Integer.parseInt(qz_totalquestion), qz_image, new Timestamp(System.currentTimeMillis())));
+                    url = "/admin/manager_quiz.jsp";
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();;
+        }
+        RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+        rd.forward(request, response);
     }
 
     @Override

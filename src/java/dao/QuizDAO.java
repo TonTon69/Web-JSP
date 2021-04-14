@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,60 +33,66 @@ public class QuizDAO {
         }
         return list;
     }
-//    public Subject getSubjectByID(int id) throws Exception {
-//        Subject su = null;
-//        Connection connection = DBConnect.getConnecttion();
-//        String sql = "select * from subject where SubjectID=?";
-//        PreparedStatement ps = connection.prepareStatement(sql);
-//        ps.setInt(1, id);
-//        ResultSet rs = ps.executeQuery();
-//        if (rs.next()) {
-//            int sid = rs.getInt("SubjectID");
-//            String name = rs.getString("SubjectName");
-//            String icon = rs.getString("Icon");
-//            String des = rs.getString("Description");
-//            Timestamp createdate = rs.getTimestamp("CreateDate");
-//            su = new Subject(sid, name, icon, des, createdate);
-//        }
-//        return su;
-//    }
-//
-//    //Them moi
-//    public boolean insert(Subject s) throws SQLException {
-//        try {
-//            Connection connection = DBConnect.getConnecttion();
-//            String sql = "INSERT INTO subject VALUE(?,?,?,?,?)";
-//            PreparedStatement ps = connection.prepareCall(sql);
-//            ps.setInt(1, s.getSubjectID());
-//            ps.setString(2, s.getSubjectName());
-//            ps.setString(3, s.getSubjectIcon());
-//            ps.setString(4, s.getDescription());
-//            ps.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
-//            int temp = ps.executeUpdate();
-//            return temp == 1;
-//        } catch (SQLException ex) {
-//            Logger.getLogger(QuizDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return false;
-//    }
-//
-//    //cap nhat
-//    public boolean update(Subject s) throws SQLException {
-//        try {
-//            Connection connection = DBConnect.getConnecttion();
-//            String sql = "update subject set SubjectName = ?, Icon = ?, Description = ?, CreateDate = ? WHERE SubjectID = ?";
-//            PreparedStatement ps = connection.prepareCall(sql);
-//            ps.setString(1, s.getSubjectName());
-//            ps.setString(2, s.getSubjectIcon());
-//            ps.setString(3, s.getDescription());
-//            ps.setTimestamp(4, s.getCreatedate());
-//            ps.setInt(5, s.getSubjectID());
-//            return ps.executeUpdate() == 1;
-//        } catch (SQLException ex) {
-//            Logger.getLogger(QuizDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return false;
-//    }
+
+    public Quiz getQuizByID(int id) throws Exception {
+        Quiz qz = null;
+        Connection connection = DBConnect.getConnecttion();
+        String sql = "select * from quiz where QuizID=?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            int qid = rs.getInt("QuizID");
+            int sid = rs.getInt("SubjectID");
+            String name = rs.getString("QuizName");
+            int time = rs.getInt("Time");
+            int totalq = rs.getInt("TotalQuestion");
+            String image = rs.getString("Image");
+            Timestamp createdate = rs.getTimestamp("CreateDate");
+            qz = new Quiz(qid, sid, name, time, totalq, image, createdate);
+        }
+        return qz;
+    }
+
+    //Them moi
+    public boolean insert(Quiz qz) throws SQLException {
+        try {
+            Connection connection = DBConnect.getConnecttion();
+            String sql = "INSERT INTO quiz VALUE(?,?,?,?,?,?,?)";
+            PreparedStatement ps = connection.prepareCall(sql);
+            ps.setInt(1, qz.getQuizID());
+            ps.setInt(2, qz.getSubjectID());
+            ps.setString(3, qz.getQuizName());
+            ps.setInt(4, qz.getTime());
+            ps.setInt(5, qz.getTotalQuestion());
+            ps.setString(6, qz.getImage());
+            ps.setTimestamp(7, new Timestamp(System.currentTimeMillis()));
+            int temp = ps.executeUpdate();
+            return temp == 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(QuizDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    //cap nhat
+    public boolean update(Quiz qz) throws SQLException {
+        try {
+            Connection connection = DBConnect.getConnecttion();
+            String sql = "update quiz set QuizName = ?, Time = ?, TotalQuestion = ?, Image = ?, CreateDate = ? WHERE QuizID = ?";
+            PreparedStatement ps = connection.prepareCall(sql);
+            ps.setString(1, qz.getQuizName());
+            ps.setInt(2, qz.getTime());
+            ps.setInt(3, qz.getTotalQuestion());
+            ps.setString(4, qz.getImage());
+            ps.setTimestamp(5, qz.getCreatedate());
+            ps.setInt(6, qz.getQuizID());
+            return ps.executeUpdate() == 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(QuizDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
     //xoa
     public boolean delete(int quiz_id) throws SQLException {
