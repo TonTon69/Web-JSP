@@ -24,6 +24,7 @@ public class QuestionDAO {
             Question q = new Question();
             q.setQuestionID(rs.getInt("QuestionID"));
             q.setSubjectID(rs.getInt("SubjectID"));
+            q.setQuizID(rs.getInt("QuizID"));
             q.setContent(rs.getString("Content"));
             q.setqA(rs.getString("Q_A"));
             q.setqB(rs.getString("Q_B"));

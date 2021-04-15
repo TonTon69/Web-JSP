@@ -28,6 +28,10 @@
         <servlet-name>ManagerQuizServlet</servlet-name>
         <servlet-class>controller.ManagerQuizServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManagerBannerServlet</servlet-name>
+        <servlet-class>controller.ManagerBannerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManagerSubjectServlet</servlet-name>
         <url-pattern>/ManagerSubjectServlet</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>ManagerQuizServlet</servlet-name>
         <url-pattern>/ManagerQuizServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerBannerServlet</servlet-name>
+        <url-pattern>/ManagerBannerServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

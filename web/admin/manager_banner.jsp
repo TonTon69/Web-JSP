@@ -1,7 +1,7 @@
 <%@page import="model.Administrator"%>
-<%@page import="model.Question"%>
+<%@page import="model.Banner"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="dao.QuestionDAO"%>
+<%@page import="dao.BannerDAO"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -29,8 +29,8 @@
     </head>
     <body id="page-top">
         <%
-            QuestionDAO questionDAO = new QuestionDAO();
-            ArrayList<Question> listQuestion = questionDAO.getListQuestion();
+            BannerDAO bannerDAO = new BannerDAO();
+            ArrayList<Banner> listBanner = bannerDAO.getListBanner();
 
             Administrator ad = (Administrator) session.getAttribute("admin");
             if (ad == null) {
@@ -47,19 +47,19 @@
                     <jsp:include page="header.jsp"></jsp:include>
                         <!-- Begin Page Content -->
                         <div class="container-fluid">
-                            <h3>QUẢN LÝ CÂU HỎI</h3>
+                            <h3>QUẢN LÝ BANNER</h3>
 
                             <div class="d-flex mb-4">
-                                <a href="${root}/admin/insert_question.jsp" class="btn btn-primary mr-2">
+                                <a href="${root}/admin/insert_banner.jsp" class="btn btn-primary mr-2">
                                 <i class="fas fa-plus"></i>
-                                Thêm mới câu hỏi
+                                Thêm mới banner
                             </a>
                         </div>
                        
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">DANH SÁCH CÂU HỎI</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">DANH SÁCH BANNER</h6>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -68,45 +68,29 @@
                                             <tr>
                                                 <th>STT</th>
                                                 <th>Mã</th>
-                                                <th>Môn</th>
-                                                <th>Đề</th>
-                                                <th>Câu hỏi</th>
-                                                <th>A</th>
-                                                <th>B</th>
-                                                <th>C</th>
-                                                <th>D</th>
-                                                <th>True</th>
+                                                <th>Nội dung</th>
                                                 <th>Ảnh</th>
-                                                <th>Audio</th>
                                                 <th>Ngày tạo</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <%
                                             int count = 0;
-                                            for (Question q : listQuestion) {
+                                            for (Banner bn : listBanner) {
                                                 count++;
                                         %>
                                         <tbody>
                                             <tr>
                                                 <th scope="row"><%=count%></th>
-                                                <td><%=q.getQuestionID()%></td>
-                                                <td><%=q.getSubjectID()%></td>
-                                                <td><%=q.getQuizID()%></td>
-                                                <td><%=q.getContent()%></td>
-                                                <td><%=q.getqA()%></td>
-                                                <td><%=q.getqB()%></td>
-                                                <td><%=q.getqC()%></td>
-                                                <td><%=q.getqD()%></td>
-                                                <td><%=q.getqTrue()%></td>
-                                                <td><image src="<%=q.getImage()%>" style="width: 60px" /></td>
-                                                <td><%=q.getAudio()%></td>
-                                                <td><%=q.getCreatedate()%></td>
+                                                <td><%=bn.getBannerID()%></td>
+                                                <td><%=bn.getContent()%></td>
+                                                <td><image src="<%=bn.getImage()%>" style="width: 150px; height: 100px" /></td>
+                                                <td><%=bn.getCreatedate()%></td>
                                                 <td>
-                                                    <a href="${root}/admin/update_question.jsp?command=update&question_id=<%=q.getQuestionID()%>" class="btn btn-primary">
+                                                    <a href="${root}/admin/update_banner.jsp?command=update&banner_id=<%=bn.getBannerID()%>" class="btn btn-primary">
                                                         <i class="far fa-edit"></i>
                                                     </a>
-                                                    <a href="${root}/ManagerQuestionServlet?command=delete&question_id=<%=q.getQuestionID()%>" class="btn btn-danger">
+                                                    <a href="${root}/ManagerBannerServlet?command=delete&banner_id=<%=bn.getBannerID()%>" class="btn btn-danger">
                                                         <i class="far fa-trash-alt"></i>
                                                     </a>
                                                 </td>
