@@ -30,11 +30,18 @@
     <body id="page-top">
         <%
             QuestionDAO questionDAO = new QuestionDAO();
-            ArrayList<Question> listQuestion = questionDAO.getListQuestion();
+            ArrayList<Question> listQuestion;
 
             Administrator ad = (Administrator) session.getAttribute("admin");
             if (ad == null) {
                 response.sendRedirect("login.jsp");
+            }
+
+            String search = request.getParameter("search");
+            if (search != null) {
+                listQuestion = questionDAO.search(search);
+            } else {
+                listQuestion = questionDAO.getListQuestion();
             }
         %>
         <div id="wrapper">
@@ -55,13 +62,23 @@
                                 Thêm mới câu hỏi
                             </a>
                         </div>
-                       
+
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">DANH SÁCH CÂU HỎI</h6>
                             </div>
                             <div class="card-body">
+                                <form action="" method="get" class="form-inline mb-3">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">
+                                                <i class="fas fa-search"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control" name="search" placeholder="Nhập câu hỏi cần tìm kiếm..." size="50" >
+                                    </div>
+                                </form>
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
@@ -82,8 +99,7 @@
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <%
-                                            int count = 0;
+                                        <%                                            int count = 0;
                                             for (Question q : listQuestion) {
                                                 count++;
                                         %>
@@ -114,6 +130,23 @@
                                         </tbody>
                                         <%}%>
                                     </table>
+                                    <!--                                    <ul class="pagination justify-content-center">
+                                                                            <li class="page-item">
+                                                                                <a class="page-link" href="#" aria-label="Previous">
+                                                                                    <span aria-hidden="true">&laquo;</span>
+                                                                                    <span class="sr-only">Previous</span>
+                                                                                </a>
+                                                                            </li>
+                                    <c:forEach begin="1" end="${endPage}" var="i">
+                                        <li class="page-item"><a class="page-link" href="#">${i}</a></li>
+                                    </c:forEach>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>-->
                                 </div>
                             </div>
                         </div>
@@ -148,7 +181,7 @@
         <script src="${root}/vendor/datatables/jquery.dataTables.min.js"></script>
         <script src="${root}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-        <!--         Page level custom scripts 
-                <script src="${root}/js/demo/datatables-demo.js"></script>-->
+        <!--Page level custom scripts -->
+        <!--<script src="${root}/js/demo/datatables-demo.js"></script>-->
     </body>
 </html>

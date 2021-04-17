@@ -39,6 +39,33 @@ public class QuestionDAO {
         return list;
     }
 
+    // search
+    public ArrayList<Question> search(String search) throws SQLException {
+        Connection connection = DBConnect.getConnecttion();
+        String sql = "SELECT * FROM question WHERE Content like ?";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ps.setString(1, "%" + search + "%");
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Question> list = new ArrayList<>();
+        while (rs.next()) {
+            Question q = new Question();
+            q.setQuestionID(rs.getInt("QuestionID"));
+            q.setSubjectID(rs.getInt("SubjectID"));
+            q.setQuizID(rs.getInt("QuizID"));
+            q.setContent(rs.getString("Content"));
+            q.setqA(rs.getString("Q_A"));
+            q.setqB(rs.getString("Q_B"));
+            q.setqC(rs.getString("Q_C"));
+            q.setqD(rs.getString("Q_D"));
+            q.setqTrue(rs.getString("Q_True"));
+            q.setImage(rs.getString("Image"));
+            q.setAudio(rs.getString("Audio"));
+            q.setCreatedate(rs.getTimestamp("CreateDate"));
+            list.add(q);
+        }
+        return list;
+    }
+
     public Question getQuestionByID(int id) throws Exception {
         Question q = null;
         Connection connection = DBConnect.getConnecttion();
@@ -125,4 +152,64 @@ public class QuestionDAO {
         }
         return false;
     }
+
+//    // Tính tổng câu hỏi
+//    public int countQuestion(String txtSearch) throws SQLException {
+//        Connection connection = DBConnect.getConnecttion();
+//        String sql = "SELECT count(*) FROM question WHERE Content like ?";
+//        PreparedStatement ps = connection.prepareCall(sql);
+//        ps.setString(1, "%" + txtSearch + "%");
+//        ResultSet rs = ps.executeQuery();
+//        int count = 0;
+//        while (rs.next()) {
+//            count = rs.getInt(1);
+//        }
+//        return count;
+//    }
+//
+//    //phân trang
+//    public ArrayList<Question> search(String txtSearch, int index, int size) throws SQLException {
+//        try {
+//            Connection connection = DBConnect.getConnecttion();
+//            String sql = "with x as(select ROW_NUMBER() over (ORDER BY CreateDate desc) as r\n"
+//                    + ",* from question where Content like ?)\n"
+//                    + "select * from x where r between ?*3-2 and ?*3";
+//            PreparedStatement ps = connection.prepareCall(sql);
+//            ps.setString(1, "%" + txtSearch + "%");
+//            ps.setInt(2, index);
+//            ps.setInt(3, index);
+//            
+//            ResultSet rs = ps.executeQuery();
+//            ArrayList<Question> list = new ArrayList<>();
+//            while (rs.next()) {
+//                Question q = new Question(
+//                        rs.getInt("2"),
+//                        rs.getInt("3"),
+//                        rs.getInt("4"),
+//                        rs.getString("5"),
+//                        rs.getString("6"),
+//                        rs.getString("7"),
+//                        rs.getString("8"),
+//                        rs.getString("9"),
+//                        rs.getString("10"),
+//                        rs.getString("11"),
+//                        rs.getString("12"),
+//                        rs.getTimestamp("13")
+//                );
+//                list.add(q);
+//            }
+//            return list;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
+//
+//    public static void main(String[] args) throws SQLException {
+//        QuestionDAO questionDAO = new QuestionDAO();
+//        ArrayList<Question> list = questionDAO.search("a", 1, 3);
+//        list.forEach((Question q) -> {
+//            System.out.println(q);
+//        });
+//    }
 }
