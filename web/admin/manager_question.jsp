@@ -1,3 +1,7 @@
+<%@page import="model.Quiz"%>
+<%@page import="dao.QuizDAO"%>
+<%@page import="model.Subject"%>
+<%@page import="dao.SubjectDAO"%>
 <%@page import="model.Administrator"%>
 <%@page import="model.Question"%>
 <%@page import="java.util.ArrayList"%>
@@ -29,6 +33,12 @@
     </head>
     <body id="page-top">
         <%
+            QuizDAO quizDAO = new QuizDAO();
+            ArrayList<Quiz> listQuiz = quizDAO.getListQuiz();
+
+            SubjectDAO subjectDAO = new SubjectDAO();
+            ArrayList<Subject> listSubject = subjectDAO.getListSubject();
+
             QuestionDAO questionDAO = new QuestionDAO();
             ArrayList<Question> listQuestion;
 
@@ -36,13 +46,20 @@
             if (ad == null) {
                 response.sendRedirect("login.jsp");
             }
-
+            //filter
+            String subject = request.getParameter("subject_id");
+            String quiz = request.getParameter("quiz_id");
             String search = request.getParameter("search");
-            if (search != null) {
+            if (subject != null) {
+                listQuestion = questionDAO.getListQuestionBySubject(Integer.parseInt(subject));
+            } else if (search != null) {
                 listQuestion = questionDAO.search(search);
+            } else if (quiz != null) {
+                listQuestion = questionDAO.getListQuestionByQuiz(Integer.parseInt(quiz));
             } else {
                 listQuestion = questionDAO.getListQuestion();
             }
+
         %>
         <div id="wrapper">
             <jsp:include page="sidebar.jsp"></jsp:include>
@@ -69,16 +86,50 @@
                                 <h6 class="m-0 font-weight-bold text-primary">DANH SÁCH CÂU HỎI</h6>
                             </div>
                             <div class="card-body">
-                                <form action="" method="get" class="form-inline mb-3">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">
-                                                <i class="fas fa-search"></i>
-                                            </span>
-                                        </div>
-                                        <input type="text" class="form-control" name="search" placeholder="Nhập câu hỏi cần tìm kiếm..." size="50" >
+                                <div class="d-flex row">
+                                    <div class="form-group col-md-5">
+                                        <form action="" method="get" class="form-inline">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon1">
+                                                        <i class="fas fa-search"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" class="form-control" name="search" size="50" placeholder="Nhập câu hỏi cần tìm kiếm..." >
+                                            </div>
+                                        </form>
                                     </div>
-                                </form>
+                                    <div class="form-group col-md-3">
+                                        <select id="subject_id" name="subject_id" class="form-control" onchange="location = this.value;">  
+                                            <option value="none">--Chọn môn học--</option>  
+                                            <%                                                for (Subject s : listSubject) {
+                                            %>
+                                            <option value="${root}/admin/manager_question.jsp?subject_id=<%=s.getSubjectID()%>">
+                                                <%=s.getSubjectName()%>
+                                            </option>  
+                                            <%
+
+                                                }
+
+                                            %>
+                                        </select> 
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <select id="quiz_id" name="quiz_id" class="form-control" onchange="location = this.value;">  
+                                            <option value="none">--Chọn đề thi--</option>  
+                                            <%                                                for (Quiz qz : listQuiz) {
+                                            %>
+                                            <option value="${root}/admin/manager_question.jsp?quiz_id=<%=qz.getQuizID()%>">
+                                                <%=qz.getQuizName()%>
+                                            </option>  
+                                            <%
+
+                                                }
+
+                                            %>
+                                        </select> 
+                                    </div>
+                                </div>
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
@@ -130,23 +181,6 @@
                                         </tbody>
                                         <%}%>
                                     </table>
-                                    <!--                                    <ul class="pagination justify-content-center">
-                                                                            <li class="page-item">
-                                                                                <a class="page-link" href="#" aria-label="Previous">
-                                                                                    <span aria-hidden="true">&laquo;</span>
-                                                                                    <span class="sr-only">Previous</span>
-                                                                                </a>
-                                                                            </li>
-                                    <c:forEach begin="1" end="${endPage}" var="i">
-                                        <li class="page-item"><a class="page-link" href="#">${i}</a></li>
-                                    </c:forEach>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </li>
-                            </ul>-->
                                 </div>
                             </div>
                         </div>
