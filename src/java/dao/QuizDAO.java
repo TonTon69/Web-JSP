@@ -107,4 +107,56 @@ public class QuizDAO {
         }
         return false;
     }
+
+//    //phân trang
+//    public ArrayList<Quiz> getQuiz(int a, int b) {
+//        Connection conn = DBConnect.getConnecttion();
+//        ArrayList<Quiz> list = new ArrayList();
+//        String sql = "SELECT * FROM quiz Limit ?,?";
+//        try {
+//            PreparedStatement stmt = conn.prepareStatement(sql);
+//            stmt.setInt(1, a);
+//            stmt.setInt(2, b);
+//            ResultSet rs = stmt.executeQuery();
+//            while (rs.next()) {
+//                Quiz q = new Quiz();
+//                q.setQuizID(rs.getInt("QuizID"));
+//                q.setSubjectID(rs.getInt("SubjectID"));
+//                q.setQuizName(rs.getString("QuizName"));
+//                q.setTime(rs.getInt("Time"));
+//                q.setTotalQuestion(rs.getInt("TotalQuestion"));
+//                q.setImage(rs.getString("Image"));
+//                q.setCreatedate(rs.getTimestamp("CreateDate"));
+//                list.add(q);
+//            }
+//            return list;
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
+
+    //Total quiz number
+    public int getCountQuiz() {
+        Connection conn = DBConnect.getConnecttion();
+        ArrayList<Quiz> list = new ArrayList();
+        String sql = "SELECT count(QuizID) FROM quiz";
+        int count = 0;
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+    
+
+    public static void main(String[] args) {
+        QuizDAO s = new QuizDAO();
+        System.out.println(s.getCountQuiz());
+    }
 }

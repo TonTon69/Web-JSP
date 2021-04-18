@@ -41,6 +41,19 @@
             if (ad == null) {
                 response.sendRedirect("login.jsp");
             }
+//            int first = 0, last = 0, pages = 1;
+//            if (request.getParameter("pages") != null) {
+//                pages = (int) Integer.parseInt(request.getParameter("pages"));
+//            }
+//            int total = quizDAO.getCount();
+//            if (total <= 5) {
+//                first = 0;
+//                last = total;
+//            } else {
+//                first = (pages - 1) * 5;
+//                last = 5;
+//            }
+//            ArrayList<Quiz> listQuiz = quizDAO.getQuiz(first, last);
         %>
         <div id="wrapper">
             <jsp:include page="sidebar.jsp"></jsp:include>
@@ -85,7 +98,7 @@
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <%
+                                        <%                                            
                                             int count = 0;
                                             for (Quiz quiz : listQuiz) {
                                                 count++;

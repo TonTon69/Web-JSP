@@ -1,9 +1,3 @@
-<%-- 
-    Document   : manager_subject
-    Created on : Mar 24, 2021, 8:35:28 PM
-    Author     : admin
---%>
-
 <%@page import="model.Administrator"%>
 <%@page import="model.User"%>
 <%@page import="java.util.ArrayList"%>
@@ -35,12 +29,27 @@
     <body id="page-top">
         <%
             UserDAO userDAO = new UserDAO();
-            ArrayList<User> listUser = userDAO.getListUser();
+            //ArrayList<User> listUser = userDAO.getListUser();
 
             Administrator ad = (Administrator) session.getAttribute("admin");
             if (ad == null) {
                 response.sendRedirect("login.jsp");
             }
+            //phân trang
+            int first = 0, last = 0, pages = 1;
+            if (request.getParameter("pages") != null) {
+                pages = (int) Integer.parseInt(request.getParameter("pages"));
+            }
+            int total = userDAO.getCount();
+            if (total <= 4) {
+                first = 0;
+                last = total;
+            } else {
+                first = (pages - 1) * 4;
+                last = 4;
+            }
+            //Lấy ra danh sách sản phẩm
+            ArrayList<User> listUser = userDAO.getUser(first, last);
         %>
         <div id="wrapper">
             <jsp:include page="sidebar.jsp"></jsp:include>
@@ -65,6 +74,18 @@
                                 <h6 class="m-0 font-weight-bold text-primary">DANH SÁCH HỌC VIÊN</h6>
                             </div>
                             <div class="card-body">
+<!--                                <div class="form-group col-md-5">
+                                    <form action="" method="get" class="form-inline">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <i class="fas fa-search"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control" name="search" size="50" placeholder="Nhập câu hỏi cần tìm kiếm..." >
+                                        </div>
+                                    </form>
+                                </div>-->
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
@@ -105,6 +126,87 @@
                                         </tbody>
                                         <%}%>
                                     </table>
+                                    <ul class="pagination justify-content-center">
+                                        <%
+                                            int back = 0;
+                                            if (pages == 0 || pages == 1) {
+                                                back = 1;//Luon la page 1
+                                            } else {
+                                                back = pages - 1;//Neu pages tu 2 tro len thi back tru 1
+                                            }
+                                        %>
+                                        <li class="page-item">
+                                            <a class="page-link" href="${root}/admin/manager_user.jsp?pages=<%=back%>" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                        <%
+                                            //Button Number pages
+                                            int loop = 0, num = 0;
+                                            if ((total / 4) % 2 == 0) {
+                                                num = total / 4;
+                                            } else {
+                                                num = (total + 1) / 4;
+                                            }
+                                            //Nếu total lẻ thêm 1
+                                            if (total % 2 != 0) {
+                                                loop = (total / 4) + 1;
+
+                                            } else {
+                                                //Nếu total chẵn nhỏ hơn fullpage và # fullPage thì thêm 1
+                                                if (total < (num * 4) + 4 && total != num * 4) {
+                                                    loop = (total / 4) + 1;
+                                                } else {
+                                                    //Nếu bằng fullPage thì không thêm
+                                                    loop = (total / 4);
+                                                }
+                                            }
+                                            //Lap so pages
+                                            for (int i = 1; i <= loop; i++) {%>
+                                        <% if (pages == i) {%> 
+                                        <li class="page-item"><a class="page-link" href="${root}/admin/manager_user.jsp?pages=<%=i%>"><%=i%></a></li>
+                                            <%} else {%>
+                                        <li class="page-item"><a class="page-link" href="${root}/admin/manager_user.jsp?pages=<%=i%>"><%=i%></a></li>
+                                            <%}
+                                                }%>
+                                            <%
+                                                //Button Next
+                                                int next = 0;
+                                                //Nếu total lẻ
+                                                if (total % 2 != 0) {
+                                                    if (pages == (total / 4) + 1) {
+                                                        next = pages;//Khong next
+                                                    } else {
+                                                        next = pages + 1;//Co next
+                                                    }
+                                                } else {
+                                                    //Nếu total chẵn nhỏ hơn fullpage
+                                                    //Và không fullPage thì thêm 1
+                                                    if (total < (num * 4) + 4 && total != num * 4) {
+                                                        if (pages == (total / 4) + 1) {
+                                                            next = pages;//Khong next
+                                                        } else {
+                                                            next = pages + 1;//Co next
+                                                        }
+                                                    } else {
+                                                        //Nếu fullPage đến trang cuối dừng
+                                                        //Chưa tới trang cuối thì được next
+                                                        if (pages == (total / 4)) {
+                                                            next = pages;//Khong next
+                                                        } else {
+                                                            next = pages + 1;//Co next
+                                                        }
+                                                    }
+                                                }
+                                            %>
+                                        <li class="page-item">
+                                            <a class="page-link" href="${root}/admin/manager_user.jsp?pages=<%=next%>" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

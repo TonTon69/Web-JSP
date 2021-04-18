@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import connect.DBConnect;
@@ -15,10 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.User;
 
-/**
- *
- * @author Admin
- */
 public class UserDAO {
 
     // get danh sách user
@@ -112,4 +103,50 @@ public class UserDAO {
         }
         return false;
     }
+
+    //phân trang
+    public ArrayList<User> getUser(int a, int b) {
+        Connection conn = DBConnect.getConnecttion();
+        ArrayList<User> list = new ArrayList();
+        String sql = "SELECT * FROM user Limit ?,?";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, a);
+            stmt.setInt(2, b);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                User user = new User();
+                user.setUserID(rs.getInt("UserID"));
+                user.setFullName(rs.getString("FullName"));
+                user.setEmail(rs.getString("Email"));
+                user.setPassword(rs.getString("Password"));
+                user.setPhone(rs.getString("Phone"));
+                user.setAddress(rs.getString("Address"));
+                list.add(user);
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //Total quiz number
+    public int getCount() {
+        Connection conn = DBConnect.getConnecttion();
+        ArrayList<User> list = new ArrayList();
+        String sql = "SELECT count(UserID) FROM user";
+        int count = 0;
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
 }

@@ -1,8 +1,3 @@
-<%-- 
-    Document   : sidebar
-    Created on : Mar 24, 2021, 8:01:00 PM
-    Author     : admin
---%>
 <%@page import="model.Administrator"%>
 <%@page import="dao.AdminDAO"%>
 <%@page import="java.sql.ResultSet"%>
@@ -85,7 +80,7 @@
                 <div id="collapseQuestions" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="${root}/admin/manager_question.jsp">Danh sách câu hỏi</a>
+                        <a class="collapse-item" href="${root}/admin/manager_question.jsp?pages=1">Danh sách câu hỏi</a>
                         <a class="collapse-item" href="${root}/admin/insert_question.jsp">Thêm mới câu hỏi</a>
                     </div>
                 </div>

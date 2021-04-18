@@ -46,18 +46,47 @@
             if (ad == null) {
                 response.sendRedirect("login.jsp");
             }
-            //filter
-            String subject = request.getParameter("subject_id");
-            String quiz = request.getParameter("quiz_id");
-            String search = request.getParameter("search");
-            if (subject != null) {
-                listQuestion = questionDAO.getListQuestionBySubject(Integer.parseInt(subject));
-            } else if (search != null) {
-                listQuestion = questionDAO.search(search);
-            } else if (quiz != null) {
-                listQuestion = questionDAO.getListQuestionByQuiz(Integer.parseInt(quiz));
+            //Phân trang               
+            int subjectID = 0, quizID = 0;
+            String txtSearch = "";
+            if (request.getParameter("subject_id") != null) {
+                subjectID = (int) Integer.parseInt(request.getParameter("subject_id"));
+            }
+            if (request.getParameter("quiz_id") != null) {
+                quizID = (int) Integer.parseInt(request.getParameter("quiz_id"));
+            }
+            if (request.getParameter("search") != null) {
+                txtSearch = request.getParameter("search");
+            }
+            int pages = 0, firstResult = 0, maxResult = 0, total = 0, pagesize = 4;
+            if (request.getParameter("pages") != null) {
+                pages = (int) Integer.parseInt(request.getParameter("pages"));
+            }
+            //get total phan trang
+            if (request.getParameter("subject_id") != null) {
+                total = questionDAO.getCountQuestionBySubject(subjectID);
+            } else if (request.getParameter("quiz_id") != null) {
+                total = questionDAO.getCountQuestionByQuiz(quizID);
             } else {
-                listQuestion = questionDAO.getListQuestion();
+                total = questionDAO.getCountQuestion();
+            }
+            if (total <= pagesize) {
+                firstResult = 1;
+                maxResult = total;
+            } else {
+                firstResult = (pages - 1) * pagesize;
+                maxResult = pagesize;
+            }
+
+            //get list question phan trang
+            if (request.getParameter("subject_id") != null) {
+                listQuestion = questionDAO.getListQuestionBySubject(subjectID, firstResult, maxResult);
+            } else if (request.getParameter("quiz_id") != null) {
+                listQuestion = questionDAO.getListQuestionByQuiz(quizID, firstResult, maxResult);
+            } else if (request.getParameter("search") != null) { //search
+                listQuestion = questionDAO.search(txtSearch);
+            } else {
+                listQuestion = questionDAO.getListQuestion(firstResult, maxResult);
             }
 
         %>
@@ -104,7 +133,7 @@
                                             <option value="none">--Chọn môn học--</option>  
                                             <%                                                for (Subject s : listSubject) {
                                             %>
-                                            <option value="${root}/admin/manager_question.jsp?subject_id=<%=s.getSubjectID()%>">
+                                            <option value="${root}/admin/manager_question.jsp?subject_id=<%=s.getSubjectID()%>&pages=1">
                                                 <%=s.getSubjectName()%>
                                             </option>  
                                             <%
@@ -119,7 +148,7 @@
                                             <option value="none">--Chọn đề thi--</option>  
                                             <%                                                for (Quiz qz : listQuiz) {
                                             %>
-                                            <option value="${root}/admin/manager_question.jsp?quiz_id=<%=qz.getQuizID()%>">
+                                            <option value="${root}/admin/manager_question.jsp?quiz_id=<%=qz.getQuizID()%>&pages=1">
                                                 <%=qz.getQuizName()%>
                                             </option>  
                                             <%
@@ -181,6 +210,46 @@
                                         </tbody>
                                         <%}%>
                                     </table>
+                                    <% if (request.getParameter("search") == null) {%>
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                        <%for (int i = 1; i <= (total / pagesize) + 1; i++) {
+                                                if (request.getParameter("subject_id") != null) {
+                                        %>
+
+                                        <li class="page-item">
+                                            <a class="page-link" href="${root}/admin/manager_question.jsp?subject_id=<%=subjectID%>&pages=<%=i%>">
+                                                <%=i%>
+                                            </a>
+                                        </li>
+                                        <%} else if (request.getParameter("quiz_id") != null) {%>
+                                        <li class="page-item">
+                                            <a class="page-link" href="${root}/admin/manager_question.jsp?quiz_id=<%=quizID%>&pages=<%=i%>">
+                                                <%=i%>
+                                            </a>
+                                        </li>
+                                        <%} else {%>
+                                        <li class="page-item">
+                                            <a class="page-link" href="${root}/admin/manager_question.jsp?pages=<%=i%>">
+                                                <%=i%>
+                                            </a>
+                                        </li>
+                                        <%}
+                                            }
+                                        %>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <%}%>
                                 </div>
                             </div>
                         </div>
