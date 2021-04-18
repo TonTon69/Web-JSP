@@ -212,12 +212,39 @@
                                     </table>
                                     <% if (request.getParameter("search") == null) {%>
                                     <ul class="pagination justify-content-center">
+                                        <%
+                                            int back = 0;
+                                            if (pages == 0 || pages == 1) {
+                                                back = 1;//Luon la page 1
+                                            } else {
+                                                back = pages - 1;//Neu pages tu 2 tro len thi back tru 1
+                                            }
+
+                                            if (request.getParameter("subject_id") != null) {
+                                        %>
+
                                         <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Previous">
+                                            <a class="page-link" href="${root}/admin/manager_question.jsp?subject_id=<%=subjectID%>&pages=<%=back%>" aria-label="Previous">
                                                 <span aria-hidden="true">&laquo;</span>
                                                 <span class="sr-only">Previous</span>
                                             </a>
                                         </li>
+                                        <%} else if (request.getParameter("quiz_id") != null) {%>
+                                        <li class="page-item">
+                                            <a class="page-link" href="${root}/admin/manager_question.jsp?quiz_id=<%=quizID%>&pages=<%=back%>" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                        <%} else {%>
+                                        <li class="page-item">
+                                            <a class="page-link" href="${root}/admin/manager_question.jsp?pages=<%=back%>" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                        <%}%>
+
                                         <%for (int i = 1; i <= (total / pagesize) + 1; i++) {
                                                 if (request.getParameter("subject_id") != null) {
                                         %>
@@ -242,12 +269,59 @@
                                         <%}
                                             }
                                         %>
+
+                                        <%
+                                            //Button Next
+                                            int next = 0;
+                                            //Nếu total lẻ
+                                            if (total % 2 != 0) {
+                                                if (pages == (total / 4) + 1) {
+                                                    next = pages;//Khong next
+                                                } else {
+                                                    next = pages + 1;//Co next
+                                                }
+                                            } else {
+                                                //Nếu total chẵn nhỏ hơn fullpage
+                                                //Và không fullPage thì thêm 1
+                                                if (total < (pagesize * 4) + 4 && total != pagesize * 4) {
+                                                    if (pages == (total / 4) + 1) {
+                                                        next = pages;//Khong next
+                                                    } else {
+                                                        next = pages + 1;//Co next
+                                                    }
+                                                } else {
+                                                    //Nếu fullPage đến trang cuối dừng
+                                                    //Chưa tới trang cuối thì được next
+                                                    if (pages == (total / 4)) {
+                                                        next = pages;//Khong next
+                                                    } else {
+                                                        next = pages + 1;//Co next
+                                                    }
+                                                }
+                                            }
+                                            if (request.getParameter("subject_id") != null) {
+                                        %>
                                         <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
+                                            <a class="page-link" href="${root}/admin/manager_question.jsp?subject_id=<%=subjectID%>&pages=<%=next%>" aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
                                                 <span class="sr-only">Next</span>
                                             </a>
                                         </li>
+                                        <%} else if (request.getParameter("quiz_id") != null) {%>
+                                        <li class="page-item">
+                                            <a class="page-link" href="${root}/admin/manager_question.jsp?quiz_id=<%=quizID%>&pages=<%=next%>" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                        <%} else {%>
+                                        <li class="page-item">
+                                            <a class="page-link" href="${root}/admin/manager_question.jsp?pages=<%=next%>" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                        <%}%>
                                     </ul>
                                     <%}%>
                                 </div>

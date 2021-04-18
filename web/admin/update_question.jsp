@@ -47,7 +47,7 @@
                             <h3>QUẢN LÝ CÂU HỎI</h3>
                             <div>
                                 <i class="fas fa-undo-alt"></i>
-                                <a href="manager_question.jsp">Quay về danh sách câu hỏi</a>
+                                <a href="manager_question.jsp?pages=1">Quay về danh sách câu hỏi</a>
                             </div>
                             <br/>
                             <div class="card shadow mb-4">
