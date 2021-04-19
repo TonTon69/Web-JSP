@@ -57,7 +57,7 @@
                             <h3>QUẢN LÝ ĐỀ THI</h3>
                             <div>
                                 <i class="fas fa-undo-alt"></i>
-                                <a href="${root}/admin/manager_quiz.jsp">Quay về danh sách đề thi</a>
+                                <a href="${root}/admin/manager_quiz.jsp?pages=1">Quay về danh sách đề thi</a>
                         </div>
                         <br/>
                         <div class="card shadow mb-4">

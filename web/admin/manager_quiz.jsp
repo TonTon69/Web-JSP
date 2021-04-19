@@ -4,6 +4,7 @@
     Author     : admin
 --%>
 
+<%@page import="dao.SubjectDAO"%>
 <%@page import="model.Administrator"%>
 <%@page import="model.Quiz"%>
 <%@page import="model.Subject"%>
@@ -35,25 +36,50 @@
     <body id="page-top">
         <%
             QuizDAO quizDAO = new QuizDAO();
-            ArrayList<Quiz> listQuiz = quizDAO.getListQuiz();
+            ArrayList<Quiz> listQuiz;
+
+            SubjectDAO subjectDAO = new SubjectDAO();
+            ArrayList<Subject> listSubject = subjectDAO.getListSubject();
 
             Administrator ad = (Administrator) session.getAttribute("admin");
             if (ad == null) {
                 response.sendRedirect("login.jsp");
             }
-//            int first = 0, last = 0, pages = 1;
-//            if (request.getParameter("pages") != null) {
-//                pages = (int) Integer.parseInt(request.getParameter("pages"));
-//            }
-//            int total = quizDAO.getCount();
-//            if (total <= 5) {
-//                first = 0;
-//                last = total;
-//            } else {
-//                first = (pages - 1) * 5;
-//                last = 5;
-//            }
-//            ArrayList<Quiz> listQuiz = quizDAO.getQuiz(first, last);
+            //Phân trang               
+            int subjectID = 0;
+            String txtSearch = "";
+            if (request.getParameter("subject_id") != null) {
+                subjectID = (int) Integer.parseInt(request.getParameter("subject_id"));
+            }
+            if (request.getParameter("search") != null) {
+                txtSearch = request.getParameter("search");
+            }
+            int pages = 0, firstResult = 0, maxResult = 0, total = 0, pagesize = 4;
+            if (request.getParameter("pages") != null) {
+                pages = (int) Integer.parseInt(request.getParameter("pages"));
+            }
+            //get total phan trang
+            if (request.getParameter("subject_id") != null) {
+                total = quizDAO.getCountQuizBySubject(subjectID);
+            } else {
+                total = quizDAO.getCountQuiz();
+            }
+            if (total <= pagesize) {
+                firstResult = 1;
+                maxResult = total;
+            } else {
+                firstResult = (pages - 1) * pagesize;
+                maxResult = pagesize;
+            }
+
+            //get list question phan trang
+            if (request.getParameter("subject_id") != null) {
+                listQuiz = quizDAO.getListQuizBySubject(subjectID, firstResult, maxResult);
+            } else if (request.getParameter("search") != null) { //search
+                listQuiz = quizDAO.search(txtSearch);
+            } else {
+                listQuiz = quizDAO.getListQuiz(firstResult, maxResult);
+            }
         %>
         <div id="wrapper">
             <jsp:include page="sidebar.jsp"></jsp:include>
@@ -83,6 +109,36 @@
                                 <h6 class="m-0 font-weight-bold text-primary">DANH SÁCH ĐỀ THI</h6>
                             </div>
                             <div class="card-body">
+                                <div class="row">
+                                    <div class="form-group col-md-5">
+                                        <form action="" method="get" class="form-inline">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon1">
+                                                        <i class="fas fa-search"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" class="form-control" name="search" size="50" placeholder="Nhập câu hỏi cần tìm kiếm..." >
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <select id="subject_id" name="subject_id" class="form-control" onchange="location = this.value;">  
+                                            <option value="none">--Chọn môn học--</option>  
+                                            <%
+                                                for (Subject s : listSubject) {
+                                            %>
+                                            <option value="${root}/admin/manager_quiz.jsp?subject_id=<%=s.getSubjectID()%>&pages=1">
+                                                <%=s.getSubjectName()%>
+                                            </option>  
+                                            <%
+
+                                                }
+
+                                            %>
+                                        </select> 
+                                    </div>
+                                </div>
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
@@ -98,8 +154,7 @@
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <%                                            
-                                            int count = 0;
+                                        <%                                            int count = 0;
                                             for (Quiz quiz : listQuiz) {
                                                 count++;
                                         %>
@@ -124,6 +179,100 @@
                                         </tbody>
                                         <%}%>
                                     </table>
+                                    <% if (request.getParameter("search") == null) {%>
+                                    <ul class="pagination justify-content-center">
+                                        <%
+                                            int back = 0;
+                                            if (pages == 0 || pages == 1) {
+                                                back = 1;//Luon la page 1
+                                            } else {
+                                                back = pages - 1;//Neu pages tu 2 tro len thi back tru 1
+                                            }
+
+                                            if (request.getParameter("subject_id") != null) {
+                                        %>
+
+                                        <li class="page-item">
+                                            <a class="page-link" href="${root}/admin/manager_quiz.jsp?subject_id=<%=subjectID%>&pages=<%=back%>" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                        <%} else {%>
+                                        <li class="page-item">
+                                            <a class="page-link" href="${root}/admin/manager_quiz.jsp?pages=<%=back%>" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                        <%}%>
+
+                                        <%for (int i = 1; i <= (total / pagesize) + 1; i++) {
+                                                if (request.getParameter("subject_id") != null) {
+                                        %>
+
+                                        <li class="page-item">
+                                            <a class="page-link" href="${root}/admin/manager_quiz.jsp?subject_id=<%=subjectID%>&pages=<%=i%>">
+                                                <%=i%>
+                                            </a>
+                                        </li>
+                                        <%} else {%>
+                                        <li class="page-item">
+                                            <a class="page-link" href="${root}/admin/manager_quiz.jsp?pages=<%=i%>">
+                                                <%=i%>
+                                            </a>
+                                        </li>
+                                        <%}
+                                            }
+                                        %>
+
+                                        <%
+                                            //Button Next
+                                            int next = 0;
+                                            //Nếu total lẻ
+                                            if (total % 2 != 0) {
+                                                if (pages == (total / 4) + 1) {
+                                                    next = pages;//Khong next
+                                                } else {
+                                                    next = pages + 1;//Co next
+                                                }
+                                            } else {
+                                                //Nếu total chẵn nhỏ hơn fullpage
+                                                //Và không fullPage thì thêm 1
+                                                if (total < (pagesize * 4) + 4 && total != pagesize * 4) {
+                                                    if (pages == (total / 4) + 1) {
+                                                        next = pages;//Khong next
+                                                    } else {
+                                                        next = pages + 1;//Co next
+                                                    }
+                                                } else {
+                                                    //Nếu fullPage đến trang cuối dừng
+                                                    //Chưa tới trang cuối thì được next
+                                                    if (pages == (total / 4)) {
+                                                        next = pages;//Khong next
+                                                    } else {
+                                                        next = pages + 1;//Co next
+                                                    }
+                                                }
+                                            }
+                                            if (request.getParameter("subject_id") != null) {
+                                        %>
+                                        <li class="page-item">
+                                            <a class="page-link" href="${root}/admin/manager_quiz.jsp?subject_id=<%=subjectID%>&pages=<%=next%>" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                        <%} else {%>
+                                        <li class="page-item">
+                                            <a class="page-link" href="${root}/admin/manager_quiz.jsp?pages=<%=next%>" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                        <%}%>
+                                    </ul>
+                                    <%}%>
                                 </div>
                             </div>
                         </div>

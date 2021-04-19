@@ -30,7 +30,7 @@ public class ManagerQuestionServlet extends HttpServlet {
             switch (command) {
                 case "delete":
                     questionDAO.delete(Integer.parseInt(request.getParameter("question_id")));
-                    url = "/admin/manager_question.jsp";
+                    url = "/admin/manager_question.jsp?pages=1";
                     break;
             }
         } catch (Exception e) {
@@ -62,11 +62,11 @@ public class ManagerQuestionServlet extends HttpServlet {
             switch (command) {
                 case "insert":
                     questionDAO.insert(new Question(Integer.parseInt(s_id), Integer.parseInt(qz_id), qcontent, q_a, q_b, q_c, q_d, q_true, qimage, qaudio, new Timestamp(System.currentTimeMillis())));
-                    url = "/admin/manager_question.jsp";
+                    url = "/admin/manager_question.jsp?pages=1";
                     break;
                 case "update":
                     questionDAO.update(new Question(Integer.parseInt(q_id), qcontent, q_a, q_b, q_c, q_d, q_true, qimage, qaudio, new Timestamp(System.currentTimeMillis())));
-                    url = "/admin/manager_question.jsp";
+                    url = "/admin/manager_question.jsp?pages=1";
                     break;
             }
         } catch (Exception e) {

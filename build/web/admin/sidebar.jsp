@@ -66,7 +66,7 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="${root}/admin/manager_quiz.jsp">Danh sách đề thi</a>
+                        <a class="collapse-item" href="${root}/admin/manager_quiz.jsp?pages=1">Danh sách đề thi</a>
                         <a class="collapse-item" href="${root}/admin/insert_quiz.jsp">Thêm mới đề thi</a>
                     </div>
                 </div>

@@ -13,6 +13,29 @@ import model.Quiz;
 
 public class QuizDAO {
 
+    // get danh sách đề thi có  phân trang
+    public ArrayList<Quiz> getListQuiz(int a, int b) throws SQLException {
+        Connection connection = DBConnect.getConnecttion();
+        String sql = "SELECT * FROM quiz limit ?,?";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ps.setInt(1, a);
+        ps.setInt(2, b);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Quiz> list = new ArrayList<>();
+        while (rs.next()) {
+            Quiz q = new Quiz();
+            q.setQuizID(rs.getInt("QuizID"));
+            q.setSubjectID(rs.getInt("SubjectID"));
+            q.setQuizName(rs.getString("QuizName"));
+            q.setTime(rs.getInt("Time"));
+            q.setTotalQuestion(rs.getInt("TotalQuestion"));
+            q.setImage(rs.getString("Image"));
+            q.setCreatedate(rs.getTimestamp("CreateDate"));
+            list.add(q);
+        }
+        return list;
+    }
+    
     // get danh sách đề thi 
     public ArrayList<Quiz> getListQuiz() throws SQLException {
         Connection connection = DBConnect.getConnecttion();
@@ -108,33 +131,78 @@ public class QuizDAO {
         return false;
     }
 
-//    //phân trang
-//    public ArrayList<Quiz> getQuiz(int a, int b) {
-//        Connection conn = DBConnect.getConnecttion();
-//        ArrayList<Quiz> list = new ArrayList();
-//        String sql = "SELECT * FROM quiz Limit ?,?";
-//        try {
-//            PreparedStatement stmt = conn.prepareStatement(sql);
-//            stmt.setInt(1, a);
-//            stmt.setInt(2, b);
-//            ResultSet rs = stmt.executeQuery();
-//            while (rs.next()) {
-//                Quiz q = new Quiz();
-//                q.setQuizID(rs.getInt("QuizID"));
-//                q.setSubjectID(rs.getInt("SubjectID"));
-//                q.setQuizName(rs.getString("QuizName"));
-//                q.setTime(rs.getInt("Time"));
-//                q.setTotalQuestion(rs.getInt("TotalQuestion"));
-//                q.setImage(rs.getString("Image"));
-//                q.setCreatedate(rs.getTimestamp("CreateDate"));
-//                list.add(q);
-//            }
-//            return list;
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
+    //get list quiz by subject
+    public ArrayList<Quiz> getListQuizBySubject(int subjectID, int a, int b) {
+        Connection conn = DBConnect.getConnecttion();
+        ArrayList<Quiz> list = new ArrayList();
+        String sql = "SELECT * FROM quiz WHERE SubjectID ='" + subjectID + "' limit ?,?";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, a);
+            stmt.setInt(2, b);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Quiz q = new Quiz();
+                q.setQuizID(rs.getInt("QuizID"));
+                q.setSubjectID(rs.getInt("SubjectID"));
+                q.setQuizName(rs.getString("QuizName"));
+                q.setTime(rs.getInt("Time"));
+                q.setTotalQuestion(rs.getInt("TotalQuestion"));
+                q.setImage(rs.getString("Image"));
+                q.setCreatedate(rs.getTimestamp("CreateDate"));
+                list.add(q);
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //search
+    public ArrayList<Quiz> search(String search) {
+        Connection conn = DBConnect.getConnecttion();
+        ArrayList<Quiz> list = new ArrayList();
+        String sql = "SELECT * FROM quiz WHERE QuizName like ?";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, "%" + search + "%");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Quiz q = new Quiz();
+                q.setQuizID(rs.getInt("QuizID"));
+                q.setSubjectID(rs.getInt("SubjectID"));
+                q.setQuizName(rs.getString("QuizName"));
+                q.setTime(rs.getInt("Time"));
+                q.setTotalQuestion(rs.getInt("TotalQuestion"));
+                q.setImage(rs.getString("Image"));
+                q.setCreatedate(rs.getTimestamp("CreateDate"));
+                list.add(q);
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //Total quiz number
+    public int getCountQuizBySubject(int subjectID) {
+        Connection conn = DBConnect.getConnecttion();
+        ArrayList<Quiz> list = new ArrayList();
+        String sql = "SELECT count(QuizID) FROM quiz WHERE SubjectID = '" + subjectID + "'";
+        int count = 0;
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
 
     //Total quiz number
     public int getCountQuiz() {
@@ -153,7 +221,6 @@ public class QuizDAO {
         }
         return count;
     }
-    
 
     public static void main(String[] args) {
         QuizDAO s = new QuizDAO();

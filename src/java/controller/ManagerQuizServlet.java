@@ -52,7 +52,7 @@ public class ManagerQuizServlet extends HttpServlet {
             switch (command) {
                 case "delete":
                     quizDAO.delete(Integer.parseInt(request.getParameter("quiz_id")));
-                    url = "/admin/manager_quiz.jsp";
+                    url = "/admin/manager_quiz.jsp?pages=1";
                     break;
             }
         } catch (Exception e) {
@@ -79,11 +79,11 @@ public class ManagerQuizServlet extends HttpServlet {
             switch (command) {
                 case "insert":
                     quizDAO.insert(new Quiz(Integer.parseInt(s_id), qz_name, Integer.parseInt(qz_time), Integer.parseInt(qz_totalquestion), qz_image, new Timestamp(System.currentTimeMillis())));
-                    url = "/admin/manager_quiz.jsp";
+                    url = "/admin/manager_quiz.jsp?pages=1";
                     break;
                 case "update":
                     quizDAO.update(new Quiz(Integer.parseInt(qz_id), qz_name, Integer.parseInt(qz_time), Integer.parseInt(qz_totalquestion), qz_image, new Timestamp(System.currentTimeMillis())));
-                    url = "/admin/manager_quiz.jsp";
+                    url = "/admin/manager_quiz.jsp?pages=1";
                     break;
             }
         } catch (Exception e) {
