@@ -49,7 +49,16 @@
                 last = 4;
             }
             //Lấy ra danh sách sản phẩm
-            ArrayList<User> listUser = userDAO.getUser(first, last);
+            ArrayList<User> listUser;
+            String txtSearch = "";
+            if (request.getParameter("search") != null) {
+                txtSearch = request.getParameter("search");
+            }
+            if (request.getParameter("search") != null) { //search
+                listUser = userDAO.search(txtSearch);
+            } else {
+                listUser = userDAO.getUser(first, last);
+            }
         %>
         <div id="wrapper">
             <jsp:include page="sidebar.jsp"></jsp:include>
@@ -74,7 +83,7 @@
                                 <h6 class="m-0 font-weight-bold text-primary">DANH SÁCH HỌC VIÊN</h6>
                             </div>
                             <div class="card-body">
-<!--                                <div class="form-group col-md-5">
+                                <div class="form-group">
                                     <form action="" method="get" class="form-inline">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
@@ -82,10 +91,10 @@
                                                     <i class="fas fa-search"></i>
                                                 </span>
                                             </div>
-                                            <input type="text" class="form-control" name="search" size="50" placeholder="Nhập câu hỏi cần tìm kiếm..." >
+                                            <input type="text" class="form-control" name="search" size="35" placeholder="Tìm kiếm..." >
                                         </div>
                                     </form>
-                                </div>-->
+                                </div>
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
@@ -126,6 +135,7 @@
                                         </tbody>
                                         <%}%>
                                     </table>
+                                    <% if (request.getParameter("search") == null) {%>
                                     <ul class="pagination justify-content-center">
                                         <%
                                             int back = 0;
@@ -207,6 +217,7 @@
                                             </a>
                                         </li>
                                     </ul>
+                                    <%}%>
                                 </div>
                             </div>
                         </div>

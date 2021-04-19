@@ -149,4 +149,27 @@ public class UserDAO {
         return count;
     }
 
+    // search
+    public ArrayList<User> search(String search) throws SQLException {
+        Connection connection = DBConnect.getConnecttion();
+        String sql = "SELECT * FROM user WHERE FullName like ? or Email like ? or Phone like ? or Address like ?";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ps.setString(1, "%" + search + "%");
+        ps.setString(2, "%" + search + "%");
+        ps.setString(3, "%" + search + "%");
+        ps.setString(4, "%" + search + "%");
+        ResultSet rs = ps.executeQuery();
+        ArrayList<User> list = new ArrayList<>();
+        while (rs.next()) {
+            User user = new User();
+            user.setUserID(rs.getInt("UserID"));
+            user.setFullName(rs.getString("FullName"));
+            user.setEmail(rs.getString("Email"));
+            user.setPassword(rs.getString("Password"));
+            user.setPhone(rs.getString("Phone"));
+            user.setAddress(rs.getString("Address"));
+            list.add(user);
+        }
+        return list;
+    }
 }
