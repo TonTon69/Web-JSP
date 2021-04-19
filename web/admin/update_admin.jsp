@@ -50,14 +50,15 @@
                             </div>
                             <br/>
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT QUẢN TRỊ</h6>
-                                </div>
-                                <div class="card-body">
                                 <%
                                     String id = request.getParameter("admin_id");
                                     Administrator ad = new AdminDAO().getAdminByID(Integer.parseInt(id));
                                 %>
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT QUẢN TRỊ #<%=id%></h6>
+                                </div>
+                                <div class="card-body">
+                                
                                 <form action="${root}/AdminServlet" method="post">
                                     <div class="row">
                                         <div class="form-group col-md-6">

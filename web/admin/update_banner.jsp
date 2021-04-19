@@ -51,14 +51,15 @@
                             </div>
                             <br/>
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT BANNER</h6>
-                                </div>
-                                <div class="card-body">
-                                <%
-                                    String id = request.getParameter("banner_id");
-                                    Banner bn = new BannerDAO().getBannerByID(Integer.parseInt(id));
-                                %>
+                            <%
+                                String id = request.getParameter("banner_id");
+                                Banner bn = new BannerDAO().getBannerByID(Integer.parseInt(id));
+                            %>
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT BANNER #<%=id%></h6>
+                            </div>
+                            <div class="card-body">
+
                                 <form action="${root}/ManagerBannerServlet" method="post">
                                     <div class="row">
                                         <div class="form-group col-md-6">

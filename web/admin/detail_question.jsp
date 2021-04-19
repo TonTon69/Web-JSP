@@ -27,6 +27,14 @@
         <link href="${root}/css/sb-admin-2.min.css" rel="stylesheet">
     </head>
     <body id="page-top">
+        <style>
+            .dl-horizontal dt{
+                margin-right: 10px;
+            }
+            .dl-horizontal dd{
+                width: fit-content;
+            }
+        </style>
         <%
             Administrator ad = (Administrator) session.getAttribute("admin");
             if (ad == null) {
@@ -56,52 +64,59 @@
                                 Question q = new QuestionDAO().getQuestionByID(Integer.parseInt(id));
                             %>
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT CÂU HỎI #<%=id%></h6>
+                                <h6 class="m-0 font-weight-bold text-primary">CHI TIẾT CÂU HỎI #<%=id%></h6>
                             </div>
                             <div class="card-body">
-                                <form action="${root}/ManagerQuestionServlet" method="post">
-                                    <div class="row">
-                                        <div class="form-group col-md-12">
-                                            <label for="content">Câu hỏi</label>
-                                            <textarea type="text" class="form-control" rows="5" name="content" id="content" required="yes"><%=q.getContent()%></textarea>
-                                        </div>
+                                <dl class="dl-horizontal">
+                                    <div class="d-flex">
+                                        <dt>Mã câu hỏi:</dt>
+                                        <dd><%=id%></dd>
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-3">
-                                            <label for="qa">Option 1</label>
-                                            <input type="text" class="form-control" name="qa" id="qa" required="yes" value="<%=q.getqA()%>">
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <label for="qb">Option 2</label>
-                                            <input type="text" class="form-control" name="qb" id="qb" required="yes" value="<%=q.getqB()%>">
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <label for="qc">Option 3</label>
-                                            <input type="text" class="form-control" name="qc" id="qc" required="yes" value="<%=q.getqC()%>">
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <label for="qd">Option 4</label>
-                                            <input type="text" class="form-control" name="qd" id="qd" required="yes" value="<%=q.getqD()%>">
-                                        </div>
+                                    <div class="d-flex">
+                                        <dt>Mã môn học:</dt>
+                                        <dd><%=q.getSubjectID()%></dd>
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-3">
-                                            <label for="qtrue">Đáp án đúng</label>
-                                            <input type="text" class="form-control" name="qtrue" id="qtrue" required="yes" value="<%=q.getqTrue()%>">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="image">Ảnh</label>
-                                            <input type="text" class="form-control" name="image" id="image" value="<%=q.getImage()%>">
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <label for="audio">Audio</label>
-                                            <input type="text" class="form-control" name="audio" id="audio" value="<%=q.getAudio()%>">
-                                        </div>
+                                    <div class="d-flex">
+                                        <dt>Mã đề thi:</dt>
+                                        <dd><%=q.getQuizID()%></dd>
                                     </div>
-                                    <input type="hidden" name="command" value="update"> 
-                                    <input type="hidden" name="question_id" value="<%=request.getParameter("question_id")%>"> 
-                                    <input type="submit" class="btn btn-primary" value="Lưu lại">
-                                </form>
+                                    <div class="d-flex">
+                                        <dt>Nội dung câu hỏi:</dt>
+                                        <dd><%=q.getContent()%></dd>
+                                    </div>
+                                    <div class="d-flex">
+                                        <dt>Đáp án 1:</dt>
+                                        <dd><%=q.getqA()%></dd>
+                                    </div>
+                                    <div class="d-flex">
+                                        <dt>Đáp án 2:</dt>
+                                        <dd><%=q.getqB()%></dd>
+                                    </div>
+                                    <div class="d-flex">
+                                        <dt>Đáp án 3:</dt>
+                                        <dd><%=q.getqC()%></dd>
+                                    </div>
+                                    <div class="d-flex">
+                                        <dt>Đáp án 4:</dt>
+                                        <dd><%=q.getqD()%></dd>
+                                    </div>
+                                    <div class="d-flex">
+                                        <dt>Đáp án đúng:</dt>
+                                        <dd><%=q.getqTrue()%></dd>
+                                    </div>
+                                    <div class="d-flex">
+                                        <dt>Ảnh:</dt>
+                                        <dd><%=q.getImage()%></dd>
+                                    </div>
+                                    <div class="d-flex">
+                                        <dt>Audio:</dt>
+                                        <dd><%=q.getAudio()%></dd>
+                                    </div>
+                                    <div class="d-flex">
+                                        <dt>Ngày tạo:</dt>
+                                        <dd><%=q.getCreatedate()%></dd>
+                                    </div>
+                                </dl>
                             </div>
                         </div>
                     </div>

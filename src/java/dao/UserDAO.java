@@ -131,7 +131,7 @@ public class UserDAO {
         return null;
     }
 
-    //Total quiz number
+    //Total user number
     public int getCount() {
         Connection conn = DBConnect.getConnecttion();
         ArrayList<User> list = new ArrayList();

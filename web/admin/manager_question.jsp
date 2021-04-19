@@ -29,7 +29,6 @@
         <!-- Custom styles for this template-->
         <link href="${root}/css/sb-admin-2.min.css" rel="stylesheet">
         <link href="${root}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
     </head>
     <body id="page-top">
         <%
@@ -49,6 +48,7 @@
             //Phân trang               
             int subjectID = 0, quizID = 0;
             String txtSearch = "";
+
             if (request.getParameter("subject_id") != null) {
                 subjectID = (int) Integer.parseInt(request.getParameter("subject_id"));
             }
@@ -168,13 +168,6 @@
                                                 <th>Môn</th>
                                                 <th>Đề</th>
                                                 <th>Câu hỏi</th>
-                                                <th>A</th>
-                                                <th>B</th>
-                                                <th>C</th>
-                                                <th>D</th>
-                                                <th>True</th>
-                                                <th>Ảnh</th>
-                                                <th>Audio</th>
                                                 <th>Ngày tạo</th>
                                                 <th></th>
                                             </tr>
@@ -189,16 +182,12 @@
                                                 <td><%=q.getQuestionID()%></td>
                                                 <td><%=q.getSubjectID()%></td>
                                                 <td><%=q.getQuizID()%></td>
-                                                <td><%=q.getContent()%></td>
-                                                <td><%=q.getqA()%></td>
-                                                <td><%=q.getqB()%></td>
-                                                <td><%=q.getqC()%></td>
-                                                <td><%=q.getqD()%></td>
-                                                <td><%=q.getqTrue()%></td>
-                                                <td><image src="<%=q.getImage()%>" style="width: 60px" /></td>
-                                                <td><%=q.getAudio()%></td>
+                                                <td style="width: 550px"><%=q.getContent()%></td>
                                                 <td><%=q.getCreatedate()%></td>
                                                 <td>
+                                                    <a href="${root}/admin/detail_question.jsp?command=detail&question_id=<%=q.getQuestionID()%>" class="btn btn-secondary">
+                                                        <i class="far fa-eye"></i>
+                                                    </a>
                                                     <a href="${root}/admin/update_question.jsp?command=update&question_id=<%=q.getQuestionID()%>" class="btn btn-primary">
                                                         <i class="far fa-edit"></i>
                                                     </a>
@@ -208,7 +197,9 @@
                                                 </td>
                                             </tr>
                                         </tbody>
-                                        <%}%>
+
+                                        <%
+                                            }%>
                                     </table>
                                     <% if (request.getParameter("search") == null) {%>
                                     <ul class="pagination justify-content-center">
@@ -245,7 +236,8 @@
                                         </li>
                                         <%}%>
 
-                                        <%for (int i = 1; i <= (total / pagesize) + 1; i++) {
+                                        <%
+                                            for (int i = 1; i <= (total / pagesize) + 1; i++) {
                                                 if (request.getParameter("subject_id") != null) {
                                         %>
 

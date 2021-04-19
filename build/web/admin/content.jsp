@@ -1,3 +1,7 @@
+<%@page import="dao.SubjectDAO"%>
+<%@page import="dao.UserDAO"%>
+<%@page import="dao.QuestionDAO"%>
+<%@page import="dao.QuizDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="connect.DBConnect"%>
@@ -37,21 +41,7 @@
                                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                     Số lượng môn học</div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <%
-                                                    try {
-                                                        Connection connection = DBConnect.getConnecttion();
-                                                        String sql = "SELECT COUNT(*) FROM subject";
-                                                        PreparedStatement ps = connection.prepareCall(sql);
-                                                        ResultSet rs = ps.executeQuery();
-                                                        String Countrow = "";
-                                                        while (rs.next()) {
-                                                            Countrow = rs.getString(1);
-                                                            out.println(Countrow);
-                                                        }
-                                                    } catch (Exception e) {
-                                                        e.printStackTrace();
-                                                    }
-                                                %>
+                                                <%=new SubjectDAO().getCount()%>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -69,21 +59,7 @@
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Số lượng đề thi</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <%
-                                                    try {
-                                                        Connection connection = DBConnect.getConnecttion();
-                                                        String sql = "SELECT COUNT(*) FROM quiz";
-                                                        PreparedStatement ps = connection.prepareCall(sql);
-                                                        ResultSet rs = ps.executeQuery();
-                                                        String Countrow = "";
-                                                        while (rs.next()) {
-                                                            Countrow = rs.getString(1);
-                                                            out.println(Countrow);
-                                                        }
-                                                    } catch (Exception e) {
-                                                        e.printStackTrace();
-                                                    }
-                                                %>
+                                                <%=new QuizDAO().getCountQuiz()%>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -102,21 +78,7 @@
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Số lượng câu hỏi</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <%
-                                                    try {
-                                                        Connection connection = DBConnect.getConnecttion();
-                                                        String sql = "SELECT COUNT(*) FROM question";
-                                                        PreparedStatement ps = connection.prepareCall(sql);
-                                                        ResultSet rs = ps.executeQuery();
-                                                        String Countrow = "";
-                                                        while (rs.next()) {
-                                                            Countrow = rs.getString(1);
-                                                            out.println(Countrow);
-                                                        }
-                                                    } catch (Exception e) {
-                                                        e.printStackTrace();
-                                                    }
-                                                %>
+                                                <%=new QuestionDAO().getCountQuestion()%>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -135,21 +97,7 @@
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Số lượng học viên</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <%
-                                                    try {
-                                                        Connection connection = DBConnect.getConnecttion();
-                                                        String sql = "SELECT COUNT(*) FROM user";
-                                                        PreparedStatement ps = connection.prepareCall(sql);
-                                                        ResultSet rs = ps.executeQuery();
-                                                        String Countrow = "";
-                                                        while (rs.next()) {
-                                                            Countrow = rs.getString(1);
-                                                            out.println(Countrow);
-                                                        }
-                                                    } catch (Exception e) {
-                                                        e.printStackTrace();
-                                                    }
-                                                %>
+                                                <%=new UserDAO().getCount()%>
                                             </div>
                                         </div>
                                         <div class="col-auto">

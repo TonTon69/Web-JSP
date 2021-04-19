@@ -13,7 +13,7 @@ import model.Question;
 
 public class QuestionDAO {
 
-    // get danh sách câu hỏi
+    // get danh sách câu hỏi có phân trang
     public ArrayList<Question> getListQuestion(int firstResult, int maxResult) throws SQLException {
         Connection connection = DBConnect.getConnecttion();
         String sql = "SELECT * FROM question limit ?,?";
@@ -134,6 +134,7 @@ public class QuestionDAO {
         if (rs.next()) {
             int qid = rs.getInt("QuestionID");
             int sid = rs.getInt("SubjectID");
+            int qzid = rs.getInt("QuizID");
             String content = rs.getString("Content");
             String qa = rs.getString("Q_A");
             String qb = rs.getString("Q_B");
@@ -143,7 +144,7 @@ public class QuestionDAO {
             String image = rs.getString("Image");
             String audio = rs.getString("Audio");
             Timestamp createdate = rs.getTimestamp("CreateDate");
-            q = new Question(qid, sid, content, qa, qb, qc, qd, qtrue, image, audio, createdate);
+            q = new Question(qid, sid, qzid, content, qa, qb, qc, qd, qtrue, image, audio, createdate);
         }
         return q;
     }

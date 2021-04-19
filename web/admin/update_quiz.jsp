@@ -32,7 +32,7 @@
         <%
             SubjectDAO subjectDAO = new SubjectDAO();
             ArrayList<Subject> listSubject = subjectDAO.getListSubject();
-            
+
             Administrator ad = (Administrator) session.getAttribute("admin");
             if (ad == null) {
                 response.sendRedirect("login.jsp");
@@ -56,14 +56,15 @@
                             </div>
                             <br/>
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT ĐỀ THI</h6>
-                                </div>
-                                <div class="card-body">
-                                <%
-                                    String id = request.getParameter("quiz_id");
-                                    Quiz qz = new QuizDAO().getQuizByID(Integer.parseInt(id));
-                                %>
+                            <%
+                                String id = request.getParameter("quiz_id");
+                                Quiz qz = new QuizDAO().getQuizByID(Integer.parseInt(id));
+                            %>
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT ĐỀ THI #<%=id%></h6>
+                            </div>
+                            <div class="card-body">
+
                                 <form action="${root}/ManagerQuizServlet" method="post">
                                     <div class="row">
                                         <div class="form-group col-md-8">

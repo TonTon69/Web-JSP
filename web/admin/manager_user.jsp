@@ -103,7 +103,6 @@
                                                 <th>Mã</th>
                                                 <th>Tên</th>
                                                 <th>Email</th>
-                                                <th>Mật khẩu</th>
                                                 <th>SĐT</th>
                                                 <th>Địa chỉ</th>
                                                 <th></th>
@@ -120,9 +119,8 @@
                                                 <td><%=u.getUserID()%></td>
                                                 <td><%=u.getFullName()%></td>
                                                 <td><%=u.getEmail()%></td>
-                                                <td><%=u.getPassword()%></td>
                                                 <td><%=u.getPhone()%></td>
-                                                <td><%=u.getAddress()%></td>
+                                                <td style="width: 300px"><%=u.getAddress()%></td>
                                                 <td>
                                                     <a href="${root}/admin/update_user.jsp?command=update&user_id=<%=u.getUserID()%>" class="btn btn-primary">
                                                         <i class="far fa-edit"></i>

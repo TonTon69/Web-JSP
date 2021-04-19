@@ -104,5 +104,22 @@ public class SubjectDAO {
         }
         return false;
     }
+    //Total Subject number
+    public int getCount() {
+        Connection conn = DBConnect.getConnecttion();
+        ArrayList<Subject> list = new ArrayList();
+        String sql = "SELECT count(SubjectID) FROM subject";
+        int count = 0;
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
 
 }
