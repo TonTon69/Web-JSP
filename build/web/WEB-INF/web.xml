@@ -32,6 +32,10 @@
         <servlet-name>ManagerBannerServlet</servlet-name>
         <servlet-class>controller.ManagerBannerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginFacebookServlet</servlet-name>
+        <servlet-class>controller.LoginFacebookServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManagerSubjectServlet</servlet-name>
         <url-pattern>/ManagerSubjectServlet</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>ManagerBannerServlet</servlet-name>
         <url-pattern>/ManagerBannerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginFacebookServlet</servlet-name>
+        <url-pattern>/LoginFacebookServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

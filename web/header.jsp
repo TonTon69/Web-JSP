@@ -47,7 +47,7 @@
                                         <li><a href="#">TIẾNG ANH</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact.html">DIỄN ĐÀN</a></li>
+                                <li><a href="https://www.facebook.com/groups/445237046576540">CỘNG ĐỒNG</a></li>
                                 <li class="btn-cta"><a href="login.jsp"><span>Đăng nhập</span></a></li>
                                 <li class="btn-cta"><a href="register.jsp"><span>Đăng ký</span></a></li>
                             </ul>

@@ -1,8 +1,3 @@
-<%-- 
-    Document   : header
-    Created on : Mar 24, 2021, 7:58:18 PM
-    Author     : admin
---%>
 <%@page import="model.Administrator"%>
 <%@page import="dao.AdminDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -196,7 +191,14 @@
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Xin chào <b><%=ad.getFullName()%></b></span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                            Xin chào 
+                            <% if (session.getAttribute("admin") != null) {%>
+                            <b>
+                                <%=ad.getFullName()%>
+                            </b>
+                            <%}%>
+                        </span>
                         <img class="img-profile rounded-circle"
                              src="${root}/images/undraw_profile.svg">
                     </a>
