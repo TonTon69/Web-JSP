@@ -103,6 +103,16 @@
                                     <label for="address"><i class="zmdi zmdi-city"></i></label>
                                     <input type="text" name="address" placeholder="Địa chỉ"/>
                                 </div>
+                                <%
+                                    if (session.getAttribute("errorEmail") != null) {
+
+                                %>
+                                <div>
+                                    <p  style="color:red"><%=session.getAttribute("errorEmail")%></p>
+                                </div>
+                                <%
+                                    }
+                                %>
                                 <div class="form-group form-button">
                                     <input type="hidden" name="command" value="insert"/>
                                     <input type="submit" name="signup" id="signup" class="form-submit" value="Đăng ký"/>                                    

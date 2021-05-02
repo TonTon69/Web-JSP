@@ -2,6 +2,8 @@ package controller;
 
 import dao.AdminDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,6 +44,7 @@ public class AdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         String admin_id = request.getParameter("admin_id");
@@ -55,15 +58,22 @@ public class AdminServlet extends HttpServlet {
         HttpSession session = request.getSession();
         switch (command) {
             case "register":
-                admin.setFullName(name);
-                admin.setEmail(email);
-                admin.setPassword(MD5.encryption(password));
-                //mặc định trạng thái là false, admin tối cao sẽ cấp cho bạn thành true để được quyền quản trị
-                admin.setStatus(Boolean.FALSE);
-                adminDAO.registerAdmin(admin);
-                session.setAttribute("admin", admin);
-                session.setAttribute("success", "Đăng ký thành công. Vui lòng đợi admin xét duyệt quyền!");
-                url = "/admin/register.jsp";
+                if (!adminDAO.checkEmail(email)) {
+                    admin.setFullName(name);
+                    admin.setEmail(email);
+                    admin.setPassword(MD5.encryption(password));
+                    //mặc định trạng thái là false, admin tối cao sẽ cấp cho bạn thành true để được quyền quản trị
+                    admin.setStatus(Boolean.FALSE);
+                    adminDAO.registerAdmin(admin);
+                    session.setAttribute("admin", admin);
+                    session.setAttribute("success", "Đăng ký thành công. Vui lòng đợi admin xét duyệt quyền!");
+                    url = "/admin/register.jsp";
+                } else {
+                    out.println("<script type=\"text/javascript\">");
+                    out.println("alert('Email này đã tồn tại. Đăng ký không thành công!');");
+                    out.println("</script>");
+                    url = "/admin/register.jsp";
+                }
                 break;
             case "login":
                 Administrator ad = adminDAO.checkLogin(email, MD5.encryption(password));

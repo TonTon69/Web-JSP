@@ -32,14 +32,19 @@ public class UserServlet extends HttpServlet {
         try {
             switch (command) {
                 case "insert":
-                    users.setFullName(request.getParameter("name"));
-                    users.setEmail(request.getParameter("email"));
-                    users.setPassword(MD5.encryption(request.getParameter("password")));
-                    users.setPhone(request.getParameter("phone"));
-                    users.setAddress(request.getParameter("address"));
-                    usersDAO.insert(users);
-                    session.setAttribute("user", users);
-                    url = "/login.jsp";
+                    if (!usersDAO.checkEmail(request.getParameter("email"))) {
+                        users.setFullName(request.getParameter("name"));
+                        users.setEmail(request.getParameter("email"));
+                        users.setPassword(MD5.encryption(request.getParameter("password")));
+                        users.setPhone(request.getParameter("phone"));
+                        users.setAddress(request.getParameter("address"));
+                        usersDAO.insert(users);
+                        session.setAttribute("user", users);
+                        url = "/login.jsp";
+                    } else {
+                        session.setAttribute("errorEmail", "Email này đã tồn tại!");
+                        url = "/register.jsp";
+                    }
                     break;
                 case "login":
                     users = usersDAO.login(request.getParameter("email"), MD5.encryption(request.getParameter("pass")));
