@@ -14,6 +14,7 @@ import tools.MD5;
 public class ManagerUserServlet extends HttpServlet {
 
     UserDAO userDAO = new UserDAO();
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -22,7 +23,7 @@ public class ManagerUserServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ManagerUserServlet</title>");            
+            out.println("<title>Servlet ManagerUserServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ManagerUserServlet at " + request.getContextPath() + "</h1>");

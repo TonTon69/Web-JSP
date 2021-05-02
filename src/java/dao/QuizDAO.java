@@ -14,28 +14,29 @@ import model.Quiz;
 public class QuizDAO {
 
     // get danh sách đề thi có  phân trang
-    public ArrayList<Quiz> getListQuiz(int a, int b) throws SQLException {
+    public ArrayList<Quiz> getListQuiz(int firstResult, int maxResult) throws SQLException {
         Connection connection = DBConnect.getConnecttion();
-        String sql = "SELECT * FROM quiz limit ?,?";
+        String sql = "Select QuizID,a.SubjectID, SubjectName,QuizName, Time, TotalQuestion, Image, a.CreateDate from quiz a, subject b where a.SubjectID=b.SubjectID limit ?,?";
         PreparedStatement ps = connection.prepareCall(sql);
-        ps.setInt(1, a);
-        ps.setInt(2, b);
+        ps.setInt(1, firstResult);
+        ps.setInt(2, maxResult);
         ResultSet rs = ps.executeQuery();
         ArrayList<Quiz> list = new ArrayList<>();
         while (rs.next()) {
-            Quiz q = new Quiz();
-            q.setQuizID(rs.getInt("QuizID"));
-            q.setSubjectID(rs.getInt("SubjectID"));
-            q.setQuizName(rs.getString("QuizName"));
-            q.setTime(rs.getInt("Time"));
-            q.setTotalQuestion(rs.getInt("TotalQuestion"));
-            q.setImage(rs.getString("Image"));
-            q.setCreatedate(rs.getTimestamp("CreateDate"));
-            list.add(q);
+            Quiz quiz = new Quiz();
+            quiz.setQuizID(rs.getInt("QuizID"));
+            quiz.setSubjectID(rs.getInt("SubjectID"));
+            quiz.setSubjectName(rs.getString("SubjectName"));
+            quiz.setQuizName(rs.getString("QuizName"));
+            quiz.setTime(rs.getInt("Time"));
+            quiz.setTotalQuestion(rs.getInt("TotalQuestion"));
+            quiz.setImage(rs.getString("Image"));
+            quiz.setCreatedate(rs.getTimestamp("CreateDate"));
+            list.add(quiz);
         }
         return list;
     }
-    
+
     // get danh sách đề thi 
     public ArrayList<Quiz> getListQuiz() throws SQLException {
         Connection connection = DBConnect.getConnecttion();

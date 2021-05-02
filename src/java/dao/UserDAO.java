@@ -172,4 +172,44 @@ public class UserDAO {
         }
         return list;
     }
+
+    //users
+    //ktra email
+    public boolean checkEmail(String email) {
+        Connection connection = DBConnect.getConnecttion();
+        String sql = "select * from user where Email = '" + email + "'";
+        PreparedStatement ps;
+        try {
+            ps = connection.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                connection.close();
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    //ktra login
+    public User login(String email, String pass) {
+        Connection con = DBConnect.getConnecttion();
+        String sql = "select * from user where Email = '" + email + "' and Password = '" + pass + "'";
+        PreparedStatement ps;
+        try {
+            ps = (PreparedStatement) con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                User u = new User();
+                u.setEmail(rs.getString("Email"));
+                u.setFullName(rs.getString("FullName"));
+                con.close();
+                return u;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
 }

@@ -1,15 +1,15 @@
 package controller;
 
-import dao.AdminDAO;
+import dao.UserDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class CheckEmailServlet extends HttpServlet {
+public class CheckEmailUserServlet extends HttpServlet {
 
-    AdminDAO adminDAO = new AdminDAO();
+    UserDAO userDAO = new UserDAO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -19,11 +19,10 @@ public class CheckEmailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        if (adminDAO.checkEmail(request.getParameter("email"))) {
-            response.getWriter().write("<img src=\"../images/not-available.png\" />");
+        if (userDAO.checkEmail(request.getParameter("email"))) {
+            response.getWriter().write("<img src=\"images/not-available.png\" />");
         } else {
-            response.getWriter().write("<img src=\"../images/available.png\" />");
+            response.getWriter().write("<img src=\"images/available.png\" />");
         }
     }
 }

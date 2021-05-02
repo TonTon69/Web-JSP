@@ -36,6 +36,18 @@
         <servlet-name>LoginFacebookServlet</servlet-name>
         <servlet-class>controller.LoginFacebookServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SessionCounter</servlet-name>
+        <servlet-class>controller.SessionCounter</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>controller.UserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckEmailUserServlet</servlet-name>
+        <servlet-class>controller.CheckEmailUserServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManagerSubjectServlet</servlet-name>
         <url-pattern>/ManagerSubjectServlet</url-pattern>
@@ -71,6 +83,18 @@
     <servlet-mapping>
         <servlet-name>LoginFacebookServlet</servlet-name>
         <url-pattern>/LoginFacebookServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SessionCounter</servlet-name>
+        <url-pattern>/SessionCounter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/UserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckEmailUserServlet</servlet-name>
+        <url-pattern>/CheckEmailUserServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

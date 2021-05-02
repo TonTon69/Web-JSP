@@ -1,8 +1,10 @@
-<%-- 
-    Document   : header
-    Created on : Mar 15, 2021, 4:39:22 PM
-    Author     : Admin
---%>
+<%@page import="dao.ViewDAO"%>
+<%@page import="model.Subject"%>
+<%@page import="dao.SubjectDAO"%>
+<%@page import="model.Quiz"%>
+<%@page import="dao.QuizDAO"%>
+<%@page import="model.User"%>
+<%@page import="dao.UserDAO"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +14,26 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%
+            SubjectDAO subjectDAO = new SubjectDAO();
+            QuizDAO quizDAO = new QuizDAO();
+            ViewDAO viewDAO = new ViewDAO();
+        %>
+        <%
+            User u = new User();
+            if (session.getAttribute("user") != null) {
+                u = (User) session.getAttribute("user");
+            } else {
+                u.setFullName("");
+            }
+
+            // Tổng lượt truy cập    
+            int view = viewDAO.getViews();
+            application.setAttribute("view", view);
+            if (view != 0) {
+                viewDAO.updateView();
+            }
+        %>
         <nav class="fh5co-nav" role="navigation">
             <div class="top">
                 <div class="container">
@@ -38,22 +60,39 @@
                             <ul>
                                 <li class="active"><a href="index.jsp">TRANG CHỦ</a></li>                                   
                                 <li class="has-dropdown">
-                                    <a href="luyenthi.jsp">THI THPTQG</a>
+                                    <a href="quiz.jsp?pages=1">THI THPTQG</a>
                                     <ul class="dropdown">                                        
-                                        <li><a href="#">TOÁN HỌC</a></li>
-                                        <li><a href="#">VẬT LÝ</a></li>
-                                        <li><a href="#">HÓA HỌC</a></li>
-                                        <li><a href="#">SINH HỌC</a></li>
-                                        <li><a href="#">TIẾNG ANH</a></li>
+                                        <%
+                                            for (Subject s : subjectDAO.getListSubject()) {
+                                        %>
+                                        <li><a href="quiz.jsp?subjectID=<%=s.getSubjectID()%>&pages=1"><%=s.getSubjectName()%></a></li>                                    
+                                            <%
+                                                }
+                                            %>
                                     </ul>
                                 </li>
-                                <li><a href="https://www.facebook.com/groups/445237046576540">CỘNG ĐỒNG</a></li>
+                                <li><a href="contact.html">DIỄN ĐÀN</a></li>
+                                    <%
+                                        if (session.getAttribute("user") == null) {
+
+                                    %>
                                 <li class="btn-cta"><a href="login.jsp"><span>Đăng nhập</span></a></li>
                                 <li class="btn-cta"><a href="register.jsp"><span>Đăng ký</span></a></li>
+                                    <%} else {
+                                    %>
+                                <li class="has-dropdown">
+                                    <a href="#"><%= u.getFullName()%></a>
+                                    <ul class="dropdown">      
+                                        <li><a href="#"><span>Thông tin</span></a></li>
+                                        <li><a href="LogOutServlet"><span>Đăng xuất</span></a></li>
+                                    </ul>   
+                                </li>
+                                <%}
+                                %>
+
                             </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
         </nav>
