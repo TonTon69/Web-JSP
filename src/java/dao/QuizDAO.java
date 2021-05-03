@@ -85,19 +85,21 @@ public class QuizDAO {
     public Quiz getQuizByQuizID(int quizID) throws Exception {
         Quiz qz = null;
         Connection connection = DBConnect.getConnecttion();
-        String sql = "select * from quiz where QuizID=?";
+        String sql = "Select a.QuizID, a.SubjectID, b.SubjectName, a.QuizName, a.Time, a.TotalQuestion, a.Image, a.CreateDate "
+                + "from quiz a, subject b where a.SubjectID = b.SubjectID and a.QuizID=?";
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setInt(1, quizID);
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
             int qid = rs.getInt("QuizID");
             int sid = rs.getInt("SubjectID");
+            String subjectName = rs.getString("SubjectName");
             String name = rs.getString("QuizName");
             int time = rs.getInt("Time");
             int totalq = rs.getInt("TotalQuestion");
             String image = rs.getString("Image");
             Timestamp createdate = rs.getTimestamp("CreateDate");
-            qz = new Quiz(qid, sid, name, time, totalq, image, createdate);
+            qz = new Quiz(qid, sid, subjectName, name, time, totalq, image, createdate);
         }
         return qz;
     }

@@ -16,6 +16,17 @@ public class Quiz {
     public Quiz() {
     }
 
+    public Quiz(int quizID, int subjectID, String subjectName, String quizName, int time, int totalQuestion, String image, Timestamp createdate) {
+        this.quizID = quizID;
+        this.subjectID = subjectID;
+        this.subjectName = subjectName;
+        this.quizName = quizName;
+        this.time = time;
+        this.totalQuestion = totalQuestion;
+        this.image = image;
+        this.createdate = createdate;
+    }
+
     public Quiz(int quizID, int subjectID, String quizName, int time, int totalQuestion, String image, Timestamp createdate) {
         this.quizID = quizID;
         this.subjectID = subjectID;
