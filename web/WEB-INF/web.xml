@@ -37,10 +37,6 @@
         <servlet-class>controller.LoginFacebookServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SessionCounter</servlet-name>
-        <servlet-class>controller.SessionCounter</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>UserServlet</servlet-name>
         <servlet-class>controller.UserServlet</servlet-class>
     </servlet>
@@ -85,10 +81,6 @@
         <url-pattern>/LoginFacebookServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SessionCounter</servlet-name>
-        <url-pattern>/SessionCounter</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/UserServlet</url-pattern>
     </servlet-mapping>
@@ -96,6 +88,7 @@
         <servlet-name>CheckEmailUserServlet</servlet-name>
         <url-pattern>/CheckEmailUserServlet</url-pattern>
     </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             60
@@ -104,4 +97,9 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    <listener>
+        <listener-class>
+            controller.SessionCounter
+        </listener-class>
+    </listener>
 </web-app>

@@ -71,7 +71,7 @@
                                             %>
                                     </ul>
                                 </li>
-                                <li><a href="contact.html">DIỄN ĐÀN</a></li>
+                                <li><a href="https://www.facebook.com/groups/445237046576540">CỘNG ĐỒNG</a></li>
                                     <%
                                         if (session.getAttribute("user") == null) {
 
@@ -81,10 +81,10 @@
                                     <%} else {
                                     %>
                                 <li class="has-dropdown">
-                                    <a href="#"><%= u.getFullName()%></a>
+                                    <a href="#"><%=u.getFullName()%></a>
                                     <ul class="dropdown">      
                                         <li><a href="#"><span>Thông tin</span></a></li>
-                                        <li><a href="LogOutServlet"><span>Đăng xuất</span></a></li>
+                                        <li><a href="LogoutServlet"><span>Đăng xuất</span></a></li>
                                     </ul>   
                                 </li>
                                 <%}

@@ -1,20 +1,22 @@
 package model;
 
 public class View {
-    private int ViewCount;
 
-    public int getViewCount() {
-        return ViewCount;
-    }
-
-    public void setViewCount(int ViewCount) {
-        this.ViewCount = ViewCount;
-    }
-
-    public View(int ViewCount) {
-        this.ViewCount = ViewCount;
-    }
+    private int viewCount;
 
     public View() {
     }
+
+    public View(int viewCount) {
+        this.viewCount = viewCount;
+    }
+
+    public int getViewCount() {
+        return viewCount;
+    }
+
+    public void setViewCount(int viewCount) {
+        this.viewCount = viewCount;
+    }
+
 }

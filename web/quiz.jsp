@@ -1,8 +1,3 @@
-<%-- 
-    Document   : luyenthi
-    Created on : Mar 17, 2021, 11:11:24 PM
-    Author     : Admin
---%>
 <%@page import="dao.ViewDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -170,10 +165,10 @@
                         %>    
                         <div class="col-md-6 animate-box">
                             <div class="course">
-                                <a href="detail.js?quiz=<%=q.getSubjectID()%>" class="course-img" style="background-image: url(<%=q.getImage()%>)"></a>
+                                <a href="detail.jsp?quiz_id=<%=q.getQuizID()%>&subject_id=<%=q.getSubjectID()%>" class="course-img" style="background-image: url(<%=q.getImage()%>)"></a>
                                 <div class="desc">
                                     <h3>
-                                        <a href="detail.jsp?quiz=<%=q.getSubjectID()%>"><%=q.getQuizName()%></a>                                        
+                                        <a href="detail.jsp?quiz_id=<%=q.getQuizID()%>&subject_id=<%=q.getSubjectID()%>"><%=q.getQuizName()%></a>                                        
                                     </h3>
                                     <p>
                                         <span>
@@ -198,7 +193,7 @@
                                         </span>
                                     </p>
                                     <span>
-                                        <a href="detail.jsp" class="btn btn-primary btn-sm btn-course"> xem chi tiết</a>                                                                                  
+                                        <a href="detail.jsp?quiz_id=<%=q.getQuizID()%>&subject_id=<%=q.getSubjectID()%>" class="btn btn-primary btn-sm btn-course"> xem chi tiết</a>                                                                                  
                                     </span>
                                 </div>
                             </div>

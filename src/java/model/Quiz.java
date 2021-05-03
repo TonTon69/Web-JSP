@@ -6,7 +6,7 @@ public class Quiz {
 
     private int quizID;
     private int subjectID;
-    private String SubjectName;
+    private String subjectName;
     private String quizName;
     private int time;
     private int totalQuestion;
@@ -14,17 +14,6 @@ public class Quiz {
     private Timestamp createdate;
 
     public Quiz() {
-    }
-
-    public Quiz(int quizID, int subjectID, String SubjectName, String quizName, int time, int totalQuestion, String image, Timestamp createdate) {
-        this.quizID = quizID;
-        this.subjectID = subjectID;
-        this.SubjectName = SubjectName;
-        this.quizName = quizName;
-        this.time = time;
-        this.totalQuestion = totalQuestion;
-        this.image = image;
-        this.createdate = createdate;
     }
 
     public Quiz(int quizID, int subjectID, String quizName, int time, int totalQuestion, String image, Timestamp createdate) {
@@ -63,11 +52,11 @@ public class Quiz {
     }
 
     public String getSubjectName() {
-        return SubjectName;
+        return subjectName;
     }
 
-    public void setSubjectName(String SubjectName) {
-        this.SubjectName = SubjectName;
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
     }
 
     public String getQuizName() {

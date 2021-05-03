@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import model.View;
 
 public class ViewDAO {
 
@@ -23,8 +22,7 @@ public class ViewDAO {
 
     public void updateView() throws SQLException {
         Connection connection = DBConnect.getConnecttion();
-        String sql = "UPDATE view\n"
-                + "set ViewCount =ViewCount+1;";
+        String sql = "UPDATE view set ViewCount = ViewCount+1";
         PreparedStatement ps = connection.prepareCall(sql);
         ps.executeUpdate();
     }

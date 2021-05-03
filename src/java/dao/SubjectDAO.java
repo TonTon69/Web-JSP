@@ -20,7 +20,7 @@ public class SubjectDAO {
     // get danh sách môn học
     public ArrayList<Subject> getListSubject() throws SQLException {
         Connection connection = DBConnect.getConnecttion();
-        String sql = "SELECT * FROM subject";
+        String sql = "SELECT * FROM subject order by SubjectID asc";
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<Subject> list = new ArrayList<>();

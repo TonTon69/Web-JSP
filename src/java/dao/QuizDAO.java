@@ -16,7 +16,8 @@ public class QuizDAO {
     // get danh sách đề thi có  phân trang
     public ArrayList<Quiz> getListQuiz(int firstResult, int maxResult) throws SQLException {
         Connection connection = DBConnect.getConnecttion();
-        String sql = "Select QuizID,a.SubjectID, SubjectName,QuizName, Time, TotalQuestion, Image, a.CreateDate from quiz a, subject b where a.SubjectID=b.SubjectID limit ?,?";
+        String sql = "Select a.QuizID, a.SubjectID, b.SubjectName, a.QuizName, a.Time, a.TotalQuestion, a.Image, a.CreateDate "
+                + "from quiz a, subject b where a.SubjectID = b.SubjectID limit ?,?";
         PreparedStatement ps = connection.prepareCall(sql);
         ps.setInt(1, firstResult);
         ps.setInt(2, maxResult);
@@ -37,10 +38,33 @@ public class QuizDAO {
         return list;
     }
 
+    // get 4 đề thi liên quan nhưng mới nhất
+    public ArrayList<Quiz> getListQuizRelate(int subjectID) throws SQLException {
+        Connection connection = DBConnect.getConnecttion();
+        String sql = "Select a.QuizID, a.SubjectID, b.SubjectName, a.QuizName, a.Time, a.TotalQuestion, a.Image, a.CreateDate "
+                + "from quiz a, subject b where a.SubjectID = b.SubjectID and a.SubjectID ='" + subjectID + "' order by a.CreateDate desc limit 4";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Quiz> list = new ArrayList<>();
+        while (rs.next()) {
+            Quiz quiz = new Quiz();
+            quiz.setQuizID(rs.getInt("QuizID"));
+            quiz.setSubjectID(rs.getInt("SubjectID"));
+            quiz.setSubjectName(rs.getString("SubjectName"));
+            quiz.setQuizName(rs.getString("QuizName"));
+            quiz.setTime(rs.getInt("Time"));
+            quiz.setTotalQuestion(rs.getInt("TotalQuestion"));
+            quiz.setImage(rs.getString("Image"));
+            quiz.setCreatedate(rs.getTimestamp("CreateDate"));
+            list.add(quiz);
+        }
+        return list;
+    }
+
     // get danh sách đề thi 
     public ArrayList<Quiz> getListQuiz() throws SQLException {
         Connection connection = DBConnect.getConnecttion();
-        String sql = "SELECT * FROM quiz";
+        String sql = "SELECT * FROM quiz order by QuizID asc";
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<Quiz> list = new ArrayList<>();
@@ -58,12 +82,32 @@ public class QuizDAO {
         return list;
     }
 
-    public Quiz getQuizByID(int id) throws Exception {
+    public Quiz getQuizByQuizID(int quizID) throws Exception {
         Quiz qz = null;
         Connection connection = DBConnect.getConnecttion();
         String sql = "select * from quiz where QuizID=?";
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setInt(1, id);
+        ps.setInt(1, quizID);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            int qid = rs.getInt("QuizID");
+            int sid = rs.getInt("SubjectID");
+            String name = rs.getString("QuizName");
+            int time = rs.getInt("Time");
+            int totalq = rs.getInt("TotalQuestion");
+            String image = rs.getString("Image");
+            Timestamp createdate = rs.getTimestamp("CreateDate");
+            qz = new Quiz(qid, sid, name, time, totalq, image, createdate);
+        }
+        return qz;
+    }
+
+    public Quiz getQuizBySubjectID(int subjectID) throws Exception {
+        Quiz qz = null;
+        Connection connection = DBConnect.getConnecttion();
+        String sql = "select * from quiz where SubjectID=?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setInt(1, subjectID);
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
             int qid = rs.getInt("QuizID");
@@ -136,7 +180,9 @@ public class QuizDAO {
     public ArrayList<Quiz> getListQuizBySubject(int subjectID, int a, int b) {
         Connection conn = DBConnect.getConnecttion();
         ArrayList<Quiz> list = new ArrayList();
-        String sql = "SELECT * FROM quiz WHERE SubjectID ='" + subjectID + "' limit ?,?";
+        String sql = "Select a.QuizID, a.SubjectID, b.SubjectName, a.QuizName, a.Time, a.TotalQuestion, a.Image, a.CreateDate "
+                + "from quiz a, subject b where a.SubjectID = b.SubjectID and a.SubjectID ='" + subjectID + "' limit ?,?";
+//        String sql = "SELECT * FROM quiz WHERE SubjectID ='" + subjectID + "' limit ?,?";
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, a);
@@ -146,6 +192,7 @@ public class QuizDAO {
                 Quiz q = new Quiz();
                 q.setQuizID(rs.getInt("QuizID"));
                 q.setSubjectID(rs.getInt("SubjectID"));
+                q.setSubjectName(rs.getString("SubjectName"));
                 q.setQuizName(rs.getString("QuizName"));
                 q.setTime(rs.getInt("Time"));
                 q.setTotalQuestion(rs.getInt("TotalQuestion"));
@@ -223,8 +270,8 @@ public class QuizDAO {
         return count;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException, Exception {
         QuizDAO s = new QuizDAO();
-        System.out.println(s.getCountQuiz());
+        System.out.println(s.getQuizByQuizID(15));
     }
 }
