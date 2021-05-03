@@ -66,7 +66,7 @@ public class AdminServlet extends HttpServlet {
                     admin.setStatus(Boolean.FALSE);
                     adminDAO.registerAdmin(admin);
                     session.setAttribute("admin", admin);
-                    session.setAttribute("success", "Đăng ký thành công. Vui lòng đợi admin xét duyệt quyền!");
+                    request.setAttribute("success", "Đăng ký thành công. Vui lòng đợi admin xét duyệt quyền!");
                     url = "/admin/register.jsp";
                 } else {
                     out.println("<script type=\"text/javascript\">");
@@ -81,7 +81,7 @@ public class AdminServlet extends HttpServlet {
                     session.setAttribute("admin", ad);
                     url = "/admin/index.jsp";
                 } else {
-                    session.setAttribute("error", "Email hoặc mật khẩu không đúng!");
+                    request.setAttribute("error", "Email hoặc mật khẩu không đúng!");
                     url = "/admin/login.jsp";
                 }
                 break;

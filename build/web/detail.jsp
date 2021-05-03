@@ -1,5 +1,6 @@
 <%@page import="model.Quiz"%>
 <%@page import="dao.QuizDAO"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -102,117 +103,117 @@
                     <div class="row">
                         <div class="detail col-md-9">
                             <h3 class="m-0"><%=quiz.getQuizName()%></h3>
-                            <p>
-                                <span>
-                                    <i class="fa fa-clock"> </i>
-                                    Cập nhật: <%=quiz.getCreatedate()%>
-                                </span>  
-                            </p>
-                            <div class="detail-question">
-                                <span class="mr-2"> 
-                                    <i class="fa fa-bars"> </i>
-                                    Môn:&nbsp;<a href=""><%=quiz.getSubjectName()%></a>
-                                </span>                            
-                                <span class="mr-2">
-                                    <i class="fa fa-list-alt"> </i>
-                                    Số câu hỏi: <%=quiz.getTotalQuestion()%> câu
-                                </span>  
-                                <span class="mr-2">
-                                    <i class="fa fa-clock"> </i>
-                                    Thời gian: <%=quiz.getTime()%> phút
-                                </span>
-                            </div>
+                        <p>
+                            <span>
+                                <i class="fa fa-clock"> </i>
+                                Cập nhật: <fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short" value="<%=quiz.getCreatedate()%>" />
+                            </span>  
+                        </p>
+                        <div class="detail-question">
+                            <span class="mr-2"> 
+                                <i class="fa fa-bars"> </i>
+                                Môn:&nbsp;<a href=""><%=quiz.getSubjectName()%></a>
+                            </span>                            
+                            <span class="mr-2">
+                                <i class="fa fa-list-alt"> </i>
+                                Số câu hỏi: <%=quiz.getTotalQuestion()%> câu
+                            </span>  
+                            <span class="mr-2">
+                                <i class="fa fa-clock"> </i>
+                                Thời gian: <%=quiz.getTime()%> phút
+                            </span>
+                        </div>
 
-                            <div class="regulation">
-                                <h3>Hướng dẫn làm bài trắc nghiệm</h3>
-                                <div class="instruction-box">
-                                    1. Đợi đến khi đến thời gian làm bài
-                                    <br/>
-                                    <hr/>
-                                    2. Click vào nút <b>Bắt đầu làm bài</b> để tiến hành làm bài thi
-                                    <br/>
-                                    <hr/>
-                                    3. Ở mỗi câu hỏi, chọn đáp án đúng
-                                    <br/>
-                                    <hr/>
-                                    4. Hết thời gian làm bài, hệ thống sẽ tự thu bài. Bạn có thể nộp bài trước khi thời gian kết thúc bằng cách nhấn nút <b>Nộp bài</b>
-                                </div>
-                                <p class="note m-0">
-                                    Lưu ý:
-                                </p>
-                                <div class="note-content">
-                                    Những câu <b>chưa chọn đáp án</b> sẽ được tính là <b>câu trả lời sai</b>
-                                    <br/>
-                                    Nếu bạn <b>thoát ra</b> trong lúc chưa hết thời gian làm bài thì kết quả <b>sẽ không được tính</b>
+                        <div class="regulation">
+                            <h3>Hướng dẫn làm bài trắc nghiệm</h3>
+                            <div class="instruction-box">
+                                1. Đợi đến khi đến thời gian làm bài
+                                <br/>
+                                <hr/>
+                                2. Click vào nút <b>Bắt đầu làm bài</b> để tiến hành làm bài thi
+                                <br/>
+                                <hr/>
+                                3. Ở mỗi câu hỏi, chọn đáp án đúng
+                                <br/>
+                                <hr/>
+                                4. Hết thời gian làm bài, hệ thống sẽ tự thu bài. Bạn có thể nộp bài trước khi thời gian kết thúc bằng cách nhấn nút <b>Nộp bài</b>
+                            </div>
+                            <p class="note m-0">
+                                Lưu ý:
+                            </p>
+                            <div class="note-content">
+                                Những câu <b>chưa chọn đáp án</b> sẽ được tính là <b>câu trả lời sai</b>
+                                <br/>
+                                Nếu bạn <b>thoát ra</b> trong lúc chưa hết thời gian làm bài thì kết quả <b>sẽ không được tính</b>
+                            </div>
+                        </div>
+                        <div class="btn-group-do-exam">
+                            <input class="btn-do-exam" type="button" value="Bắt đầu làm bài" />
+                        </div>
+                    </div>                   
+                    <div class="charts col-md-3 p-0">
+                        <header class="card-header">
+                            <h2 class="m-0">Bảng xếp hạng</h2>
+                        </header>
+                        <div class="exam-top-list">
+                            <div class="top-header">
+                                <div class="col name">Tên</div>
+                                <div class="col">Điểm</div>
+                                <div class="col">Thời gian</div>
+                            </div>
+                            <div class="exam-item">
+                                <div class="row-content">
+                                    <div class="col name top1">
+                                        <span>tonton</span>
+                                    </div>
+                                    <div class="col">10đ</div>
+                                    <div class="col">40:35</div>
                                 </div>
                             </div>
-                            <div class="btn-group-do-exam">
-                                <input class="btn-do-exam" type="button" value="Bắt đầu làm bài" />
+                            <hr/>
+                            <div class="exam-item">
+                                <div class="row-content">
+                                    <div class="col name top2">
+                                        <span>hoanghuynh</span>
+                                    </div>
+                                    <div class="col">9đ</div>
+                                    <div class="col">42:75</div>
+                                </div>
                             </div>
-                        </div>                   
-                        <div class="charts col-md-3 p-0">
-                            <header class="card-header">
-                                <h2 class="m-0">Bảng xếp hạng</h2>
-                            </header>
-                            <div class="exam-top-list">
-                                <div class="top-header">
-                                    <div class="col name">Tên</div>
-                                    <div class="col">Điểm</div>
-                                    <div class="col">Thời gian</div>
-                                </div>
-                                <div class="exam-item">
-                                    <div class="row-content">
-                                        <div class="col name top1">
-                                            <span>tonton</span>
-                                        </div>
-                                        <div class="col">10đ</div>
-                                        <div class="col">40:35</div>
+                            <hr/>
+                            <div class="exam-item">
+                                <div class="row-content">
+                                    <div class="col name top3">
+                                        <span>minhhoang</span>
                                     </div>
+                                    <div class="col">8đ</div>
+                                    <div class="col">44:75</div>
                                 </div>
-                                <hr/>
-                                <div class="exam-item">
-                                    <div class="row-content">
-                                        <div class="col name top2">
-                                            <span>hoanghuynh</span>
-                                        </div>
-                                        <div class="col">9đ</div>
-                                        <div class="col">42:75</div>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="exam-item">
-                                    <div class="row-content">
-                                        <div class="col name top3">
-                                            <span>minhhoang</span>
-                                        </div>
-                                        <div class="col">8đ</div>
-                                        <div class="col">44:75</div>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="exam-item">
-                                    <div class="row-content">
-                                        <div class="col name top4">
-                                            <span>annguyen</span>
-                                        </div>
-                                        <div class="col">7đ</div>
-                                        <div class="col">44:75</div>
-                                    </div>
-                                </div>
-                                <hr/>
                             </div>
+                            <hr/>
+                            <div class="exam-item">
+                                <div class="row-content">
+                                    <div class="col name top4">
+                                        <span>annguyen</span>
+                                    </div>
+                                    <div class="col">7đ</div>
+                                    <div class="col">44:75</div>
+                                </div>
+                            </div>
+                            <hr/>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div id="fh5co-course">
-                    <div class="container">
-                        <div class="animate-box mb-5">
-                            <div class="heading_luyenthi text-center">
-                                <h2>Đề thi liên quan</h2>
-                            </div>
+            <div id="fh5co-course">
+                <div class="container">
+                    <div class="animate-box mb-5">
+                        <div class="heading_luyenthi text-center">
+                            <h2>Đề thi liên quan</h2>
                         </div>
-                        <div class="row">
+                    </div>
+                    <div class="row">
                         <%                            for (Quiz q : quizDAO.getListQuizRelate(Integer.parseInt(subjectID))) {
                         %>
                         <div class="col-md-6 animate-box">
@@ -249,7 +250,7 @@
                                         </span>
                                         <span>
                                             <i class="far fa-edit"></i>
-                                            Đăng tải <%=q.getCreatedate()%>
+                                            Đăng tải: <fmt:formatDate pattern="dd-MM-yyyy" value="<%=q.getCreatedate()%>" />
                                         </span>
                                     </p>
                                     <span

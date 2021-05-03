@@ -61,6 +61,29 @@ public class QuizDAO {
         return list;
     }
 
+    // get 4 đề thi mới nhất
+    public ArrayList<Quiz> getListQuizLatest() throws SQLException {
+        Connection connection = DBConnect.getConnecttion();
+        String sql = "Select a.QuizID, a.SubjectID, b.SubjectName, a.QuizName, a.Time, a.TotalQuestion, a.Image, a.CreateDate "
+                + "from quiz a, subject b where a.SubjectID = b.SubjectID order by a.CreateDate desc limit 4";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Quiz> list = new ArrayList<>();
+        while (rs.next()) {
+            Quiz quiz = new Quiz();
+            quiz.setQuizID(rs.getInt("QuizID"));
+            quiz.setSubjectID(rs.getInt("SubjectID"));
+            quiz.setSubjectName(rs.getString("SubjectName"));
+            quiz.setQuizName(rs.getString("QuizName"));
+            quiz.setTime(rs.getInt("Time"));
+            quiz.setTotalQuestion(rs.getInt("TotalQuestion"));
+            quiz.setImage(rs.getString("Image"));
+            quiz.setCreatedate(rs.getTimestamp("CreateDate"));
+            list.add(quiz);
+        }
+        return list;
+    }
+
     // get danh sách đề thi 
     public ArrayList<Quiz> getListQuiz() throws SQLException {
         Connection connection = DBConnect.getConnecttion();

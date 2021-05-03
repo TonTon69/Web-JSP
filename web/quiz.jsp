@@ -5,6 +5,7 @@
 <%@page import="dao.SubjectDAO"%>
 <%@page import="model.Quiz"%>
 <%@page import="dao.QuizDAO"%>   
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -189,7 +190,7 @@
                                         </span>
                                         <span>
                                             <i class="far fa-edit"></i>
-                                            Đăng tải <%=q.getCreatedate()%>
+                                            Đăng tải: <fmt:formatDate pattern="dd-MM-yyyy" value="<%=q.getCreatedate()%>" />
                                         </span>
                                     </p>
                                     <span>

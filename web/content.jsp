@@ -5,6 +5,7 @@
 <%@page import="dao.ViewDAO"%>
 <%@page import="dao.QuizDAO"%>
 <%@page import="dao.SubjectDAO"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -119,27 +120,28 @@
                 <div class="row animate-box">
                     <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
                         <h2>Đề thi mới nhất</h2>
-                        <p>" Những gì chúng ta biết ngày hôm nay sẽ lỗi thời vào ngày hôm sau. Nếu chúng ta ngừng học thì chúng ta sẽ ngừng phát triển."</p>
+                        <p class="m-0">"Những gì chúng ta biết ngày hôm nay sẽ lỗi thời vào ngày hôm sau.</p>
+                        <p>Nếu chúng ta ngừng học thì chúng ta sẽ ngừng phát triển."</p>
                     </div>
                 </div>
                 <div class="row">
                     <%
-                        for (Quiz q : quizDAO.getListQuiz(1, 4)) {
+                        for (Quiz q : quizDAO.getListQuizLatest()) {
                     %>    
                     <div class="col-md-6 animate-box">
                         <div class="course">
-                            <a href="detail.jsp" class="course-img" style="background-image: url(<%=q.getImage()%>);">
+                            <a href="detail.jsp?quiz_id=<%=q.getQuizID()%>&subject_id=<%=q.getSubjectID()%>" class="course-img" style="background-image: url(<%=q.getImage()%>);">
                             </a>
                             <div class="desc">
-                                <h3><a href="detail.jsp"><%=q.getQuizName()%></a></h3>
+                                <h3><a href="detail.jsp?quiz_id=<%=q.getQuizID()%>&subject_id=<%=q.getSubjectID()%>"><%=q.getQuizName()%></a></h3>
                                 <p style="font-size: 15px; display: grid" class="ltin">
                                     <span><i class="fa fa-bars" aria-hidden="true"></i> <a href="quiz.jsp?subjectID=<%=q.getSubjectID()%>&pages=1"><%=q.getSubjectName()%></a></span>                                             
                                     <span><i class="fa fa-question-circle" aria-hidden="true"></i> Số câu hỏi: <b><%=q.getTotalQuestion()%> </b> </span>
                                     <span><i class="fa fa-clock" aria-hidden="true"></i>  Thời gian: <b><%=q.getTime()%></b></span> 
                                     <span><i class="fa fa-signal" aria-hidden="true"></i>  Lượt thi: 3071</span>
-                                    <span><i class="fas fa-edit" aria-hidden="true"></i>  Ngày đăng: <%=q.getCreatedate()%></span>
+                                    <span><i class="fas fa-edit" aria-hidden="true"></i> Đăng tải: <fmt:formatDate pattern="dd-MM-yyyy" value="<%=q.getCreatedate()%>" /></span>
                                 </p>
-                                <span><a href="detail.jsp" class="btn btn-primary btn-sm btn-course">Xem chi tiết</a></span>
+                                <span><a href="detail.jsp?quiz_id=<%=q.getQuizID()%>&subject_id=<%=q.getSubjectID()%>" class="btn btn-primary btn-sm btn-course">Xem chi tiết</a></span>
                             </div>
                         </div>
                     </div>
