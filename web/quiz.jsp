@@ -148,13 +148,15 @@
                                 for (Subject s : subjectDAO.getListSubject()) {
 
                             %>
-                            <a href="quiz.jsp?subjectID=<%=s.getSubjectID()%>&pages=1">
-                                <button class="btn" value="<%=s.getSubjectName()%>" id="<%=s.getSubjectID()%>">
-                                    <i class="<%=s.getSubjectIcon()%>"></i>
-                                    <%=s.getSubjectName()%>
-                                    <span>(100)</span>
-                                </button>
-                            </a>
+                            <div class="menu_monthi" id="menu_monthi">
+                                <a class="link_monthi" href="quiz.jsp?subjectID=<%=s.getSubjectID()%>&pages=1">
+                                    <button class="btn" value="<%=s.getSubjectName()%>" id="<%=s.getSubjectID()%>">
+                                        <i class="<%=s.getSubjectIcon()%>"></i>
+                                        <%=s.getSubjectName()%>
+                                        <span>(100)</span>
+                                    </button>
+                                </a>
+                            </div>
                             <%
                                 }
                             %> 
@@ -321,38 +323,38 @@
         <!-- Main -->
         <script src="js/main.js"></script>
         <script>
+
             var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
-
-            // default example
-            simplyCountdown(".simply-countdown-one", {
-                year: d.getFullYear(),
-                month: d.getMonth() + 1,
-                day: d.getDate(),
-            });
-
-            //jQuery example
-            $("#simply-countdown-losange").simplyCountdown({
-                year: d.getFullYear(),
-                month: d.getMonth() + 1,
-                day: d.getDate(),
-                enableUtc: false,
+                    // default example
+                    simplyCountdown(".simply-countdown-one", {
+                    year: d.getFullYear(),
+                            month: d.getMonth() + 1,
+                            day: d.getDate(),
+                    });
+                    //jQuery example
+                    $("#simply-countdown-losange").simplyCountdown({
+            year: d.getFullYear(),
+                    month: d.getMonth() + 1,
+                    day: d.getDate(),
+                    enableUtc: false,
             });
         </script>
         <!--Active click-->
-        <script>
-            const menu = document.querySelector('.menu_monthi');
-            const btns = document.querySelectorAll('.btn');
-
-            menu.addEventListener('click', e => {
-
-                btns.forEach(btn => {
-
-                    if (btn.getAttribute('id') === e.target.getAttribute('id'))
-                        btn.classList.add('monthiactive');
-                    else
-                        btn.classList.remove('monthiactive');
-                });
-            });
-        </script>
+        <!--        <script>
+                    
+        //            const menu = document.getElementById("#menu_monthi");
+        //            const btns = document.querySelectorAll('.btn');
+        //
+        //            menu.addEventListener('click', e => {
+        //
+        //                btns.forEach(btn => {
+        //
+        //                    if (btn.getAttribute('id') === e.target.getAttribute('id'))
+        //                        btn.classList.add('active');
+        //                    else
+        //                        btn.classList.remove('active');
+        //                });
+        //            });
+                </script>-->
     </body>
 </html>

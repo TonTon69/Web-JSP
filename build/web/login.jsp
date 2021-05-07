@@ -58,10 +58,10 @@
                             </form>
                             <div class="social-login">
                                 <span class="social-label">Đăng nhập bằng</span>
-
                                 <ul class="socials">                                
                                     <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                                    <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                                    <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>                                    
+                                    <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
                                 </ul>
                                 <!--<div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="true"></div>-->
                             </div>
@@ -136,11 +136,11 @@
                 });
             }
         </script>
-        <div
-            class="fb-like"
-            data-share="true"
-            data-width="450"
-            data-show-faces="true">
-        </div>
+        <!--        <div
+                    class="fb-like"
+                    data-share="true"
+                    data-width="450"
+                    data-show-faces="true">
+                </div>-->
     </body>
 </html>

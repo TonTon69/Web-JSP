@@ -66,7 +66,7 @@
                             <div class="social-login">
                                 <span class="social-label">Đăng nhập bằng</span>
                                 <ul class="socials">
-                                    <li><a href="https://www.facebook.com/dialog/oauth?client_id=3495163843919139&redirect_uri=http://localhost:8080/hatquiz/LoginFacebookServlet"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                                    <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
                                     <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
                                     <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
                                 </ul>
@@ -80,29 +80,5 @@
         <script src="${root}/vendor/jquery/jquery.min.js"></script>
         <script src="${root}/js/main.js"></script>
 
-        <script>
-            window.fbAsyncInit = function () {
-                FB.init({
-                    appId: '3495163843919139',
-                    cookie: true,
-                    xfbml: true,
-                    version: 'v10.0'
-                });
-
-                FB.AppEvents.logPageView();
-
-            };
-
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {
-                    return;
-                }
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "https://connect.facebook.net/en_US/sdk.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        </script>
     </body>
 </html>

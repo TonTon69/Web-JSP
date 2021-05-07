@@ -1,3 +1,5 @@
+<%@page import="model.Menu"%>
+<%@page import="dao.MenuDAO"%>
 <%@page import="dao.ViewDAO"%>
 <%@page import="model.Subject"%>
 <%@page import="dao.SubjectDAO"%>
@@ -18,8 +20,8 @@
             SubjectDAO subjectDAO = new SubjectDAO();
             QuizDAO quizDAO = new QuizDAO();
             ViewDAO viewDAO = new ViewDAO();
-        %>
-        <%
+            MenuDAO menuDAO = new MenuDAO();
+
             User u = new User();
             if (session.getAttribute("user") != null) {
                 u = (User) session.getAttribute("user");
@@ -58,20 +60,11 @@
                         </div>
                         <div class="col-xs-10 text-right menu-1">
                             <ul>
-                                <li class="active"><a href="index.jsp">TRANG CHỦ</a></li>                                   
-                                <li class="has-dropdown">
-                                    <a href="quiz.jsp?pages=1">THI THPTQG</a>
-                                    <ul class="dropdown">                                        
-                                        <%
-                                            for (Subject s : subjectDAO.getListSubject()) {
-                                        %>
-                                        <li><a href="quiz.jsp?subjectID=<%=s.getSubjectID()%>&pages=1"><%=s.getSubjectName()%></a></li>                                    
-                                            <%
-                                                }
-                                            %>
-                                    </ul>
-                                </li>
-                                <li><a href="https://www.facebook.com/groups/445237046576540">CỘNG ĐỒNG</a></li>
+                                <%
+                                    for (Menu m : menuDAO.getListMenu()) {
+                                %>
+                                <li><a class="link_menu" href="<%=m.getUrl()%>"><%=m.getName()%></a></li>                                   
+                                    <%}%>
                                     <%
                                         if (session.getAttribute("user") == null) {
 

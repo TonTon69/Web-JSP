@@ -99,10 +99,10 @@
                                     <input type="password" name="conpassword" id="conpassword" placeholder="Nhập lại mật khẩu" maxlength="30" required="yes" />
                                 </div>
 
-                                <%if (request.getAttribute("success") != null) {%>
+                                <%if (session.getAttribute("success") != null) {%>
                                 <div>
                                     <p style="color: red">
-                                        <%=request.getAttribute("success")%>
+                                        <%=session.getAttribute("success")%>
                                     </p>
                                 </div>                                    
                                 <%}%>

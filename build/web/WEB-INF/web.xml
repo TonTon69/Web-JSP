@@ -44,6 +44,10 @@
         <servlet-name>CheckEmailUserServlet</servlet-name>
         <servlet-class>controller.CheckEmailUserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManagerMenuServlet</servlet-name>
+        <servlet-class>controller.ManagerMenuServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManagerSubjectServlet</servlet-name>
         <url-pattern>/ManagerSubjectServlet</url-pattern>
@@ -88,7 +92,15 @@
         <servlet-name>CheckEmailUserServlet</servlet-name>
         <url-pattern>/CheckEmailUserServlet</url-pattern>
     </servlet-mapping>
-    
+    <listener>
+        <listener-class>
+            controller.SessionCounter
+        </listener-class>
+    </listener>
+    <servlet-mapping>
+        <servlet-name>ManagerMenuServlet</servlet-name>
+        <url-pattern>/ManagerMenuServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             60
@@ -97,9 +109,4 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    <listener>
-        <listener-class>
-            controller.SessionCounter
-        </listener-class>
-    </listener>
 </web-app>
