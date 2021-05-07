@@ -12,7 +12,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Education &mdash; HAT</title>
+        <title>Quiz &mdash; HAT</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
             name="description"

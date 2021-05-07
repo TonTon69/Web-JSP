@@ -102,7 +102,7 @@
                             </div>
                             <div class="col-md-3 col-sm-6 text-center animate-box">
                                 <span class="icon"><i class="fas fa-bolt"></i></span>
-                                <span class="fh5co-counter js-counter" data-from="0" data-to="<%=counter%>" data-speed="5000" data-refresh-interval="50"></span>
+                                <span class="fh5co-counter js-counter" data-from="0" data-to="<%=counter.getActiveSessionNumber()%>" data-speed="5000" data-refresh-interval="50"></span>
                                 <span class="fh5co-counter-label">Đang truy cập</span>
                             </div>
                             <div class="col-md-3 col-sm-6 text-center animate-box">
