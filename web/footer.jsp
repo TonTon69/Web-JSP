@@ -43,9 +43,9 @@
                     <div class="col-md-4 col-sm-4 col-xs-6 col-md-push-1 fh5co-widget">
                         <h3>THÔNG TIN LIÊN HỆ</h3>
                         <ul class="fh5co-footer-links">
-                            <li><a href="#">Địa chỉ: SỐ 113, đường Nguyễn Tất Thành, Q4, TP HCM</a></li>
+                            <li><a href="#">Địa chỉ: Số 113, đường Nguyễn Tất Thành, Q4, TP HCM</a></li>
                             <li><a href="#">Điện thoại: 0123456789</a></li>
-                            <li><a href="#">Email: HatQuiz@gmail.com</a></li>                            
+                            <li><a href="#">Email: hatquiz@edu.com.vn</a></li>                            
                         </ul>
                     </div>
                 </div>

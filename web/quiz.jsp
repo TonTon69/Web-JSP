@@ -34,7 +34,6 @@
         <meta name="twitter:image" content="" />
         <meta name="twitter:url" content="" />
         <meta name="twitter:card" content="" />
-
         <link
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
             rel="stylesheet"
@@ -72,7 +71,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>     
 
         <!-- Modernizr JS -->
-        <script src="js/modernizr-2.6.2.min.js"></script>      
+        <script src="js/modernizr-2.6.2.min.js"></script>     
     </head>
     <body>
         <div id="page">
@@ -122,43 +121,51 @@
                 <div class="breadcrumb-wrap">
                     <div class="container-fluid">
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
-                            <li class="breadcrumb-item">Thi THPT QG</li>
-                        </ul>
-                    </div>
+                        <%
+                            if (request.getParameter("subjectID") != null) {
+                                subjectID = (int) Integer.parseInt(request.getParameter("subjectID"));
+                                Quiz qz = new QuizDAO().getQuizBySubjectID(subjectID);
+                        %>
+                        <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="quiz.jsp?pages=1">Thi THPT QG</a></li>
+                        <li class="breadcrumb-item"><%=qz.getSubjectName()%></li>
+                            <%} else {%>
+                        <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
+                        <li class="breadcrumb-item">Thi THPT QG</li>
+                            <%}%>
+                    </ul>
                 </div>
+            </div>
 
-                <div id="fh5co-course">
-                    <div class="container">
-                        <div class="animate-box mb-5">
-                            <div class="heading_luyenthi text-center">
-                                <h2>Luyện thi trắc nghiệm online - Miễn phí</h2>
-                            </div>
-                            <div class="menu_monthi" id="menu_monthi">
-                                <a href="quiz.jsp?pages=1">
-                                    <button class="btn monthiactive">
-                                        <i class="fa fa-graduation-cap"></i>
-                                        Tất cả
-                                        <span>(<%=countQ%>)</span>
-                                </button>
-                            </a>
+            <div id="fh5co-course">
+                <div class="container">
+                    <div class="animate-box mb-5">
+                        <div class="heading_luyenthi text-center">
+                            <h2>Luyện thi trắc nghiệm online - Miễn phí</h2>
+                        </div>
+                        <ul class="menu_monthi" id="menu_monthi" style="list-style: none">
+                            <li class="monthi_item">
+                                <a class="btn link_monthi active" href="quiz.jsp?pages=1">
+                                    <i class="fa fa-graduation-cap"></i>
+                                    Tất cả
+                                    <span>(<%=countQ%>)</span>
+                                </a>
+                            </li>
                             <%
                                 for (Subject s : subjectDAO.getListSubject()) {
 
                             %>
-                            <div class="menu_monthi" id="menu_monthi">
-                                <a class="link_monthi" href="quiz.jsp?subjectID=<%=s.getSubjectID()%>&pages=1">
-                                    <button class="btn" value="<%=s.getSubjectName()%>" id="<%=s.getSubjectID()%>">
-                                        <i class="<%=s.getSubjectIcon()%>"></i>
-                                        <%=s.getSubjectName()%>
-                                        <span>(100)</span>
-                                    </button>
-                                </a>
-                            </div>
+                            <li class="monthi_item">
+                                <a class="btn link_monthi" href="quiz.jsp?subjectID=<%=s.getSubjectID()%>&pages=1">
+                                    <i class="<%=s.getSubjectIcon()%>"></i>
+                                    <%=s.getSubjectName()%>
+                                    <span>(100)</span>
+                                </a> 
+                            </li>
                             <%
                                 }
                             %> 
-                        </div>
+                        </ul>
                     </div>
                     <div class="row">
                         <%
@@ -321,8 +328,10 @@
         <script src="js/simplyCountdown.js"></script>
         <!-- Main -->
         <script src="js/main.js"></script>
-        <script>
-
+        <script type="text/javascript">
+            $(document).on('click', '.menu_monthi .monthi_item .btn.link_monthi', function () {
+                $(this).addClass('active').siblings().removeClass('active');
+            })
             var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
             // default example
             simplyCountdown(".simply-countdown-one", {
@@ -338,22 +347,5 @@
                 enableUtc: false,
             });
         </script>
-        <!--Active click-->
-        <!--        <script>
-                    
-        //            const menu = document.getElementById("#menu_monthi");
-        //            const btns = document.querySelectorAll('.btn');
-        //
-        //            menu.addEventListener('click', e => {
-        //
-        //                btns.forEach(btn => {
-        //
-        //                    if (btn.getAttribute('id') === e.target.getAttribute('id'))
-        //                        btn.classList.add('active');
-        //                    else
-        //                        btn.classList.remove('active');
-        //                });
-        //            });
-                </script>-->
     </body>
 </html>

@@ -9,13 +9,11 @@ hr{
     justify-content: space-between;
     margin-bottom: 40px;
 }
-.monthiactive,
-.btn:hover {
-    background-color: #2d6cde;
-    color: #fff;
+.monthi_item .link_monthi{
+    background-color: #f5f5f5;
 }
-
-.link_monthi.active {  
+.monthi_item .btn.link_monthi.active,
+.btn:hover {
     background-color: #2d6cde;
     color: #fff;
 }
