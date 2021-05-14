@@ -35,7 +35,7 @@
                             <form action="${root}/UserServlet" method="POST" class="register-form" id="login-form">
                                 <div class="form-group">
                                     <label for="email"><i class="zmdi zmdi-email material-icons-email"></i></label>                                    
-                                    <input type="email" name="email" id="email" placeholder="Email"/>
+                                    <input type="email" name="email" id="email" required="yes" placeholder="Email"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="pass"><i class="zmdi zmdi-lock"></i></label>

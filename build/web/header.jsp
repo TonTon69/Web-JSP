@@ -17,8 +17,6 @@
     </head>
     <body>
         <%
-            SubjectDAO subjectDAO = new SubjectDAO();
-            QuizDAO quizDAO = new QuizDAO();
             ViewDAO viewDAO = new ViewDAO();
             MenuDAO menuDAO = new MenuDAO();
 
@@ -44,9 +42,9 @@
                             <p class="site">hatquiz.net</p>
                             <p class="num">Call: +01 123 456 7890</p>
                             <ul class="fh5co-social">
-                                <li><a href="https://www.facebook.com/profile.php?id=100009726633978"><i class="icon-facebook2"></i></a></li>
-                                <li><a href="https://www.instagram.com/phucan332/"><i class="icon-instagram"></i></a></li>
-                                <li><a href="https://github.com/Hunterfairy47"><i class="icon-github"></i></a></li>
+                                <li><a href="https://www.facebook.com/groups/445237046576540"><i class="icon-facebook2"></i></a></li>
+                                <li><a href="https://www.facebook.com/groups/445237046576540"><i class="icon-instagram"></i></a></li>
+                                <li><a href="https://www.facebook.com/groups/445237046576540"><i class="icon-github"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -63,18 +61,25 @@
                                 <%
                                     for (Menu m : menuDAO.getListMenu()) {
                                 %>
-                                <li><a class="link_menu" href="<%=m.getUrl()%>"><%=m.getName()%></a></li>                                   
-                                    <%}%>
-                                    <%
-                                        if (session.getAttribute("user") == null) {
+                                <li>
+                                    <a class="link_menu" href="<%=m.getUrl()%>">
+                                        <%=m.getName()%>
+                                    </a>
+                                </li>                                   
+                                <%}%>
+                                <%
+                                    if (session.getAttribute("user") == null) {
 
-                                    %>
+                                %>
                                 <li class="btn-cta"><a href="login.jsp"><span>Đăng nhập</span></a></li>
                                 <li class="btn-cta"><a href="register.jsp"><span>Đăng ký</span></a></li>
                                     <%} else {
                                     %>
                                 <li class="has-dropdown">
-                                    <a href="#"><%=u.getFullName()%></a>
+                                    <a href="#">
+                                        <i class="fas fa-user-tie mr-1"></i>
+                                        <%=u.getFullName()%>
+                                    </a>
                                     <ul class="dropdown">      
                                         <li><a href="#"><span>Thông tin</span></a></li>
                                         <li><a href="LogoutServlet"><span>Đăng xuất</span></a></li>

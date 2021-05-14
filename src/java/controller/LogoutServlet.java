@@ -21,7 +21,7 @@ public class LogoutServlet extends HttpServlet {
             //huy session
             session.invalidate();
             //quay ve login
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
             rd.forward(request, response);
         } finally {
             out.close();
