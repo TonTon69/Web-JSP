@@ -94,15 +94,16 @@
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
                             <li class="breadcrumb-item"><a href="quiz.jsp?pages=1">Thi THPT QG</a></li>
-                            <li class="breadcrumb-item">Chi tiết đề thi</li>
-                        </ul>
-                    </div>
+                            <li class="breadcrumb-item"><a href="quiz.jsp?subjectID=<%=quiz.getSubjectID()%>&pages=1"><%=quiz.getSubjectName()%></a></li>
+                            <li class="breadcrumb-item"><%=quiz.getQuizName()%></li>
+                    </ul>
                 </div>
+            </div>
 
-                <div class="container">
-                    <div class="row">
-                        <div class="detail col-md-9">
-                            <h3 class="m-0"><%=quiz.getQuizName()%></h3>
+            <div class="container">
+                <div class="row">
+                    <div class="detail col-md-9">
+                        <h3 class="m-0"><%=quiz.getQuizName()%></h3>
                         <p>
                             <span>
                                 <i class="fa fa-clock"> </i>
