@@ -145,7 +145,7 @@
                         </div>
                         <ul class="menu_monthi" id="menu_monthi" style="list-style: none">
                             <li class="monthi_item">
-                                <a class="btn link_monthi active" href="quiz.jsp?pages=1">
+                                <a class="btn link_monthi" id="all" href="quiz.jsp?pages=1">
                                     <i class="fa fa-graduation-cap"></i>
                                     Tất cả
                                     <span>(<%=countQ%>)</span>
@@ -156,7 +156,7 @@
 
                             %>
                             <li class="monthi_item">
-                                <a class="btn link_monthi" href="quiz.jsp?subjectID=<%=s.getSubjectID()%>&pages=1">
+                                <a class="btn link_monthi" href="quiz.jsp?subjectID=<%=s.getSubjectID()%>&pages=1" id="<%=s.getSubjectID()%>">
                                     <i class="<%=s.getSubjectIcon()%>"></i>
                                     <%=s.getSubjectName()%>
                                     <span>(100)</span>
@@ -329,9 +329,15 @@
         <!-- Main -->
         <script src="js/main.js"></script>
         <script type="text/javascript">
-            $(document).on('click', '.menu_monthi .monthi_item .btn.link_monthi', function () {
-                $(this).addClass('active').siblings().removeClass('active');
-            })
+            //active link 
+            const urlParams = new URLSearchParams(window.location.search);
+            const myParam = urlParams.get('subjectID');
+            if (myParam === null) {
+                document.getElementById("all").classList.add('active');
+            } else {
+                document.getElementById(myParam).classList.add('active');
+            }
+            //
             var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
             // default example
             simplyCountdown(".simply-countdown-one", {
