@@ -57,7 +57,6 @@
                     return false;
                 }
             }
-
         </script>
         <style>
             #user-result{
@@ -108,9 +107,10 @@
 
                                 %>
                                 <div>
-                                    <p  style="color:red"><%=session.getAttribute("errorEmail")%></p>
+                                    <p style="color:red"><%=session.getAttribute("errorEmail")%></p>
                                 </div>
                                 <%
+                                        session.removeAttribute("errorEmail");
                                     }
                                 %>
                                 <div class="form-group form-button">
