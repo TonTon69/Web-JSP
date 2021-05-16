@@ -132,31 +132,63 @@
             </div>
             <jsp:include page="footer.jsp"></jsp:include>    
         </div>
+        <div class="gototop js-top">
+            <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+        </div>
 
+
+        <!-- script for breadcrumb -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" ></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"></script>
+
+        <!-- jQuery -->
+        <script src="js/jquery.min.js"></script>
+        <!-- jQuery Easing -->
+        <script src="js/jquery.easing.1.3.js"></script>
+        <!-- Bootstrap -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- Waypoints -->
+        <script src="js/jquery.waypoints.min.js"></script>
+        <!-- Stellar Parallax -->
+        <script src="js/jquery.stellar.min.js"></script>
+        <!-- Carousel -->
+        <script src="js/owl.carousel.min.js"></script>
+        <!-- Flexslider -->
+        <script src="js/jquery.flexslider-min.js"></script>
+        <!-- countTo -->
+        <script src="js/jquery.countTo.js"></script>
+        <!-- Magnific Popup -->
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/magnific-popup-options.js"></script>
+        <!-- Count Down -->
+        <script src="js/simplyCountdown.js"></script>
+        <!-- Main -->
+        <script src="js/main.js"></script>
+        <script>
+                        function onload() {
+                            var message = document.getElementById("message").value;
+                            if (message) {
+                                alert(message);
+                                return false;
+                            }
+                        }
+                        function validate()
+                        {
+                            var newpass = document.getElementById("newpass").value;
+                            var conpass = document.getElementById("conpass").value;
+
+                            if (newpass.length < 6) {
+                                alert("Mật khẩu ít nhất 6 ký tự");
+                                return false;
+                            }
+                            if (newpass === conpass) {
+                                return true;
+                            } else {
+                                alert("Mật khẩu nhập lại không trùng khớp");
+                                return false;
+                            }
+                        }
+        </script>  
     </body>
-    <script>
-        function onload() {
-            var message = document.getElementById("message").value;
-            if (message) {
-                alert(message);
-                return false;
-            }
-        }
-        function validate()
-        {
-            var newpass = document.getElementById("newpass").value;
-            var conpass = document.getElementById("conpass").value;
-
-            if (newpass.length < 6) {
-                alert("Mật khẩu ít nhất 6 ký tự");
-                return false;
-            }
-            if (newpass === conpass) {
-                return true;
-            } else {
-                alert("Mật khẩu nhập lại không trùng khớp");
-                return false;
-            }
-        }
-    </script>    
 </html>
