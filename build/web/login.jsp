@@ -38,8 +38,8 @@
                                     <input type="email" name="email" id="email" required="yes" placeholder="Email"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                    <input type="password" name="pass" required="yes" id="pass" placeholder="Mật khẩu"/>
+                                    <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                                    <input type="password" name="password" required="yes" id="password" placeholder="Mật khẩu"/>
                                 </div>
                                 <%
                                     if (session.getAttribute("error") != null) {

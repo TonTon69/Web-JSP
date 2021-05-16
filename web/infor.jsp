@@ -1,3 +1,9 @@
+<%-- 
+    Document   : infor
+    Created on : May 7, 2021, 4:02:01 PM
+    Author     : Acer
+--%>
+
 <%@page import="dao.UserDAO"%>
 <%@page import="model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -88,40 +94,41 @@
                 <div class="main">
                     <div style="width: 94%" class="infor_nav">
                         <p class="p_doc align_center tit_mem">
-                            <a class="ac" href="infor.jsp?UserID=<%=users.getUserID()%>"><i class="fa fa-info-circle" aria-hidden="true"></i> Thông tin chung</a> 
+                            <a class="ac" href="infor.jsp?user_id=<%=users.getUserID()%>"><i class="fa fa-info-circle" aria-hidden="true"></i> Thông tin chung</a> 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                       
                         <a class="" href="history.jsp"><i class="fa fa-clock" aria-hidden="true"></i> Thi trắc nghiệm</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-                        <a class="" href="changepass.jsp?UserID=<%=users.getUserID()%>"><i class="fa fa-key" aria-hidden="true"></i> Đổi mật khẩu</a>
+                        <a class="" href="changepass.jsp?user_id=<%=users.getUserID()%>"><i class="fa fa-key" aria-hidden="true"></i> Đổi mật khẩu</a>
                     </p>
                 </div>
                 <div class="infor_nav">
                     <%
-                        String id = request.getParameter("UserID");
-                        Users u = new UserDAO().getUserByID(Integer.parseInt(id));
+                        String id = request.getParameter("user_id");
+                        User u = new UserDAO().getUserByID(Integer.parseInt(id));
                     %>
                     <h1>Thông tin chung</h1>                
                     <%
-                        if (session.getAttribute("success") != null) {
+                        if (session.getAttribute("update_success") != null) {
                     %>
                     <div>
-                        <p style="color:red"><%=session.getAttribute("success")%></p>
+                        <p style="color:red"><%=session.getAttribute("update_success")%></p>
                     </div>
                     <%
+                            session.removeAttribute("update_success");
                         }
                     %>
-                    <form class="form" action="UsersServlet" method="post">
+                    <form class="form" action="UserServlet" method="post">
                         <table style="text-align: left; line-height: 22px;">
                             <tbody><tr>
                                     <td>Tài khoản đăng nhập:&nbsp;&nbsp;&nbsp;</td><td><b><%=u.getEmail()%></b></td>
                                 </tr>                                                                 
                             </tbody>
                         </table>
-                        <input type="text" name="username" value="<%=u.getUserName()%>" required="yes" maxlength="30" placeholder="Họ và tên">                                           
+                        <input type="text" name="name" value="<%=u.getFullName()%>" required="yes" maxlength="30" placeholder="Họ và tên">                                           
                         <input type="text" name="phone" value="<%=u.getPhone()%>" required="yes" maxlength="10" placeholder="Số điện thoại">
                         <input type="text" name="address" value="<%=u.getAddress()%>" required="yes" maxlength="250" placeholder="Địa chỉ">   
                         <input type="hidden" name="command" value="update"> 
-                        <input type="hidden" name="UserID" value="<%=request.getParameter("UserID")%>"> 
+                        <input type="hidden" name="user_id" value="<%=request.getParameter("user_id")%>"> 
                         <input type="submit" value="Cập nhật" name="capnhat">
                     </form>
                     <p class="align_center"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>
@@ -134,6 +141,5 @@
             </div>
             <jsp:include page="footer.jsp"></jsp:include>    
         </div>
-
     </body>
 </html>

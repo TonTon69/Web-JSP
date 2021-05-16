@@ -25,6 +25,12 @@ public class UserServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
+        String userID = request.getParameter("user_id");
+        String userName = request.getParameter("name");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
         String command = request.getParameter("command");
         String url = "";
         User users = new User();
@@ -32,12 +38,12 @@ public class UserServlet extends HttpServlet {
         try {
             switch (command) {
                 case "insert":
-                    if (!usersDAO.checkEmail(request.getParameter("email"))) {
-                        users.setFullName(request.getParameter("name"));
-                        users.setEmail(request.getParameter("email"));
-                        users.setPassword(MD5.encryption(request.getParameter("password")));
-                        users.setPhone(request.getParameter("phone"));
-                        users.setAddress(request.getParameter("address"));
+                    if (!usersDAO.checkEmail(email)) {
+                        users.setFullName(userName);
+                        users.setEmail(email);
+                        users.setPassword(MD5.encryption(password));
+                        users.setPhone(phone);
+                        users.setAddress(address);
                         usersDAO.insert(users);
                         session.setAttribute("user", users);
                         url = "/login.jsp";
@@ -47,13 +53,30 @@ public class UserServlet extends HttpServlet {
                     }
                     break;
                 case "login":
-                    users = usersDAO.login(request.getParameter("email"), MD5.encryption(request.getParameter("pass")));
+                    users = usersDAO.login(email, MD5.encryption(password));
                     if (users != null) {
                         session.setAttribute("user", users);
                         url = "/index.jsp";
                     } else {
                         session.setAttribute("error", "Email hoặc mật khẩu không đúng!");
                         url = "/login.jsp";
+                    }
+                    break;
+                case "update":
+                    usersDAO.updateUser(new User(Integer.parseInt(userID), userName, phone, address));
+                    session.setAttribute("update_success", "Cập nhật thông tin thành công!");
+                    url = "/infor.jsp";
+                    break;
+                case "reset":
+                    String oldpass = request.getParameter("oldpass");
+                    String newpass = request.getParameter("newpass");
+                    if (usersDAO.checkPass(MD5.encryption(oldpass))) {
+                        usersDAO.changePass(new User(Integer.parseInt(userID), MD5.encryption(newpass)));
+                        session.setAttribute("message", "Cập nhật mật khẩu mới thành công!");
+                        url = "/changepass.jsp";
+                    } else {
+                        session.setAttribute("message", "Mật khẩu cũ không đúng!");
+                        url = "/changepass.jsp";
                     }
                     break;
             }

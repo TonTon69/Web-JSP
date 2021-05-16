@@ -76,18 +76,17 @@
                                     <%} else {
                                     %>
                                 <li class="has-dropdown">
-                                    <a href="#">
+                                    <a href="infor.jsp?user_id=<%=u.getUserID()%>">
                                         <i class="fas fa-user-tie mr-1"></i>
                                         <%=u.getFullName()%>
                                     </a>
                                     <ul class="dropdown">      
-                                        <li><a href="#"><span>Thông tin</span></a></li>
+                                        <li><a href="infor.jsp?user_id=<%=u.getUserID()%>"><span>Thông tin</span></a></li>
                                         <li><a href="LogoutServlet"><span>Đăng xuất</span></a></li>
                                     </ul>   
                                 </li>
                                 <%}
                                 %>
-
                             </ul>
                         </div>
                     </div>

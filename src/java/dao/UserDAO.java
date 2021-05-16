@@ -71,7 +71,7 @@ public class UserDAO {
         return false;
     }
 
-    //cap nhat
+    //cap nhat của admin
     public boolean update(User u) throws SQLException {
         try {
             Connection connection = DBConnect.getConnecttion();
@@ -83,6 +83,38 @@ public class UserDAO {
             ps.setString(4, u.getPhone());
             ps.setString(5, u.getAddress());
             ps.setInt(6, u.getUserID());
+            return ps.executeUpdate() == 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    //cap nhat của hoc vien
+    public boolean updateUser(User u) throws SQLException {
+        try {
+            Connection connection = DBConnect.getConnecttion();
+            String sql = "update user set FullName = ?, Phone = ?, Address = ? WHERE UserID = ?";
+            PreparedStatement ps = connection.prepareCall(sql);
+            ps.setString(1, u.getFullName());
+            ps.setString(2, u.getPhone());
+            ps.setString(3, u.getAddress());
+            ps.setInt(4, u.getUserID());
+            return ps.executeUpdate() == 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    //thay doi pass của hoc vien
+    public boolean changePass(User u) throws SQLException {
+        try {
+            Connection connection = DBConnect.getConnecttion();
+            String sql = "update user set Password = ? WHERE UserID = ?";
+            PreparedStatement ps = connection.prepareCall(sql);
+            ps.setString(1, u.getPassword());
+            ps.setInt(2, u.getUserID());
             return ps.executeUpdate() == 1;
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -192,6 +224,24 @@ public class UserDAO {
         return false;
     }
 
+    //ktra email
+    public boolean checkPass(String pass) {
+        Connection connection = DBConnect.getConnecttion();
+        String sql = "select * from user where Password = '" + pass + "'";
+        PreparedStatement ps;
+        try {
+            ps = connection.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                connection.close();
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
     //ktra login
     public User login(String email, String pass) {
         Connection con = DBConnect.getConnecttion();
@@ -202,6 +252,7 @@ public class UserDAO {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 User u = new User();
+                u.setUserID(rs.getInt("UserID"));
                 u.setEmail(rs.getString("Email"));
                 u.setFullName(rs.getString("FullName"));
                 con.close();
