@@ -135,8 +135,7 @@
                     <p>
                         <a href="javascript:void(0)">Tuyệt đối không cho người khác sử dụng tài khoản<br> nếu không bạn có thể bị xóa tài khoản bất kể lúc nào.</a>
                     </p>
-                    <p>Thông tin cá nhân của bạn được bảo mật và chỉ sử dụng trong các tư vấn</p>
-                    <p>liên quan đến dịch vụ của HatQuiz.</p>
+                    <p>Thông tin cá nhân của bạn được bảo mật và chỉ sử dụng trong các tư vấn liên quan đến dịch vụ của HatQuiz.</p>
                 </div>
             </div>
             <jsp:include page="footer.jsp"></jsp:include>    
