@@ -1,8 +1,3 @@
-<%-- 
-    Document   : login
-    Created on : Mar 24, 2021, 9:22:22 PM
-    Author     : Admin
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -57,7 +52,9 @@
                                         <%=session.getAttribute("error")%>
                                     </p>
                                 </div>                                    
-                                <%}%>
+                                <%
+                                        session.removeAttribute("error");
+                                    }%>
                                 <div class="form-group form-button">
                                     <input type="hidden" name="command" value="login" />
                                     <input type="submit" name="signin" id="signin" class="form-submit" value="Đăng nhập"/>

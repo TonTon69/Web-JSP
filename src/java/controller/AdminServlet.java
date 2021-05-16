@@ -69,9 +69,7 @@ public class AdminServlet extends HttpServlet {
                     session.setAttribute("success", "Đăng ký thành công. Vui lòng đợi admin xét duyệt quyền!");
                     url = "/admin/register.jsp";
                 } else {
-                    out.println("<script type=\"text/javascript\">");
-                    out.println("alert('Email này đã tồn tại. Đăng ký không thành công!');");
-                    out.println("</script>");
+                    session.setAttribute("errorEmail", "Email này đã tồn tại!");
                     url = "/admin/register.jsp";
                 }
                 break;
