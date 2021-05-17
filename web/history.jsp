@@ -1,10 +1,3 @@
-<%-- 
-    Document   : infor
-    Created on : May 7, 2021, 4:02:01 PM
-    Author     : Acer
---%>
-
-<%@page import="dao.UserDAO"%>
 <%@page import="model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,7 +5,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Quiz &mdash; HAT</title>
+        <title>Education &mdash; HAT</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
             name="description"
@@ -34,6 +27,7 @@
         <meta name="twitter:image" content="" />
         <meta name="twitter:url" content="" />
         <meta name="twitter:card" content="" />
+
         <link
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
             rel="stylesheet"
@@ -64,21 +58,20 @@
         <link rel="stylesheet" href="css/pricing.css" />
 
         <!-- Theme style  -->
-        <link rel="stylesheet" href="css/style.css" />        
+        <link rel="stylesheet" href="css/style.css" />      
+        <link rel="stylesheet" href="css/infor.css" />  
         <link rel="stylesheet" href="css/luyenthi.css" />
-        <link rel="stylesheet" href="css/infor.css" />
-
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>     
 
         <!-- Modernizr JS -->
-        <script src="js/modernizr-2.6.2.min.js"></script>        
+        <script src="js/modernizr-2.6.2.min.js"></script>      
     </head>
     <body>
         <%
-            User users = (User) session.getAttribute("user");
-            if (users == null) {
-                response.sendRedirect("login.jsp");
+            User u = new User();
+            if (session.getAttribute("user") != null) {
+                u = (User) session.getAttribute("user");
             }
         %>
         <div id="page">
@@ -87,50 +80,60 @@
                     <div class="container-fluid">
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
-                            <li class="breadcrumb-item">Thông tin tài khoản</li>
+                            <li class="breadcrumb-item">Thi trắc nghiệm</li>
                         </ul>
                     </div>
                 </div>
-                <div class="main container">
+                <div class="container pb-4">
                     <div style="width: 94%" class="infor_nav">
                         <p class="p_doc align_center tit_mem">
-                            <a class="ac" href="infor.jsp?user_id=<%=users.getUserID()%>"><i class="fa fa-info-circle" aria-hidden="true"></i> Thông tin chung</a> 
+                            <a class="ac" href="infor.jsp?user_id=<%=u.getUserID()%>"><i class="fa fa-info-circle" aria-hidden="true"></i> Thông tin chung</a> 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                       
-                        <a class="" href="history.jsp"><i class="fa fa-clock" aria-hidden="true"></i> Thi trắc nghiệm</a>
+                        <a class="" href="history.jsp?user_id=<%=u.getUserID()%>"><i class="fa fa-clock" aria-hidden="true"></i> Thi trắc nghiệm</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-                        <a class="" href="changepass.jsp?user_id=<%=users.getUserID()%>"><i class="fa fa-key" aria-hidden="true"></i> Đổi mật khẩu</a>
+                        <a class="" href="changepass.jsp?user_id=<%=u.getUserID()%>"><i class="fa fa-key" aria-hidden="true"></i> Đổi mật khẩu</a>
                     </p>
                 </div>
-                <div class="infor_nav">
-                    <%
-                        String id = request.getParameter("user_id");
-                        User u = new UserDAO().getUserByID(Integer.parseInt(id));
-                    %>
-                    <h1>Thông tin chung</h1>                
-                    <%
-                        if (session.getAttribute("update_success") != null) {
-                    %>
-                    <div>
-                        <p style="color:red"><%=session.getAttribute("update_success")%></p>
-                    </div>
-                    <%
-                            session.removeAttribute("update_success");
-                        }
-                    %>
-                    <form class="form" action="UserServlet" method="post">
-                        <table style="text-align: left; line-height: 22px;">
-                            <tbody><tr>
-                                    <td>Tài khoản đăng nhập:&nbsp;&nbsp;&nbsp;</td><td><b><%=u.getEmail()%></b></td>
+                <div style="width: 100%" class="infor_nav">
+                    <h1>Kết quả thi</h1>
+                    <p style="line-height: 20px;">Hàng ngàn bài thi trắc nghiệm miễn phí còn đang chờ bạn thử sức</p>
+                    <div class="danhsach">
+                        <table cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <th style="">Đề thi</th>
+                                    <th>Kết quả</th>
+                                    <th>Đã thi lúc</th>
+                                </tr>                                  
+                                <tr>
+                                    <td style="text-align: left; line-height: 20px;"><a href="thi-trac-nghiem/de-thi-thu-thptqg-nam-2018-mon-vat-ly-chuyen-thai-nguyen-b.html" target="_blank">Đề thi thử THPTQG năm 2018 môn Vật lý- Chuyên Thái Nguyên</a>
+                                        <p style="font-size: 12px; font-style: italic;" class="ltin">
+                                            <span><i class="fa fa-bars" aria-hidden="true"></i> <a href="thi-trac-nghiem/mon-vat-ly.html">Môn vật lý;</a></span> 
+                                            <span><i class="fa fa-question-circle" aria-hidden="true"></i> Số câu hỏi: <b>40 câu;</b>
+                                                <i class="fa fa-clock" aria-hidden="true"></i>  Thời gian: <b>50 phút;</b>
+                                                <i class="fa fa-signal" aria-hidden="true"></i>  Lượt thi: 1427
+                                            </span>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p>Điểm: <b style="color: red;">0<sup>đ</sup></b></p>
+                                        <p>Thời gian làm: 0 phút 6 giây</p>
+                                        <p>Trả lời: 0/40 <i>(Đúng 0)</i></p>
+                                    </td>
+                                    <td style="">
+                                        21:40 Ngày 14/04/2021<p><a class="nutnho" href="thi-trac-nghiem/de-thi-thu-thptqg-nam-2018-mon-vat-ly-chuyen-thai-nguyen-b.html?startid=33960" target="_blank">Xem kết quả chi tiết</a></p>
+                                    </td>
                                 </tr>                                                                 
                             </tbody>
                         </table>
-                        <input type="text" name="name" value="<%=u.getFullName()%>" required="yes" maxlength="30" placeholder="Họ và tên">                                           
-                        <input type="text" name="phone" value="<%=u.getPhone()%>" required="yes" maxlength="10" placeholder="Số điện thoại">
-                        <input type="text" name="address" value="<%=u.getAddress()%>" required="yes" maxlength="250" placeholder="Địa chỉ">   
-                        <input type="hidden" name="command" value="update"> 
-                        <input type="hidden" name="user_id" value="<%=request.getParameter("user_id")%>"> 
-                        <input type="submit" value="Cập nhật" name="capnhat">
-                    </form>
+                        <table id="tabletr" cellspacing="2" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <p class="align_center"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></p>
                     <p>
                         <a href="javascript:void(0)">Tuyệt đối không cho người khác sử dụng tài khoản<br> nếu không bạn có thể bị xóa tài khoản bất kể lúc nào.</a>
@@ -143,7 +146,6 @@
         <div class="gototop js-top">
             <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
         </div>
-
 
         <!-- script for breadcrumb -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" ></script>

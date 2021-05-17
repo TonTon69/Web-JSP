@@ -67,9 +67,24 @@
 
                                 <form action="${root}/ManagerQuizServlet" method="post">
                                     <div class="row">
-                                        <div class="form-group col-md-8">
+                                        <div class="form-group col-md-5">
                                             <label for="name">Tên đề thi</label>
                                             <input type="text" class="form-control" name="name" id="name" placeholder="Nhập tên đề thi..." required="yes" value="<%=qz.getQuizName()%>" >
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="subject">Môn học</label>
+                                            <select id="subject" name="subject" class="form-control">  
+                                                <option value="none">--Chọn môn học--</option>  
+                                                <%
+                                                    for (Subject s : listSubject) {
+                                                %>
+                                                <option value="<%=s.getSubjectID()%>"><%=s.getSubjectName()%></option>  
+                                                <%
+
+                                                    }
+
+                                                %>
+                                            </select>  
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="time">Thời gian</label>

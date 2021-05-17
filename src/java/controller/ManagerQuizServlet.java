@@ -78,7 +78,7 @@ public class ManagerQuizServlet extends HttpServlet {
                     url = "/admin/manager_quiz.jsp?pages=1";
                     break;
                 case "update":
-                    quizDAO.update(new Quiz(Integer.parseInt(qz_id), qz_name, Integer.parseInt(qz_time), Integer.parseInt(qz_totalquestion), qz_image));
+                    quizDAO.update(new Quiz(Integer.parseInt(qz_id), Integer.parseInt(s_id), qz_name, Integer.parseInt(qz_time), Integer.parseInt(qz_totalquestion), qz_image, new Timestamp(System.currentTimeMillis())));
                     session.setAttribute("update_success", "Cập nhật thành công!");
                     url = "/admin/manager_quiz.jsp?pages=1";
                     break;

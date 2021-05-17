@@ -145,7 +145,7 @@
                         </div>
                         <ul class="menu_monthi" id="menu_monthi" style="list-style: none">
                             <li class="monthi_item">
-                                <a class="btn link_monthi" id="all" href="quiz.jsp?pages=1">
+                                <a class="btn link_monthi" href="quiz.jsp?pages=1" id="all">
                                     <i class="fa fa-graduation-cap"></i>
                                     Tất cả
                                     <span>(<%=countQ%>)</span>

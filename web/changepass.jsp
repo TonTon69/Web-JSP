@@ -93,7 +93,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="main">
+                <div class="main container">
                     <div style="width: 94%" class="infor_nav">
                         <p class="p_doc align_center tit_mem">
                             <a class="ac" href="infor.jsp?user_id=<%=users.getUserID()%>"><i class="fa fa-info-circle" aria-hidden="true"></i> Thông tin chung</a> 

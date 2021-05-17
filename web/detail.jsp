@@ -112,8 +112,8 @@
                         </p>
                         <div class="detail-question">
                             <span class="mr-2"> 
-                                <i class="fa fa-bars"> </i>
-                                Môn:&nbsp;<a href=""><%=quiz.getSubjectName()%></a>
+                                <i class="fa fa-check-square"> </i>
+                                Môn: <%=quiz.getSubjectName()%>
                             </span>                            
                             <span class="mr-2">
                                 <i class="fa fa-list-alt"> </i>
@@ -217,7 +217,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <%                            for (Quiz q : quizDAO.getListQuizRelate(Integer.parseInt(subjectID))) {
+                        <%                            
+                            for (Quiz q : quizDAO.getListQuizRelate(Integer.parseInt(subjectID))) {
                         %>
                         <div class="col-md-6 animate-box">
                             <div class="course">

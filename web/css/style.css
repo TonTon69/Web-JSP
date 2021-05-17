@@ -28,11 +28,17 @@ body {
 .p-0{
     padding: 0;
 }
+.pb-4{
+    padding-bottom: 40px;
+}
 .mr-1{
     margin-right: 5px; 
 }
 .mr-2{
     margin-right: 20px;
+}
+p span i{
+    margin-right: 4px;
 }
 #page {
     position: relative;

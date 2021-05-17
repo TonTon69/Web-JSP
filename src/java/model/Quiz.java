@@ -44,6 +44,16 @@ public class Quiz {
         this.image = image;
     }
 
+    public Quiz(int quizID, int subjectID, String quizName, int time, int totalQuestion, String image, Timestamp createdate) {
+        this.quizID = quizID;
+        this.subjectID = subjectID;
+        this.quizName = quizName;
+        this.time = time;
+        this.totalQuestion = totalQuestion;
+        this.image = image;
+        this.createdate = createdate;
+    }
+
     public Quiz(int quizID, String subjectName, String quizName, int time, int totalQuestion, String image, Timestamp createdate) {
         this.quizID = quizID;
         this.subjectName = subjectName;
