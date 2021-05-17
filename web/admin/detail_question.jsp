@@ -66,57 +66,59 @@
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">CHI TIẾT CÂU HỎI #<%=id%></h6>
                             </div>
-                            <div class="card-body">
-                                <dl class="dl-horizontal">
-                                    <div class="d-flex">
-                                        <dt>Mã câu hỏi:</dt>
-                                        <dd><%=id%></dd>
-                                    </div>
-                                    <div class="d-flex">
-                                        <dt>Mã môn học:</dt>
-                                        <dd><%=q.getSubjectID()%></dd>
-                                    </div>
-                                    <div class="d-flex">
-                                        <dt>Mã đề thi:</dt>
-                                        <dd><%=q.getQuizID()%></dd>
-                                    </div>
-                                    <div class="d-flex">
-                                        <dt>Nội dung câu hỏi:</dt>
-                                        <dd><%=q.getContent()%></dd>
-                                    </div>
-                                    <div class="d-flex">
-                                        <dt>Đáp án 1:</dt>
-                                        <dd><%=q.getqA()%></dd>
-                                    </div>
-                                    <div class="d-flex">
-                                        <dt>Đáp án 2:</dt>
-                                        <dd><%=q.getqB()%></dd>
-                                    </div>
-                                    <div class="d-flex">
-                                        <dt>Đáp án 3:</dt>
-                                        <dd><%=q.getqC()%></dd>
-                                    </div>
-                                    <div class="d-flex">
-                                        <dt>Đáp án 4:</dt>
-                                        <dd><%=q.getqD()%></dd>
-                                    </div>
-                                    <div class="d-flex">
-                                        <dt>Đáp án đúng:</dt>
-                                        <dd><%=q.getqTrue()%></dd>
-                                    </div>
-                                    <div class="d-flex">
-                                        <dt>Ảnh:</dt>
-                                        <dd><%=q.getImage()%></dd>
-                                    </div>
-                                    <div class="d-flex">
-                                        <dt>Audio:</dt>
-                                        <dd><%=q.getAudio()%></dd>
-                                    </div>
-                                    <div class="d-flex">
-                                        <dt>Ngày tạo:</dt>
-                                        <dd><%=q.getCreatedate()%></dd>
-                                    </div>
-                                </dl>
+                            <div class="card-body dl-horizontal">
+                                <div class="d-flex">
+                                    <dt>Mã câu hỏi:</dt>
+                                    <dd><%=id%></dd>
+                                </div>
+                                <div class="d-flex">
+                                    <dt>Mã môn học:</dt>
+                                    <dd><%=q.getSubjectID()%></dd>
+                                </div>
+                                <div class="d-flex">
+                                    <dt>Mã đề thi:</dt>
+                                    <dd><%=q.getQuizID()%></dd>
+                                </div>
+                                <div class="d-flex">
+                                    <dt>Nội dung câu hỏi:</dt>
+                                    <dd><%=q.getContent()%></dd>
+                                </div>
+                                <div class="d-flex">
+                                    <dt>Đáp án 1:</dt>
+                                    <dd><%=q.getqA()%></dd>
+                                </div>
+                                <div class="d-flex">
+                                    <dt>Đáp án 2:</dt>
+                                    <dd><%=q.getqB()%></dd>
+                                </div>
+                                <div class="d-flex">
+                                    <dt>Đáp án 3:</dt>
+                                    <dd><%=q.getqC()%></dd>
+                                </div>
+                                <div class="d-flex">
+                                    <dt>Đáp án 4:</dt>
+                                    <dd><%=q.getqD()%></dd>
+                                </div>
+                                <div class="d-flex">
+                                    <dt>Đáp án đúng:</dt>
+                                    <dd><%=q.getqTrue()%></dd>
+                                </div>
+                                <% if (q.getImage() != "") {%>
+                                <div class="d-flex">
+                                    <dt>Ảnh:</dt>
+                                    <dd><%=q.getImage()%></dd>
+                                </div>
+                                <%}%>
+                                <% if (q.getAudio() != "") {%>
+                                <div class="d-flex">
+                                    <dt>Audio:</dt>
+                                    <dd><%=q.getAudio()%></dd>
+                                </div>
+                                <%}%>
+                                <div class="d-flex">
+                                    <dt>Ngày tạo:</dt>
+                                    <dd><%=q.getCreatedate()%></dd>
+                                </div>
                             </div>
                         </div>
                     </div>

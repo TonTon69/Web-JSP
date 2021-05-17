@@ -98,12 +98,34 @@
                                 <i class="fas fa-plus"></i>
                                 Thêm mới đề thi
                             </a>
-<!--                            <a href="" class="btn btn-success ml-2">
-                                <i class="fas fa-file-excel"></i>
-                                Xuất excel
-                            </a>-->
+                            <!--                            <a href="" class="btn btn-success ml-2">
+                                                            <i class="fas fa-file-excel"></i>
+                                                            Xuất excel
+                                                        </a>-->
                         </div>
-                        <!--<span>Tất cả (5)</span>-->
+                        <%if (session.getAttribute("insert_success") != null || session.getAttribute("update_success") != null || session.getAttribute("remove_success") != null) {%>
+                        <div>
+                            <% if (session.getAttribute("insert_success") != null) {%>
+                            <p style = "color: green; font-weight: 600;"> 
+                                <%=session.getAttribute("insert_success")%>
+                            </p>
+                            <%}%>
+                            <% if (session.getAttribute("update_success") != null) {%>
+                            <p style = "color: green; font-weight: 600;"> 
+                                <%=session.getAttribute("update_success")%>
+                            </p>
+                            <%}%>
+                            <% if (session.getAttribute("remove_success") != null) {%>
+                            <p style = "color: green; font-weight: 600;"> 
+                                <%=session.getAttribute("remove_success")%>
+                            </p>
+                            <%}%>
+                        </div>                                    
+                        <%
+                                session.removeAttribute("insert_success");
+                                session.removeAttribute("update_success");
+                                session.removeAttribute("remove_success");
+                            }%>
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">DANH SÁCH ĐỀ THI</h6>

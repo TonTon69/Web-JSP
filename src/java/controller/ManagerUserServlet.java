@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.User;
 import tools.MD5;
 
@@ -39,11 +40,13 @@ public class ManagerUserServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         String command = request.getParameter("command");
         String url = "";
+        HttpSession session = request.getSession();
         try {
             switch (command) {
                 case "delete":
                     userDAO.delete(Integer.parseInt(request.getParameter("user_id")));
                     url = "/admin/manager_user.jsp";
+                    session.setAttribute("remove_success", "Xóa thành công!");
                     break;
             }
         } catch (Exception e) {
@@ -66,14 +69,17 @@ public class ManagerUserServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
         String url = "";
+        HttpSession session = request.getSession();
         try {
             switch (command) {
                 case "insert":
                     userDAO.insert(new User(name, email, MD5.encryption(password), phone, address));
+                    session.setAttribute("insert_success", "Thêm mới thành công!");
                     url = "/admin/manager_user.jsp";
                     break;
                 case "update":
                     userDAO.update(new User(Integer.parseInt(user_id), name, email, MD5.encryption(password), phone, address));
+                    session.setAttribute("update_success", "Cập nhật thành công!");
                     url = "/admin/manager_user.jsp";
                     break;
             }

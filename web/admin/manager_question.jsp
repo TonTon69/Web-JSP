@@ -108,7 +108,29 @@
                                 Thêm mới câu hỏi
                             </a>
                         </div>
-
+                        <%if (session.getAttribute("insert_success") != null || session.getAttribute("update_success") != null || session.getAttribute("remove_success") != null) {%>
+                        <div>
+                            <% if (session.getAttribute("insert_success") != null) {%>
+                            <p style = "color: green; font-weight: 600;"> 
+                                <%=session.getAttribute("insert_success")%>
+                            </p>
+                            <%}%>
+                            <% if (session.getAttribute("update_success") != null) {%>
+                            <p style = "color: green; font-weight: 600;"> 
+                                <%=session.getAttribute("update_success")%>
+                            </p>
+                            <%}%>
+                            <% if (session.getAttribute("remove_success") != null) {%>
+                            <p style = "color: green; font-weight: 600;"> 
+                                <%=session.getAttribute("remove_success")%>
+                            </p>
+                            <%}%>
+                        </div>                                    
+                        <%
+                                session.removeAttribute("insert_success");
+                                session.removeAttribute("update_success");
+                                session.removeAttribute("remove_success");
+                            }%>       
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">

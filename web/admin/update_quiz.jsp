@@ -58,7 +58,7 @@
                             <div class="card shadow mb-4">
                             <%
                                 String id = request.getParameter("quiz_id");
-                                Quiz qz = new QuizDAO().getQuizByID(Integer.parseInt(id));
+                                Quiz qz = new QuizDAO().getQuizByQuizID(Integer.parseInt(id));
                             %>
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT ĐỀ THI #<%=id%></h6>

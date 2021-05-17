@@ -27,10 +27,12 @@ public class AdminServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         String command = request.getParameter("command");
         String url = "";
+        HttpSession session = request.getSession();
         try {
             switch (command) {
                 case "delete":
                     adminDAO.delete(Integer.parseInt(request.getParameter("admin_id")));
+                    session.setAttribute("remove_success", "Xóa thành công!");
                     url = "/admin/manager_admin.jsp";
                     break;
             }
@@ -86,6 +88,7 @@ public class AdminServlet extends HttpServlet {
             case "insert": {
                 try {
                     adminDAO.insert(new Administrator(name, email, MD5.encryption(password), Boolean.parseBoolean(status)));
+                    session.setAttribute("insert_success", "Thêm mới thành công!");
                 } catch (SQLException ex) {
                     Logger.getLogger(AdminServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -95,6 +98,7 @@ public class AdminServlet extends HttpServlet {
             case "update": {
                 try {
                     adminDAO.update(new Administrator(Integer.parseInt(admin_id), name, email, MD5.encryption(password), Boolean.parseBoolean(status)));
+                    session.setAttribute("update_success", "Cập nhật thành công!");
                 } catch (SQLException ex) {
                     Logger.getLogger(AdminServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }

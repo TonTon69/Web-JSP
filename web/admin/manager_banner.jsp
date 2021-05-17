@@ -55,7 +55,29 @@
                                 Thêm mới banner
                             </a>
                         </div>
-                       
+                        <%if (session.getAttribute("insert_success") != null || session.getAttribute("update_success") != null || session.getAttribute("remove_success") != null) {%>
+                        <div>
+                            <% if (session.getAttribute("insert_success") != null) {%>
+                            <p style = "color: green; font-weight: 600;"> 
+                                <%=session.getAttribute("insert_success")%>
+                            </p>
+                            <%}%>
+                            <% if (session.getAttribute("update_success") != null) {%>
+                            <p style = "color: green; font-weight: 600;"> 
+                                <%=session.getAttribute("update_success")%>
+                            </p>
+                            <%}%>
+                            <% if (session.getAttribute("remove_success") != null) {%>
+                            <p style = "color: green; font-weight: 600;"> 
+                                <%=session.getAttribute("remove_success")%>
+                            </p>
+                            <%}%>
+                        </div>                                    
+                        <%
+                                session.removeAttribute("insert_success");
+                                session.removeAttribute("update_success");
+                                session.removeAttribute("remove_success");
+                            }%>
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
@@ -83,8 +105,8 @@
                                             <tr>
                                                 <th scope="row"><%=count%></th>
                                                 <td><%=bn.getBannerID()%></td>
-                                                <td><%=bn.getContent()%></td>
-                                                <td><image src="<%=bn.getImage()%>" style="width: 150px; height: 100px" /></td>
+                                                <td style="width: 500px;"><%=bn.getContent()%></td>
+                                                <td><image src="<%=bn.getImage()%>" style="width: 200px; height: 100px" /></td>
                                                 <td><%=bn.getCreatedate()%></td>
                                                 <td>
                                                     <a href="${root}/admin/update_banner.jsp?command=update&banner_id=<%=bn.getBannerID()%>" class="btn btn-primary">

@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Question;
 
 public class ManagerQuestionServlet extends HttpServlet {
@@ -26,10 +27,12 @@ public class ManagerQuestionServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         String command = request.getParameter("command");
         String url = "";
+        HttpSession session = request.getSession();
         try {
             switch (command) {
                 case "delete":
                     questionDAO.delete(Integer.parseInt(request.getParameter("question_id")));
+                    session.setAttribute("remove_success", "Xóa thành công!");
                     url = "/admin/manager_question.jsp?pages=1";
                     break;
             }
@@ -58,14 +61,17 @@ public class ManagerQuestionServlet extends HttpServlet {
         String qimage = request.getParameter("image");
         String qaudio = request.getParameter("audio");
         String url = "";
+        HttpSession session = request.getSession();
         try {
             switch (command) {
                 case "insert":
                     questionDAO.insert(new Question(Integer.parseInt(s_id), Integer.parseInt(qz_id), qcontent, q_a, q_b, q_c, q_d, q_true, qimage, qaudio, new Timestamp(System.currentTimeMillis())));
+                    session.setAttribute("insert_success", "Thêm mới thành công!");
                     url = "/admin/manager_question.jsp?pages=1";
                     break;
                 case "update":
                     questionDAO.update(new Question(Integer.parseInt(q_id), qcontent, q_a, q_b, q_c, q_d, q_true, qimage, qaudio, new Timestamp(System.currentTimeMillis())));
+                    session.setAttribute("update_success", "Cập nhật thành công!");
                     url = "/admin/manager_question.jsp?pages=1";
                     break;
             }

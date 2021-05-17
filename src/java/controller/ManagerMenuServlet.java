@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Menu;
 
 public class ManagerMenuServlet extends HttpServlet {
@@ -38,10 +39,12 @@ public class ManagerMenuServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         String command = request.getParameter("command");
         String url = "";
+        HttpSession session = request.getSession();
         try {
             switch (command) {
                 case "delete":
                     menuDAO.delete(Integer.parseInt(request.getParameter("menu_id")));
+                    session.setAttribute("remove_success", "Xóa thành công!");
                     url = "/admin/manager_menu.jsp";
                     break;
             }
@@ -63,14 +66,17 @@ public class ManagerMenuServlet extends HttpServlet {
         String m_url = request.getParameter("url");
         String m_location = request.getParameter("location");
         String url = "";
+        HttpSession session = request.getSession();
         try {
             switch (command) {
                 case "insert":
                     menuDAO.insert(new Menu(m_name, m_url, Integer.parseInt(m_location)));
+                    session.setAttribute("insert_success", "Thêm mới thành công!");
                     url = "/admin/manager_menu.jsp";
                     break;
                 case "update":
                     menuDAO.update(new Menu(Integer.parseInt(m_id), m_name, m_url, Integer.parseInt(m_location)));
+                    session.setAttribute("update_success", "Cập nhật thành công!");
                     url = "/admin/manager_menu.jsp";
                     break;
             }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import dao.QuizDAO;
@@ -14,12 +9,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Quiz;
 
-/**
- *
- * @author Admin
- */
 public class ManagerQuizServlet extends HttpServlet {
 
     QuizDAO quizDAO = new QuizDAO();
@@ -48,10 +40,12 @@ public class ManagerQuizServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         String command = request.getParameter("command");
         String url = "";
+        HttpSession session = request.getSession();
         try {
             switch (command) {
                 case "delete":
                     quizDAO.delete(Integer.parseInt(request.getParameter("quiz_id")));
+                    session.setAttribute("remove_success", "Xóa thành công!");
                     url = "/admin/manager_quiz.jsp?pages=1";
                     break;
             }
@@ -75,14 +69,17 @@ public class ManagerQuizServlet extends HttpServlet {
         String qz_totalquestion = request.getParameter("totalquestion");
         String qz_image = request.getParameter("image");
         String url = "";
+        HttpSession session = request.getSession();
         try {
             switch (command) {
                 case "insert":
                     quizDAO.insert(new Quiz(Integer.parseInt(s_id), qz_name, Integer.parseInt(qz_time), Integer.parseInt(qz_totalquestion), qz_image, new Timestamp(System.currentTimeMillis())));
+                    session.setAttribute("insert_success", "Thêm mới thành công!");
                     url = "/admin/manager_quiz.jsp?pages=1";
                     break;
                 case "update":
-                    quizDAO.update(new Quiz(Integer.parseInt(qz_id), qz_name, Integer.parseInt(qz_time), Integer.parseInt(qz_totalquestion), qz_image, new Timestamp(System.currentTimeMillis())));
+                    quizDAO.update(new Quiz(Integer.parseInt(qz_id), qz_name, Integer.parseInt(qz_time), Integer.parseInt(qz_totalquestion), qz_image));
+                    session.setAttribute("update_success", "Cập nhật thành công!");
                     url = "/admin/manager_quiz.jsp?pages=1";
                     break;
             }

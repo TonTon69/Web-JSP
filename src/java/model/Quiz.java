@@ -27,8 +27,7 @@ public class Quiz {
         this.createdate = createdate;
     }
 
-    public Quiz(int quizID, int subjectID, String quizName, int time, int totalQuestion, String image, Timestamp createdate) {
-        this.quizID = quizID;
+    public Quiz(int subjectID, String quizName, int time, int totalQuestion, String image, Timestamp createdate) {
         this.subjectID = subjectID;
         this.quizName = quizName;
         this.time = time;
@@ -37,8 +36,17 @@ public class Quiz {
         this.createdate = createdate;
     }
 
-    public Quiz(int subjectID, String quizName, int time, int totalQuestion, String image, Timestamp createdate) {
-        this.subjectID = subjectID;
+    public Quiz(int quizID, String quizName, int time, int totalQuestion, String image) {
+        this.quizID = quizID;
+        this.quizName = quizName;
+        this.time = time;
+        this.totalQuestion = totalQuestion;
+        this.image = image;
+    }
+
+    public Quiz(int quizID, String subjectName, String quizName, int time, int totalQuestion, String image, Timestamp createdate) {
+        this.quizID = quizID;
+        this.subjectName = subjectName;
         this.quizName = quizName;
         this.time = time;
         this.totalQuestion = totalQuestion;
