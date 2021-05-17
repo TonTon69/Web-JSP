@@ -66,7 +66,7 @@
         <!-- Theme style  -->
         <link rel="stylesheet" href="css/style.css" />        
         <link rel="stylesheet" href="css/luyenthi.css" />
-
+        <link rel="stylesheet" href="css/responsive.css" />
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>     
 
@@ -141,7 +141,7 @@
                 <div class="container">
                     <div class="animate-box mb-5">
                         <div class="heading_luyenthi text-center">
-                            <h2>Luyện thi trắc nghiệm online - Miễn phí</h2>
+                            <h2>Luyện thi trắc nghiệm online miễn phí</h2>
                         </div>
                         <ul class="menu_monthi" id="menu_monthi" style="list-style: none">
                             <li class="monthi_item">
@@ -241,42 +241,46 @@
                         for (int i = 1; i <= (total / pagesize) + 1; i++) {
                             if (request.getParameter("subjectID") != null) {
                     %>
-                    <li class="page-item"><a class="page-link" href="quiz.jsp?subjectID=<%=subjectID%>&pages=<%=i%>"><%=i%></a></li>    
-                        <%} else {%>
-                    <li class="page-item"><a class="page-link" href="quiz.jsp?pages=<%=i%>"><%=i%></a></li>    
-                        <%}
+                    <li class="page-item">
+                        <a class="page-link" href="quiz.jsp?subjectID=<%=subjectID%>&pages=<%=i%>"><%=i%></a>
+                    </li>    
+                    <%} else {%>
+                    <li class="page-item">
+                        <a class="page-link" href="quiz.jsp?pages=<%=i%>"><%=i%></a>
+                    </li>    
+                    <%}
                             }%>
-                        <%
-                            //Button Next
-                            int next = 0;
-                            //Nếu total lẻ
-                            if (total % 2 != 0) {
+                    <%
+                        //Button Next
+                        int next = 0;
+                        //Nếu total lẻ
+                        if (total % 2 != 0) {
+                            if (pages == (total / 6) + 1) {
+                                next = pages;//Khong next
+                            } else {
+                                next = pages + 1;//Co next
+                            }
+                        } else {
+                            //Nếu total chẵn nhỏ hơn fullpage
+                            //Và không fullPage thì thêm 1
+                            if (total < (pagesize * 6) + 6 && total != pagesize * 6) {
                                 if (pages == (total / 6) + 1) {
                                     next = pages;//Khong next
                                 } else {
                                     next = pages + 1;//Co next
                                 }
                             } else {
-                                //Nếu total chẵn nhỏ hơn fullpage
-                                //Và không fullPage thì thêm 1
-                                if (total < (pagesize * 6) + 6 && total != pagesize * 6) {
-                                    if (pages == (total / 6) + 1) {
-                                        next = pages;//Khong next
-                                    } else {
-                                        next = pages + 1;//Co next
-                                    }
+                                //Nếu fullPage đến trang cuối dừng
+                                //Chưa tới trang cuối thì được next
+                                if (pages == (total / 6)) {
+                                    next = pages;//Khong next
                                 } else {
-                                    //Nếu fullPage đến trang cuối dừng
-                                    //Chưa tới trang cuối thì được next
-                                    if (pages == (total / 6)) {
-                                        next = pages;//Khong next
-                                    } else {
-                                        next = pages + 1;//Co next
-                                    }
+                                    next = pages + 1;//Co next
                                 }
                             }
-                            if (request.getParameter("subjectID") != null) {
-                        %>
+                        }
+                        if (request.getParameter("subjectID") != null) {
+                    %>
                     <li class="page-item">
                         <a class="page-link" href="quiz.jsp?subjectID=<%=subjectID%>&pages=<%=next%>" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>

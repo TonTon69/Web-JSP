@@ -66,31 +66,27 @@
         <link rel="stylesheet" href="${root}/css/pricing.css" />
 
         <!-- Theme style  -->
-        <link rel="stylesheet" href="${root}/css/style.css" />
+        <link rel="stylesheet" href="${root}/css/style.css" />        
+        <link rel="stylesheet" href="${root}/css/responsive.css" />
 
         <!-- Modernizr JS -->
         <script src="${root}/js/modernizr-2.6.2.min.js"></script>
-        <!-- FOR IE9 below -->
-        <!--        [if lt IE 9]>
-                  <script src="js/respond.min.js"></script>
-                <![endif]-->
 
     </head>
     <body>
-        <!--<div class="fh5co-loader"></div>-->
         <div id="page">
             <jsp:include page="header.jsp"></jsp:include>
             <jsp:include page="banner.jsp"></jsp:include>
             <jsp:include page="content.jsp"></jsp:include>
             <jsp:include page="footer.jsp"></jsp:include>    
-        </div>
+            </div>
 
-        <div class="gototop js-top">
-            <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-        </div>
+            <div class="gototop js-top">
+                <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+            </div>
 
-        <!-- jQuery -->
-        <script src="${root}/js/jquery.min.js"></script>
+            <!-- jQuery -->
+            <script src="${root}/js/jquery.min.js"></script>
         <!-- jQuery Easing -->
         <script src="${root}/js/jquery.easing.1.3.js"></script>
         <!-- Bootstrap -->

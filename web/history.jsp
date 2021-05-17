@@ -61,7 +61,8 @@
         <link rel="stylesheet" href="css/style.css" />      
         <link rel="stylesheet" href="css/infor.css" />  
         <link rel="stylesheet" href="css/luyenthi.css" />
-
+        <link rel="stylesheet" href="css/responsive.css" />
+        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>     
 
         <!-- Modernizr JS -->
@@ -87,7 +88,7 @@
                 <div class="container pb-4">
                     <div style="width: 94%" class="infor_nav">
                         <p class="p_doc align_center tit_mem">
-                            <a class="ac" href="infor.jsp?user_id=<%=u.getUserID()%>"><i class="fa fa-info-circle" aria-hidden="true"></i> Thông tin chung</a> 
+                            <a class="infor_menu" href="infor.jsp?user_id=<%=u.getUserID()%>"><i class="fa fa-info-circle" aria-hidden="true"></i> Thông tin chung</a> 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                       
                         <a class="" href="history.jsp?user_id=<%=u.getUserID()%>"><i class="fa fa-clock" aria-hidden="true"></i> Thi trắc nghiệm</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  

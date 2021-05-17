@@ -62,7 +62,7 @@
         <!-- Theme style  -->
         <link rel="stylesheet" href="css/style.css" />        
         <link rel="stylesheet" href="css/luyenthi.css" />
-
+        <link rel="stylesheet" href="css/responsive.css" />
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
 
@@ -95,7 +95,7 @@
                             <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
                             <li class="breadcrumb-item"><a href="quiz.jsp?pages=1">Thi THPT QG</a></li>
                             <li class="breadcrumb-item"><a href="quiz.jsp?subjectID=<%=quiz.getSubjectID()%>&pages=1"><%=quiz.getSubjectName()%></a></li>
-                            <li class="breadcrumb-item"><%=quiz.getQuizName()%></li>
+                        <li class="breadcrumb-item"><%=quiz.getQuizName()%></li>
                     </ul>
                 </div>
             </div>
@@ -217,7 +217,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <%                            
+                        <%
                             for (Quiz q : quizDAO.getListQuizRelate(Integer.parseInt(subjectID))) {
                         %>
                         <div class="col-md-6 animate-box">

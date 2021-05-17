@@ -591,6 +591,7 @@ figure {
     .course .course-img {
         width: 100%;
     }
+    
 }
 .course .course-img {
     background-size: cover;
@@ -602,6 +603,7 @@ figure {
     transition: 0.3s;
 }
 @media screen and (max-width: 768px) {
+
     .course .course-img {
         height: 270px;
     }
