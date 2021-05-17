@@ -4,6 +4,8 @@
     Author     : Admin
 --%>
 
+<%@page import="dao.SubjectDAO"%>
+<%@page import="model.Subject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,11 +25,12 @@
                     <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1 fh5co-widget">
                         <h3>THI THPT QG</h3>
                         <ul class="fh5co-footer-links">
-                            <li><a href="#">Môn Toán</a></li>
-                            <li><a href="#">Môn Lý</a></li>
-                            <li><a href="#">Môn Hóa</a></li>
-                            <li><a href="#">Môn Sinh</a></li>
-                            <li><a href="#">Môn Anh</a></li>
+                            <%
+                                for (Subject s : new SubjectDAO().getListSubject()) {
+
+                            %>
+                            <li><a href="quiz.jsp?subjectID=<%=s.getSubjectID()%>&pages=1"><%=s.getSubjectName()%></a></li>
+                                <%}%>
                         </ul>
                     </div>
 

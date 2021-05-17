@@ -96,7 +96,7 @@
                         <p class="p_doc align_center tit_mem">
                             <a class="ac" href="infor.jsp?user_id=<%=users.getUserID()%>"><i class="fa fa-info-circle" aria-hidden="true"></i> Thông tin chung</a> 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                       
-                        <a class="" href="history.jsp"><i class="fa fa-clock" aria-hidden="true"></i> Thi trắc nghiệm</a>
+                        <a class="" href="history.jsp?user_id=<%=users.getUserID()%>"><i class="fa fa-clock" aria-hidden="true"></i> Thi trắc nghiệm</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
                         <a class="" href="changepass.jsp?user_id=<%=users.getUserID()%>"><i class="fa fa-key" aria-hidden="true"></i> Đổi mật khẩu</a>
                     </p>
