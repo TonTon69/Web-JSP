@@ -111,7 +111,7 @@
                                                 <td><%=ad.getId()%></td>
                                                 <td><%=ad.getFullName()%></td>
                                                 <td><%=ad.getEmail()%></td>
-                                                <td><%=ad.getPassword()%></td>
+                                                <td>*********</td>
                                                 <td>
                                                     <% if (ad.getStatus() == false) {%> 
                                                     <span class="badge badge-danger">New</span>
