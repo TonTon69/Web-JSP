@@ -148,7 +148,9 @@
                                                     <a href="${root}/admin/update_user.jsp?command=update&user_id=<%=u.getUserID()%>" class="btn btn-primary">
                                                         <i class="far fa-edit"></i>
                                                     </a>
-                                                    <a href="${root}/ManagerUserServlet?command=delete&user_id=<%=u.getUserID()%>" class="btn btn-danger">
+                                                    <a href="${root}/ManagerUserServlet?command=delete&user_id=<%=u.getUserID()%>" 
+                                                       class="btn btn-danger"
+                                                       onclick="return confirm('Bạn có chắc chắn muốn xóa học viên <%=u.getFullName()%>?')">
                                                         <i class="far fa-trash-alt"></i>
                                                     </a>
                                                 </td>

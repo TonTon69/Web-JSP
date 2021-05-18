@@ -123,7 +123,8 @@
                                                     <a href="${root}/admin/update_admin.jsp?command=update&admin_id=<%=ad.getId()%>" class="btn btn-primary">
                                                         <i class="far fa-edit"></i>
                                                     </a>
-                                                    <a href="${root}/AdminServlet?command=delete&admin_id=<%=ad.getId()%>" class="btn btn-danger">
+                                                    <a href="${root}/AdminServlet?command=delete&admin_id=<%=ad.getId()%>" class="btn btn-danger"
+                                                       onclick="return confirm('Bạn có chắc chắn muốn xóa quản trị <%=ad.getFullName()%>?')">
                                                         <i class="far fa-trash-alt"></i>
                                                     </a>
                                                 </td>

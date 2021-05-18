@@ -112,7 +112,8 @@
                                                     <a href="${root}/admin/update_banner.jsp?command=update&banner_id=<%=bn.getBannerID()%>" class="btn btn-primary">
                                                         <i class="far fa-edit"></i>
                                                     </a>
-                                                    <a href="${root}/ManagerBannerServlet?command=delete&banner_id=<%=bn.getBannerID()%>" class="btn btn-danger">
+                                                    <a href="${root}/ManagerBannerServlet?command=delete&banner_id=<%=bn.getBannerID()%>" class="btn btn-danger"
+                                                       onclick="return confirm('Bạn có chắc chắn muốn xóa banner #<%=bn.getBannerID()%>?')">
                                                         <i class="far fa-trash-alt"></i>
                                                     </a>
                                                 </td>

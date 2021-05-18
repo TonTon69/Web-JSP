@@ -194,7 +194,9 @@
                                                     <a href="${root}/admin/update_quiz.jsp?command=update&quiz_id=<%=quiz.getQuizID()%>" class="btn btn-primary">
                                                         <i class="far fa-edit"></i>
                                                     </a>
-                                                    <a href="${root}/ManagerQuizServlet?command=delete&quiz_id=<%=quiz.getQuizID()%>" class="btn btn-danger">
+                                                    <a href="${root}/ManagerQuizServlet?command=delete&quiz_id=<%=quiz.getQuizID()%>" 
+                                                       class="btn btn-danger"
+                                                       onclick="return confirm('Bạn có chắc chắn muốn xóa đề <%=quiz.getQuizName()%>?')">
                                                         <i class="far fa-trash-alt"></i>
                                                     </a>
                                                 </td>

@@ -112,7 +112,8 @@
                                                     <a href="${root}/admin/update_menu.jsp?command=update&menu_id=<%=m.getMenuID()%>" class="btn btn-primary">
                                                         <i class="far fa-edit"></i>
                                                     </a>
-                                                    <a href="${root}/ManagerMenuServlet?command=delete&menu_id=<%=m.getMenuID()%>" class="btn btn-danger">
+                                                    <a href="${root}/ManagerMenuServlet?command=delete&menu_id=<%=m.getMenuID()%>" class="btn btn-danger"
+                                                       onclick="return confirm('Bạn có chắc chắn muốn xóa menu <%=m.getName()%>?')">
                                                         <i class="far fa-trash-alt"></i>
                                                     </a>
                                                 </td>

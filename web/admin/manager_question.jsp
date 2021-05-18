@@ -213,7 +213,9 @@
                                                     <a href="${root}/admin/update_question.jsp?command=update&question_id=<%=q.getQuestionID()%>" class="btn btn-primary">
                                                         <i class="far fa-edit"></i>
                                                     </a>
-                                                    <a href="${root}/ManagerQuestionServlet?command=delete&question_id=<%=q.getQuestionID()%>" class="btn btn-danger">
+                                                    <a href="${root}/ManagerQuestionServlet?command=delete&question_id=<%=q.getQuestionID()%>" 
+                                                       class="btn btn-danger"
+                                                       onclick="return confirm('Bạn có chắc chắn muốn xóa câu hỏi #<%=q.getQuestionID()%>?')">
                                                         <i class="far fa-trash-alt"></i>
                                                     </a>
                                                 </td>

@@ -112,12 +112,15 @@
                                                     <a href="${root}/admin/update_subject.jsp?command=update&subject_id=<%=subject.getSubjectID()%>" class="btn btn-primary">
                                                         <i class="far fa-edit"></i>
                                                     </a>
-                                                    <a href="${root}/ManagerSubjectServlet?command=delete&subject_id=<%=subject.getSubjectID()%>" class="btn btn-danger">
+                                                    <a href="${root}/ManagerSubjectServlet?command=delete&subject_id=<%=subject.getSubjectID()%>" 
+                                                       class="btn btn-danger" 
+                                                       onclick="return confirm('Bạn có chắc chắn muốn xóa môn <%=subject.getSubjectName()%>?')">
                                                         <i class="far fa-trash-alt"></i>
                                                     </a>
                                                 </td>
                                             </tr>
                                         </tbody>
+
                                         <%}%>
                                     </table>
                                 </div>
