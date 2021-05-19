@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Question;
-
+    
 public class QuestionDAO {
 
     // get danh sách câu hỏi có phân trang
@@ -265,4 +265,5 @@ public class QuestionDAO {
         }
         return count;
     }
+
 }

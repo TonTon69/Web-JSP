@@ -10,10 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Administrator;
 
-/**
- *
- * @author Admin
- */
 public class AdminDAO {
 
     public boolean checkEmail(String email) {
@@ -159,5 +155,21 @@ public class AdminDAO {
         }
         return false;
     }
-
+    
+    public int getCountAdminF() {
+        Connection conn = DBConnect.getConnecttion();
+        ArrayList<Administrator> list = new ArrayList();
+        String sql = "SELECT COUNT(AdminID) FROM administrator WHERE STATUS = false";
+        int count = 0;
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
 }

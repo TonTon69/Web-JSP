@@ -92,21 +92,7 @@
                     <i class="fas fa-users-cog"></i>
                     <span>Quản trị</span>
                     <span class="badge badge-danger badge-counter">
-                        <%
-                            try {
-                                Connection connection = DBConnect.getConnecttion();
-                                String sql = "SELECT COUNT(*) FROM administrator WHERE STATUS = false";
-                                PreparedStatement ps = connection.prepareCall(sql);
-                                ResultSet rs = ps.executeQuery();
-                                String Countrow = "";
-                                while (rs.next()) {
-                                    Countrow = rs.getString(1);
-                                    out.println(Countrow);
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        %>
+                        <%=new AdminDAO().getCountAdminF()%>
                     </span>
 
                 </a>
@@ -115,21 +101,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="${root}/admin/manager_admin.jsp">Danh sách quản trị
                             <span class="badge badge-danger">
-                                <%
-                                    try {
-                                        Connection connection = DBConnect.getConnecttion();
-                                        String sql = "SELECT COUNT(*) FROM administrator WHERE STATUS = false";
-                                        PreparedStatement ps = connection.prepareCall(sql);
-                                        ResultSet rs = ps.executeQuery();
-                                        String Countrow = "";
-                                        while (rs.next()) {
-                                            Countrow = rs.getString(1);
-                                            out.println(Countrow);
-                                        }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-                                %>
+                                <%=new AdminDAO().getCountAdminF()%>
                             </span>
                         </a>
                         <a class="collapse-item" href="${root}/admin/insert_admin.jsp">Thêm mới quản trị</a>
@@ -151,7 +123,12 @@
                     </div>
                 </div>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="${root}/admin/manager_result.jsp">
+                    <i class="fas fa-poll-h"></i>
+                    <span>&nbsp;Kết quả thi</span>
+                </a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -159,22 +136,6 @@
             <div class="sidebar-heading">
                 Addons
             </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-<!--            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                   aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">Banner</a>
-                        <a class="collapse-item" href="register.html">Menu</a>
-                        <div class="collapse-divider"></div>
-                    </div>
-                </div>
-            </li>-->
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
