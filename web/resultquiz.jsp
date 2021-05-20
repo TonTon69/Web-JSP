@@ -259,28 +259,6 @@
                 day: d.getDate(),
                 enableUtc: false,
             });
-            
-            //scroll time
-            window.onscroll = function () {
-                scrollFunction()
-            };
-
-            function scrollFunction() {
-                var countdown = document.getElementById("countdown");
-                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                    countdown.style.position = "fixed";
-                    countdown.style.top = "0";
-                    countdown.style.right = "20%";
-                    countdown.style.background = "#fafafa";
-                    countdown.style.padding = "20px 40px";
-                    countdown.style.borderRadius = "5px";
-                } else {
-                    countdown.style.position = "unset";
-                    countdown.style.background = "unset";
-                    countdown.style.padding = "unset";
-                    countdown.style.borderRadius = "unset";
-                }
-            }
         </script>
     </body>
 </html>
