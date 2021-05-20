@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Question;
-    
+
 public class QuestionDAO {
 
     // get danh sách câu hỏi có phân trang
@@ -76,6 +76,31 @@ public class QuestionDAO {
         PreparedStatement ps = connection.prepareCall(sql);
         ps.setInt(1, firstResult);
         ps.setInt(2, maxResult);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Question> list = new ArrayList<>();
+        while (rs.next()) {
+            Question q = new Question();
+            q.setQuestionID(rs.getInt("QuestionID"));
+            q.setSubjectID(rs.getInt("SubjectID"));
+            q.setQuizID(rs.getInt("QuizID"));
+            q.setContent(rs.getString("Content"));
+            q.setqA(rs.getString("Q_A"));
+            q.setqB(rs.getString("Q_B"));
+            q.setqC(rs.getString("Q_C"));
+            q.setqD(rs.getString("Q_D"));
+            q.setqTrue(rs.getString("Q_True"));
+            q.setImage(rs.getString("Image"));
+            q.setAudio(rs.getString("Audio"));
+            q.setCreatedate(rs.getTimestamp("CreateDate"));
+            list.add(q);
+        }
+        return list;
+    }
+
+    public ArrayList<Question> getListQuestionByQuiz(int quiz_id) throws SQLException {
+        Connection connection = DBConnect.getConnecttion();
+        String sql = "SELECT * FROM question WHERE QuizID ='" + quiz_id + "'";
+        PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<Question> list = new ArrayList<>();
         while (rs.next()) {

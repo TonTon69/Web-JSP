@@ -1,3 +1,4 @@
+<%@page import="model.User"%>
 <%@page import="model.Quiz"%>
 <%@page import="dao.QuizDAO"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
@@ -77,12 +78,17 @@
         QuizDAO quizDAO = new QuizDAO();
         Quiz quiz = new Quiz();
         String quizID = "", subjectID = "";
+        int userID = 0;
         if (request.getParameter("quiz_id") != null) {
             quizID = request.getParameter("quiz_id");
             quiz = quizDAO.getQuizByQuizID(Integer.parseInt(quizID));
         }
         if (request.getParameter("subject_id") != null) {
             subjectID = request.getParameter("subject_id");
+        }
+        User u = (User) session.getAttribute("user");
+        if (u != null) {
+            userID = u.getUserID();
         }
 
     %>
@@ -148,9 +154,11 @@
                         </div>
                     </div>
                     <div class="btn-group-do-exam">
-                        <a href="detail.jsp?quiz_id=<%=quiz.getQuizID()%>&subject_id=<%=quiz.getSubjectID()%>&start=1" style="display: contents">
-                            <input class="btn-do-exam" type="button" value="Bắt đầu làm bài" />
-                        </a>
+                        <form action="CheckQServlet?idofquiz=<%=quiz.getQuizID()%>&idofsubject=<%=subjectID%>&idofuser=<%=userID%>&start=0" method="post">
+                            <a>
+                                <input class="btn-do-exam" type="submit" value="Bắt đầu làm bài"/>
+                            </a> 
+                        </form>
                     </div>
                 </div>                   
                 <div class="charts col-md-3 p-0">

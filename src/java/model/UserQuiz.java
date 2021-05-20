@@ -1,33 +1,22 @@
 package model;
 
-import java.sql.Timestamp;
+import java.sql.Time;
+import java.sql.Date;
 
 public class UserQuiz {
+
+    public UserQuiz() {
+    }
 
     private int userquizID;
     private int userID;
     private int quizID;
     private float score;
-    private int totalAnswerTrue;
-    private Timestamp startTime;
-    private Timestamp endTime;
-    private Timestamp startDay;
-    private Timestamp endDay;
-
-    public UserQuiz() {
-    }
-
-    public UserQuiz(int userquizID, int userID, int quizID, float score, int totalAnswerTrue, Timestamp startTime, Timestamp endTime, Timestamp startDay, Timestamp endDay) {
-        this.userquizID = userquizID;
-        this.userID = userID;
-        this.quizID = quizID;
-        this.score = score;
-        this.totalAnswerTrue = totalAnswerTrue;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.startDay = startDay;
-        this.endDay = endDay;
-    }
+    private int totalanswertrue;
+    private Time starttime;
+    private Time endtime;
+    private Date startday;
+    private Date endday;
 
     public int getUserquizID() {
         return userquizID;
@@ -61,44 +50,56 @@ public class UserQuiz {
         this.score = score;
     }
 
-    public int getTotalAnswerTrue() {
-        return totalAnswerTrue;
+    public int getTotalanswertrue() {
+        return totalanswertrue;
     }
 
-    public void setTotalAnswerTrue(int totalAnswerTrue) {
-        this.totalAnswerTrue = totalAnswerTrue;
+    public void setTotalanswertrue(int totalanswertrue) {
+        this.totalanswertrue = totalanswertrue;
     }
 
-    public Timestamp getStartTime() {
-        return startTime;
+    public Time getStarttime() {
+        return starttime;
     }
 
-    public void setStartTime(Timestamp startTime) {
-        this.startTime = startTime;
+    public void setStarttime(Time starttime) {
+        this.starttime = starttime;
     }
 
-    public Timestamp getEndTime() {
-        return endTime;
+    public Time getEndtime() {
+        return endtime;
     }
 
-    public void setEndTime(Timestamp endTime) {
-        this.endTime = endTime;
+    public void setEndtime(Time endtime) {
+        this.endtime = endtime;
     }
 
-    public Timestamp getStartDay() {
-        return startDay;
+    public Date getStartday() {
+        return startday;
     }
 
-    public void setStartDay(Timestamp startDay) {
-        this.startDay = startDay;
+    public void setStartday(Date startday) {
+        this.startday = startday;
     }
 
-    public Timestamp getEndDay() {
-        return endDay;
+    public Date getEndday() {
+        return endday;
     }
 
-    public void setEndDay(Timestamp endDay) {
-        this.endDay = endDay;
+    public void setEndday(Date endday) {
+        this.endday = endday;
     }
-    
+
+    public UserQuiz(int userquizID, int userID, int quizID, float score, int totalanswertrue, Time starttime, Time endtime, Date startday, Date endday) {
+        this.userquizID = userquizID;
+        this.userID = userID;
+        this.quizID = quizID;
+        this.score = score;
+        this.totalanswertrue = totalanswertrue;
+        this.starttime = starttime;
+        this.endtime = endtime;
+        this.startday = startday;
+        this.endday = endday;
+    }
+
 }

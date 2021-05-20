@@ -116,12 +116,12 @@ hr{
     border-radius: 5px;
     background-color: #ffb83c;
     color: #fff;
+    width: 165px;
     height: 46px;
     font-size: 16px;
     line-height: 37px;
     font-weight: 600;
     float: left;
-    width: 30%;
 }
 
 /*Hướng dẫn làm bài thi*/
@@ -149,4 +149,21 @@ hr{
 .instruction-box,.note-content{
     padding: 0 50px 30px 50px;
     font-size: 16px;
+}
+.formatquestion{
+    border-radius: 5px;
+    background-color: #fafafa;
+    margin: 20px 0;
+    padding: 20px;
+}
+.formatquestion p{
+    display: flex;
+    align-items: center;
+}
+.formatquestion input[type="radio"]{
+    margin: 0 4px 0 0;
+}
+.formatquestion label{
+    margin: 0;
+    font-weight: unset;
 }
