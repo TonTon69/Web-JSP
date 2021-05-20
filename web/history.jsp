@@ -1,11 +1,15 @@
+<%@page import="java.sql.Time"%>
+<%@page import="dao.UserQuizDAO"%>
+<%@page import="model.UserQuiz"%>
 <%@page import="model.User"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-         <title>Quiz &mdash; HAT</title>
+        <title>Quiz &mdash; HAT</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
             name="description"
@@ -62,7 +66,7 @@
         <link rel="stylesheet" href="css/infor.css" />  
         <link rel="stylesheet" href="css/luyenthi.css" />
         <link rel="stylesheet" href="css/responsive.css" />
-        
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>     
 
         <!-- Modernizr JS -->
@@ -105,9 +109,13 @@
                                     <th style="">Đề thi</th>
                                     <th>Kết quả</th>
                                     <th>Đã thi lúc</th>
-                                </tr>                                  
+                                </tr>  
+                                <%
+                                    for (UserQuiz uq : new UserQuizDAO().getListUserQuiz()) {
+                                %>                                
                                 <tr>
-                                    <td style="text-align: left; line-height: 20px;"><a href="thi-trac-nghiem/de-thi-thu-thptqg-nam-2018-mon-vat-ly-chuyen-thai-nguyen-b.html" target="_blank">Đề thi thử THPTQG năm 2018 môn Vật lý- Chuyên Thái Nguyên</a>
+                                    <td style="text-align: left; line-height: 20px;">
+                                        <a href="" target="_blank"><%=uq.getQuizname()%></a>
                                         <p style="font-size: 12px; font-style: italic;" class="ltin">
                                             <span><i class="fa fa-bars" aria-hidden="true"></i> <a href="thi-trac-nghiem/mon-vat-ly.html">Môn vật lý;</a></span> 
                                             <span><i class="fa fa-question-circle" aria-hidden="true"></i> Số câu hỏi: <b>40 câu;</b>
@@ -117,14 +125,16 @@
                                         </p>
                                     </td>
                                     <td>
-                                        <p>Điểm: <b style="color: red;">0<sup>đ</sup></b></p>
-                                        <p>Thời gian làm: 0 phút 6 giây</p>
-                                        <p>Trả lời: 0/40 <i>(Đúng 0)</i></p>
+                                        <p>Điểm: <b style="color: red;"><%=uq.getScore()%><sup>đ</sup></b></p>
+                                        <p>Thời gian làm: <%=uq.getEndtime()%> - <%=uq.getStarttime()%></p>
+                                        <p>Trả lời: <%=uq.getTotalanswertrue()%>/<%=uq.getTotalquestion()%> <i>(Đúng <%=uq.getTotalanswertrue()%>)</i></p>
                                     </td>
                                     <td style="">
-                                        21:40 Ngày 14/04/2021<p><a class="nutnho" href="thi-trac-nghiem/de-thi-thu-thptqg-nam-2018-mon-vat-ly-chuyen-thai-nguyen-b.html?startid=33960" target="_blank">Xem kết quả chi tiết</a></p>
+                                        <%=uq.getStarttime()%> Ngày <fmt:formatDate pattern="dd-MM-yyyy" value="<%=uq.getStartday()%>" />
+                                        <p><a class="nutnho" href="" target="_blank">Xem kết quả chi tiết</a></p>
                                     </td>
-                                </tr>                                                                 
+                                </tr>   
+                            <%}%>
                             </tbody>
                         </table>
                         <table id="tabletr" cellspacing="2" cellpadding="0" border="0">

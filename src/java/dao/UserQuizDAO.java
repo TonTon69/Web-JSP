@@ -11,8 +11,8 @@ import model.UserQuiz;
 import java.util.ArrayList;
 
 public class UserQuizDAO {
-// get danh sách user
 
+    // get danh sách userquiz
     public ArrayList<UserQuiz> getListUserQuiz(int a, int b) throws SQLException {
         Connection connection = DBConnect.getConnecttion();
         String sql = "SELECT a.UserQuizID, b.FullName, c.QuizName, a.Score, a.AnwserTrue, c.TotalQuestion, a.StartTime, "
@@ -21,6 +21,31 @@ public class UserQuizDAO {
         PreparedStatement ps = connection.prepareCall(sql);
         ps.setInt(1, a);
         ps.setInt(2, b);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<UserQuiz> list = new ArrayList<>();
+        while (rs.next()) {
+            UserQuiz uq = new UserQuiz();
+            uq.setUserquizID(rs.getInt("UserQuizID"));
+            uq.setUsername(rs.getString("FullName"));
+            uq.setQuizname(rs.getString("QuizName"));
+            uq.setScore(rs.getFloat("Score"));
+            uq.setTotalanswertrue(rs.getInt("AnwserTrue"));
+            uq.setTotalquestion(rs.getInt("TotalQuestion"));
+            uq.setStarttime(rs.getTime("StartTime"));
+            uq.setEndtime(rs.getTime("EndTime"));
+            uq.setStartday(rs.getDate("StartDay"));
+            uq.setEndday(rs.getDate("EndDay"));
+            list.add(uq);
+        }
+        return list;
+    }
+
+    public ArrayList<UserQuiz> getListUserQuiz() throws SQLException {
+        Connection connection = DBConnect.getConnecttion();
+        String sql = "SELECT a.UserQuizID, b.FullName, c.QuizName, a.Score, a.AnwserTrue, c.TotalQuestion, a.StartTime, "
+                + "a.EndTime, a.StartDay, a.EndDay FROM userquiz a, user b, quiz c "
+                + "where a.UserID = b.UserID and a.QuizID = c.QuizID";
+        PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<UserQuiz> list = new ArrayList<>();
         while (rs.next()) {
