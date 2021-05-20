@@ -124,7 +124,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="${root}/admin/manager_result.jsp">
+                <a class="nav-link" href="${root}/admin/manager_result.jsp?pages=1">
                     <i class="fas fa-poll-h"></i>
                     <span>&nbsp;Kết quả thi</span>
                 </a>

@@ -52,6 +52,10 @@
         <servlet-name>CheckQServlet</servlet-name>
         <servlet-class>controller.CheckQServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManagerReslutServlet</servlet-name>
+        <servlet-class>controller.ManagerReslutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManagerSubjectServlet</servlet-name>
         <url-pattern>/ManagerSubjectServlet</url-pattern>
@@ -108,6 +112,10 @@
     <servlet-mapping>
         <servlet-name>CheckQServlet</servlet-name>
         <url-pattern>/CheckQServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerReslutServlet</servlet-name>
+        <url-pattern>/ManagerReslutServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

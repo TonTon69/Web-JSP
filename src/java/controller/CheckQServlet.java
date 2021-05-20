@@ -4,7 +4,6 @@ import dao.QuestionDAO;
 import dao.UserQuizDAO;
 //import dao.UserQuizDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.Time;
 import javax.servlet.RequestDispatcher;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Question;
-import model.User;
 import model.UserQuiz;
 
 public class CheckQServlet extends HttpServlet {

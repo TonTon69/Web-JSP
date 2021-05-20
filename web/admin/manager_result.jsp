@@ -1,3 +1,5 @@
+<%@page import="dao.UserQuizDAO"%>
+<%@page import="model.UserQuiz"%>
 <%@page import="model.Administrator"%>
 <%@page import="model.User"%>
 <%@page import="java.util.ArrayList"%>
@@ -28,8 +30,7 @@
     </head>
     <body id="page-top">
         <%
-            UserDAO userDAO = new UserDAO();
-            //ArrayList<User> listUser = userDAO.getListUser();
+            UserQuizDAO userquizDAO = new UserQuizDAO();
 
             Administrator ad = (Administrator) session.getAttribute("admin");
             if (ad == null) {
@@ -40,7 +41,7 @@
             if (request.getParameter("pages") != null) {
                 pages = (int) Integer.parseInt(request.getParameter("pages"));
             }
-            int total = userDAO.getCount();
+            int total = userquizDAO.getCount();
             if (total <= 4) {
                 first = 0;
                 last = total;
@@ -48,16 +49,16 @@
                 first = (pages - 1) * 4;
                 last = 4;
             }
-            //Lấy ra danh sách sản phẩm
-            ArrayList<User> listUser;
+            //Lấy ra danh sách userquiz
+            ArrayList<UserQuiz> listUserQuiz;
             String txtSearch = "";
             if (request.getParameter("search") != null) {
                 txtSearch = request.getParameter("search");
             }
             if (request.getParameter("search") != null) { //search
-                listUser = userDAO.search(txtSearch);
+                listUserQuiz = userquizDAO.search(txtSearch);
             } else {
-                listUser = userDAO.getUser(first, last);
+                listUserQuiz = userquizDAO.getListUserQuiz(first, last);
             }
         %>
         <div id="wrapper">
@@ -73,16 +74,6 @@
                             <h3>QUẢN LÝ KẾT QUẢ THI</h3>
                         <%if (session.getAttribute("insert_success") != null || session.getAttribute("update_success") != null || session.getAttribute("remove_success") != null) {%>
                         <div>
-                            <% if (session.getAttribute("insert_success") != null) {%>
-                            <p style = "color: green; font-weight: 600;"> 
-                                <%=session.getAttribute("insert_success")%>
-                            </p>
-                            <%}%>
-                            <% if (session.getAttribute("update_success") != null) {%>
-                            <p style = "color: green; font-weight: 600;"> 
-                                <%=session.getAttribute("update_success")%>
-                            </p>
-                            <%}%>
                             <% if (session.getAttribute("remove_success") != null) {%>
                             <p style = "color: green; font-weight: 600;"> 
                                 <%=session.getAttribute("remove_success")%>
@@ -90,8 +81,6 @@
                             <%}%>
                         </div>                                    
                         <%
-                                session.removeAttribute("insert_success");
-                                session.removeAttribute("update_success");
                                 session.removeAttribute("remove_success");
                             }%>
                         <div class="card shadow mb-4">
@@ -117,8 +106,8 @@
                                             <tr>
                                                 <th>STT</th>
                                                 <th>Mã</th>
-                                                <th>Mã user</th>
-                                                <th>Mã đề</th>
+                                                <th>Học viên</th>
+                                                <th>Đề</th>
                                                 <th>Điểm</th>
                                                 <th>Số câu đúng</th>
                                                 <th>Thời gian làm bài</th>
@@ -130,25 +119,25 @@
                                         </thead>
                                         <%
                                             int count = 0;
-                                            for (User u : listUser) {
+                                            for (UserQuiz uq : listUserQuiz) {
                                                 count++;
                                         %>
                                         <tbody>
                                             <tr>
                                                 <th scope="row"><%=count%></th>
-                                                <td><%=u.getUserID()%></td>
-                                                <td><%=u.getFullName()%></td>
-                                                <td><%=u.getEmail()%></td>
-                                                <td><%=u.getPhone()%></td>
-                                                <td><%=u.getPhone()%></td>
-                                                <td><%=u.getPhone()%></td>
-                                                <td><%=u.getPhone()%></td>
-                                                <td><%=u.getPhone()%></td>
-                                                <td style="width: 300px"><%=u.getAddress()%></td>
+                                                <td><%=uq.getUserquizID()%></td>
+                                                <td><%=uq.getUsername()%></td>
+                                                <td><%=uq.getQuizname()%></td>
+                                                <td><%=uq.getScore()%></td>
+                                                <td><%=uq.getTotalanswertrue()%> / <%=uq.getTotalquestion()%></td>
+                                                <td><%=uq.getStarttime()%></td>
+                                                <td><%=uq.getEndtime()%></td>
+                                                <td><%=uq.getStartday()%></td>
+                                                <td><%=uq.getEndday()%></td>
                                                 <td>
-                                                    <a href="${root}/ManagerResultServlet?command=delete&user_id=<%=u.getUserID()%>" 
+                                                    <a href="${root}/ManagerReslutServlet?command=delete&userquiz_id=<%=uq.getUserquizID()%>" 
                                                        class="btn btn-danger"
-                                                       onclick="return confirm('Bạn có chắc chắn muốn xóa kết quả thi này của <%=u.getFullName()%>?')">
+                                                       onclick="return confirm('Bạn có chắc chắn muốn xóa kết quả thi này của <%=uq.getUsername()%>?')">
                                                         <i class="far fa-trash-alt"></i>
                                                     </a>
                                                 </td>
@@ -167,7 +156,7 @@
                                             }
                                         %>
                                         <li class="page-item">
-                                            <a class="page-link" href="${root}/admin/manager_user.jsp?pages=<%=back%>" aria-label="Previous">
+                                            <a class="page-link" href="${root}/admin/manager_result.jsp?pages=<%=back%>" aria-label="Previous">
                                                 <span aria-hidden="true">&laquo;</span>
                                                 <span class="sr-only">Previous</span>
                                             </a>
@@ -196,9 +185,9 @@
                                             //Lap so pages
                                             for (int i = 1; i <= loop; i++) {%>
                                         <% if (pages == i) {%> 
-                                        <li class="page-item"><a class="page-link" href="${root}/admin/manager_user.jsp?pages=<%=i%>"><%=i%></a></li>
+                                        <li class="page-item"><a class="page-link" href="${root}/admin/manager_result.jsp?pages=<%=i%>"><%=i%></a></li>
                                             <%} else {%>
-                                        <li class="page-item"><a class="page-link" href="${root}/admin/manager_user.jsp?pages=<%=i%>"><%=i%></a></li>
+                                        <li class="page-item"><a class="page-link" href="${root}/admin/manager_result.jsp?pages=<%=i%>"><%=i%></a></li>
                                             <%}
                                                 }%>
                                             <%
@@ -232,7 +221,7 @@
                                                 }
                                             %>
                                         <li class="page-item">
-                                            <a class="page-link" href="${root}/admin/manager_user.jsp?pages=<%=next%>" aria-label="Next">
+                                            <a class="page-link" href="${root}/admin/manager_result.jsp?pages=<%=next%>" aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
                                                 <span class="sr-only">Next</span>
                                             </a>

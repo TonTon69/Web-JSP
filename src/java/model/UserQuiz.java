@@ -13,10 +13,38 @@ public class UserQuiz {
     private int quizID;
     private float score;
     private int totalanswertrue;
+    private int totalquestion;
     private Time starttime;
     private Time endtime;
     private Date startday;
     private Date endday;
+
+    private String username;
+    private String quizname;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getTotalquestion() {
+        return totalquestion;
+    }
+
+    public void setTotalquestion(int totalquestion) {
+        this.totalquestion = totalquestion;
+    }
+
+    public String getQuizname() {
+        return quizname;
+    }
+
+    public void setQuizname(String quizname) {
+        this.quizname = quizname;
+    }
 
     public int getUserquizID() {
         return userquizID;
