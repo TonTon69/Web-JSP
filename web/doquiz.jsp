@@ -115,7 +115,7 @@
                         </p>
                         <div class="detail-question">
                             <span class="mr-2"> 
-                                <i class="fa fa-bars"> </i>
+                                <i class="fa fa-check-square"> </i>
                                 Môn:&nbsp;<a href=""><%=quiz.getSubjectName()%></a>
                             </span>                            
                             <span class="mr-2">
@@ -168,48 +168,6 @@
                                 </div>
                             </form>   
                         </div> 
-                    </div>
-                    <div class="charts col-md-3 p-0">
-                        <div class="box-charts">
-                            <header class="card-header">
-                                <h2 class="m-0">Kết quả</h2>
-                            </header>
-                            <div class="exam-top-list">
-                                <div class="top-header">
-                                    <div class="col name">Tổng số câu đúng</div>
-                                    <div class="col">Điểm</div>
-                                    <div class="col">Thời gian</div>
-                                </div>
-                                <div class="exam-item">
-                                    <div class="row-content">
-                                        <div class="col  name top1">
-                                            <span>
-                                                <!--tổng số câu đúng-->
-                                                <%if (request.getAttribute("sumcorrectanswer") != null) {%>
-                                                <%=request.getAttribute("sumcorrectanswer")%>/<%=request.getAttribute("sumquestion")%>
-                                                <%}%>
-                                                <!--tổng số câu đúng-->
-                                            </span>
-                                        </div>
-                                        <div class="col"> <!--chứa kết quả điểm số-->
-                                            <!--điểm số-->
-                                            <%if (request.getAttribute("score") != null) {%>
-                                            <%=request.getAttribute("score")%>
-                                            <%}%>
-                                            <!--điểm số-->
-                                        </div>
-                                        <div class="col"> <!--chứa thời gian làm bài-->
-                                            <!--thời gian đã làm bài-->
-                                            <%if (request.getAttribute("minutes") != null && request.getAttribute("seconds") != null) {%>
-                                            <%=request.getAttribute("minutes")%>:<%=request.getAttribute("seconds")%>
-                                            <%}%>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr/>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>

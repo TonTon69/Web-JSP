@@ -4,6 +4,7 @@
 <%@page import="model.Quiz"%>
 <%@page import="dao.QuizDAO"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap-grid.min.css" integrity="sha512-cKoGpmS4czjv58PNt1YTHxg0wUDlctZyp9KUxQpdbAft+XqnyKvDvcGX0QYCgCohQenOuyGSl8l1f7/+axAqyg==" crossorigin="anonymous" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>Quiz &mdash; HAT</title>
+        <c:set var="root" value="${pageContext.request.contextPath}"/>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
             name="description"
@@ -44,34 +46,34 @@
             />
 
         <!-- Animate.css -->
-        <link rel="stylesheet" href="css/animate.css" />
+        <link rel="stylesheet" href="${root}/css/animate.css" />
         <!-- Icomoon Icon Fonts-->
-        <link rel="stylesheet" href="css/icomoon.css" />
+        <link rel="stylesheet" href="${root}/css/icomoon.css" />
         <!-- Bootstrap  -->
-        <link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="${root}/css/bootstrap.css" />
 
         <!-- Magnific Popup -->
-        <link rel="stylesheet" href="css/magnific-popup.css" />
+        <link rel="stylesheet" href="${root}/css/magnific-popup.css" />
 
         <!-- Owl Carousel  -->
-        <link rel="stylesheet" href="css/owl.carousel.min.css" />
-        <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+        <link rel="stylesheet" href="${root}/css/owl.carousel.min.css" />
+        <link rel="stylesheet" href="${root}/css/owl.theme.default.min.css" />
 
         <!-- Flexslider  -->
-        <link rel="stylesheet" href="css/flexslider.css" />
+        <link rel="stylesheet" href="${root}/css/flexslider.css" />
 
         <!-- Pricing -->
-        <link rel="stylesheet" href="css/pricing.css" />
+        <link rel="stylesheet" href="${root}/css/pricing.css" />
 
         <!-- Theme style  -->
-        <link rel="stylesheet" href="css/style.css" />        
-        <link rel="stylesheet" href="css/luyenthi.css" />
-        <link rel="stylesheet" href="css/responsive.css" />
+        <link rel="stylesheet" href="${root}/css/style.css" />        
+        <link rel="stylesheet" href="${root}/css/luyenthi.css" />
+        <link rel="stylesheet" href="${root}/css/responsive.css" />
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-        <script type="text/javascript" src="js/countdownTQ.js"></script>
+        <script type="text/javascript" src="${root}/js/countdownTQ.js"></script>
         <!-- Modernizr JS -->
-        <script src="js/modernizr-2.6.2.min.js"></script>
+        <script src="${root}/js/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <%
@@ -99,13 +101,13 @@
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
                             <li class="breadcrumb-item"><a href="quiz.jsp?pages=1">Thi THPT QG</a></li>
-                            <li class="breadcrumb-item">Làm bài thi</li>
+                            <li class="breadcrumb-item">Kết quả thi</li>
                         </ul>
                     </div>
                 </div>
                 <div class="container">
                     <div class="row">
-                        <div class="detail col-md-9">
+                        <div class="detail col-md-8">
                             <h3 class="m-0"><%=quiz.getQuizName()%></h3>
                         <p>
                             <span>
@@ -115,7 +117,7 @@
                         </p>
                         <div class="detail-question">
                             <span class="mr-2"> 
-                                <i class="fa fa-bars"> </i>
+                                <i class="fa fa-check-square"> </i>
                                 Môn:&nbsp;<a href=""><%=quiz.getSubjectName()%></a>
                             </span>                            
                             <span class="mr-2">
@@ -124,65 +126,60 @@
                             </span>  
                             <span class="mr-2">
                                 <i class="fa fa-clock"> </i>
-                                Thời gian: <span id="countdown" style="color: red; font-size: 30px;"></span> / <span id="timeofquiz"><%=quiz.getTime()%></span>:00
+                                Thời gian: <%=quiz.getTime()%> phút
                             </span>
                         </div>
 
                         <div class="contentoftest">
-                            <form action="CheckQServlet?idofquiz=<%=quiz.getQuizID()%>&idofsubject=<%=subjectID%>&idofuser=<%=userID%>&start=1" method="post"> 
-                                <div> 
-                                    <!--content-->
-                                    <% QuestionDAO quesDao = new QuestionDAO();%>
-                                    <div>
-                                        <%
-                                            int i = 1;
-                                            for (Question ques : quesDao.getListQuestionByQuiz(quiz.getQuizID())) {
-                                        %>
-                                        <div class="formatquestion" >
-                                            <p><b><%=i%>. <%=ques.getContent()%></b></p>
-                                            <p>
-                                                <input type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqA()%>" > 
-                                                A. <%=ques.getqA()%>
-                                            </p>
-                                            <p>
-                                                <input type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqB()%>" > 
-                                                A. <%=ques.getqB()%>
-                                            </p>
-                                            <p>
-                                                <input type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqC()%>" > 
-                                                A. <%=ques.getqC()%>
-                                            </p>
-                                            <p>
-                                                <input type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqD()%>" > 
-                                                A. <%=ques.getqD()%>
-                                            </p>
-                                        </div>
-                                        <%
-                                                i = i + 1;
-                                            }
-                                        %>  
+                            <div> 
+                                <!--content-->
+                                <% QuestionDAO quesDao = new QuestionDAO();%>
+                                <div>
+                                    <%
+                                        int i = 1;
+                                        for (Question ques : quesDao.getListQuestionByQuiz(quiz.getQuizID())) {
+                                    %>
+                                    <div class="formatquestion" >
+                                        <p><b><%=i%>. <%=ques.getContent()%></b></p>
+                                        <p>
+                                            <input type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqA()%>" > 
+                                            A. <%=ques.getqA()%>
+                                        </p>
+                                        <p>
+                                            <input type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqB()%>" > 
+                                            A. <%=ques.getqB()%>
+                                        </p>
+                                        <p>
+                                            <input type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqC()%>" > 
+                                            A. <%=ques.getqC()%>
+                                        </p>
+                                        <p>
+                                            <input type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqD()%>" > 
+                                            A. <%=ques.getqD()%>
+                                        </p>
                                     </div>
+                                    <%
+                                            i = i + 1;
+                                        }
+                                    %>  
                                 </div>
-                                <div class="btn-group-do-exam">
-                                    <input class="btn-do-exam" type="submit" name="submitName" value="Nộp bài">
-                                </div>
-                            </form>   
+                            </div>
                         </div> 
                     </div>
-                    <div class="charts col-md-3 p-0">
+                    <div class="charts col-md-3 p-0" style="display: inline-table;">
                         <div class="box-charts">
                             <header class="card-header">
                                 <h2 class="m-0">Kết quả</h2>
                             </header>
                             <div class="exam-top-list">
                                 <div class="top-header">
-                                    <div class="col name">Tổng số câu đúng</div>
+                                    <div class="col name">Số câu đúng</div>
                                     <div class="col">Điểm</div>
                                     <div class="col">Thời gian</div>
                                 </div>
                                 <div class="exam-item">
                                     <div class="row-content">
-                                        <div class="col  name top1">
+                                        <div class="col name">
                                             <span>
                                                 <!--tổng số câu đúng-->
                                                 <%if (request.getAttribute("sumcorrectanswer") != null) {%>
@@ -193,9 +190,11 @@
                                         </div>
                                         <div class="col"> <!--chứa kết quả điểm số-->
                                             <!--điểm số-->
-                                            <%if (request.getAttribute("score") != null) {%>
-                                            <%=request.getAttribute("score")%>
-                                            <%}%>
+                                            <%if (request.getAttribute("score") != null) {
+                                            %>
+                                            <%=request.getAttribute("score")%>đ
+                                            <%
+                                                }%>
                                             <!--điểm số-->
                                         </div>
                                         <div class="col"> <!--chứa thời gian làm bài-->
@@ -214,34 +213,34 @@
                 </div>
             </div>
             <jsp:include page="footer.jsp"></jsp:include>
-        </div>
-        <div class="gototop js-top">
-            <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-        </div>
+            </div>
+            <div class="gototop js-top">
+                <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+            </div>
 
-        <!-- jQuery -->
-        <script src="js/jquery.min.js"></script>
+            <!-- jQuery -->
+            <script src="${root}/js/jquery.min.js"></script>
         <!-- jQuery Easing -->
-        <script src="js/jquery.easing.1.3.js"></script>
+        <script src="${root}/js/jquery.easing.1.3.js"></script>
         <!-- Bootstrap -->
-        <script src="js/bootstrap.min.js"></script>
+        <script src="${root}/js/bootstrap.min.js"></script>
         <!-- Waypoints -->
-        <script src="js/jquery.waypoints.min.js"></script>
+        <script src="${root}/js/jquery.waypoints.min.js"></script>
         <!-- Stellar Parallax -->
-        <script src="js/jquery.stellar.min.js"></script>
+        <script src="${root}/js/jquery.stellar.min.js"></script>
         <!-- Carousel -->
-        <script src="js/owl.carousel.min.js"></script>
+        <script src="${root}/js/owl.carousel.min.js"></script>
         <!-- Flexslider -->
-        <script src="js/jquery.flexslider-min.js"></script>
+        <script src="${root}/js/jquery.flexslider-min.js"></script>
         <!-- countTo -->
-        <script src="js/jquery.countTo.js"></script>
+        <script src="${root}/js/jquery.countTo.js"></script>
         <!-- Magnific Popup -->
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <script src="js/magnific-popup-options.js"></script>
+        <script src="${root}/js/jquery.magnific-popup.min.js"></script>
+        <script src="${root}/js/magnific-popup-options.js"></script>
         <!-- Count Down -->
-        <script src="js/simplyCountdown.js"></script>
+        <script src="${root}/js/simplyCountdown.js"></script>
         <!-- Main -->
-        <script src="js/main.js"></script>
+        <script src="${root}/js/main.js"></script>
         <script>
             var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
 

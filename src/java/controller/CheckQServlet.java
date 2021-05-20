@@ -2,7 +2,6 @@ package controller;
 
 import dao.QuestionDAO;
 import dao.UserQuizDAO;
-//import dao.UserQuizDAO;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
@@ -94,7 +93,7 @@ public class CheckQServlet extends HttpServlet {
                     UserQuizDAO uqDao = new UserQuizDAO();
                     uqDao.insertUserQuiz(userquiz);
                     /*kết thúc lưu dữ liệu*/
-                    url = "/doquiz.jsp?quiz_id=" + quizID + "&subject_id=" + subjectID + "&start=1";
+                    url = "/resultquiz.jsp?quiz_id=" + quizID + "&subject_id=" + subjectID + "&start=1";
                     break;
             }
 
