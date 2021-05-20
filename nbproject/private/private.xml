@@ -4,30 +4,18 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/IT/web/java/WebEduc/web/admin/manager_result.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/logout_modal.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/manager_admin.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/content.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/manager_banner.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/src/java/dao/AdminDAO.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/src/java/dao/SubjectDAO.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/src/java/model/UserQuiz.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/register.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/quiz.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/js/countdownTQ.js</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/doquiz.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/src/java/model/Quiz.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/index.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/manager_quiz.jsp</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/dao/UserQuizDAO.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/src/java/controller/AdminServlet.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/detail.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/history.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/src/java/controller/ManagerReslutServlet.java</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/resultquiz.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/css/magnific-popup.css</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/js/jquery.countTo.js</file>
+            <file>file:/D:/IT/web/java/WebEduc/src/java/model/UserQuiz.java</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/controller/CheckQServlet.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/sidebar.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/footer.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/src/java/model/User.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/src/java/dao/QuestionDAO.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/src/java/controller/CheckEmailServlet.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/manager_question.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/quiz.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/doquiz.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/src/java/dao/UserDAO.java</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/css/luyenthi.css</file>
         </group>
     </open-files>
 </project-private>
