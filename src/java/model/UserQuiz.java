@@ -5,9 +5,6 @@ import java.sql.Date;
 
 public class UserQuiz {
 
-    public UserQuiz() {
-    }
-
     private int userquizID;
     private int userID;
     private int quizID;
@@ -116,6 +113,9 @@ public class UserQuiz {
 
     public void setEndday(Date endday) {
         this.endday = endday;
+    }
+
+    public UserQuiz() {
     }
 
     public UserQuiz(int userquizID, int userID, int quizID, float score, int totalanswertrue, Time starttime, Time endtime, Date startday, Date endday) {

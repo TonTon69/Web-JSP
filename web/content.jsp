@@ -165,7 +165,7 @@
                             <div class="owl-carousel owl-carousel-fullwidth">
                                 <div class="item">
                                     <div class="testimony-slide active text-center">
-                                        <div class="user" style="background-image: url(https://scontent-hkt1-1.xx.fbcdn.net/v/t1.0-9/159531302_1406717343006790_8090523326038381237_o.jpg?_nc_cat=108&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=52q6ERVWZMwAX9eiNOV&_nc_ht=scontent-hkt1-1.xx&oh=b46bfb4f13e66571d54cf27232b025ed&oe=60793808);"></div>
+                                        <div class="user" style="background-image: url('images/anh-anime-1.jpg');"></div>
                                         <span>Hoàng cắt moi<br><small>Học sinh</small></span>
                                         <blockquote>
                                             <p>&ldquo;Nhờ các khóa học em đã có được định hướng cho bản thân mình, tự tin hơn và không cảm thấy hoang mang về các kĩ năng học nữa!&rdquo;</p>
@@ -174,19 +174,19 @@
                                 </div>
                                 <div class="item">
                                     <div class="testimony-slide active text-center">
-                                        <div class="user" style="background-image: url(https://scontent-hkt1-1.xx.fbcdn.net/v/t1.0-9/10245586_236509373220507_6333942251277991237_n.jpg?_nc_cat=103&ccb=1-3&_nc_sid=2c4854&_nc_ohc=Oi6tmPeqEWgAX-jExuZ&_nc_ht=scontent-hkt1-1.xx&oh=3eac1f99e06e54cdc978350ce4960a37&oe=60797703);"></div>
+                                        <div class="user" style="background-image: url('images/anh-anime-2.jpg');"></div>
                                         <span>Trọng bụng mỡ<br><small>Học sinh</small></span>
                                         <blockquote>
-                                            <p>&ldquo;Em đã học ở website này từ lâu rồi, thấy rất tốt, những bài giảng được làm rất công phu, hình ảnh đẹp và nét  .&rdquo;</p>
+                                            <p>&ldquo;Em đã học ở website này từ lâu rồi, thấy rất tốt, những bài thi được làm rất công phu, hình ảnh đẹp và nét!&rdquo;</p>
                                         </blockquote>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <div class="testimony-slide active text-center">
-                                        <div class="user" style="background-image: url(https://scontent-hkt1-1.xx.fbcdn.net/v/t1.0-9/98362483_1140601059607438_8599874791295418368_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=174925&_nc_ohc=_sZbqCaMqHEAX8_BoRh&_nc_ht=scontent-hkt1-1.xx&oh=6b772c352b1f9fcc5debc0ca54955740&oe=607750F0);"></div>
+                                        <div class="user" style="background-image: url('images/anh-anime-3.jpg');"></div>
                                         <span>Ân đầu moi<br><small>Học sinh</small></span>
                                         <blockquote>
-                                            <p>&ldquo;Các Khóa học trên website rất bổ ích giúp em có thêm nhiều kỹ năng sống, làm việc. Em cảm thấy rất tự tin vào bản thân!&rdquo;</p>
+                                            <p>&ldquo;Các khóa học trên website rất bổ ích giúp em có thêm nhiều kỹ năng sống, làm việc. Em cảm thấy rất tự tin vào bản thân!&rdquo;</p>
                                         </blockquote>
                                     </div>
                                 </div>

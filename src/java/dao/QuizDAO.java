@@ -297,8 +297,4 @@ public class QuizDAO {
         return count;
     }
 
-    public static void main(String[] args) throws SQLException, Exception {
-        QuizDAO s = new QuizDAO();
-        System.out.println(s.getQuizByQuizID(15));
-    }
 }

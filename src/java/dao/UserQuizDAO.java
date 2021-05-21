@@ -145,4 +145,42 @@ public class UserQuizDAO {
         }
         return list;
     }
+
+    //bang xep hang top 10
+    public ArrayList<UserQuiz> getListUserQuizCharts(int quizID) {
+        Connection conn = DBConnect.getConnecttion();
+        ArrayList<UserQuiz> list = new ArrayList();
+        String sql = "SELECT * FROM quiz a, userquiz b, user c "
+                + "WHERE a.QuizID = b.QuizID and b.UserID = c.UserID and b.QuizID = ? "
+                + "GROUP BY c.FullName "
+                + "ORDER BY b.Score desc limit 10";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, quizID);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                UserQuiz uq = new UserQuiz();
+                uq.setUserquizID(rs.getInt("UserQuizID"));
+                uq.setUsername(rs.getString("FullName"));
+                uq.setQuizname(rs.getString("QuizName"));
+                uq.setScore(rs.getFloat("Score"));
+                uq.setTotalanswertrue(rs.getInt("AnwserTrue"));
+                uq.setTotalquestion(rs.getInt("TotalQuestion"));
+                uq.setStarttime(rs.getTime("StartTime"));
+                uq.setEndtime(rs.getTime("EndTime"));
+                uq.setStartday(rs.getDate("StartDay"));
+                uq.setEndday(rs.getDate("EndDay"));
+                list.add(uq);
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static void main(String[] args) throws SQLException, Exception {
+        UserQuizDAO s = new UserQuizDAO();
+        System.out.println(s.getListUserQuizCharts(15));
+    }
 }

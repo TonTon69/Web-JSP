@@ -112,6 +112,16 @@
                                 </tr>  
                                 <%
                                     for (UserQuiz uq : new UserQuizDAO().getListUserQuiz()) {
+                                        int startTime = 0;
+                                        int endTime = 0;
+                                        int totalTime = 0;
+                                        startTime = uq.getStarttime().getHours() * 3600 + uq.getStarttime().getMinutes() * 60 + uq.getStarttime().getSeconds();
+                                        endTime = uq.getEndtime().getHours() * 3600 + uq.getEndtime().getMinutes() * 60 + uq.getEndtime().getSeconds();
+                                        totalTime = endTime - startTime;
+                                        int hours = totalTime / (60 * 60);
+                                        int minutes = (totalTime - hours * 60 * 60) / 60;
+                                        int seconds = (totalTime - hours * 60 * 60 - minutes * 60);
+                                        minutes = hours * 60 + minutes;
                                 %>                                
                                 <tr>
                                     <td style="text-align: left; line-height: 20px;">
@@ -126,15 +136,16 @@
                                     </td>
                                     <td>
                                         <p>Điểm: <b style="color: red;"><%=uq.getScore()%><sup>đ</sup></b></p>
-                                        <p>Thời gian làm: <%=uq.getEndtime()%> - <%=uq.getStarttime()%></p>
+                                        <p>Thời gian làm: <%=minutes%> phút <%=seconds%> giây</p>
                                         <p>Trả lời: <%=uq.getTotalanswertrue()%>/<%=uq.getTotalquestion()%> <i>(Đúng <%=uq.getTotalanswertrue()%>)</i></p>
                                     </td>
-                                    <td style="">
-                                        <%=uq.getStarttime()%> Ngày <fmt:formatDate pattern="dd-MM-yyyy" value="<%=uq.getStartday()%>" />
+                                    <td>
+                                        <fmt:formatDate value="<%=uq.getStarttime()%>" pattern="HH:mm" /> 
+                                        Ngày <fmt:formatDate pattern="dd-MM-yyyy" value="<%=uq.getStartday()%>" />
                                         <p><a class="nutnho" href="" target="_blank">Xem kết quả chi tiết</a></p>
                                     </td>
                                 </tr>   
-                            <%}%>
+                                <%}%>
                             </tbody>
                         </table>
                         <table id="tabletr" cellspacing="2" cellpadding="0" border="0">

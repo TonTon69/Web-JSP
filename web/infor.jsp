@@ -1,9 +1,3 @@
-<%-- 
-    Document   : infor
-    Created on : May 7, 2021, 4:02:01 PM
-    Author     : Acer
---%>
-
 <%@page import="dao.UserDAO"%>
 <%@page import="model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

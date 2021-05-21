@@ -1,3 +1,5 @@
+<%@page import="dao.UserQuizDAO"%>
+<%@page import="model.UserQuiz"%>
 <%@page import="model.User"%>
 <%@page import="model.Quiz"%>
 <%@page import="dao.QuizDAO"%>
@@ -160,7 +162,8 @@
                             </a> 
                         </form>
                     </div>
-                </div>                   
+                </div>     
+
                 <div class="charts col-md-3 p-0">
                     <header class="card-header">
                         <h2 class="m-0">Bảng xếp hạng</h2>
@@ -171,46 +174,30 @@
                             <div class="col">Điểm</div>
                             <div class="col">Thời gian</div>
                         </div>
+                        <%
+                            for (UserQuiz uq : new UserQuizDAO().getListUserQuizCharts(Integer.parseInt(quizID))) {
+                                int startTime = 0;
+                                int endTime = 0;
+                                int totalTime = 0;
+                                startTime = uq.getStarttime().getHours() * 3600 + uq.getStarttime().getMinutes() * 60 + uq.getStarttime().getSeconds();
+                                endTime = uq.getEndtime().getHours() * 3600 + uq.getEndtime().getMinutes() * 60 + uq.getEndtime().getSeconds();
+                                totalTime = endTime - startTime;
+                                int hours = totalTime / (60 * 60);
+                                int minutes = (totalTime - hours * 60 * 60) / 60;
+                                int seconds = (totalTime - hours * 60 * 60 - minutes * 60);
+                                minutes = hours * 60 + minutes;
+                        %>
                         <div class="exam-item">
                             <div class="row-content">
-                                <div class="col name top1">
-                                    <span>tonton</span>
+                                <div class="col name">
+                                    <span><%=uq.getUsername()%></span>
                                 </div>
-                                <div class="col">10đ</div>
-                                <div class="col">40:35</div>
+                                <div class="col"><%=uq.getScore()%></div>
+                                <div class="col"><%=minutes%>:<%=seconds%></div>
                             </div>
                         </div>
                         <hr/>
-                        <div class="exam-item">
-                            <div class="row-content">
-                                <div class="col name top2">
-                                    <span>hoanghuynh</span>
-                                </div>
-                                <div class="col">9đ</div>
-                                <div class="col">42:75</div>
-                            </div>
-                        </div>
-                        <hr/>
-                        <div class="exam-item">
-                            <div class="row-content">
-                                <div class="col name top3">
-                                    <span>minhhoang</span>
-                                </div>
-                                <div class="col">8đ</div>
-                                <div class="col">44:75</div>
-                            </div>
-                        </div>
-                        <hr/>
-                        <div class="exam-item">
-                            <div class="row-content">
-                                <div class="col name top4">
-                                    <span>annguyen</span>
-                                </div>
-                                <div class="col">7đ</div>
-                                <div class="col">44:75</div>
-                            </div>
-                        </div>
-                        <hr/>
+                        <%}%>
                     </div>
                 </div>
             </div>
@@ -329,7 +316,13 @@
             day: d.getDate(),
             enableUtc: false,
         });
-
+        
+        //bảng xếp hạng
+        $(function () {
+            $('.col.name')[1].classList.add('top1');
+            $('.col.name')[2].classList.add('top2');
+            $('.col.name')[3].classList.add('top3');
+        });
     </script>
 
 </body>
