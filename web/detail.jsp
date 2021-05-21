@@ -192,7 +192,7 @@
                                 <div class="col name">
                                     <span><%=uq.getUsername()%></span>
                                 </div>
-                                <div class="col"><%=uq.getScore()%></div>
+                                <div class="col"><fmt:formatNumber value="<%=uq.getScore()%>" minFractionDigits="0" maxFractionDigits="2"/>đ</div>
                                 <div class="col"><%=minutes%>:<%=seconds%></div>
                             </div>
                         </div>
