@@ -150,10 +150,12 @@ public class UserQuizDAO {
     public ArrayList<UserQuiz> getListUserQuizCharts(int quizID) {
         Connection conn = DBConnect.getConnecttion();
         ArrayList<UserQuiz> list = new ArrayList();
-        String sql = "SELECT * FROM quiz a, userquiz b, user c "
-                + "WHERE a.QuizID = b.QuizID and b.UserID = c.UserID and b.QuizID = ? "
-                + "GROUP BY c.FullName "
-                + "ORDER BY b.Score desc limit 10";
+        String sql = "select * from userquiz x, "
+                + "(SELECT c.UserID, c.FullName, max(b.Score) as maxScore FROM userquiz b, user c "
+                + "WHERE b.UserID = c.UserID and b.QuizID = ? GROUP BY c.FullName) as y "
+                + "where x.UserID = y.UserID and x.Score = y.maxScore "
+                + "group by FullName "
+                + "order by x.Score desc limit 10";
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, quizID);
@@ -162,10 +164,8 @@ public class UserQuizDAO {
                 UserQuiz uq = new UserQuiz();
                 uq.setUserquizID(rs.getInt("UserQuizID"));
                 uq.setUsername(rs.getString("FullName"));
-                uq.setQuizname(rs.getString("QuizName"));
                 uq.setScore(rs.getFloat("Score"));
                 uq.setTotalanswertrue(rs.getInt("AnwserTrue"));
-                uq.setTotalquestion(rs.getInt("TotalQuestion"));
                 uq.setStarttime(rs.getTime("StartTime"));
                 uq.setEndtime(rs.getTime("EndTime"));
                 uq.setStartday(rs.getDate("StartDay"));
