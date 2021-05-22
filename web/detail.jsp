@@ -192,13 +192,21 @@
                                 <div class="col name">
                                     <span><%=uq.getUsername()%></span>
                                 </div>
-                                <div class="col"><fmt:formatNumber value="<%=uq.getScore()%>" minFractionDigits="0" maxFractionDigits="2"/>đ</div>
-                                <div class="col"><%=minutes%>:<%=seconds%></div>
+                                <div class="col score"><fmt:formatNumber value="<%=uq.getScore()%>" minFractionDigits="0" maxFractionDigits="2"/>đ</div>
+                                <div class="col time"><%=minutes%>:<%=seconds%></div>
                             </div>
                         </div>
-                        <hr/>
+                        <hr/>                                
                         <%}%>
                     </div>
+                </div>
+                <h5 class="mb-2 text-center" style="color: red">Bạn có muốn chinh phục đề thi này</h5>
+                <div class="btn-group-do-exam">
+                    <form action="CheckQServlet?idofquiz=<%=quiz.getQuizID()%>&idofsubject=<%=subjectID%>&idofuser=<%=userID%>&start=0" method="post">
+                        <a>
+                            <input class="btn-do-exam" style="width: 290px;" type="submit" value="Có, tôi muốn!"/>
+                        </a> 
+                    </form>
                 </div>
             </div>
         </div>
@@ -316,7 +324,7 @@
             day: d.getDate(),
             enableUtc: false,
         });
-        
+
         //bảng xếp hạng
         $(function () {
             $('.col.name')[1].classList.add('top1');

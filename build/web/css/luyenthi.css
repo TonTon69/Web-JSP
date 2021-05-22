@@ -92,6 +92,10 @@ hr{
     font-size: 14px;
     font-weight: 600;
 }
+.col.score,
+.col.time{
+    font-weight: 500;
+}
 .exam-top-list .row-content .col.top1 span{
     background: url(../images/gold.png) no-repeat left center;
     padding-left: 22px;

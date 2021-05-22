@@ -18,7 +18,7 @@ public class UserQuiz {
 
     private String username;
     private String quizname;
-
+    
     public String getUsername() {
         return username;
     }

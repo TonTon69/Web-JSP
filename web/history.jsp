@@ -1,3 +1,4 @@
+<%@page import="dao.UserDAO"%>
 <%@page import="java.sql.Time"%>
 <%@page import="dao.UserQuizDAO"%>
 <%@page import="model.UserQuiz"%>
@@ -78,6 +79,7 @@
             if (session.getAttribute("user") != null) {
                 u = (User) session.getAttribute("user");
             }
+            String id = request.getParameter("user_id");
         %>
         <div id="page">
             <jsp:include page="header.jsp"></jsp:include>    
@@ -111,7 +113,7 @@
                                     <th>Đã thi lúc</th>
                                 </tr>  
                                 <%
-                                    for (UserQuiz uq : new UserQuizDAO().getListUserQuiz()) {
+                                    for (UserQuiz uq : new UserQuizDAO().getListUserQuizHistory(Integer.parseInt(id))) {
                                         int startTime = 0;
                                         int endTime = 0;
                                         int totalTime = 0;
@@ -128,8 +130,8 @@
                                         <a href="" target="_blank"><%=uq.getQuizname()%></a>
                                         <p style="font-size: 12px; font-style: italic;" class="ltin">
                                             <span><i class="fa fa-bars" aria-hidden="true"></i> <a href="thi-trac-nghiem/mon-vat-ly.html">Môn vật lý;</a></span> 
-                                            <span><i class="fa fa-question-circle" aria-hidden="true"></i> Số câu hỏi: <b>40 câu;</b>
-                                                <i class="fa fa-clock" aria-hidden="true"></i>  Thời gian: <b>50 phút;</b>
+                                            <span><i class="fa fa-question-circle" aria-hidden="true"></i> Số câu hỏi: <b><%=uq.getTotalquestion()%> câu;</b>
+                                                <i class="fa fa-clock" aria-hidden="true"></i>  Thời gian: <b><%=uq.getTotalquestion()%> phút;</b>
                                                 <i class="fa fa-signal" aria-hidden="true"></i>  Lượt thi: 1427
                                             </span>
                                         </p>
