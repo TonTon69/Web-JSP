@@ -56,8 +56,7 @@
                             </div>
                             <br/>
                             <div class="card shadow mb-4">
-                            <%
-                                String id = request.getParameter("quiz_id");
+                            <%                                String id = request.getParameter("quiz_id");
                                 Quiz qz = new QuizDAO().getQuizByQuizID(Integer.parseInt(id));
                             %>
                             <div class="card-header py-3">
@@ -78,11 +77,11 @@
                                                 <%
                                                     for (Subject s : listSubject) {
                                                 %>
-                                                <option value="<%=s.getSubjectID()%>"><%=s.getSubjectName()%></option>  
+                                                <option value="<%=s.getSubjectID()%>">
+                                                    <%=s.getSubjectName()%>
+                                                </option>  
                                                 <%
-
                                                     }
-
                                                 %>
                                             </select>  
                                         </div>

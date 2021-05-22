@@ -2,7 +2,7 @@
 <%@page import="model.Subject"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.SubjectDAO"%>
-
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -107,7 +107,7 @@
                                                 <td><%=subject.getSubjectName()%></td>
                                                 <td> <i class="<%=subject.getSubjectIcon()%>"></i> </td>
                                                 <td style="width: 600px"><%=subject.getDescription()%></td>
-                                                <td><%=subject.getCreatedate()%></td>
+                                                <td><fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short" value="<%=subject.getCreatedate()%>" /></td>
                                                 <td>
                                                     <a href="${root}/admin/update_subject.jsp?command=update&subject_id=<%=subject.getSubjectID()%>" class="btn btn-primary">
                                                         <i class="far fa-edit"></i>

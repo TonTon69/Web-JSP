@@ -1,16 +1,10 @@
-<%-- 
-    Document   : manager_subject
-    Created on : Mar 24, 2021, 8:35:28 PM
-    Author     : admin
---%>
-
 <%@page import="dao.SubjectDAO"%>
 <%@page import="model.Administrator"%>
 <%@page import="model.Quiz"%>
 <%@page import="model.Subject"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.QuizDAO"%>
-
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -98,10 +92,6 @@
                                 <i class="fas fa-plus"></i>
                                 Thêm mới đề thi
                             </a>
-                            <!--                            <a href="" class="btn btn-success ml-2">
-                                                            <i class="fas fa-file-excel"></i>
-                                                            Xuất excel
-                                                        </a>-->
                         </div>
                         <%if (session.getAttribute("insert_success") != null || session.getAttribute("update_success") != null || session.getAttribute("remove_success") != null) {%>
                         <div>
@@ -189,7 +179,7 @@
                                                 <td><%=quiz.getTime()%> phút</td>
                                                 <td><%=quiz.getTotalQuestion()%> câu</td>                                    
                                                 <td><image src="<%=quiz.getImage()%>" alt="<%=quiz.getQuizName()%>" style="width: 60px" /></td>
-                                                <td><%=quiz.getCreatedate()%></td>
+                                                <td><fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short" value="<%=quiz.getCreatedate()%>" /></td>
                                                 <td>
                                                     <a href="${root}/admin/update_quiz.jsp?command=update&quiz_id=<%=quiz.getQuizID()%>" class="btn btn-primary">
                                                         <i class="far fa-edit"></i>

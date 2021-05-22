@@ -15,7 +15,7 @@ public class UserQuiz {
     private Time endtime;
     private Date startday;
     private Date endday;
-
+    
     private String username;
     private String quizname;
     

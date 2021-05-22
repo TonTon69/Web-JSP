@@ -6,7 +6,7 @@
 <%@page import="model.Question"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.QuestionDAO"%>
-
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -205,7 +205,7 @@
                                                 <td><%=q.getSubjectID()%></td>
                                                 <td><%=q.getQuizID()%></td>
                                                 <td style="width: 550px"><%=q.getContent()%></td>
-                                                <td><%=q.getCreatedate()%></td>
+                                                <td><fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short" value="<%=q.getCreatedate()%>" /></td>
                                                 <td>
                                                     <a href="${root}/admin/detail_question.jsp?command=detail&question_id=<%=q.getQuestionID()%>" class="btn btn-secondary">
                                                         <i class="far fa-eye"></i>

@@ -2,7 +2,7 @@
 <%@page import="model.Banner"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.BannerDAO"%>
-
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -107,7 +107,7 @@
                                                 <td><%=bn.getBannerID()%></td>
                                                 <td style="width: 500px;"><%=bn.getContent()%></td>
                                                 <td><image src="<%=bn.getImage()%>" style="width: 200px; height: 100px" /></td>
-                                                <td><%=bn.getCreatedate()%></td>
+                                                <td><fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short" value="<%=bn.getCreatedate()%>" /></td>
                                                 <td>
                                                     <a href="${root}/admin/update_banner.jsp?command=update&banner_id=<%=bn.getBannerID()%>" class="btn btn-primary">
                                                         <i class="far fa-edit"></i>

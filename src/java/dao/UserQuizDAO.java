@@ -17,7 +17,7 @@ public class UserQuizDAO {
         Connection connection = DBConnect.getConnecttion();
         String sql = "SELECT a.UserQuizID, b.FullName, c.QuizName, a.Score, a.AnwserTrue, c.TotalQuestion, a.StartTime, "
                 + "a.EndTime, a.StartDay, a.EndDay FROM userquiz a, user b, quiz c "
-                + "where a.UserID = b.UserID and a.QuizID = c.QuizID limit ?,?";
+                + "where a.UserID = b.UserID and a.QuizID = c.QuizID order by a.UserQuizID asc limit ?,?";
         PreparedStatement ps = connection.prepareCall(sql);
         ps.setInt(1, a);
         ps.setInt(2, b);

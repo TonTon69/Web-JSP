@@ -4,7 +4,7 @@
 <%@page import="model.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.UserDAO"%>
-
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -132,8 +132,8 @@
                                                 <td><%=uq.getTotalanswertrue()%> / <%=uq.getTotalquestion()%></td>
                                                 <td><%=uq.getStarttime()%></td>
                                                 <td><%=uq.getEndtime()%></td>
-                                                <td><%=uq.getStartday()%></td>
-                                                <td><%=uq.getEndday()%></td>
+                                                <td><fmt:formatDate pattern="dd-MM-yyyy" value="<%=uq.getStartday()%>" /></td>
+                                                <td><fmt:formatDate pattern="dd-MM-yyyy" value="<%=uq.getEndday()%>" /></td>
                                                 <td>
                                                     <a href="${root}/ManagerReslutServlet?command=delete&userquiz_id=<%=uq.getUserquizID()%>" 
                                                        class="btn btn-danger"
