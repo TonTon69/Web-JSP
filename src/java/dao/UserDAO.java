@@ -15,7 +15,7 @@ public class UserDAO {
     // get danh sách user
     public ArrayList<User> getListUser() throws SQLException {
         Connection connection = DBConnect.getConnecttion();
-        String sql = "SELECT * FROM user";
+        String sql = "SELECT * FROM user order by UserID asc";
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<User> list = new ArrayList<>();
@@ -140,7 +140,7 @@ public class UserDAO {
     public ArrayList<User> getUser(int a, int b) {
         Connection conn = DBConnect.getConnecttion();
         ArrayList<User> list = new ArrayList();
-        String sql = "SELECT * FROM user Limit ?,?";
+        String sql = "SELECT * FROM user order by UserID asc Limit ?,?";
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, a);

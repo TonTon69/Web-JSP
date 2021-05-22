@@ -16,7 +16,7 @@ public class QuestionDAO {
     // get danh sách câu hỏi có phân trang
     public ArrayList<Question> getListQuestion(int firstResult, int maxResult) throws SQLException {
         Connection connection = DBConnect.getConnecttion();
-        String sql = "SELECT * FROM question limit ?,?";
+        String sql = "SELECT * FROM question order by QuestionID asc limit ?,?";
         PreparedStatement ps = connection.prepareCall(sql);
         ps.setInt(1, firstResult);
         ps.setInt(2, maxResult);
@@ -99,7 +99,7 @@ public class QuestionDAO {
 
     public ArrayList<Question> getListQuestionByQuiz(int quiz_id) throws SQLException {
         Connection connection = DBConnect.getConnecttion();
-        String sql = "SELECT * FROM question WHERE QuizID ='" + quiz_id + "'";
+        String sql = "SELECT * FROM question WHERE QuizID ='" + quiz_id + "' ORDER BY RAND()";
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<Question> list = new ArrayList<>();

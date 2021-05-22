@@ -110,10 +110,11 @@
                                                 <th>Đề</th>
                                                 <th>Điểm</th>
                                                 <th>Số câu đúng</th>
-                                                <th>Thời gian làm bài</th>
-                                                <th>Thời gian kết thúc</th>
-                                                <th>Ngày làm bài</th>
-                                                <th>Ngày kết thúc</th>
+                                                <th>StartTime</th>
+                                                <th>EndTime</th>
+                                                <th>StartDay</th>
+                                                <th>EndDay</th>
+                                                <th>Thời gian làm</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -121,6 +122,16 @@
                                             int count = 0;
                                             for (UserQuiz uq : listUserQuiz) {
                                                 count++;
+                                                int startTime = 0;
+                                                int endTime = 0;
+                                                int totalTime = 0;
+                                                startTime = uq.getStarttime().getHours() * 3600 + uq.getStarttime().getMinutes() * 60 + uq.getStarttime().getSeconds();
+                                                endTime = uq.getEndtime().getHours() * 3600 + uq.getEndtime().getMinutes() * 60 + uq.getEndtime().getSeconds();
+                                                totalTime = endTime - startTime;
+                                                int hours = totalTime / (60 * 60);
+                                                int minutes = (totalTime - hours * 60 * 60) / 60;
+                                                int seconds = (totalTime - hours * 60 * 60 - minutes * 60);
+                                                minutes = hours * 60 + minutes;
                                         %>
                                         <tbody>
                                             <tr>
@@ -134,6 +145,7 @@
                                                 <td><%=uq.getEndtime()%></td>
                                                 <td><fmt:formatDate pattern="dd-MM-yyyy" value="<%=uq.getStartday()%>" /></td>
                                                 <td><fmt:formatDate pattern="dd-MM-yyyy" value="<%=uq.getEndday()%>" /></td>
+                                                <td><%=minutes%>:<%=seconds%></td>
                                                 <td>
                                                     <a href="${root}/ManagerReslutServlet?command=delete&userquiz_id=<%=uq.getUserquizID()%>" 
                                                        class="btn btn-danger"

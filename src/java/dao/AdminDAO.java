@@ -71,7 +71,7 @@ public class AdminDAO {
     // get danh sách admin
     public ArrayList<Administrator> getListAdmin() throws SQLException {
         Connection connection = DBConnect.getConnecttion();
-        String sql = "SELECT * FROM administrator";
+        String sql = "SELECT * FROM administrator order by AdminID asc";
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<Administrator> list = new ArrayList<>();

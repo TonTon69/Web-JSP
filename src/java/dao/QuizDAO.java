@@ -17,7 +17,7 @@ public class QuizDAO {
     public ArrayList<Quiz> getListQuiz(int firstResult, int maxResult) throws SQLException {
         Connection connection = DBConnect.getConnecttion();
         String sql = "Select a.QuizID, a.SubjectID, b.SubjectName, a.QuizName, a.Time, a.TotalQuestion, a.Image, a.CreateDate "
-                + "from quiz a, subject b where a.SubjectID = b.SubjectID limit ?,?";
+                + "from quiz a, subject b where a.SubjectID = b.SubjectID order by a.QuizID desc limit ?,?";
         PreparedStatement ps = connection.prepareCall(sql);
         ps.setInt(1, firstResult);
         ps.setInt(2, maxResult);
@@ -208,8 +208,8 @@ public class QuizDAO {
         Connection conn = DBConnect.getConnecttion();
         ArrayList<Quiz> list = new ArrayList();
         String sql = "Select a.QuizID, a.SubjectID, b.SubjectName, a.QuizName, a.Time, a.TotalQuestion, a.Image, a.CreateDate "
-                + "from quiz a, subject b where a.SubjectID = b.SubjectID and a.SubjectID ='" + subjectID + "' limit ?,?";
-//        String sql = "SELECT * FROM quiz WHERE SubjectID ='" + subjectID + "' limit ?,?";
+                + "from quiz a, subject b "
+                + "where a.SubjectID = b.SubjectID and a.SubjectID ='" + subjectID + "' order by a.QuizID desc limit ?,?";
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, a);
