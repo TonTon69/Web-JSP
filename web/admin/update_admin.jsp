@@ -50,15 +50,15 @@
                             </div>
                             <br/>
                             <div class="card shadow mb-4">
-                                <%
-                                    String id = request.getParameter("admin_id");
-                                    Administrator ad = new AdminDAO().getAdminByID(Integer.parseInt(id));
-                                %>
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT QUẢN TRỊ #<%=id%></h6>
-                                </div>
-                                <div class="card-body">
-                                
+                            <%
+                                String id = request.getParameter("admin_id");
+                                Administrator ad = new AdminDAO().getAdminByID(Integer.parseInt(id));
+                            %>
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT QUẢN TRỊ #<%=id%></h6>
+                            </div>
+                            <div class="card-body">
+
                                 <form action="${root}/AdminServlet" method="post">
                                     <div class="row">
                                         <div class="form-group col-md-6">
@@ -79,9 +79,15 @@
                                             <label for="status">Trạng thái</label>
                                             <!--<input type="text" class="form-control" name="status" id="status" placeholder="Nhập 'true'-cho phép ; 'false'-không cho phép" required="yes" value="<%=ad.getStatus()%>">-->
                                             <select id="status" name="status" class="form-control">  
-                                                <option value="none">--Duyệt quyền quản trị--</option>  
-                                                <option value="true">Cho phép</option>  
-                                                <option value="false">Không cho phép</option>  
+                                                <option value="none">--Duyệt quyền quản trị--</option>
+                                                <% if (ad.getStatus() == true) {%>
+                                                <option value="true" selected>Cho phép</option> 
+                                                <option value="false">Không cho phép</option> 
+                                                <% } else { %>
+                                                <option value="true">Cho phép</option> 
+                                                <option value="false" selected>Không cho phép</option> 
+                                                <% }%>
+                                                <!--<option value="false">Không cho phép</option>-->  
                                             </select>  
                                         </div>
                                     </div>

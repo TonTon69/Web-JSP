@@ -166,7 +166,8 @@
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <%                                            int count = 0;
+                                        <%                                            
+                                            int count = 0;
                                             for (Quiz quiz : listQuiz) {
                                                 count++;
                                         %>

@@ -56,7 +56,8 @@
                             </div>
                             <br/>
                             <div class="card shadow mb-4">
-                            <%                                String id = request.getParameter("quiz_id");
+                            <%
+                                String id = request.getParameter("quiz_id");
                                 Quiz qz = new QuizDAO().getQuizByQuizID(Integer.parseInt(id));
                             %>
                             <div class="card-header py-3">
@@ -68,7 +69,9 @@
                                     <div class="row">
                                         <div class="form-group col-md-5">
                                             <label for="name">Tên đề thi</label>
-                                            <input type="text" class="form-control" name="name" id="name" placeholder="Nhập tên đề thi..." required="yes" value="<%=qz.getQuizName()%>" >
+                                            <input type="text" class="form-control" name="name" id="name" 
+                                                   placeholder="Nhập tên đề thi..." 
+                                                   required="yes" value="<%=qz.getQuizName()%>" >
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="subject">Môn học</label>
@@ -76,28 +79,35 @@
                                                 <option value="none">--Chọn môn học--</option>  
                                                 <%
                                                     for (Subject s : listSubject) {
+                                                        if (s.getSubjectID() == qz.getSubjectID()) {
                                                 %>
-                                                <option value="<%=s.getSubjectID()%>">
+                                                <option value="<%=s.getSubjectID()%>" selected >
                                                     <%=s.getSubjectName()%>
                                                 </option>  
-                                                <%
-                                                    }
-                                                %>
+                                                <%} else {%>
+                                                <option value="<%=s.getSubjectID()%>" >
+                                                    <%=s.getSubjectName()%>
+                                                </option> 
+                                                <%}
+                                                    }%>
                                             </select>  
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="time">Thời gian</label>
-                                            <input type="text" class="form-control" name="time" id="time" placeholder="Nhập thời gian..." required="yes" value="<%=qz.getTime()%>">
+                                            <input type="text" class="form-control" name="time" id="time" 
+                                                   placeholder="Nhập thời gian..." required="yes" value="<%=qz.getTime()%>">
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="totalquestion">Tổng số câu</label>
-                                            <input type="text" class="form-control" name="totalquestion" id="totalquestion" placeholder="Nhập tổng số câu..." required="yes" value="<%=qz.getTotalQuestion()%>">
+                                            <input type="text" class="form-control" name="totalquestion" id="totalquestion" 
+                                                   placeholder="Nhập tổng số câu..." required="yes" value="<%=qz.getTotalQuestion()%>">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-8">
                                             <label for="image">Ảnh</label>
-                                            <input type="text" class="form-control" name="image" id="image" placeholder="Nhập link ảnh..." required="yes" value="<%=qz.getImage()%>">
+                                            <input type="text" class="form-control" name="image" id="image" 
+                                                   placeholder="Nhập link ảnh..." required="yes" value="<%=qz.getImage()%>">
                                         </div>
                                     </div>
                                     <input type="hidden" name="command" value="update"> 

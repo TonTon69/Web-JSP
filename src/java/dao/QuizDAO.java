@@ -300,6 +300,5 @@ public class QuizDAO {
 
     public static void main(String[] args) throws SQLException, Exception {
         QuizDAO s = new QuizDAO();
-        System.out.println(s.getCountQuizBySubject(11));
     }
 }
