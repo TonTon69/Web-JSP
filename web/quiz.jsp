@@ -153,13 +153,14 @@
                             </li>
                             <%
                                 for (Subject s : subjectDAO.getListSubject()) {
-
+                                    int countQBySubject = quizDAO.getCountQuizBySubject(s.getSubjectID());
+                                    request.setAttribute("countQBySubject", countQBySubject);
                             %>
                             <li class="monthi_item">
                                 <a class="btn link_monthi" href="quiz.jsp?subjectID=<%=s.getSubjectID()%>&pages=1" id="<%=s.getSubjectID()%>">
                                     <i class="<%=s.getSubjectIcon()%>"></i>
                                     <%=s.getSubjectName()%>
-                                    <span>(100)</span>
+                                    <span>(<%=countQBySubject%>)</span>
                                 </a> 
                             </li>
                             <%
@@ -249,7 +250,7 @@
                         <a class="page-link" href="quiz.jsp?pages=<%=i%>"><%=i%></a>
                     </li>    
                     <%}
-                            }%>
+                        }%>
                     <%
                         //Button Next
                         int next = 0;

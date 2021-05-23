@@ -261,11 +261,12 @@ public class QuizDAO {
         return null;
     }
 
-    //Total quiz number
+    //Total quiz number by subject
     public int getCountQuizBySubject(int subjectID) {
         Connection conn = DBConnect.getConnecttion();
         ArrayList<Quiz> list = new ArrayList();
-        String sql = "SELECT count(QuizID) FROM quiz WHERE SubjectID = '" + subjectID + "'";
+        String sql = "SELECT count(QuizID) FROM quiz "
+                + "WHERE SubjectID = '" + subjectID + "'";
         int count = 0;
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -297,4 +298,8 @@ public class QuizDAO {
         return count;
     }
 
+    public static void main(String[] args) throws SQLException, Exception {
+        QuizDAO s = new QuizDAO();
+        System.out.println(s.getCountQuizBySubject(11));
+    }
 }
