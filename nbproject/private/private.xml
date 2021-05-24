@@ -3,21 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/manager_result.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/manager_quiz.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/src/java/dao/UserQuizDAO.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/history.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/manager_subject.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/src/java/dao/QuizDAO.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/manager_banner.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/src/java/dao/AdminDAO.java</file>
             <file>file:/D:/IT/web/java/WebEduc/web/detail.jsp</file>
             <file>file:/D:/IT/web/java/WebEduc/web/admin/update_quiz.jsp</file>
-            <file>file:/D:/IT/web/java/WebEduc/src/java/model/UserQuiz.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/src/java/controller/CheckQServlet.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/src/java/dao/QuestionDAO.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/src/java/dao/UserDAO.java</file>
-            <file>file:/D:/IT/web/java/WebEduc/web/admin/manager_question.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/quiz.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/src/java/dao/QuizDAO.java</file>
+            <file>file:/D:/IT/web/java/WebEduc/src/java/controller/ManagerQuizServlet.java</file>
         </group>
     </open-files>
 </project-private>

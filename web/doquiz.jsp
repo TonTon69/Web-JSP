@@ -132,9 +132,10 @@
                                 <i class="fa fa-list-alt"> </i>
                                 Số câu hỏi: <%=quiz.getTotalQuestion()%> câu
                             </span>  
-                            <span class="mr-2">
-                                <i class="fa fa-clock"> </i>
-                                Thời gian: <span id="countdown" style="color: red; font-size: 30px;"></span> / <span id="timeofquiz"><%=quiz.getTime()%></span>:00
+                            <span class="mr-2 d-flex align-items-center">
+                                <i class="mr-1 fa fa-clock"> </i>
+                                Thời gian: <span class="ml-2" id="countdown" style="color: red; font-size: 30px;"></span>
+                                <span hidden id="timeofquiz"><%=quiz.getTime()%></span>
                             </span>
                         </div>
 
@@ -211,85 +212,85 @@
         <!-- Main -->
         <script src="js/main.js"></script>
         <script>
-            var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
+        var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
 
-            // default example
-            simplyCountdown(".simply-countdown-one", {
-                year: d.getFullYear(),
-                month: d.getMonth() + 1,
-                day: d.getDate(),
-            });
+        // default example
+        simplyCountdown(".simply-countdown-one", {
+            year: d.getFullYear(),
+            month: d.getMonth() + 1,
+            day: d.getDate(),
+        });
 
-            //jQuery example
-            $("#simply-countdown-losange").simplyCountdown({
-                year: d.getFullYear(),
-                month: d.getMonth() + 1,
-                day: d.getDate(),
-                enableUtc: false,
-            });
+        //jQuery example
+        $("#simply-countdown-losange").simplyCountdown({
+            year: d.getFullYear(),
+            month: d.getMonth() + 1,
+            day: d.getDate(),
+            enableUtc: false,
+        });
 
-            //scroll time
-            window.onscroll = function () {
-                scrollFunction()
-            };
+        //scroll time
+        window.onscroll = function () {
+            scrollFunction()
+        };
 
-            function scrollFunction() {
-                var countdown = document.getElementById("countdown");
-                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                    Object.assign(countdown.style, {position: "fixed", top: "0", right: "20%",
-                        background: "#fafafa", padding: "20px 40px", borderRadius: "5px"});
-                } else {
-                    Object.assign(countdown.style, {position: "unset",
-                        background: "unset", padding: "unset", borderRadius: "unset"});
-                }
+        function scrollFunction() {
+            var countdown = document.getElementById("countdown");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                Object.assign(countdown.style, {position: "fixed", top: "0", right: "20%",
+                    background: "#fafafa", padding: "20px 40px", borderRadius: "5px"});
+            } else {
+                Object.assign(countdown.style, {position: "unset",
+                    background: "unset", padding: "unset", borderRadius: "unset"});
             }
+        }
         </script>
         <!--Code chống chuột Phải-->
-        <script type='text/javascript'>
-            //<![CDATA[
-            // JavaScript Document
-            var message = "NoRightClicking";
-            function defeatIE() {
-                if (document.all) {
-                    (message);
-                    return false;
-                }
-            }
-            function defeatNS(e) {
-                if (document.layers || (document.getElementById && !document.all)) {
-                    if (e.which === 2 || e.which === 3) {
-                        (message);
-                        return false;
+        <!--        <script type='text/javascript'>
+                    //<![CDATA[
+                    // JavaScript Document
+                    var message = "NoRightClicking";
+                    function defeatIE() {
+                        if (document.all) {
+                            (message);
+                            return false;
+                        }
                     }
-                }
-            }
-            if (document.layers) {
-                document.captureEvents(Event.MOUSEDOWN);
-                document.onmousedown = defeatNS;
-            } else {
-                document.onmouseup = defeatNS;
-                document.oncontextmenu = defeatIE;
-            }
-            document.oncontextmenu = new Function("return false")
-            //]]>
-        </script>
-        <!--Code chống F12, Ctrl+U để xem mã nguồn (viewsourse)-->
-        <script type='text/javascript'>
-            checkCtrl = false $('*').keydown(function (e) {
-                if (e.keyCode === '17') {
-                    checkCtrl = false;
-                }
-            }).keyup(function (ev) {
-                if (ev.keyCode === '17') {
-                    checkCtrl = false;
-                }
-            }).keydown(function (event) {
-                if (checkCtrl) {
-                    if (event.keyCode === '85') {
-                        return false;
+                    function defeatNS(e) {
+                        if (document.layers || (document.getElementById && !document.all)) {
+                            if (e.which === 2 || e.which === 3) {
+                                (message);
+                                return false;
+                            }
+                        }
                     }
-                }
-            })
-        </script>
+                    if (document.layers) {
+                        document.captureEvents(Event.MOUSEDOWN);
+                        document.onmousedown = defeatNS;
+                    } else {
+                        document.onmouseup = defeatNS;
+                        document.oncontextmenu = defeatIE;
+                    }
+                    document.oncontextmenu = new Function("return false")
+                    //]]>
+                </script>
+                Code chống F12, Ctrl+U để xem mã nguồn (viewsourse)
+                <script type='text/javascript'>
+                    checkCtrl = false $('*').keydown(function (e) {
+                        if (e.keyCode === '17') {
+                            checkCtrl = false;
+                        }
+                    }).keyup(function (ev) {
+                        if (ev.keyCode === '17') {
+                            checkCtrl = false;
+                        }
+                    }).keydown(function (event) {
+                        if (checkCtrl) {
+                            if (event.keyCode === '85') {
+                                return false;
+                            }
+                        }
+                    })
+                </script>-->
     </body>
 </html>
