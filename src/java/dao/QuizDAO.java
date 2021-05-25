@@ -174,14 +174,15 @@ public class QuizDAO {
     public boolean update(Quiz qz) throws SQLException {
         try {
             Connection connection = DBConnect.getConnecttion();
-            String sql = "update quiz set QuizName = ?, Time = ?, TotalQuestion = ?, Image = ?, CreateDate = ? WHERE QuizID = ?";
+            String sql = "update quiz set QuizName = ?, SubjectID = ?, Time = ?, TotalQuestion = ?, Image = ?, CreateDate = ? WHERE QuizID = ?";
             PreparedStatement ps = connection.prepareCall(sql);
             ps.setString(1, qz.getQuizName());
-            ps.setInt(2, qz.getTime());
-            ps.setInt(3, qz.getTotalQuestion());
-            ps.setString(4, qz.getImage());
-            ps.setTimestamp(5, qz.getCreatedate());
-            ps.setInt(6, qz.getQuizID());
+            ps.setInt(2, qz.getSubjectID());
+            ps.setInt(3, qz.getTime());
+            ps.setInt(4, qz.getTotalQuestion());
+            ps.setString(5, qz.getImage());
+            ps.setTimestamp(6, qz.getCreatedate());
+            ps.setInt(7, qz.getQuizID());
             return ps.executeUpdate() == 1;
         } catch (SQLException ex) {
             Logger.getLogger(QuizDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -300,5 +301,8 @@ public class QuizDAO {
 
     public static void main(String[] args) throws SQLException, Exception {
         QuizDAO s = new QuizDAO();
+        System.out.println(s.update(new Quiz(19,13, "Vật Lý 2021",90,45,
+        "https://cdn.vietnammoi.vn/stores/news_dataimages/htt/042018/22/00/5342_blogtoanhoc.com_p001.jpg",
+                new Timestamp(System.currentTimeMillis()))));
     }
 }

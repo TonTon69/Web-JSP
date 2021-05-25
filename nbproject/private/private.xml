@@ -5,9 +5,14 @@
         <group>
             <file>file:/D:/IT/web/java/WebEduc/web/detail.jsp</file>
             <file>file:/D:/IT/web/java/WebEduc/web/admin/update_quiz.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/src/java/controller/CheckQServlet.java</file>
             <file>file:/D:/IT/web/java/WebEduc/web/quiz.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/content.jsp</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/js/countdownTQ.js</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/dao/QuizDAO.java</file>
+            <file>file:/D:/IT/web/java/WebEduc/web/doquiz.jsp</file>
             <file>file:/D:/IT/web/java/WebEduc/src/java/controller/ManagerQuizServlet.java</file>
+            <file>file:/D:/IT/web/java/WebEduc/src/java/controller/LogoutServlet.java</file>
         </group>
     </open-files>
 </project-private>

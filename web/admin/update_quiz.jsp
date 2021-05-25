@@ -64,7 +64,6 @@
                                 <h6 class="m-0 font-weight-bold text-primary">CẬP NHẬT ĐỀ THI #<%=id%></h6>
                             </div>
                             <div class="card-body">
-
                                 <form action="${root}/ManagerQuizServlet" method="post">
                                     <div class="row">
                                         <div class="form-group col-md-5">
