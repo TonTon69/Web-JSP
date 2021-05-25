@@ -70,7 +70,7 @@ public class ManagerQuestionServlet extends HttpServlet {
                     url = "/admin/manager_question.jsp?pages=1";
                     break;
                 case "update":
-                    questionDAO.update(new Question(Integer.parseInt(q_id), qcontent, q_a, q_b, q_c, q_d, q_true, qimage, qaudio, new Timestamp(System.currentTimeMillis())));
+                    questionDAO.update(new Question(Integer.parseInt(q_id), Integer.parseInt(s_id), Integer.parseInt(qz_id), qcontent, q_a, q_b, q_c, q_d, q_true, qimage, qaudio, new Timestamp(System.currentTimeMillis())));
                     session.setAttribute("update_success", "Cập nhật thành công!");
                     url = "/admin/manager_question.jsp?pages=1";
                     break;

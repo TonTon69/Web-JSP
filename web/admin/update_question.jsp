@@ -1,3 +1,7 @@
+<%@page import="model.Quiz"%>
+<%@page import="dao.QuizDAO"%>
+<%@page import="dao.SubjectDAO"%>
+<%@page import="model.Subject"%>
 <%@page import="model.Administrator"%>
 <%@page import="model.Question"%>
 <%@page import="connect.DBConnect"%>
@@ -61,7 +65,49 @@
                             <div class="card-body">
                                 <form action="${root}/ManagerQuestionServlet" method="post">
                                     <div class="row">
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group col-md-3">
+                                            <label for="subject">Môn học</label>
+                                            <select id="subject" name="subject" class="form-control">  
+                                                <option value="none">--Chọn môn học--</option>  
+                                                <%
+                                                    SubjectDAO subjectDAO = new SubjectDAO();
+                                                    ArrayList<Subject> listSubject = subjectDAO.getListSubject();
+                                                    for (Subject s : listSubject) {
+                                                        if (s.getSubjectID() == q.getSubjectID()) {
+                                                %>
+                                                <option value="<%=s.getSubjectID()%>" selected >
+                                                    <%=s.getSubjectName()%>
+                                                </option>  
+                                                <%} else {%>
+                                                <option value="<%=s.getSubjectID()%>" >
+                                                    <%=s.getSubjectName()%>
+                                                </option> 
+                                                <%}
+                                                    }%>
+                                            </select>  
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="quiz">Đề thi</label>
+                                            <select id="quiz" name="quiz" class="form-control">  
+                                                <option value="none">--Chọn đề thi--</option>  
+                                                <%
+                                                    QuizDAO quizDAO = new QuizDAO();
+                                                    ArrayList<Quiz> listQuiz = quizDAO.getListQuiz();
+                                                    for (Quiz quiz : listQuiz) {
+                                                        if (quiz.getQuizID() == q.getQuizID()) {
+                                                %>
+                                                <option value="<%=quiz.getQuizID()%>" selected >
+                                                    <%=quiz.getQuizName()%>
+                                                </option>  
+                                                <%} else {%>
+                                                <option value="<%=quiz.getQuizID()%>" >
+                                                    <%=quiz.getQuizName()%>
+                                                </option> 
+                                                <%}
+                                                    }%>
+                                            </select>  
+                                        </div>
+                                        <div class="form-group col-md-6">
                                             <label for="content">Câu hỏi</label>
                                             <textarea type="text" class="form-control" rows="5" name="content" id="content" required="yes"><%=q.getContent()%></textarea>
                                         </div>
