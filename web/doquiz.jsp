@@ -151,22 +151,25 @@
                                             for (Question ques : quesDao.getListQuestionByQuiz(quiz.getQuizID())) {
                                         %>
                                         <div class="formatquestion" >
-                                            <p><b>Câu <%=i%>: <%=ques.getContent()%></b></p>
+                                            <b>
+                                                <span class="mr-1">Câu <%=i%>:</span> 
+                                                <%=ques.getContent()%>
+                                            </b>
                                             <div class="d-flex align-items-center mt-2 mb-2">
-                                                <input type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqA()%>" > 
-                                                A. <%=ques.getqA()%>
+                                                <input type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqA()%>' /> 
+                                                <span class="mr-1">A.</span><%=ques.getqA()%>
                                             </div>
                                             <div class="d-flex align-items-center mt-2 mb-2">
-                                                <input type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqB()%>" > 
-                                                B. <%=ques.getqB()%>
+                                                <input type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqB()%>' /> 
+                                                <span class="mr-1">B.</span><%=ques.getqB()%>
                                             </div>
                                             <div class="d-flex align-items-center mt-2 mb-2">
-                                                <input type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqC()%>" > 
-                                                C. <%=ques.getqC()%>
+                                                <input type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqC()%>' /> 
+                                                <span class="mr-1">C.</span><%=ques.getqC()%>
                                             </div>
                                             <div class="d-flex align-items-center mt-2 mb-2">
-                                                <input type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqD()%>" > 
-                                                D. <%=ques.getqD()%>
+                                                <input type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqD()%>' /> 
+                                                <span class="mr-1">D.</span><%=ques.getqD()%>
                                             </div>
                                         </div>
                                         <%

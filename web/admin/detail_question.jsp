@@ -34,6 +34,9 @@
             .dl-horizontal dd{
                 width: fit-content;
             }
+            dd p{
+                margin: 0;
+            }
         </style>
         <%
             Administrator ad = (Administrator) session.getAttribute("admin");
