@@ -25,6 +25,7 @@
 
         <!-- Custom styles for this template-->
         <link href="${root}/css/sb-admin-2.min.css" rel="stylesheet">
+        <script src="${root}/ckeditor/ckeditor.js"></script>
     </head>
     <body id="page-top">
         <%
@@ -115,6 +116,11 @@
         <!-- Page level custom scripts -->
         <script src="${root}/js/demo/chart-area-demo.js"></script>
         <script src="${root}/js/demo/chart-pie-demo.js"></script>
-
+        <script type="text/javascript">
+            var editor = '';
+            $(document).ready(function () {
+                editor = CKEDITOR.replace('description');
+            });
+        </script>
     </body>
 </html>

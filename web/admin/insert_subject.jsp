@@ -1,4 +1,3 @@
-
 <%@page import="model.Administrator"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,6 +20,7 @@
 
         <!-- Custom styles for this template-->
         <link href="${root}/css/sb-admin-2.min.css" rel="stylesheet">
+        <script src="${root}/ckeditor/ckeditor.js"></script>
     </head>
     <body id="page-top">
 
@@ -72,7 +72,7 @@
                                     <div class="row">
                                         <div class="form-group col-md-8">
                                             <label for="description">Mô tả</label>
-                                            <textarea type="text" class="form-control" name="description" id="description" rows="6" placeholder="Nhập mô tả..." required="yes"></textarea>
+                                            <textarea type="text" class="form-group" name="description" id="description" rows="6" placeholder="Nhập mô tả..." required="yes"></textarea>
                                             <%=error%>
                                         </div>
                                     </div>
@@ -113,5 +113,11 @@
         <!-- Page level custom scripts -->
         <script src="${root}/js/demo/chart-area-demo.js"></script>
         <script src="${root}/js/demo/chart-pie-demo.js"></script>
+        <script type="text/javascript">
+            var editor='';
+            $(document).ready(function(){
+                editor = CKEDITOR.replace('description');
+            });
+        </script>
     </body>
 </html>

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : footer
-    Created on : Mar 15, 2021, 4:41:10 PM
-    Author     : Admin
---%>
-
 <%@page import="dao.SubjectDAO"%>
 <%@page import="model.Subject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -29,7 +23,7 @@
                                 for (Subject s : new SubjectDAO().getListSubject()) {
 
                             %>
-                            <li><a href="quiz.jsp?subjectID=<%=s.getSubjectID()%>&pages=1"><%=s.getSubjectName()%></a></li>
+                            <li><a href="quiz.jsp?subject_id=<%=s.getSubjectID()%>&pages=1"><%=s.getSubjectName()%></a></li>
                                 <%}%>
                         </ul>
                     </div>

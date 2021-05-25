@@ -29,6 +29,7 @@
 
         <!-- Custom styles for this template-->
         <link href="${root}/css/sb-admin-2.min.css" rel="stylesheet">
+        <script src="${root}/ckeditor/ckeditor.js"></script>
     </head>
     <body id="page-top">
         <%
@@ -67,7 +68,7 @@
                                     <div class="row">
                                         <div class="form-group col-md-3">
                                             <label for="subject">Môn học</label>
-                                            <select id="subject" name="subject" class="form-control">  
+                                            <select id="subject" name="subject" class="form-control" required="yes">  
                                                 <option value="none">--Chọn môn học--</option>  
                                                 <%
                                                     SubjectDAO subjectDAO = new SubjectDAO();
@@ -86,9 +87,9 @@
                                                     }%>
                                             </select>  
                                         </div>
-                                        <div class="form-group col-md-3">
+                                        <div class="form-group col-md-9">
                                             <label for="quiz">Đề thi</label>
-                                            <select id="quiz" name="quiz" class="form-control">  
+                                            <select id="quiz" name="quiz" class="form-control" required="yes">  
                                                 <option value="none">--Chọn đề thi--</option>  
                                                 <%
                                                     QuizDAO quizDAO = new QuizDAO();
@@ -107,41 +108,48 @@
                                                     }%>
                                             </select>  
                                         </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <label for="question">Câu hỏi</label>
+                                            <textarea type="text" class="form-control" name="content" id="question" required="yes" rows="5">
+                                                <%=q.getContent()%>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="form-group col-md-6">
-                                            <label for="content">Câu hỏi</label>
-                                            <textarea type="text" class="form-control" rows="5" name="content" id="content" required="yes"><%=q.getContent()%></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-3">
                                             <label for="qa">Option 1</label>
-                                            <input type="text" class="form-control" name="qa" id="qa" required="yes" value="<%=q.getqA()%>">
+                                            <textarea type="text" class="form-control" name="qa" id="qa" required="yes"><%=q.getqA()%></textarea>
                                         </div>
-                                        <div class="form-group col-md-3">
+                                        <div class="form-group col-md-6">
                                             <label for="qb">Option 2</label>
-                                            <input type="text" class="form-control" name="qb" id="qb" required="yes" value="<%=q.getqB()%>">
+                                            <textarea type="text" class="form-control" name="qb" id="qb" required="yes"><%=q.getqB()%></textarea>
                                         </div>
-                                        <div class="form-group col-md-3">
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
                                             <label for="qc">Option 3</label>
-                                            <input type="text" class="form-control" name="qc" id="qc" required="yes" value="<%=q.getqC()%>">
+                                            <textarea type="text" class="form-control" name="qc" id="qc" required="yes"><%=q.getqC()%></textarea>
                                         </div>
-                                        <div class="form-group col-md-3">
+                                        <div class="form-group col-md-6">
                                             <label for="qd">Option 4</label>
-                                            <input type="text" class="form-control" name="qd" id="qd" required="yes" value="<%=q.getqD()%>">
+                                            <textarea type="text" class="form-control" name="qd" id="qd" required="yes"><%=q.getqD()%></textarea>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="form-group col-md-3">
+                                        <div class="form-group col-md-6">
                                             <label for="qtrue">Đáp án đúng</label>
-                                            <input type="text" class="form-control" name="qtrue" id="qtrue" required="yes" value="<%=q.getqTrue()%>">
+                                            <textarea type="text" class="form-control" name="qtrue" id="qtrue" required="yes"><%=q.getqTrue()%></textarea>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="image">Ảnh</label>
-                                            <input type="text" class="form-control" name="image" id="image" value="<%=q.getImage()%>">
+                                            <textarea type="text" class="form-control" name="image" id="image"><%=q.getImage()%></textarea>
                                         </div>
-                                        <div class="form-group col-md-3">
+                                        <div class="form-group col-md-6">
                                             <label for="audio">Audio</label>
-                                            <input type="text" class="form-control" name="audio" id="audio" value="<%=q.getAudio()%>">
+                                            <textarea type="text" class="form-control" name="audio" id="audio"><%=q.getAudio()%></textarea>
                                         </div>
                                     </div>
                                     <input type="hidden" name="command" value="update"> 
@@ -182,6 +190,17 @@
         <!-- Page level custom scripts -->
         <script src="${root}/js/demo/chart-area-demo.js"></script>
         <script src="${root}/js/demo/chart-pie-demo.js"></script>
-
+        <script>
+            $(document).ready(function () {
+                CKEDITOR.replace('question');
+                CKEDITOR.replace('qa');
+                CKEDITOR.replace('qb');
+                CKEDITOR.replace('qc');
+                CKEDITOR.replace('qd');
+                CKEDITOR.replace('qtrue');
+                CKEDITOR.replace('image');
+                CKEDITOR.replace('audio');
+            });
+        </script>
     </body>
 </html>

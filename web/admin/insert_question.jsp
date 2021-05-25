@@ -25,13 +25,14 @@
 
         <!-- Custom styles for this template-->
         <link href="${root}/css/sb-admin-2.min.css" rel="stylesheet">
+        <script src="${root}/ckeditor/ckeditor.js"></script>
     </head>
     <body id="page-top">
 
         <%
             SubjectDAO subjectDAO = new SubjectDAO();
             ArrayList<Subject> listSubject = subjectDAO.getListSubject();
-            
+
             QuizDAO quizDAO = new QuizDAO();
             ArrayList<Quiz> listQuiz = quizDAO.getListQuiz();
 
@@ -66,7 +67,7 @@
                                     <div class="row">
                                         <div class="form-group col-md-3">
                                             <label for="subject">Môn học</label>
-                                            <select id="subject" name="subject" class="form-control">  
+                                            <select id="subject" name="subject" class="form-control" required="yes">  
                                                 <option value="none">--Chọn môn học--</option>  
                                                 <%
                                                     for (Subject s : listSubject) {
@@ -79,12 +80,11 @@
                                                 %>
                                             </select>  
                                         </div>
-                                        <div class="form-group col-md-3">
+                                        <div class="form-group col-md-9">
                                             <label for="quiz">Đề thi</label>
-                                            <select id="quiz" name="quiz" class="form-control">  
+                                            <select id="quiz" name="quiz" class="form-control" required="yes">  
                                                 <option value="none">--Chọn đề thi--</option>  
-                                                <%                                                    
-                                                    for (Quiz qz : listQuiz) {
+                                                <%                                                    for (Quiz qz : listQuiz) {
                                                 %>
                                                 <option value="<%=qz.getQuizID()%>"><%=qz.getQuizName()%></option>  
                                                 <%
@@ -94,41 +94,46 @@
                                                 %>
                                             </select>  
                                         </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <label for="question">Câu hỏi</label>
+                                            <textarea type="text" class="form-control" name="content" id="question" required="yes" rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="form-group col-md-6">
-                                            <label for="content">Câu hỏi</label>
-                                            <textarea type="text" class="form-control" rows="5" name="content" id="content" required="yes"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-3">
                                             <label for="qa">Option 1</label>
-                                            <input type="text" class="form-control" name="qa" id="qa" required="yes" >
+                                            <textarea type="text" class="form-control" name="qa" id="qa" required="yes"></textarea>
                                         </div>
-                                        <div class="form-group col-md-3">
+                                        <div class="form-group col-md-6">
                                             <label for="qb">Option 2</label>
-                                            <input type="text" class="form-control" name="qb" id="qb" required="yes">
+                                            <textarea type="text" class="form-control" name="qb" id="qb" required="yes"></textarea>
                                         </div>
-                                        <div class="form-group col-md-3">
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
                                             <label for="qc">Option 3</label>
-                                            <input type="text" class="form-control" name="qc" id="qc" required="yes">
+                                            <textarea type="text" class="form-control" name="qc" id="qc" required="yes"></textarea>
                                         </div>
-                                        <div class="form-group col-md-3">
+                                        <div class="form-group col-md-6">
                                             <label for="qd">Option 4</label>
-                                            <input type="text" class="form-control" name="qd" id="qd" required="yes">
+                                            <textarea type="text" class="form-control" name="qd" id="qd" required="yes"></textarea>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="form-group col-md-3">
+                                        <div class="form-group col-md-6">
                                             <label for="qtrue">Đáp án đúng</label>
-                                            <input type="text" class="form-control" name="qtrue" id="qtrue" required="yes" >
+                                            <textarea type="text" class="form-control" name="qtrue" id="qtrue" required="yes"></textarea>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="image">Ảnh</label>
-                                            <input type="text" class="form-control" name="image" id="image" >
+                                            <textarea type="text" class="form-control" name="image" id="image"></textarea>
                                         </div>
-                                        <div class="form-group col-md-3">
+                                        <div class="form-group col-md-6">
                                             <label for="audio">Audio</label>
-                                            <input type="text" class="form-control" name="audio" id="audio" >
+                                            <textarea type="text" class="form-control" name="audio" id="audio"></textarea>
                                         </div>
                                     </div>
                                     <input type="hidden" name="command" class="btn btn-primary" value="insert" />
@@ -168,5 +173,17 @@
         <!-- Page level custom scripts -->
         <script src="${root}/js/demo/chart-area-demo.js"></script>
         <script src="${root}/js/demo/chart-pie-demo.js"></script>
+        <script>
+            $(document).ready(function () {
+                CKEDITOR.replace('question');
+                CKEDITOR.replace('qa');
+                CKEDITOR.replace('qb');
+                CKEDITOR.replace('qc');
+                CKEDITOR.replace('qd');
+                CKEDITOR.replace('qtrue');
+                CKEDITOR.replace('image');
+                CKEDITOR.replace('audio');
+            });
+        </script>
     </body>
 </html>
