@@ -133,9 +133,9 @@
                                 <i class="fa fa-list-alt"> </i>
                                 Số câu hỏi: <%=quiz.getTotalQuestion()%> câu
                             </span>  
-                            <span class="mr-2 d-flex align-items-center">
-                                <i class="mr-1 fa fa-clock"> </i>
-                                Thời gian: <span class="ml-2" id="countdown" style="color: red; font-size: 30px;"></span>
+                            <span class="mr-2 d-flex align-items-center" id="count-down">
+                                <img width="69" src="images/clock.png" />
+                                <span class="ml-2" id="countdown" style="color: red; font-size: 30px;"></span>
                                 <span hidden id="timeofquiz"><%=quiz.getTime()%></span>
                             </span>
                         </div>
@@ -236,10 +236,10 @@
         };
 
         function scrollFunction() {
-            var countdown = document.getElementById("countdown");
+            var countdown = document.getElementById("count-down");
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                Object.assign(countdown.style, {position: "fixed", top: "0", right: "20%",
-                    background: "#fafafa", padding: "20px 40px", borderRadius: "5px"});
+                Object.assign(countdown.style, {position: "fixed", top: "0", right: "18%",
+                    background: "#fafafa", padding: "30px 18px", borderRadius: "5px"});
             } else {
                 Object.assign(countdown.style, {position: "unset",
                     background: "unset", padding: "unset", borderRadius: "unset"});
