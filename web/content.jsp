@@ -68,11 +68,11 @@
                     %>
                     <div class="col-md-4 col-sm-6 text-center animate-box">
                         <div class="services">
-                            <a class="icon" href="quiz.jsp?subjectID=<%=s.getSubjectID()%>&pages=1">
+                            <a class="icon" href="quiz.jsp?subject_id=<%=s.getSubjectID()%>&pages=1">
                                 <i class="<%=s.getSubjectIcon()%>"></i>
                             </a>
                             <div class="desc">
-                                <h3><a href="quiz.jsp?subjectID=<%=s.getSubjectID()%>&pages=1"><%=s.getSubjectName()%></a></h3>
+                                <h3><a href="quiz.jsp?subject_id=<%=s.getSubjectID()%>&pages=1"><%=s.getSubjectName()%></a></h3>
                                 <p id="test"><%=s.getDescription()%></p>
                             </div>
                         </div>
@@ -136,7 +136,7 @@
                             <div class="desc">
                                 <h3><a href="detail.jsp?quiz_id=<%=q.getQuizID()%>&subject_id=<%=q.getSubjectID()%>"><%=q.getQuizName()%></a></h3>
                                 <p style="font-size: 15px; display: grid" class="ltin">
-                                    <span><i class="fa fa-bars" aria-hidden="true"></i> <a href="quiz.jsp?subjectID=<%=q.getSubjectID()%>&pages=1"><%=q.getSubjectName()%></a></span>                                             
+                                    <span><i class="fa fa-bars" aria-hidden="true"></i> <a href="quiz.jsp?subject_id=<%=q.getSubjectID()%>&pages=1"><%=q.getSubjectName()%></a></span>                                             
                                     <span><i class="fa fa-question-circle" aria-hidden="true"></i> Số câu hỏi: <%=q.getTotalQuestion()%> câu </span>
                                     <span><i class="fa fa-clock" aria-hidden="true"></i>  Thời gian: <%=q.getTime()%> phút</span> 
                                     <span><i class="fa fa-signal" aria-hidden="true"></i>  Lượt thi: 3071</span>

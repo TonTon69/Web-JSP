@@ -101,7 +101,7 @@
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
                         <li class="breadcrumb-item"><a href="quiz.jsp?pages=1">Thi THPT QG</a></li>
-                        <li class="breadcrumb-item"><a href="quiz.jsp?subjectID=<%=quiz.getSubjectID()%>&pages=1"><%=quiz.getSubjectName()%></a></li>
+                        <li class="breadcrumb-item"><a href="quiz.jsp?subject_id=<%=quiz.getSubjectID()%>&pages=1"><%=quiz.getSubjectName()%></a></li>
                     <li class="breadcrumb-item"><%=quiz.getQuizName()%></li>
                 </ul>
             </div>
@@ -246,7 +246,7 @@
                                 <p>
                                     <span>
                                         <i class="fa fa-bars"> </i>
-                                        <a href="quiz.jsp?subjectID=<%=q.getSubjectID()%>&pages=1"><%=q.getSubjectName()%></a>
+                                        <a href="quiz.jsp?subject_id=<%=q.getSubjectID()%>&pages=1"><%=q.getSubjectName()%></a>
                                     </span>
                                     <span>
                                         <i class="fa fa-question-circle"> </i>

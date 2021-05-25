@@ -83,14 +83,14 @@
                 //Phân trang               
                 int subjectID = 0;
                 //Theo mã môn học
-                if (request.getParameter("subjectID") != null) {
-                    subjectID = (int) Integer.parseInt(request.getParameter("subjectID"));
+                if (request.getParameter("subject_id") != null) {
+                    subjectID = (int) Integer.parseInt(request.getParameter("subject_id"));
                 }
                 int pages = 0, firstResult = 0, maxResult = 0, total = 0, pagesize = 6;
                 if (request.getParameter("pages") != null) {
                     pages = (int) Integer.parseInt(request.getParameter("pages"));
                 }
-                if (request.getParameter("subjectID") != null) {
+                if (request.getParameter("subject_id") != null) {
                     total = quizDAO.getCountQuizBySubject(subjectID); //Tổng đề thi theo môn
                 } else {
                     total = quizDAO.getCountQuiz(); //Tổng tất cả đề thi
@@ -102,7 +102,7 @@
                     firstResult = (pages - 1) * pagesize;
                     maxResult = pagesize;
                 }
-                if (request.getParameter("subjectID") != null) {
+                if (request.getParameter("subject_id") != null) {
                     list = quizDAO.getListQuizBySubject(subjectID, firstResult, maxResult);//Phân trang theo môn
                 } else {
                     list = quizDAO.getListQuiz(firstResult, maxResult);//Phân trang tất cả
@@ -122,8 +122,8 @@
                     <div class="container-fluid">
                         <ul class="breadcrumb">
                         <%
-                            if (request.getParameter("subjectID") != null) {
-                                subjectID = (int) Integer.parseInt(request.getParameter("subjectID"));
+                            if (request.getParameter("subject_id") != null) {
+                                subjectID = (int) Integer.parseInt(request.getParameter("subject_id"));
                                 Quiz qz = new QuizDAO().getQuizBySubjectID(subjectID);
                         %>
                         <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
@@ -157,7 +157,7 @@
                                     request.setAttribute("countQBySubject", countQBySubject);
                             %>
                             <li class="monthi_item">
-                                <a class="btn link_monthi" href="quiz.jsp?subjectID=<%=s.getSubjectID()%>&pages=1" id="<%=s.getSubjectID()%>">
+                                <a class="btn link_monthi" href="quiz.jsp?subject_id=<%=s.getSubjectID()%>&pages=1" id="<%=s.getSubjectID()%>">
                                     <i class="<%=s.getSubjectIcon()%>"></i>
                                     <%=s.getSubjectName()%>
                                     <span>(<%=countQBySubject%>)</span>
@@ -182,7 +182,7 @@
                                     <p>
                                         <span>
                                             <i class="fa fa-bars"> </i>
-                                            <a href="quiz.jsp?subjectID=<%=q.getSubjectID()%>&pages=1">Môn <%=q.getSubjectName()%></a>
+                                            <a href="quiz.jsp?subject_id=<%=q.getSubjectID()%>&pages=1">Môn <%=q.getSubjectName()%></a>
                                         </span>
                                         <span>
                                             <i class="fa fa-question-circle"> </i>
@@ -225,7 +225,7 @@
                         if (request.getParameter("subjectID") != null) {
                     %>
                     <li class="page-item">
-                        <a class="page-link" href="quiz.jsp?subjectID=<%=subjectID%>&pages=<%=back%>" aria-label="Previous">
+                        <a class="page-link" href="quiz.jsp?subject_id=<%=subjectID%>&pages=<%=back%>" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                             <span class="sr-only">Previous</span>
                         </a>
@@ -240,10 +240,10 @@
                     <%}%>
                     <%
                         for (int i = 1; i <= (total / pagesize) + 1; i++) {
-                            if (request.getParameter("subjectID") != null) {
+                            if (request.getParameter("subject_id") != null) {
                     %>
                     <li class="page-item">
-                        <a class="page-link" href="quiz.jsp?subjectID=<%=subjectID%>&pages=<%=i%>"><%=i%></a>
+                        <a class="page-link" href="quiz.jsp?subject_id=<%=subjectID%>&pages=<%=i%>"><%=i%></a>
                     </li>    
                     <%} else {%>
                     <li class="page-item">
@@ -280,10 +280,10 @@
                                 }
                             }
                         }
-                        if (request.getParameter("subjectID") != null) {
+                        if (request.getParameter("subject_id") != null) {
                     %>
                     <li class="page-item">
-                        <a class="page-link" href="quiz.jsp?subjectID=<%=subjectID%>&pages=<%=next%>" aria-label="Next">
+                        <a class="page-link" href="quiz.jsp?subject_id=<%=subjectID%>&pages=<%=next%>" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                             <span class="sr-only">Next</span>
                         </a>
@@ -336,7 +336,7 @@
         <script type="text/javascript">
             //active link 
             const urlParams = new URLSearchParams(window.location.search);
-            const myParam = urlParams.get('subjectID');
+            const myParam = urlParams.get('subject_id');
             if (myParam === null) {
                 document.getElementById("all").classList.add('active');
             } else {
