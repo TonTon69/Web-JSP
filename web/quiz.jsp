@@ -96,7 +96,7 @@
                     total = quizDAO.getCountQuiz(); //Tổng tất cả đề thi
                 }
                 if (total <= pagesize) {
-                    firstResult = 1;
+                    firstResult = 0;
                     maxResult = total;
                 } else {
                     firstResult = (pages - 1) * pagesize;

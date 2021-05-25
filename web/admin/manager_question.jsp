@@ -71,7 +71,7 @@
                 total = questionDAO.getCountQuestion();
             }
             if (total <= pagesize) {
-                firstResult = 1;
+                firstResult = 0;
                 maxResult = total;
             } else {
                 firstResult = (pages - 1) * pagesize;
