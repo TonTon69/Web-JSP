@@ -115,11 +115,11 @@
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label for="qc">Option 3</label>
-                                            <textarea type="text" class="form-control" name="qc" id="qc" required="yes"></textarea>
+                                            <textarea type="text" class="form-control" name="qc" id="qc"></textarea>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="qd">Option 4</label>
-                                            <textarea type="text" class="form-control" name="qd" id="qd" required="yes"></textarea>
+                                            <textarea type="text" class="form-control" name="qd" id="qd"></textarea>
                                         </div>
                                     </div>
                                     <div class="row">

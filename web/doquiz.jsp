@@ -73,7 +73,9 @@
         <!-- Modernizr JS -->
         <script src="js/modernizr-2.6.2.min.js"></script>
         <style type='text/css'>
-            p{margin: 0}
+            p{
+                margin: 0;
+            }
             body {
                 -webkit-touch-callout: none;
                 -webkit-user-select: none;
@@ -81,6 +83,9 @@
                 -ms-user-select: none;
                 -o-user-select: none;
                 user-select: none;
+            }
+            .formatquestion input{
+                transform: translateY(2px);
             }
         </style>
     </head>
@@ -155,22 +160,27 @@
                                                 <span class="mr-1">Câu <%=i%>:</span> 
                                                 <%=ques.getContent()%>
                                             </b>
-                                            <div class="d-flex align-items-center mt-2 mb-2">
-                                                <input type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqA()%>' /> 
-                                                <span class="mr-1">A.</span><%=ques.getqA()%>
+                                            <div class="row">
+                                                <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
+                                                    <input id="qa <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqA()%>' /> 
+                                                    <label class="d-flex" for="qa <%=i%>"><span class="mr-1">A.</span><%=ques.getqA()%></label>
+                                                </div>
+                                                <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
+                                                    <input id="qb <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqB()%>' /> 
+                                                    <label class="d-flex" for="qb <%=i%>"><span class="mr-1">B.</span><%=ques.getqB()%></label>
+                                                </div>
                                             </div>
-                                            <div class="d-flex align-items-center mt-2 mb-2">
-                                                <input type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqB()%>' /> 
-                                                <span class="mr-1">B.</span><%=ques.getqB()%>
+                                            <div class="row">
+                                                <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
+                                                    <input id="qc <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqC()%>' /> 
+                                                    <label class="d-flex" for="qc <%=i%>"><span class="mr-1">C.</span><%=ques.getqC()%></label>
+                                                </div>
+                                                <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
+                                                    <input id="qd <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqD()%>' /> 
+                                                    <label class="d-flex" for="qd <%=i%>"><span class="mr-1">D.</span><%=ques.getqD()%></label>
+                                                </div>
                                             </div>
-                                            <div class="d-flex align-items-center mt-2 mb-2">
-                                                <input type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqC()%>' /> 
-                                                <span class="mr-1">C.</span><%=ques.getqC()%>
-                                            </div>
-                                            <div class="d-flex align-items-center mt-2 mb-2">
-                                                <input type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqD()%>' /> 
-                                                <span class="mr-1">D.</span><%=ques.getqD()%>
-                                            </div>
+
                                         </div>
                                         <%
                                                 i = i + 1;
@@ -179,7 +189,8 @@
                                     </div>
                                 </div>
                                 <div class="btn-group-do-exam">
-                                    <input class="btn-do-exam" type="submit" name="submitName" value="Nộp bài">
+                                    <input class="btn-do-exam" type="submit" name="submitName" value="Nộp bài" 
+                                           onclick="return confirm('Bạn chưa làm câu. Bạn có chắc chắn muốn nộp bài không???')">
                                 </div>
                             </form>   
                         </div> 
@@ -216,38 +227,38 @@
         <!-- Main -->
         <script src="js/main.js"></script>
         <script>
-        var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
+                                               var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
 
-        // default example
-        simplyCountdown(".simply-countdown-one", {
-            year: d.getFullYear(),
-            month: d.getMonth() + 1,
-            day: d.getDate(),
-        });
+                                               // default example
+                                               simplyCountdown(".simply-countdown-one", {
+                                                   year: d.getFullYear(),
+                                                   month: d.getMonth() + 1,
+                                                   day: d.getDate(),
+                                               });
 
-        //jQuery example
-        $("#simply-countdown-losange").simplyCountdown({
-            year: d.getFullYear(),
-            month: d.getMonth() + 1,
-            day: d.getDate(),
-            enableUtc: false,
-        });
+                                               //jQuery example
+                                               $("#simply-countdown-losange").simplyCountdown({
+                                                   year: d.getFullYear(),
+                                                   month: d.getMonth() + 1,
+                                                   day: d.getDate(),
+                                                   enableUtc: false,
+                                               });
 
-        //scroll time
-        window.onscroll = function () {
-            scrollFunction()
-        };
+                                               //scroll time
+                                               window.onscroll = function () {
+                                                   scrollFunction()
+                                               };
 
-        function scrollFunction() {
-            var countdown = document.getElementById("count-down");
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                Object.assign(countdown.style, {position: "fixed", top: "0", right: "18%",
-                    background: "#fafafa", padding: "30px 18px", borderRadius: "5px"});
-            } else {
-                Object.assign(countdown.style, {position: "unset",
-                    background: "unset", padding: "unset", borderRadius: "unset"});
-            }
-        }
+                                               function scrollFunction() {
+                                                   var countdown = document.getElementById("count-down");
+                                                   if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                                                       Object.assign(countdown.style, {position: "fixed", top: "0", right: "18%",
+                                                           background: "#fafafa", padding: "30px 18px", borderRadius: "5px"});
+                                                   } else {
+                                                       Object.assign(countdown.style, {position: "unset",
+                                                           background: "unset", padding: "unset", borderRadius: "unset"});
+                                                   }
+                                               }
         </script>
         <!--Code chống chuột Phải-->
         <!--        <script type='text/javascript'>
