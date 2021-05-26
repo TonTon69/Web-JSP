@@ -197,7 +197,7 @@
                                 </div>
                                 <div class="btn-group-do-exam">
                                     <input class="btn-do-exam" type="submit" name="submitName" value="Nộp bài" 
-                                           onclick="return confirm('Bạn chắc chắn muốn nộp bài?')">
+                                           onclick="return confirm('Bạn chắc chắn muốn nộp bài? \nHãy kiểm tra thật kĩ trước khi bạn muốn nộp bài!!!')">
                                 </div>
                             </form>   
                         </div> 
@@ -259,11 +259,11 @@
                                                function scrollFunction() {
                                                    var countdown = document.getElementById("count-down");
                                                    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                                                       Object.assign(countdown.style, {position: "fixed", top: "0", right: "18%",
-                                                           background: "#fafafa", padding: "30px 18px", borderRadius: "5px"});
+                                                       Object.assign(countdown.style, {position: "fixed", top: "0", right: "18%", background: "#fafafa",
+                                                           padding: "30px 18px", borderRadius: "5px", boxShadow: "rgb(136,136,136) 0px 2px 15px -5px"});
                                                    } else {
-                                                       Object.assign(countdown.style, {position: "unset",
-                                                           background: "unset", padding: "unset", borderRadius: "unset"});
+                                                       Object.assign(countdown.style, {position: "unset", background: "unset",
+                                                           padding: "unset", borderRadius: "unset", boxShadow: "unset"});
                                                    }
                                                }
         </script>

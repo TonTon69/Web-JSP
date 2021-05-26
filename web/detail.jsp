@@ -150,9 +150,13 @@
                             Lưu ý:
                         </p>
                         <div class="note-content">
-                            Những câu <b>chưa chọn đáp án</b> sẽ được tính là <b>câu trả lời sai</b>
+                            Những câu <b>chưa chọn đáp án</b> sẽ được tính là <b>câu trả lời sai.</b>
                             <br/>
-                            Nếu bạn <b>thoát ra</b> trong lúc chưa hết thời gian làm bài thì kết quả <b>sẽ không được tính</b>
+                            Nếu bạn <b>thoát ra</b> trong lúc chưa hết thời gian làm bài thi thì kết quả <b>sẽ không được tính.</b>
+                            <br/>
+                            Sau khi nhấn <b>"Nộp bài"</b>, bài thi sẽ kết thúc và bạn sẽ <b>không thể sửa được bài thi</b> nữa.
+                            <br/>
+                            Thời gian làm bài thi có hạn, chú ý chia thời gian hợp lý cho mỗi câu để đạt kết quả tốt nhất.
                         </div>
                     </div>
                     <div class="btn-group-do-exam">
@@ -205,7 +209,8 @@
                 <div class="btn-group-do-exam">
                     <form action="CheckQServlet?idofquiz=<%=quiz.getQuizID()%>&idofsubject=<%=subjectID%>&idofuser=<%=userID%>&start=0" method="post">
                         <a>
-                            <input class="btn-do-exam" style="width: 290px;" type="submit" value="Có, tôi muốn!"/>
+                            <input class="btn-do-exam" style="width: 290px;" type="submit" value="Có, tôi muốn!"
+                                   onclick="return confirm('Bạn đã sẵn sàng chinh phục đề thi này?')"/>
                         </a> 
                     </form>
                 </div>
