@@ -123,7 +123,7 @@
                     <div class="row">
                         <div class="detail col-md-9">
                             <h3 class="m-0"><%=quiz.getQuizName()%></h3>
-                        <p>
+                        <p class="mb-4">
                             <span>
                                 <i class="fa fa-clock"> </i>
                                 Cập nhật: <fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short" value="<%=quiz.getCreatedate()%>" />
@@ -197,7 +197,7 @@
                                 </div>
                                 <div class="btn-group-do-exam">
                                     <input class="btn-do-exam" type="submit" name="submitName" value="Nộp bài" 
-                                           onclick="return confirm('Bạn chưa làm câu. Bạn có chắc chắn muốn nộp bài không???')">
+                                           onclick="return confirm('Bạn chắc chắn muốn nộp bài?')">
                                 </div>
                             </form>   
                         </div> 

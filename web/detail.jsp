@@ -158,7 +158,8 @@
                     <div class="btn-group-do-exam">
                         <form action="CheckQServlet?idofquiz=<%=quiz.getQuizID()%>&idofsubject=<%=subjectID%>&idofuser=<%=userID%>&start=0" method="post">
                             <a>
-                                <input class="btn-do-exam" type="submit" value="Bắt đầu làm bài"/>
+                                <input class="btn-do-exam" type="submit" value="Bắt đầu làm bài" 
+                                       onclick="return confirm('Bạn đã sẵn sàng chinh phục đề thi này?')"/>
                             </a> 
                         </form>
                     </div>
@@ -308,29 +309,29 @@
     <!-- Main -->
     <script src="js/main.js"></script>
     <script>
-        var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
+                                           var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
 
-        // default example
-        simplyCountdown(".simply-countdown-one", {
-            year: d.getFullYear(),
-            month: d.getMonth() + 1,
-            day: d.getDate(),
-        });
+                                           // default example
+                                           simplyCountdown(".simply-countdown-one", {
+                                               year: d.getFullYear(),
+                                               month: d.getMonth() + 1,
+                                               day: d.getDate(),
+                                           });
 
-        //jQuery example
-        $("#simply-countdown-losange").simplyCountdown({
-            year: d.getFullYear(),
-            month: d.getMonth() + 1,
-            day: d.getDate(),
-            enableUtc: false,
-        });
+                                           //jQuery example
+                                           $("#simply-countdown-losange").simplyCountdown({
+                                               year: d.getFullYear(),
+                                               month: d.getMonth() + 1,
+                                               day: d.getDate(),
+                                               enableUtc: false,
+                                           });
 
-        //bảng xếp hạng
-        $(function () {
-            $('.col.name')[1].classList.add('top1');
-            $('.col.name')[2].classList.add('top2');
-            $('.col.name')[3].classList.add('top3');
-        });
+                                           //bảng xếp hạng
+                                           $(function () {
+                                               $('.col.name')[1].classList.add('top1');
+                                               $('.col.name')[2].classList.add('top2');
+                                               $('.col.name')[3].classList.add('top3');
+                                           });
     </script>
 
 </body>
