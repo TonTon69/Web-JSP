@@ -161,26 +161,33 @@
                                                 <%=ques.getContent()%>
                                             </b>
                                             <div class="row">
+                                                <% if (ques.getqA() != "") {%>
                                                 <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
                                                     <input id="qa <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqA()%>' /> 
                                                     <label class="d-flex" for="qa <%=i%>"><span class="mr-1">A.</span><%=ques.getqA()%></label>
                                                 </div>
+                                                <%}%>
+                                                <% if (ques.getqB() != "") {%>
                                                 <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
                                                     <input id="qb <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqB()%>' /> 
                                                     <label class="d-flex" for="qb <%=i%>"><span class="mr-1">B.</span><%=ques.getqB()%></label>
                                                 </div>
+                                                <%}%>
                                             </div>
                                             <div class="row">
+                                                <% if (ques.getqC() != "") {%>
                                                 <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
                                                     <input id="qc <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqC()%>' /> 
                                                     <label class="d-flex" for="qc <%=i%>"><span class="mr-1">C.</span><%=ques.getqC()%></label>
                                                 </div>
+                                                <%}%>
+                                                <% if (ques.getqD() != "") {%>
                                                 <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
                                                     <input id="qd <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqD()%>' /> 
                                                     <label class="d-flex" for="qd <%=i%>"><span class="mr-1">D.</span><%=ques.getqD()%></label>
                                                 </div>
+                                                <%}%>
                                             </div>
-
                                         </div>
                                         <%
                                                 i = i + 1;
