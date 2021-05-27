@@ -72,6 +72,10 @@
         <servlet-name>TakeAnswerServlet</servlet-name>
         <servlet-class>controller.TakeAnswerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManagerCountDownServlet</servlet-name>
+        <servlet-class>controller.ManagerCountDownServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManagerSubjectServlet</servlet-name>
         <url-pattern>/ManagerSubjectServlet</url-pattern>
@@ -148,6 +152,10 @@
     <servlet-mapping>
         <servlet-name>TakeAnswerServlet</servlet-name>
         <url-pattern>/TakeAnswerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerCountDownServlet</servlet-name>
+        <url-pattern>/ManagerCountDownServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

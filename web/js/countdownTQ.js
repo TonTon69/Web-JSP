@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         if (minutes === 0 && seconds === 0)
         {
             window.alert("HẾT THỜI GIAN LÀM BÀI!!!");
+            document.getElementById('countdown').click();
         }
         time--;
     }

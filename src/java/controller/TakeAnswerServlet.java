@@ -64,13 +64,13 @@ public class TakeAnswerServlet extends HttpServlet {
             ta.setStarttime(userquiz.getStarttime());
             QuestionDAO qdao = new QuestionDAO();
             TakeAnswerDAO tdao = new TakeAnswerDAO();
+            Date date = new Date(System.currentTimeMillis());
+            Time time = new Time(System.currentTimeMillis());
             for (int i = 0; i < answer.length; i++) {
                 Question ques = new Question();
                 ques = qdao.getQuestionByID(Integer.parseInt(answer[i].name));
                 ta.setQuestionID(ques.getQuestionID());
                 ta.setAnswer(answer[i].value);
-                Date date = new Date(System.currentTimeMillis());
-                Time time = new Time(System.currentTimeMillis());
                 ta.setEndtime(time);
                 ta.setEndday(date);
                 if (tdao.CheckExistTakeAnswer(ta)) {
@@ -79,13 +79,13 @@ public class TakeAnswerServlet extends HttpServlet {
                     tdao.insertTakeAnswer(ta);
                 }
             }
-            String result = "{\"savetest\":\"Lưu bài(" + ta.getEndtime() + ")\"}";
+            String result = "{\"savetest\":\"Lưu bài(" + time + ")\"}";
             out.println(result);
         } catch (Exception e) {
         }
 
     }
-
+    
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -236,7 +236,7 @@
                     <div class="charts col-md-3 p-0" id="result">
                         <div class="box-charts">
                             <header class="card-header">
-                                <h2 class="m-0">Kết quả</h2>
+                                <h2 class="m-0">Kết quả thi</h2>
                                 <span id='result'></span>
                             </header>
                             <div class="exam-top-list">

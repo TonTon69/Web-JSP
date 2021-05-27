@@ -152,6 +152,14 @@
                     <span>&nbsp;Menu</span>
                 </a>
             </li>
+            
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="${root}/admin/manager_cd.jsp">
+                    <i class="fa fa-rocket"></i>
+                    <span>&nbsp;Count down THPTQG</span>
+                </a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

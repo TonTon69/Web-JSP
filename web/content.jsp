@@ -19,7 +19,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
         <style>
-            .container.countdown {
+            .container .countdown {
                 position: relative;
                 color: #333;
                 margin: 0 auto;
@@ -32,17 +32,48 @@
                 line-height: normal;
                 padding: 1em;
                 text-transform: uppercase;
-                background: #fff;
                 border-radius: 5px;
                 width: 140px;
-                height: 140px;
-                margin: 0px 6px;
-
+                height: 130px;
+                margin: 0px 2px;
+                background: rgb(227,227,228);
             }
             .countdown_item span {
                 display: block;
                 font-size: 4.5rem;
+                font-weight: 900;
+            }
+            .countdown_item #days,
+            .countdown_item #hours,
+            .countdown_item #minutes,
+            .countdown_item #seconds{
+                color: black;
+            }
+            .tryhard{
+                border: 2px solid #fff;
+                padding: 5px 25px;
+                color: #fff;
+                font-size: 18px;
                 font-weight: 600;
+                margin-top: 40px;
+                display: inline-block;
+                cursor: pointer;
+            }
+            .tryhard:hover{
+                background: #fff;
+                color: #333;
+            }
+            .tryhard img{
+                width: 20px;
+            }
+            .emoji {
+                display: none;
+                padding: 1rem;
+            }
+
+            .emoji span {
+                font-size: 4rem;
+                padding: 0 .5rem;
             }
             @media all and (max-width: 768px) {
                 .countdown_item {
@@ -82,6 +113,7 @@
             request.setAttribute("countQ", countQ);
 
         %>
+
         <div id="fh5co-course-categories">
             <div class="container">
                 <div class="row animate-box">
@@ -189,8 +221,7 @@
             </div>
         </div>
 
-        <div id="fh5co-testimonial" style="background-image: url(images/school.jpg);">
-            <div class="overlay"></div>
+        <div id="fh5co-testimonial" style="background: rgba(0, 0, 0, 0.5);">
             <div class="container">
                 <div class="row animate-box">
                     <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
@@ -241,24 +272,30 @@
                     <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
                         <h2>KỲ THI THPT QUỐC GIA 2021</h2>
                         <h2 style="font-family: 'Dancing Script', cursive; font-size: 60px;">Cùng Đếm Ngược Nào!</h2>
-                        <h4 style="color: #fff">Lịch thi bắt đầu từ 07/07 đến 08/07 năm 2021</h4>
+                        <h4 style="color: #fff; margin: 0">Lịch thi bắt đầu từ 07/07 đến 08/07 năm 2021</h4>
                     </div>
                 </div>
-            </div>
-            <div class="container countdown">
-                <div id="countdown">
-                    <ul style="padding: 0">
-                        <li class="countdown_item"><span id="days"></span>ngày</li>
-                        <li class="countdown_item"><span id="hours"></span>giờ</li>
-                        <li class="countdown_item"><span id="minutes"></span>phút</li>
-                        <li class="countdown_item"><span id="seconds"></span>giây</li>
-                    </ul>
+                <div class="row animate-box">
+                    <div class="countdown">
+                        <div id="countdown">
+                            <ul style="padding: 0">
+                                <li class="countdown_item"><span id="days"></span>ngày</li>
+                                <li class="countdown_item"><span id="hours"></span>giờ</li>
+                                <li class="countdown_item"><span id="minutes"></span>phút</li>
+                                <li class="countdown_item"><span id="seconds"></span>giây</li>
+                            </ul>
+                        </div>
+                        <div id="content" class="emoji">
+                            <span>🥳</span>
+                            <span>🎉</span>
+                            <span>🎂</span>
+                        </div>
+                        <span class="tryhard">
+                            <img src="images/rocket.png" />
+                            HÃY CỐ GẮNG CHO KỲ THI SẮP TỚI!!!
+                        </span>
+                    </div>
                 </div>
-                <audio controls style="margin-top: 40px">
-                    <source src="horse.ogg" type="audio/ogg">
-                    <source src="horse.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
             </div>
         </div>
     </body>
@@ -287,7 +324,7 @@
                                     countdown = document.getElementById("countdown"),
                                     content = document.getElementById("content");
 
-                            headline.innerText = "It's my birthday!";
+                            headline.innerText = "Chúc các bạn thi tốt!!!";
                             countdown.style.display = "none";
                             content.style.display = "block";
 
