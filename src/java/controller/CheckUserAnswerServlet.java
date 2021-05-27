@@ -101,7 +101,6 @@ public class CheckUserAnswerServlet extends HttpServlet {
                 if (answer[i].value.equals(ques.getqTrue())) {
                     cua[i] = new CheckUserAnswer();
                     cua[i].setValue(imgcorrectanswer);
-                    session.setAttribute("imgcorrectanswer", imgcorrectanswer);
                     if (answer[i].value.equals(ques.getqA())) {
                         cua[i].setName("user_answer_" + ques.getQuestionID() + "1");
                     } else if (answer[i].value.equals(ques.getqB())) {
@@ -115,7 +114,6 @@ public class CheckUserAnswerServlet extends HttpServlet {
                 } else {
                     cua[i] = new CheckUserAnswer();
                     cua[i].setValue(imgincorrectanswer);
-                    session.setAttribute("imgincorrectanswer", imgincorrectanswer);
                     if (answer[i].value.equals(ques.getqA())) {
                         cua[i].setName("user_answer_" + ques.getQuestionID() + "1");
                     } else if (answer[i].value.equals(ques.getqB())) {
@@ -125,6 +123,7 @@ public class CheckUserAnswerServlet extends HttpServlet {
                     } else if (answer[i].value.equals(ques.getqD())) {
                         cua[i].setName("user_answer_" + ques.getQuestionID() + "4");
                     }
+
                 }
             }
 
@@ -150,8 +149,11 @@ public class CheckUserAnswerServlet extends HttpServlet {
                 cua[index] = new CheckUserAnswer();
                 cua[index].setName("uncheck_" + (String.valueOf(checkArray[i])));
                 cua[index].setValue(imgunchecked);
-                session.setAttribute("imgunchecked", imgunchecked);
+
             }
+            request.setAttribute("imgcorrectanswer", imgcorrectanswer);
+            request.setAttribute("imgincorrectanswer", imgincorrectanswer);
+            request.setAttribute("imgunchecked", imgunchecked);
             String json = gson.toJson(cua);
             out.println(json);
 

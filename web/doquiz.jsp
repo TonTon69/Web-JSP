@@ -200,26 +200,20 @@
                                             </div>
                                             <%}%>
                                         </div>
-                                        <% if (session.getAttribute("imgunchecked") != "") {%>
-                                        <div class="notdoquiz d-none" id="uncheck_<%=ques.getQuestionID()%>"></div>
-                                        <%
-                                            session.removeAttribute("imgunchecked");
-                                        %>
-                                        <% } else if (session.getAttribute("imgincorrectanswer") != "" && session.getAttribute("imgcorrectanswer") != "") {%>
+                                        <% if (request.getAttribute("imgincorrectanswer") != "" && request.getAttribute("imgcorrectanswer") != "") {%>
                                         <div class="notdoquiz d-none">
                                             <span id="user_answer_<%=ques.getQuestionID()%>1"></span>
                                             <span id="user_answer_<%=ques.getQuestionID()%>2"></span> 
                                             <span id="user_answer_<%=ques.getQuestionID()%>3"></span>
                                             <span id="user_answer_<%=ques.getQuestionID()%>4"></span>
+                                            <% if (request.getAttribute("imgunchecked") != "") {%>
+                                            <span id="uncheck_<%=ques.getQuestionID()%>"></span>
+                                            <%}%>
                                         </div>
-                                        <%
-                                                session.removeAttribute("imgincorrectanswer");
-                                                session.removeAttribute("imgcorrectanswer");
-                                            }
-                                        %>
+                                        <%}%>
                                     </div>
-
-                                    <%                                            i = i + 1;
+                                    <%                                           
+                                        i = i + 1;
                                         }
                                     %>  
                                 </div>
