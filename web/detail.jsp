@@ -151,6 +151,8 @@
                             Lưu ý:
                         </p>
                         <div class="note-content">
+                            Trong quá trình làm bài phải thường xuyên nhấn nút <b>lưu bài</b> để lưu lại đáp án.
+                            <br/>
                             Những câu <b>chưa chọn đáp án</b> sẽ được tính là <b>câu trả lời sai.</b>
                             <br/>
                             Nếu bạn <b>thoát ra</b> trong lúc chưa hết thời gian làm bài thi thì kết quả <b>sẽ không được tính.</b>

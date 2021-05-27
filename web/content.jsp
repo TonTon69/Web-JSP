@@ -16,6 +16,44 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
             rel="stylesheet"
             />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+            .container.countdown {
+                position: relative;
+                color: #333;
+                margin: 0 auto;
+                text-align: center;
+            }
+            .countdown_item {
+                display: inline-block;
+                font-size: 1.5em;
+                list-style-type: none;
+                line-height: normal;
+                padding: 1em;
+                text-transform: uppercase;
+                background: #fff;
+                border-radius: 5px;
+                width: 140px;
+                height: 140px;
+                margin: 0px 6px;
+
+            }
+            .countdown_item span {
+                display: block;
+                font-size: 4.5rem;
+                font-weight: 600;
+            }
+            @media all and (max-width: 768px) {
+                .countdown_item {
+                    font-size: 1.125rem;
+                    padding: .75rem;
+                }
+                .countdown_item span {
+                    font-size: 3.375rem;
+                }
+            }
+        </style>
     </head>
     <body>
         <%
@@ -196,5 +234,67 @@
                 </div>
             </div>
         </div>
+        <div id="fh5co-testimonial" style="background-image: url(images/countdown.jpg); background-size: cover;">
+            <div class="overlay" style="background: rgba(31, 95, 139, 0.4);"></div>
+            <div class="container">
+                <div class="row animate-box">
+                    <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+                        <h2>KỲ THI THPT QUỐC GIA 2021</h2>
+                        <h2 style="font-family: 'Dancing Script', cursive; font-size: 60px;">Cùng Đếm Ngược Nào!</h2>
+                        <h4 style="color: #fff">Lịch thi bắt đầu từ 07/07 đến 08/07 năm 2021</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="container countdown">
+                <div id="countdown">
+                    <ul style="padding: 0">
+                        <li class="countdown_item"><span id="days"></span>ngày</li>
+                        <li class="countdown_item"><span id="hours"></span>giờ</li>
+                        <li class="countdown_item"><span id="minutes"></span>phút</li>
+                        <li class="countdown_item"><span id="seconds"></span>giây</li>
+                    </ul>
+                </div>
+                <audio controls style="margin-top: 40px">
+                    <source src="horse.ogg" type="audio/ogg">
+                    <source src="horse.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
     </body>
+    <script>
+        (function () {
+            const second = 1000,
+                    minute = second * 60,
+                    hour = minute * 60,
+                    day = hour * 24;
+
+            let exam_thpt = "Jul 07, 2021 00:00:00",
+                    countDown = new Date(exam_thpt).getTime(),
+                    x = setInterval(function () {
+
+                        let now = new Date().getTime(),
+                                distance = countDown - now;
+
+                        document.getElementById("days").innerText = Math.floor(distance / (day)),
+                                document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+                                document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+                                document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+                        //do something later when date is reached
+                        if (distance < 0) {
+                            let headline = document.getElementById("headline"),
+                                    countdown = document.getElementById("countdown"),
+                                    content = document.getElementById("content");
+
+                            headline.innerText = "It's my birthday!";
+                            countdown.style.display = "none";
+                            content.style.display = "block";
+
+                            clearInterval(x);
+                        }
+                        //seconds
+                    }, 0)
+        }());
+    </script>
 </html>

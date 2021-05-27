@@ -20,7 +20,7 @@ $(document).ready(function () {// thực hiện khi click vào button
             } else if (minutes >= 0 && seconds > 0)
             {
                 document.getElementById('countdown').innerHTML = minutes + ":0" + seconds;
-            } else
+            } else if (minutes <= 1 && seconds <= 1)
             {
                 document.getElementById('countdown').innerHTML = "00:00";
             }
