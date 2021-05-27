@@ -14,11 +14,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
         } else if (minutes >= 0 && seconds > 0)
         {
             document.getElementById('countdown').innerHTML = minutes + ":0" + seconds;
+        } else if (minutes <= 1 && seconds <= 1)
+        {
+            document.getElementById('countdown').innerHTML = "00:00";
         }
         if (minutes === 0 && seconds === 0)
         {
             window.alert("HẾT THỜI GIAN LÀM BÀI!!!");
-            document.getElementById('countdown').click();
+            document.getElementById('submit').click();
         }
         time--;
     }
