@@ -1,3 +1,5 @@
+<%@page import="dao.CountDownTHPTDAO"%>
+<%@page import="model.CountDownTHPT"%>
 <%@page import="model.Quiz"%>
 <%@page import="model.Subject"%>
 <%@page import="controller.SessionCounter"%>
@@ -269,11 +271,16 @@
             <div class="overlay" style="background: rgba(31, 95, 139, 0.4);"></div>
             <div class="container">
                 <div class="row animate-box">
+                    <%
+                        for (CountDownTHPT cd : new CountDownTHPTDAO().getListCountDownTHPT()) {
+                    %>
                     <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
-                        <h2>KỲ THI THPT QUỐC GIA 2021</h2>
+                        <h2>KỲ THI THPT QUỐC GIA <%=cd.getYear()%></h2>
                         <h2 style="font-family: 'Dancing Script', cursive; font-size: 60px;">Cùng Đếm Ngược Nào!</h2>
-                        <h4 style="color: #fff; margin: 0">Lịch thi bắt đầu từ 07/07 đến 08/07 năm 2021</h4>
+                        <h4 style="color: #fff; margin: 0"><%=cd.getNote()%></h4>
+                        <span hidden id="startday-thptqg"><%=cd.getStartDay()%></span>
                     </div>
+                    <%}%>
                 </div>
                 <div class="row animate-box">
                     <div class="countdown">
@@ -305,9 +312,8 @@
                     minute = second * 60,
                     hour = minute * 60,
                     day = hour * 24;
-
-            let exam_thpt = "Jul 07, 2021 00:00:00",
-                    countDown = new Date(exam_thpt).getTime(),
+            let exam_thpt = document.getElementById("startday-thptqg").innerHTML;
+            countDown = new Date(exam_thpt).getTime(),
                     x = setInterval(function () {
 
                         let now = new Date().getTime(),
