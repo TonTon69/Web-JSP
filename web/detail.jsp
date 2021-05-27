@@ -68,7 +68,8 @@
         <link rel="stylesheet" href="css/responsive.css" />
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script> 
+        <script type="text/javascript" src="js/testdetail.js"></script>
         <!-- Modernizr JS -->
         <script src="js/modernizr-2.6.2.min.js"></script>
 
@@ -160,10 +161,10 @@
                         </div>
                     </div>
                     <div class="btn-group-do-exam">
-                        <form action="CheckQServlet?idofquiz=<%=quiz.getQuizID()%>&idofsubject=<%=subjectID%>&idofuser=<%=userID%>&start=0" method="post">
+                        <form action="CheckQServlet?idofquiz=<%=quiz.getQuizID()%>&idofsubject=<%=subjectID%>&idofuser=<%=userID%>&start=1" method="post">
                             <a>
-                                <input class="btn-do-exam" type="submit" value="Bắt đầu làm bài" 
-                                       onclick="return confirm('Bạn đã sẵn sàng chinh phục đề thi này?')"/>
+                                <button class="btn-do-exam" type="submit" id="startquiz"
+                                        onclick="return confirm('Bạn đã sẵn sàng chinh phục đề thi này?')">Bắt đầu làm bài</button>
                             </a> 
                         </form>
                     </div>
@@ -207,7 +208,7 @@
                 </div>
                 <h5 class="mb-2 text-center" style="color: red">Bạn có muốn chinh phục đề thi này</h5>
                 <div class="btn-group-do-exam">
-                    <form action="CheckQServlet?idofquiz=<%=quiz.getQuizID()%>&idofsubject=<%=subjectID%>&idofuser=<%=userID%>&start=0" method="post">
+                    <form action="CheckQServlet?idofquiz=<%=quiz.getQuizID()%>&idofsubject=<%=subjectID%>&idofuser=<%=userID%>&start=1" method="post">
                         <a>
                             <input class="btn-do-exam" style="width: 290px;" type="submit" value="Có, tôi muốn!"
                                    onclick="return confirm('Bạn đã sẵn sàng chinh phục đề thi này?')"/>
@@ -314,29 +315,29 @@
     <!-- Main -->
     <script src="js/main.js"></script>
     <script>
-                                           var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
+                                       var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
 
-                                           // default example
-                                           simplyCountdown(".simply-countdown-one", {
-                                               year: d.getFullYear(),
-                                               month: d.getMonth() + 1,
-                                               day: d.getDate(),
-                                           });
+                                       // default example
+                                       simplyCountdown(".simply-countdown-one", {
+                                           year: d.getFullYear(),
+                                           month: d.getMonth() + 1,
+                                           day: d.getDate(),
+                                       });
 
-                                           //jQuery example
-                                           $("#simply-countdown-losange").simplyCountdown({
-                                               year: d.getFullYear(),
-                                               month: d.getMonth() + 1,
-                                               day: d.getDate(),
-                                               enableUtc: false,
-                                           });
+                                       //jQuery example
+                                       $("#simply-countdown-losange").simplyCountdown({
+                                           year: d.getFullYear(),
+                                           month: d.getMonth() + 1,
+                                           day: d.getDate(),
+                                           enableUtc: false,
+                                       });
 
-                                           //bảng xếp hạng
-                                           $(function () {
-                                               $('.col.name')[1].classList.add('top1');
-                                               $('.col.name')[2].classList.add('top2');
-                                               $('.col.name')[3].classList.add('top3');
-                                           });
+                                       //bảng xếp hạng
+                                       $(function () {
+                                           $('.col.name')[1].classList.add('top1');
+                                           $('.col.name')[2].classList.add('top2');
+                                           $('.col.name')[3].classList.add('top3');
+                                       });
     </script>
 
 </body>

@@ -56,6 +56,22 @@
         <servlet-name>ManagerReslutServlet</servlet-name>
         <servlet-class>controller.ManagerReslutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckQuestionServlet</servlet-name>
+        <servlet-class>controller.CheckQuestionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckUserAnswerServlet</servlet-name>
+        <servlet-class>controller.CheckUserAnswerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoadCorrectAnswerServlet</servlet-name>
+        <servlet-class>controller.LoadCorrectAnswerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TakeAnswerServlet</servlet-name>
+        <servlet-class>controller.TakeAnswerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManagerSubjectServlet</servlet-name>
         <url-pattern>/ManagerSubjectServlet</url-pattern>
@@ -116,6 +132,22 @@
     <servlet-mapping>
         <servlet-name>ManagerReslutServlet</servlet-name>
         <url-pattern>/ManagerReslutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckQuestionServlet</servlet-name>
+        <url-pattern>/CheckQuestionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckUserAnswerServlet</servlet-name>
+        <url-pattern>/CheckUserAnswerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadCorrectAnswerServlet</servlet-name>
+        <url-pattern>/LoadCorrectAnswerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TakeAnswerServlet</servlet-name>
+        <url-pattern>/TakeAnswerServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

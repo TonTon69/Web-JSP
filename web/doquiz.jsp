@@ -69,7 +69,9 @@
         <link rel="stylesheet" href="css/responsive.css" />
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="js/countdownTQ.js"></script>
+        <script type="text/javascript" src="js/testdetail.js"></script>
         <!-- Modernizr JS -->
         <script src="js/modernizr-2.6.2.min.js"></script>
         <style type='text/css'>
@@ -86,6 +88,10 @@
             }
             .formatquestion input{
                 transform: translateY(2px);
+            }
+            #result{
+                flex: 0 0 23%;
+                height: min-content;
             }
         </style>
     </head>
@@ -111,7 +117,7 @@
         <div id="page">
             <jsp:include page="header.jsp"></jsp:include>    
                 <div class="breadcrumb-wrap">
-                    <div class="container-fluid">
+                    <div class="container-fluid p-0">
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
                             <li class="breadcrumb-item"><a href="quiz.jsp?pages=1">Thi THPT QG</a></li>
@@ -138,69 +144,128 @@
                                 <i class="fa fa-list-alt"> </i>
                                 Số câu hỏi: <%=quiz.getTotalQuestion()%> câu
                             </span>  
-                            <span class="mr-2 d-flex align-items-center" id="count-down">
+                            <span class="mr-2 d-flex align-items-center" id="clock">
                                 <img width="69" src="images/clock.png" />
                                 <span class="ml-2" id="countdown" style="color: red; font-size: 30px;"></span>
                                 <span hidden id="timeofquiz"><%=quiz.getTime()%></span>
                             </span>
                         </div>
-
                         <div class="contentoftest">
-                            <form action="CheckQServlet?idofquiz=<%=quiz.getQuizID()%>&idofsubject=<%=subjectID%>&idofuser=<%=userID%>&start=1" method="post"> 
-                                <div> 
-                                    <!--content-->
-                                    <% QuestionDAO quesDao = new QuestionDAO();%>
-                                    <div>
+                            <span id="idofquiz" style="display: none"><%=quiz.getQuizID()%></span>
+                            <span id="idofuser" style="display: none"><%=u.getUserID()%></span>
+                            <span id="idofsubject" style="display: none"><%=quiz.getSubjectID()%></span>
+                            <div id ="myForm"> 
+                                <!--content-->
+                                <% QuestionDAO quesDao = new QuestionDAO();%>
+                                <div>
+                                    <%
+                                        int i = 1;
+                                        for (Question ques : quesDao.getListQuestionByQuiz(quiz.getQuizID())) {
+                                    %>
+                                    <div class="formatquestion" >
+                                        <b>
+                                            <span class="mr-1">Câu <%=i%>:</span> 
+                                            <%=ques.getContent()%>
+
+                                        </b>
+                                        <div class="row">
+                                            <% if (ques.getqA() != "") {%>
+                                            <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
+                                                <input class="radiobutton" id="qa <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqA()%>" /> 
+                                                <label class="d-flex" for="qa <%=i%>"><span class="mr-1">A.</span><%=ques.getqA()%></label>
+                                                <span id="answer_result_<%=ques.getQuestionID()%>1"></span>
+                                            </div>
+                                            <%}%>
+                                            <% if (ques.getqB() != "") {%>
+                                            <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
+                                                <input class="radiobutton" id="qb <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqB()%>" /> 
+                                                <label class="d-flex" for="qb <%=i%>"><span class="mr-1">B.</span><%=ques.getqB()%></label>
+                                                <span id="answer_result_<%=ques.getQuestionID()%>2"></span>
+                                            </div>
+                                            <%}%>
+                                        </div>
+                                        <div class="row">
+                                            <% if (ques.getqC() != "") {%>
+                                            <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
+                                                <input class="radiobutton" id="qc <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqC()%>" /> 
+                                                <label class="d-flex" for="qc <%=i%>"><span class="mr-1">C.</span><%=ques.getqC()%></label>
+                                                <span id="answer_result_<%=ques.getQuestionID()%>3"></span>
+                                            </div>
+                                            <%}%>
+                                            <% if (ques.getqD() != "") {%>
+                                            <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
+                                                <input class="radiobutton" id="qd <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqD()%>" /> 
+                                                <label class="d-flex" for="qd <%=i%>"><span class="mr-1">D.</span><%=ques.getqD()%></label>
+                                                <span id="answer_result_<%=ques.getQuestionID()%>4"></span>
+                                            </div>
+                                            <%}%>
+                                        </div>
+                                        <% if (session.getAttribute("imgunchecked") != "") {%>
+                                        <div class="notdoquiz d-none" id="uncheck_<%=ques.getQuestionID()%>"></div>
                                         <%
-                                            int i = 1;
-                                            for (Question ques : quesDao.getListQuestionByQuiz(quiz.getQuizID())) {
+                                            session.removeAttribute("imgunchecked");
                                         %>
-                                        <div class="formatquestion" >
-                                            <b>
-                                                <span class="mr-1">Câu <%=i%>:</span> 
-                                                <%=ques.getContent()%>
-                                            </b>
-                                            <div class="row">
-                                                <% if (ques.getqA() != "") {%>
-                                                <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
-                                                    <input id="qa <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqA()%>' /> 
-                                                    <label class="d-flex" for="qa <%=i%>"><span class="mr-1">A.</span><%=ques.getqA()%></label>
-                                                </div>
-                                                <%}%>
-                                                <% if (ques.getqB() != "") {%>
-                                                <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
-                                                    <input id="qb <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqB()%>' /> 
-                                                    <label class="d-flex" for="qb <%=i%>"><span class="mr-1">B.</span><%=ques.getqB()%></label>
-                                                </div>
-                                                <%}%>
-                                            </div>
-                                            <div class="row">
-                                                <% if (ques.getqC() != "") {%>
-                                                <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
-                                                    <input id="qc <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqC()%>' /> 
-                                                    <label class="d-flex" for="qc <%=i%>"><span class="mr-1">C.</span><%=ques.getqC()%></label>
-                                                </div>
-                                                <%}%>
-                                                <% if (ques.getqD() != "") {%>
-                                                <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
-                                                    <input id="qd <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqD()%>' /> 
-                                                    <label class="d-flex" for="qd <%=i%>"><span class="mr-1">D.</span><%=ques.getqD()%></label>
-                                                </div>
-                                                <%}%>
-                                            </div>
+                                        <% } else if (session.getAttribute("imgincorrectanswer") != "" && session.getAttribute("imgcorrectanswer") != "") {%>
+                                        <div class="notdoquiz d-none">
+                                            <span id="user_answer_<%=ques.getQuestionID()%>1"></span>
+                                            <span id="user_answer_<%=ques.getQuestionID()%>2"></span> 
+                                            <span id="user_answer_<%=ques.getQuestionID()%>3"></span>
+                                            <span id="user_answer_<%=ques.getQuestionID()%>4"></span>
                                         </div>
                                         <%
-                                                i = i + 1;
+                                                session.removeAttribute("imgincorrectanswer");
+                                                session.removeAttribute("imgcorrectanswer");
                                             }
-                                        %>  
+                                        %>
                                     </div>
+
+                                    <%                                            i = i + 1;
+                                        }
+                                    %>  
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="btn-group-do-exam mr-4">        
+                                    <button class="btn-do-exam" id="savetest" value="savetest" style="background: #2d6cdf">Lưu bài</button>
+                                    <span id="savetest"></span>
                                 </div>
                                 <div class="btn-group-do-exam">
-                                    <input class="btn-do-exam" type="submit" name="submitName" value="Nộp bài" 
-                                           onclick="return confirm('Bạn chắc chắn muốn nộp bài? \nHãy kiểm tra thật kĩ trước khi bạn muốn nộp bài!!!')">
+                                    <button class="btn-do-exam" id="submit" value="submit" onclick="return confirm('Bạn chắc chắn muốn nộp bài? \nHãy kiểm tra thật kĩ trước khi bạn muốn nộp bài!!!')">Nộp bài</button>
                                 </div>
-                            </form>   
+                                <div class="btn-group-do-exam">        
+                                    <button class="btn-do-exam" id="loadanswer" value="loadanswer">Xem đáp án</button>
+                                </div>
+                            </div>
                         </div> 
+                    </div>
+                    <div class="charts col-md-3 p-0" id="result">
+                        <div class="box-charts">
+                            <header class="card-header">
+                                <h2 class="m-0">Kết quả</h2>
+                                <span id='result'></span>
+                            </header>
+                            <div class="exam-top-list">
+                                <div class="top-header">
+                                    <div class="col name">Số câu đúng</div>
+                                    <div class="col">Điểm</div>
+                                    <div class="col">Thời gian</div>
+                                </div>
+                                <div class="exam-item">
+                                    <div class="row-content">
+                                        <div class="col name">                                       
+                                            <span id="sumcorrectanswer"></span>/<span id="sumquestions"></span>  
+                                        </div>
+                                        <div class="col score"> 
+                                            <span id="score"></span>
+                                        </div>
+                                        <div class="col time">
+                                            <span id="minutes"></span>:<span id="seconds"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr/>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -234,38 +299,38 @@
         <!-- Main -->
         <script src="js/main.js"></script>
         <script>
-                                               var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
+                                        var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
 
-                                               // default example
-                                               simplyCountdown(".simply-countdown-one", {
-                                                   year: d.getFullYear(),
-                                                   month: d.getMonth() + 1,
-                                                   day: d.getDate(),
-                                               });
+                                        // default example
+                                        simplyCountdown(".simply-countdown-one", {
+                                            year: d.getFullYear(),
+                                            month: d.getMonth() + 1,
+                                            day: d.getDate(),
+                                        });
 
-                                               //jQuery example
-                                               $("#simply-countdown-losange").simplyCountdown({
-                                                   year: d.getFullYear(),
-                                                   month: d.getMonth() + 1,
-                                                   day: d.getDate(),
-                                                   enableUtc: false,
-                                               });
+                                        //jQuery example
+                                        $("#simply-countdown-losange").simplyCountdown({
+                                            year: d.getFullYear(),
+                                            month: d.getMonth() + 1,
+                                            day: d.getDate(),
+                                            enableUtc: false,
+                                        });
 
-                                               //scroll time
-                                               window.onscroll = function () {
-                                                   scrollFunction()
-                                               };
+                                        //scroll time
+                                        window.onscroll = function () {
+                                            scrollFunction()
+                                        };
 
-                                               function scrollFunction() {
-                                                   var countdown = document.getElementById("count-down");
-                                                   if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                                                       Object.assign(countdown.style, {position: "fixed", top: "0", right: "18%", background: "#fafafa",
-                                                           padding: "30px 18px", borderRadius: "5px", boxShadow: "rgb(136,136,136) 0px 2px 15px -5px"});
-                                                   } else {
-                                                       Object.assign(countdown.style, {position: "unset", background: "unset",
-                                                           padding: "unset", borderRadius: "unset", boxShadow: "unset"});
-                                                   }
-                                               }
+                                        function scrollFunction() {
+                                            var countdown = document.getElementById("clock");
+                                            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                                                Object.assign(countdown.style, {position: "fixed", top: "0", right: "18%", background: "#fafafa",
+                                                    padding: "30px 18px", borderRadius: "5px", boxShadow: "rgb(136,136,136) 0px 2px 15px -5px"});
+                                            } else {
+                                                Object.assign(countdown.style, {position: "unset", background: "unset",
+                                                    padding: "unset", borderRadius: "unset", boxShadow: "unset"});
+                                            }
+                                        }
         </script>
         <!--Code chống chuột Phải-->
         <!--        <script type='text/javascript'>

@@ -171,3 +171,19 @@ hr{
     margin: 0;
     font-weight: unset;
 }
+.notdoquiz{
+    border-radius: 5px;
+    background-color: #fff;
+    margin: 20px 0 0 0;
+    padding: 10px;
+    color: red;
+    font-weight: 600;
+    text-align: end;
+}
+.notdoquiz img{
+    width: 24px;
+    transform: translateY(-2px);
+}
+.notdoquiz span{
+    font-size: 16px;
+}
