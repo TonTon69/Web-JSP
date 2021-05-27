@@ -2,9 +2,12 @@ package dao;
 
 import connect.DBConnect;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.TakeAnswer;
@@ -72,4 +75,24 @@ public class TakeAnswerDAO {
         return false;
     }
 
+    public ArrayList<TakeAnswer> getListTakeAnswer(int userID, int quizID, Date startDay, Time startTime) throws SQLException {
+        Connection connection = DBConnect.getConnecttion();
+        String sql = "select * from takeanswer where UserID = " + userID + " and QuizID =" + quizID + " "
+                + "and startday = '" + startDay + "' and starttime='" + startTime + "'";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<TakeAnswer> list = new ArrayList<>();
+        while (rs.next()) {
+            TakeAnswer ta = new TakeAnswer();
+            ta.setQuizID(rs.getInt("QuizID"));
+            ta.setAnswer(rs.getString("Answer"));
+            ta.setQuestionID(rs.getInt("QuestionID"));
+            list.add(ta);
+        }
+        return list;
+    }
+
+    public static void main(String[] args) throws SQLException, Exception {
+        TakeAnswerDAO s = new TakeAnswerDAO();
+    }
 }

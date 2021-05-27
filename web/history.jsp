@@ -137,14 +137,14 @@
                                         </p>
                                     </td>
                                     <td>
-                                        <p>Điểm: <b style="color: red;"><%=uq.getScore()%><sup>đ</sup></b></p>
+                                        <p>Điểm: <b style="color: red;"><fmt:formatNumber value="<%=uq.getScore()%>" minFractionDigits="0" maxFractionDigits="2"/><sup>đ</sup></b></p>
                                         <p>Thời gian làm: <%=minutes%> phút <%=seconds%> giây</p>
                                         <p>Trả lời: <%=uq.getTotalanswertrue()%>/<%=uq.getTotalquestion()%> <i>(Đúng <%=uq.getTotalanswertrue()%>)</i></p>
                                     </td>
                                     <td>
                                         <fmt:formatDate value="<%=uq.getStarttime()%>" pattern="HH:mm" /> 
                                         Ngày <fmt:formatDate pattern="dd-MM-yyyy" value="<%=uq.getStartday()%>" />
-                                        <p><a class="nutnho" href="" target="_blank">Xem kết quả chi tiết</a></p>
+                                        <p><a class="nutnho" href="detail_result.jsp" target="_blank">Xem kết quả chi tiết</a></p>
                                     </td>
                                 </tr>   
                                 <%}%>

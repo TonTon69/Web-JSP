@@ -94,6 +94,13 @@ public class TakeAnswer {
         this.answer = answer;
     }
 
+    public TakeAnswer(int userID, int quizID, Date startday, Time starttime) {
+        this.userID = userID;
+        this.quizID = quizID;
+        this.startday = startday;
+        this.starttime = starttime;
+    }
+
     public TakeAnswer() {
     }
 }
