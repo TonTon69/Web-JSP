@@ -15,10 +15,46 @@ public class UserQuiz {
     private Time endtime;
     private Date startday;
     private Date endday;
-    
+
     private String username;
     private String quizname;
-    
+    private int subjectID;
+    private String subjectName;
+    private int totalQuestions;
+    private int time;
+
+    public int getSubjectID() {
+        return subjectID;
+    }
+
+    public void setSubjectID(int subjectID) {
+        this.subjectID = subjectID;
+    }
+
+    public String getSubjectName() {
+        return subjectName;
+    }
+
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
+    }
+
+    public int getTotalQuestions() {
+        return totalQuestions;
+    }
+
+    public void setTotalQuestions(int totalQuestions) {
+        this.totalQuestions = totalQuestions;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
     public String getUsername() {
         return username;
     }

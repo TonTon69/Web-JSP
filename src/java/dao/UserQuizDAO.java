@@ -43,9 +43,9 @@ public class UserQuizDAO {
     // lịch sử thi của user
     public ArrayList<UserQuiz> getListUserQuizHistory(int userID) throws SQLException {
         Connection connection = DBConnect.getConnecttion();
-        String sql = "SELECT a.UserQuizID, b.FullName, c.QuizName, a.Score, a.AnwserTrue, c.TotalQuestion, a.StartTime, "
-                + "a.EndTime, a.StartDay, a.EndDay FROM userquiz a, user b, quiz c "
-                + "where a.UserID = b.UserID and a.QuizID = c.QuizID and a.UserID = ?";
+        String sql = "SELECT * FROM userquiz a, user b, quiz c, subject d "
+                + "where a.UserID = b.UserID and a.QuizID = c.QuizID "
+                + "and c.SubjectID = d.SubjectID and a.UserID = ?";
         PreparedStatement ps = connection.prepareCall(sql);
         ps.setInt(1, userID);
         ResultSet rs = ps.executeQuery();
@@ -54,6 +54,7 @@ public class UserQuizDAO {
             UserQuiz uq = new UserQuiz();
             uq.setUserquizID(rs.getInt("UserQuizID"));
             uq.setUsername(rs.getString("FullName"));
+            uq.setQuizID(rs.getInt("QuizID"));
             uq.setQuizname(rs.getString("QuizName"));
             uq.setScore(rs.getFloat("Score"));
             uq.setTotalanswertrue(rs.getInt("AnwserTrue"));
@@ -62,6 +63,9 @@ public class UserQuizDAO {
             uq.setEndtime(rs.getTime("EndTime"));
             uq.setStartday(rs.getDate("StartDay"));
             uq.setEndday(rs.getDate("EndDay"));
+            uq.setSubjectID(rs.getInt("SubjectID"));
+            uq.setSubjectName(rs.getString("SubjectName"));
+            uq.setTime(rs.getInt("Time"));
             list.add(uq);
         }
         return list;
