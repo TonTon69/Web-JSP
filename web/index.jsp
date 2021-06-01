@@ -12,7 +12,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Quiz &mdash; HAT</title>
+        <title>HatQuiz</title>
         <c:set var="root" value="${pageContext.request.contextPath}"/>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta

@@ -11,7 +11,7 @@
         <meta charset="utf-8" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap-grid.min.css" integrity="sha512-cKoGpmS4czjv58PNt1YTHxg0wUDlctZyp9KUxQpdbAft+XqnyKvDvcGX0QYCgCohQenOuyGSl8l1f7/+axAqyg==" crossorigin="anonymous" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Quiz &mdash; HAT</title>
+        <title>Luyện thi THPT QG</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
             name="description"
