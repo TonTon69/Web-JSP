@@ -33,8 +33,6 @@ public class QuestionDAO {
             q.setqC(rs.getString("Q_C"));
             q.setqD(rs.getString("Q_D"));
             q.setqTrue(rs.getString("Q_True"));
-            q.setImage(rs.getString("Image"));
-            q.setAudio(rs.getString("Audio"));
             q.setCreatedate(rs.getTimestamp("CreateDate"));
             list.add(q);
         }
@@ -61,8 +59,6 @@ public class QuestionDAO {
             q.setqC(rs.getString("Q_C"));
             q.setqD(rs.getString("Q_D"));
             q.setqTrue(rs.getString("Q_True"));
-            q.setImage(rs.getString("Image"));
-            q.setAudio(rs.getString("Audio"));
             q.setCreatedate(rs.getTimestamp("CreateDate"));
             list.add(q);
         }
@@ -89,8 +85,6 @@ public class QuestionDAO {
             q.setqC(rs.getString("Q_C"));
             q.setqD(rs.getString("Q_D"));
             q.setqTrue(rs.getString("Q_True"));
-            q.setImage(rs.getString("Image"));
-            q.setAudio(rs.getString("Audio"));
             q.setCreatedate(rs.getTimestamp("CreateDate"));
             list.add(q);
         }
@@ -114,8 +108,6 @@ public class QuestionDAO {
             q.setqC(rs.getString("Q_C"));
             q.setqD(rs.getString("Q_D"));
             q.setqTrue(rs.getString("Q_True"));
-            q.setImage(rs.getString("Image"));
-            q.setAudio(rs.getString("Audio"));
             q.setCreatedate(rs.getTimestamp("CreateDate"));
             list.add(q);
         }
@@ -141,8 +133,6 @@ public class QuestionDAO {
             q.setqC(rs.getString("Q_C"));
             q.setqD(rs.getString("Q_D"));
             q.setqTrue(rs.getString("Q_True"));
-            q.setImage(rs.getString("Image"));
-            q.setAudio(rs.getString("Audio"));
             q.setCreatedate(rs.getTimestamp("CreateDate"));
             list.add(q);
         }
@@ -166,10 +156,8 @@ public class QuestionDAO {
             String qc = rs.getString("Q_C");
             String qd = rs.getString("Q_D");
             String qtrue = rs.getString("Q_True");
-            String image = rs.getString("Image");
-            String audio = rs.getString("Audio");
             Timestamp createdate = rs.getTimestamp("CreateDate");
-            q = new Question(qid, sid, qzid, content, qa, qb, qc, qd, qtrue, image, audio, createdate);
+            q = new Question(qid, sid, qzid, content, qa, qb, qc, qd, qtrue, createdate);
         }
         return q;
     }
@@ -178,7 +166,7 @@ public class QuestionDAO {
     public boolean insert(Question q) throws SQLException {
         try {
             Connection connection = DBConnect.getConnecttion();
-            String sql = "INSERT INTO question VALUE(?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO question VALUE(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareCall(sql);
             ps.setInt(1, q.getQuestionID());
             ps.setInt(2, q.getSubjectID());
@@ -189,9 +177,7 @@ public class QuestionDAO {
             ps.setString(7, q.getqC());
             ps.setString(8, q.getqD());
             ps.setString(9, q.getqTrue());
-            ps.setString(10, q.getImage());
-            ps.setString(11, q.getAudio());
-            ps.setTimestamp(12, new Timestamp(System.currentTimeMillis()));
+            ps.setTimestamp(10, new Timestamp(System.currentTimeMillis()));
             int temp = ps.executeUpdate();
             return temp == 1;
         } catch (SQLException ex) {
@@ -204,7 +190,7 @@ public class QuestionDAO {
     public boolean update(Question q) throws SQLException {
         try {
             Connection connection = DBConnect.getConnecttion();
-            String sql = "update question set SubjectID=?,QuizID=?,Content=?,Q_A=?,Q_B=?,Q_C=?,Q_D=?,Q_True=?,Image=?,Audio=?,CreateDate=? WHERE QuestionID = ?";
+            String sql = "update question set SubjectID=?,QuizID=?,Content=?,Q_A=?,Q_B=?,Q_C=?,Q_D=?,Q_True=?,CreateDate=? WHERE QuestionID = ?";
             PreparedStatement ps = connection.prepareCall(sql);
             ps.setInt(1, q.getSubjectID());
             ps.setInt(2, q.getQuizID());
@@ -214,10 +200,8 @@ public class QuestionDAO {
             ps.setString(6, q.getqC());
             ps.setString(7, q.getqD());
             ps.setString(8, q.getqTrue());
-            ps.setString(9, q.getImage());
-            ps.setString(10, q.getAudio());
-            ps.setTimestamp(11, new Timestamp(System.currentTimeMillis()));
-            ps.setInt(12, q.getQuestionID());
+            ps.setTimestamp(9, new Timestamp(System.currentTimeMillis()));
+            ps.setInt(10, q.getQuestionID());
             return ps.executeUpdate() == 1;
         } catch (SQLException ex) {
             Logger.getLogger(QuestionDAO.class.getName()).log(Level.SEVERE, null, ex);

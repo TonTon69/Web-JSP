@@ -1,4 +1,5 @@
-hr{
+.instruction-box hr,
+.exam-top-list hr{
     margin-top: 10px !important;
     margin-bottom: 10px !important;
     border: 0;

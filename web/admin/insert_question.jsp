@@ -127,14 +127,6 @@
                                             <label for="qtrue">Đáp án đúng</label>
                                             <textarea type="text" class="form-control" name="qtrue" id="qtrue" required="yes"></textarea>
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="image">Ảnh</label>
-                                            <textarea type="text" class="form-control" name="image" id="image"></textarea>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="audio">Audio</label>
-                                            <textarea type="text" class="form-control" name="audio" id="audio"></textarea>
-                                        </div>
                                     </div>
                                     <input type="hidden" name="command" class="btn btn-primary" value="insert" />
                                     <input type="submit" class="btn btn-primary" value="Thêm mới" />
@@ -181,8 +173,6 @@
                 CKEDITOR.replace('qc');
                 CKEDITOR.replace('qd');
                 CKEDITOR.replace('qtrue');
-                CKEDITOR.replace('image');
-                CKEDITOR.replace('audio');
             });
         </script>
     </body>

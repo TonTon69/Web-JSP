@@ -106,18 +106,6 @@
                                     <dt>Đáp án đúng:</dt>
                                     <dd><%=q.getqTrue()%></dd>
                                 </div>
-                                <% if (q.getImage() != "") {%>
-                                <div class="d-flex">
-                                    <dt>Ảnh:</dt>
-                                    <dd><%=q.getImage()%></dd>
-                                </div>
-                                <%}%>
-                                <% if (q.getAudio() != "") {%>
-                                <div class="d-flex">
-                                    <dt>Audio:</dt>
-                                    <dd><%=q.getAudio()%></dd>
-                                </div>
-                                <%}%>
                                 <div class="d-flex">
                                     <dt>Ngày tạo:</dt>
                                     <dd><%=q.getCreatedate()%></dd>

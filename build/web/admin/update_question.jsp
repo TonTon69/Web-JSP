@@ -143,14 +143,6 @@
                                             <label for="qtrue">Đáp án đúng</label>
                                             <textarea type="text" class="form-control" name="qtrue" id="qtrue" required="yes"><%=q.getqTrue()%></textarea>
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="image">Ảnh</label>
-                                            <textarea type="text" class="form-control" name="image" id="image"><%=q.getImage()%></textarea>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="audio">Audio</label>
-                                            <textarea type="text" class="form-control" name="audio" id="audio"><%=q.getAudio()%></textarea>
-                                        </div>
                                     </div>
                                     <input type="hidden" name="command" value="update"> 
                                     <input type="hidden" name="question_id" value="<%=request.getParameter("question_id")%>"> 

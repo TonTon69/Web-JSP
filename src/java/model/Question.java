@@ -13,14 +13,12 @@ public class Question {
     private String qC;
     private String qD;
     private String qTrue;
-    private String image;
-    private String audio;
     private Timestamp createdate;
 
     public Question() {
     }
 
-    public Question(int questionID, int subjectID, int quizID, String content, String qA, String qB, String qC, String qD, String qTrue, String image, String audio, Timestamp createdate) {
+    public Question(int questionID, int subjectID, int quizID, String content, String qA, String qB, String qC, String qD, String qTrue, Timestamp createdate) {
         this.questionID = questionID;
         this.subjectID = subjectID;
         this.quizID = quizID;
@@ -30,12 +28,10 @@ public class Question {
         this.qC = qC;
         this.qD = qD;
         this.qTrue = qTrue;
-        this.image = image;
-        this.audio = audio;
         this.createdate = createdate;
     }
 
-    public Question(int subjectID, int quizID, String content, String qA, String qB, String qC, String qD, String qTrue, String image, String audio, Timestamp createdate) {
+    public Question(int subjectID, int quizID, String content, String qA, String qB, String qC, String qD, String qTrue, Timestamp createdate) {
         this.subjectID = subjectID;
         this.quizID = quizID;
         this.content = content;
@@ -44,12 +40,10 @@ public class Question {
         this.qC = qC;
         this.qD = qD;
         this.qTrue = qTrue;
-        this.image = image;
-        this.audio = audio;
         this.createdate = createdate;
     }
 
-    public Question(int questionID, String content, String qA, String qB, String qC, String qD, String qTrue, String image, String audio, Timestamp createdate) {
+    public Question(int questionID, String content, String qA, String qB, String qC, String qD, String qTrue, Timestamp createdate) {
         this.questionID = questionID;
         this.content = content;
         this.qA = qA;
@@ -57,8 +51,6 @@ public class Question {
         this.qC = qC;
         this.qD = qD;
         this.qTrue = qTrue;
-        this.image = image;
-        this.audio = audio;
         this.createdate = createdate;
     }
 
@@ -69,7 +61,7 @@ public class Question {
     public void setQuizID(int quizID) {
         this.quizID = quizID;
     }
-    
+
     public int getQuestionID() {
         return questionID;
     }
@@ -132,22 +124,6 @@ public class Question {
 
     public void setqTrue(String qTrue) {
         this.qTrue = qTrue;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getAudio() {
-        return audio;
-    }
-
-    public void setAudio(String audio) {
-        this.audio = audio;
     }
 
     public Timestamp getCreatedate() {

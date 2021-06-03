@@ -4,7 +4,7 @@
 <%@page import="model.Quiz"%>
 <%@page import="dao.QuizDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix ="fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,35 +14,9 @@
         <title>Luyện thi THPT QG</title>
         <c:set var="root" value="${pageContext.request.contextPath}"/>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-            name="description"
-            content="Free HTML5 Website Template by freehtml5.co"
-            />
-        <meta
-            name="keywords"
-            content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"
-            />
-        <meta name="author" content="freehtml5.co" />
 
-        <!-- Facebook and Twitter integration -->
-        <meta property="og:title" content="" />
-        <meta property="og:image" content="" />
-        <meta property="og:url" content="" />
-        <meta property="og:site_name" content="" />
-        <meta property="og:description" content="" />
-        <meta name="twitter:title" content="" />
-        <meta name="twitter:image" content="" />
-        <meta name="twitter:url" content="" />
-        <meta name="twitter:card" content="" />
-
-        <link
-            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
-            rel="stylesheet"
-            />
-        <link
-            href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400"
-            rel="stylesheet"
-            />
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400" rel="stylesheet" />
 
         <!-- Animate.css -->
         <link rel="stylesheet" href="${root}/css/animate.css" />
@@ -71,7 +45,7 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script> 
-        <script type="text/javascript" src="${root}/js/testdetail.js"></script>
+        <script src="${root}/js/testdetail.js" type="text/javascript"></script>
         <!-- Modernizr JS -->
         <script src="${root}/js/modernizr-2.6.2.min.js"></script>
     </head>
@@ -93,7 +67,6 @@
                 if (u != null) {
                     userID = u.getUserID();
                 }
-
             %>
             <jsp:include page="header.jsp"></jsp:include>    
                 <div class="breadcrumb-wrap">
@@ -135,13 +108,10 @@
                                 <h3>Hướng dẫn làm bài trắc nghiệm</h3>
                                 <div class="instruction-box">
                                     1. Đợi đến khi đến thời gian làm bài
-                                    <br/>
                                     <hr/>
                                     2. Click vào nút <b>Bắt đầu làm bài</b> để tiến hành làm bài thi
-                                    <br/>
                                     <hr/>
                                     3. Ở mỗi câu hỏi, chọn đáp án đúng
-                                    <br/>
                                     <hr/>
                                     4. Hết thời gian làm bài, hệ thống sẽ tự thu bài. Bạn có thể nộp bài trước khi thời gian kết thúc bằng cách nhấn nút <b>Nộp bài</b>
                                 </div>
@@ -221,9 +191,7 @@
             <div>
                 <div class="container"> 
                     <h4><i class="fas fa-comments"></i> Ý kiến của bạn</h4>
-                    <div class="fb-comments" 
-                         data-href="detail.jsp?quiz_id=<%=quiz.getQuizID()%>&subject_id=<%=quiz.getSubjectID()%>" 
-                         data-width="820" data-numposts="5">
+                    <div class="fb-comments" data-href="detail.jsp?quiz_id=<%=quiz.getQuizID()%>&subject_id=<%=quiz.getSubjectID()%>" data-width="820" data-numposts="5">
                     </div>
                 </div>
             </div>
@@ -277,8 +245,7 @@
                                     </p>
                                     <span>
                                         <a href="detail.jsp?quiz_id=<%=q.getQuizID()%>&subject_id=<%=q.getSubjectID()%>" class="btn btn-primary btn-sm btn-course">xem chi tiết</a>
-                                    </span
-                                    >
+                                    </span>
                                 </div>
                             </div>
                         </div>
