@@ -82,7 +82,7 @@
             <div>
                 <div class="container">
                     <div class="row">
-                        <div class="detail col-md-9">
+                        <div class="animate-box detail col-md-9">
                             <h3 class="m-0"><%=quiz.getQuizName()%></h3>
                             <p>
                                 <span>
@@ -119,15 +119,11 @@
                                     Lưu ý:
                                 </p>
                                 <div class="note-content">
-                                    Trong quá trình làm bài phải thường xuyên nhấn nút <b>lưu bài</b> để lưu lại đáp án.
-                                    <br/>
-                                    Những câu <b>chưa chọn đáp án</b> sẽ được tính là <b>câu trả lời sai.</b>
-                                    <br/>
-                                    Nếu bạn <b>thoát ra</b> trong lúc chưa hết thời gian làm bài thi thì kết quả <b>sẽ không được tính.</b>
-                                    <br/>
-                                    Sau khi nhấn <b>"Nộp bài"</b>, bài thi sẽ kết thúc và bạn sẽ <b>không thể sửa được bài thi</b> nữa.
-                                    <br/>
-                                    Thời gian làm bài thi có hạn, chú ý chia thời gian hợp lý cho mỗi câu để đạt kết quả tốt nhất.
+                                    <p>Trong quá trình làm bài phải thường xuyên nhấn nút <b>lưu bài</b> để lưu lại đáp án.</p>
+                                    <p>Những câu <b>chưa chọn đáp án</b> sẽ được tính là <b>câu trả lời sai.</b></p>
+                                    <p>Nếu bạn <b>thoát ra</b> trong lúc chưa hết thời gian làm bài thi thì kết quả <b>sẽ không được tính.</b></p>
+                                    <p>Sau khi nhấn <b>"Nộp bài"</b>, bài thi sẽ kết thúc và bạn sẽ <b>không thể sửa được bài thi</b> nữa.</p>
+                                    <p>Thời gian làm bài thi có hạn, chú ý chia thời gian hợp lý cho mỗi câu để đạt kết quả tốt nhất.</p>
                                 </div>
                             </div>
                             <div class="btn-group-do-exam">
@@ -138,7 +134,7 @@
                                 </form>
                             </div>
                         </div>     
-                        <div class="charts col-md-3 p-0">
+                        <div class="animate-box charts col-md-3 p-0">
                             <header class="card-header">
                                 <h2 class="m-0">Bảng xếp hạng</h2>
                             </header>
@@ -174,13 +170,15 @@
                                 <%}%>
                             </div>
                         </div>
-                        <h5 class="mb-2 text-center" style="color: red">Bạn có muốn chinh phục đề thi này</h5>
-                        <div class="btn-group-do-exam">
-                            <form action="${root}/CheckQServlet?idofquiz=<%=quiz.getQuizID()%>&idofsubject=<%=subjectID%>&idofuser=<%=userID%>&start=1" method="post">
-                                <a>
-                                    <input class="btn-do-exam" style="width: 290px;" type="submit" value="Có, tôi muốn!" onclick="return confirm('Bạn đã sẵn sàng chinh phục đề thi này?')"/>
-                                </a> 
-                            </form>
+                        <div class="animate-box">
+                            <h5 class="mb-2 text-center" style="color: red">Bạn có muốn chinh phục đề thi này</h5>
+                            <div class="btn-group-do-exam">
+                                <form action="${root}/CheckQServlet?idofquiz=<%=quiz.getQuizID()%>&idofsubject=<%=subjectID%>&idofuser=<%=userID%>&start=1" method="post">
+                                    <a>
+                                        <input class="btn-do-exam" style="width: 290px;" type="submit" value="Có, tôi muốn!" onclick="return confirm('Bạn đã sẵn sàng chinh phục đề thi này?')"/>
+                                    </a> 
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -189,7 +187,7 @@
             <div id="fb-root"></div>
             <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=3495163843919139&autoLogAppEvents=1" nonce="fpT2NZnO"></script>
             <div>
-                <div class="container"> 
+                <div class="container animate-box"> 
                     <h4><i class="fas fa-comments"></i> Ý kiến của bạn</h4>
                     <div class="fb-comments" data-href="detail.jsp?quiz_id=<%=quiz.getQuizID()%>&subject_id=<%=quiz.getSubjectID()%>" data-width="820" data-numposts="5">
                     </div>

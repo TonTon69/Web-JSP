@@ -128,7 +128,7 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="detail col-md-9">
+                    <div class="animate-box detail col-md-9">
                         <h3 class="m-0"><%=quiz.getQuizName()%></h3>
                         <p class="mb-4">
                             <span>
@@ -233,7 +233,7 @@
                             </div>
                         </div> 
                     </div>
-                    <div class="charts col-md-3 p-0" id="result">
+                    <div class="animate-box charts col-md-3 p-0" id="result">
                         <div class="box-charts">
                             <header class="card-header">
                                 <h2 class="m-0">Kết quả thi</h2>

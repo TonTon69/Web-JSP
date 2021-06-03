@@ -155,6 +155,9 @@
     padding: 0 50px 30px 50px;
     font-size: 16px;
 }
+.note-content p{
+    margin: 0;
+}
 .formatquestion{
     border-radius: 5px;
     background-color: #fafafa;
