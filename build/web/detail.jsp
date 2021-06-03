@@ -45,9 +45,6 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script> 
-        <script src="${root}/js/testdetail.js" type="text/javascript"></script>
-        <!-- Modernizr JS -->
-        <script src="${root}/js/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <div id="page">
@@ -79,7 +76,7 @@
                     </ul>
                 </div>
             </div>
-            <div>
+            <div id="fh5co-course" style="padding: 2em 0 2em 0;">
                 <div class="container">
                     <div class="row">
                         <div class="animate-box detail col-md-9">
@@ -281,30 +278,33 @@
         <script src="${root}/js/simplyCountdown.js"></script>
         <!-- Main -->
         <script src="${root}/js/main.js"></script>
+        <script src="${root}/js/testdetail.js" type="text/javascript"></script>
+        <!-- Modernizr JS -->
+        <script src="${root}/js/modernizr-2.6.2.min.js"></script>
         <script type="text/javascript">
-                                        var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
+                                            var d = new Date(new Date().getTime() + 1000 * 120 * 120 * 2000);
 
-                                        // default example
-                                        simplyCountdown(".simply-countdown-one", {
-                                            year: d.getFullYear(),
-                                            month: d.getMonth() + 1,
-                                            day: d.getDate(),
-                                        });
+                                            // default example
+                                            simplyCountdown(".simply-countdown-one", {
+                                                year: d.getFullYear(),
+                                                month: d.getMonth() + 1,
+                                                day: d.getDate(),
+                                            });
 
-                                        //jQuery example
-                                        $("#simply-countdown-losange").simplyCountdown({
-                                            year: d.getFullYear(),
-                                            month: d.getMonth() + 1,
-                                            day: d.getDate(),
-                                            enableUtc: false,
-                                        });
+                                            //jQuery example
+                                            $("#simply-countdown-losange").simplyCountdown({
+                                                year: d.getFullYear(),
+                                                month: d.getMonth() + 1,
+                                                day: d.getDate(),
+                                                enableUtc: false,
+                                            });
 
-                                        //bảng xếp hạng
-                                        $(function () {
-                                            $('.col.name')[1].classList.add('top1');
-                                            $('.col.name')[2].classList.add('top2');
-                                            $('.col.name')[3].classList.add('top3');
-                                        });
+                                            //bảng xếp hạng
+                                            $(function () {
+                                                $('.col.name')[1].classList.add('top1');
+                                                $('.col.name')[2].classList.add('top2');
+                                                $('.col.name')[3].classList.add('top3');
+                                            });
         </script>
     </body>
 </html>

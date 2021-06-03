@@ -292,6 +292,4 @@
         sliderMain();
         testimonialCarousel();
     });
-
-
 }());
