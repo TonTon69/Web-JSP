@@ -48,7 +48,7 @@
             if (request.getParameter("search") != null) {
                 txtSearch = request.getParameter("search");
             }
-            int pages = 0, firstResult = 0, maxResult = 0, total = 0, pagesize = 4;
+            int pages = 0, firstResult = 0, maxResult = 0, total = 0, pagesize = 10;
             if (request.getParameter("pages") != null) {
                 pages = (int) Integer.parseInt(request.getParameter("pages"));
             }
@@ -246,7 +246,7 @@
                                             int next = 0;
                                             //Nếu total lẻ
                                             if (total % 2 != 0) {
-                                                if (pages == (total / 4) + 1) {
+                                                if (pages == (total / pagesize) + 1) {
                                                     next = pages;//Khong next
                                                 } else {
                                                     next = pages + 1;//Co next
@@ -254,8 +254,8 @@
                                             } else {
                                                 //Nếu total chẵn nhỏ hơn fullpage
                                                 //Và không fullPage thì thêm 1
-                                                if (total < (pagesize * 4) + 4 && total != pagesize * 4) {
-                                                    if (pages == (total / 4) + 1) {
+                                                if (total < (pagesize * pagesize) + pagesize && total != pagesize * pagesize) {
+                                                    if (pages == (total / pagesize) + 1) {
                                                         next = pages;//Khong next
                                                     } else {
                                                         next = pages + 1;//Co next
@@ -263,7 +263,7 @@
                                                 } else {
                                                     //Nếu fullPage đến trang cuối dừng
                                                     //Chưa tới trang cuối thì được next
-                                                    if (pages == (total / 4)) {
+                                                    if (pages == (total / pagesize)) {
                                                         next = pages;//Khong next
                                                     } else {
                                                         next = pages + 1;//Co next
