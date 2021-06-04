@@ -18,6 +18,7 @@ $(document).ready(function () {// thực hiện khi click vào button
         $("#result").show();
         $("#loadanswer").show();
         time = -1;// trả về thời gian 00:00
+        document.getElementById('countdown').innerHTML = "";
         var x = document.getElementsByClassName("radiobutton");
         var i;
         for (i = 0; i < x.length; i++) {
@@ -97,7 +98,7 @@ $(document).ready(function () {// thực hiện khi click vào button
 //                   undisable();
         /*----------------------------------------*/
         //không cho người dùng làm nữa!!!
-        document.getElementById('countdown').innerHTML = "00:00";
+        document.getElementById('countdown').innerHTML = "";
         var x = document.getElementsByClassName("radiobutton");
         var i;
         for (i = 0; i < x.length; i++) {
@@ -136,8 +137,7 @@ $(document).ready(function () {// thực hiện khi click vào button
                     $('#' + i.name).html(i.value); // trả hình qua cái thẻ span
                     console.log(i.name + i.value);
                 }
-                console.log("danh sách những câu đã chọn:" + json)
-
+                console.log("danh sách những câu đã chọn:" + json);
             }
         });
     });

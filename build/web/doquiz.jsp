@@ -163,11 +163,10 @@
                                         int i = 1;
                                         for (Question ques : quesDao.getListQuestionByQuiz(quiz.getQuizID())) {
                                     %>
-                                    <div class="formatquestion" >
+                                    <div class="formatquestion">
                                         <b>
                                             <span class="mr-1">Câu <%=i%>:</span> 
                                             <%=ques.getContent()%>
-
                                         </b>
                                         <div class="row">
                                             <% if (ques.getqA() != "") {%>
