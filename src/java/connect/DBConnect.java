@@ -11,8 +11,10 @@ public class DBConnect {
             Class.forName("com.mysql.jdbc.Driver");
             cons = (Connection) DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/quizonline", "root", "root");
-        } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("connect successfully!");
+        } catch (Exception ex) {
+            System.out.println("connect failure!");
+            ex.printStackTrace();
         }
         return cons;
     }

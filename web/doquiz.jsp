@@ -171,14 +171,14 @@
                                         <div class="row">
                                             <% if (ques.getqA() != "") {%>
                                             <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
-                                                <input class="radiobutton" id="qa <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqA()%>" /> 
+                                                <input class="radiobutton" id="qa <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqA().replaceAll("[\n\r]$", "").replaceAll("[\\s\r]$", "")%>' /> 
                                                 <label class="d-flex" for="qa <%=i%>"><span class="mr-1">A.</span><%=ques.getqA()%></label>
                                                 <span id="answer_result_<%=ques.getQuestionID()%>1"></span>
                                             </div>
                                             <%}%>
                                             <% if (ques.getqB() != "") {%>
                                             <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
-                                                <input class="radiobutton" id="qb <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqB()%>" /> 
+                                                <input class="radiobutton" id="qb <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqB().replaceAll("[\n\r]$", "").replaceAll("[\\s\r]$", "")%>' /> 
                                                 <label class="d-flex" for="qb <%=i%>"><span class="mr-1">B.</span><%=ques.getqB()%></label>
                                                 <span id="answer_result_<%=ques.getQuestionID()%>2"></span>
                                             </div>
@@ -187,14 +187,14 @@
                                         <div class="row">
                                             <% if (ques.getqC() != "") {%>
                                             <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
-                                                <input class="radiobutton" id="qc <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqC()%>" /> 
+                                                <input class="radiobutton" id="qc <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqC().replaceAll("[\n\r]$", "").replaceAll("[\\s\r]$", "")%>' /> 
                                                 <label class="d-flex" for="qc <%=i%>"><span class="mr-1">C.</span><%=ques.getqC()%></label>
                                                 <span id="answer_result_<%=ques.getQuestionID()%>3"></span>
                                             </div>
                                             <%}%>
                                             <% if (ques.getqD() != "") {%>
                                             <div class="col-md-6 d-flex align-items-baseline mt-2 mb-2">
-                                                <input class="radiobutton" id="qd <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value="<%=ques.getqD()%>" /> 
+                                                <input class="radiobutton" id="qd <%=i%>" type="radio" name="<%=ques.getQuestionID()%>" value='<%=ques.getqD().replaceAll("[\n\r]$", "").replaceAll("[\\s\r]$", "")%>' /> 
                                                 <label class="d-flex" for="qd <%=i%>"><span class="mr-1">D.</span><%=ques.getqD()%></label>
                                                 <span id="answer_result_<%=ques.getQuestionID()%>4"></span>
                                             </div>

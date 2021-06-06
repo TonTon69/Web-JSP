@@ -122,6 +122,8 @@ public class CheckQuestionServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/plain");
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         int userID = Integer.parseInt(request.getParameter("idofuser"));
@@ -140,10 +142,11 @@ public class CheckQuestionServlet extends HttpServlet {
             int sumQuestions = qdao.getListQuestionByQuiz(quizID).size();
             for (int i = 0; i < answer.length; i++) {
                 Question ques = qdao.getQuestionByID(Integer.parseInt(answer[i].name));
-                if (answer[i].value.equals(ques.getqTrue())) {
+                if (answer[i].value.equals(ques.getqTrue().replaceAll("[\n\r]$", "").replaceAll("[\\s\r]$", ""))) {
                     sumCorrectAnswer++;
                 }
             }
+
             score = ((float) sumCorrectAnswer / sumQuestions) * 10;
             /*lưu các dữ liệu như điểm thời gian kết thúc số câu đúng vào session*/
             userquiz.setScore(score);
@@ -167,6 +170,7 @@ public class CheckQuestionServlet extends HttpServlet {
             /*lấy dự liệu từ session bắt đầu lưu dữ liệu xuống database*/
             UserQuizDAO uqDao = new UserQuizDAO();
             uqDao.insertUserQuiz(userquiz);
+
             /*kết thúc lưu dữ liệu*/
             String result = "{\"score\":\"" + score + "\",\"sumcorrectanswer\":\"" + sumCorrectAnswer + "\",\"sumquestions\":\"" + sumQuestions + "\",\"minutes\":\"" + minutes + "\",\"seconds\":\"" + seconds + "\"}";
             out.println(result);

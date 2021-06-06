@@ -12,14 +12,14 @@ import javax.servlet.http.HttpSession;
 import model.Question;
 
 public class ManagerQuestionServlet extends HttpServlet {
-
+    
     QuestionDAO questionDAO = new QuestionDAO();
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
     }
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -42,10 +42,11 @@ public class ManagerQuestionServlet extends HttpServlet {
         RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
         rd.forward(request, response);
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html; charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         String command = request.getParameter("command");
@@ -79,7 +80,7 @@ public class ManagerQuestionServlet extends HttpServlet {
         RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
         rd.forward(request, response);
     }
-
+    
     @Override
     public String getServletInfo() {
         return "Short description";

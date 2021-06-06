@@ -53,8 +53,6 @@ $(document).ready(function () {// thực hiện khi click vào button
                 $('#minutes').html(obj.minutes);
                 $('#seconds').html(obj.seconds);
                 console.log(result);
-//                        console.log(json);
-
             }
         });
     });

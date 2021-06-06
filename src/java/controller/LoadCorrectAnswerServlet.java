@@ -76,6 +76,8 @@ public class LoadCorrectAnswerServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/plain");
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         int userID = Integer.parseInt(request.getParameter("idofuser"));

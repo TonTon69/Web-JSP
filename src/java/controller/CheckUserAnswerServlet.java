@@ -77,6 +77,8 @@ public class CheckUserAnswerServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/plain");
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         int userID = Integer.parseInt(request.getParameter("idofuser"));
@@ -98,29 +100,29 @@ public class CheckUserAnswerServlet extends HttpServlet {
             for (int i = 0; i < answer.length; i++)// check những câu hỏi đã chọn
             {
                 Question ques = qdao.getQuestionByID(Integer.parseInt(answer[i].name));
-                if (answer[i].value.equals(ques.getqTrue())) {
+                if (answer[i].value.equals(ques.getqTrue().replaceAll("[\n\r]$", "").replaceAll("[\\s\r]$", ""))) {
                     cua[i] = new CheckUserAnswer();
                     cua[i].setValue(imgcorrectanswer);
-                    if (answer[i].value.equals(ques.getqA())) {
+                    if (answer[i].value.equals(ques.getqA().replaceAll("[\n\r]$", "").replaceAll("[\\s\r]$", ""))) {
                         cua[i].setName("user_answer_" + ques.getQuestionID() + "1");
-                    } else if (answer[i].value.equals(ques.getqB())) {
+                    } else if (answer[i].value.equals(ques.getqB().replaceAll("[\n\r]$", "").replaceAll("[\\s\r]$", ""))) {
                         cua[i].setName("user_answer_" + ques.getQuestionID() + "2");
-                    } else if (answer[i].value.equals(ques.getqC())) {
+                    } else if (answer[i].value.equals(ques.getqC().replaceAll("[\n\r]$", "").replaceAll("[\\s\r]$", ""))) {
                         cua[i].setName("user_answer_" + ques.getQuestionID() + "3");
-                    } else if (answer[i].value.equals(ques.getqD())) {
+                    } else if (answer[i].value.equals(ques.getqD().replaceAll("[\n\r]$", "").replaceAll("[\\s\r]$", ""))) {
                         cua[i].setName("user_answer_" + ques.getQuestionID() + "4");
                     }
 
                 } else {
                     cua[i] = new CheckUserAnswer();
                     cua[i].setValue(imgincorrectanswer);
-                    if (answer[i].value.equals(ques.getqA())) {
+                    if (answer[i].value.equals(ques.getqA().replaceAll("[\n\r]$", "").replaceAll("[\\s\r]$", ""))) {
                         cua[i].setName("user_answer_" + ques.getQuestionID() + "1");
-                    } else if (answer[i].value.equals(ques.getqB())) {
+                    } else if (answer[i].value.equals(ques.getqB().replaceAll("[\n\r]$", "").replaceAll("[\\s\r]$", ""))) {
                         cua[i].setName("user_answer_" + ques.getQuestionID() + "2");
-                    } else if (answer[i].value.equals(ques.getqC())) {
+                    } else if (answer[i].value.equals(ques.getqC().replaceAll("[\n\r]$", "").replaceAll("[\\s\r]$", ""))) {
                         cua[i].setName("user_answer_" + ques.getQuestionID() + "3");
-                    } else if (answer[i].value.equals(ques.getqD())) {
+                    } else if (answer[i].value.equals(ques.getqD().replaceAll("[\n\r]$", "").replaceAll("[\\s\r]$", ""))) {
                         cua[i].setName("user_answer_" + ques.getQuestionID() + "4");
                     }
 
@@ -165,5 +167,5 @@ public class CheckUserAnswerServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
+
 }

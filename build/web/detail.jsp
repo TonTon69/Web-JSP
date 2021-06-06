@@ -47,6 +47,8 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script> 
     </head>
     <body>
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=3495163843919139&autoLogAppEvents=1" nonce="fpT2NZnO"></script>
         <div id="page">
             <%
                 QuizDAO quizDAO = new QuizDAO();
@@ -180,14 +182,9 @@
                     </div>
                 </div>
             </div>
-
-            <div id="fb-root"></div>
-            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=3495163843919139&autoLogAppEvents=1" nonce="fpT2NZnO"></script>
-            <div>
-                <div class="container animate-box"> 
-                    <h4><i class="fas fa-comments"></i> Ý kiến của bạn</h4>
-                    <div class="fb-comments" data-href="detail.jsp?quiz_id=<%=quiz.getQuizID()%>&subject_id=<%=quiz.getSubjectID()%>" data-width="820" data-numposts="5">
-                    </div>
+            <div class="container animate-box"> 
+                <h4><i class="fas fa-comments"></i> Ý kiến của bạn</h4>
+                <div class="fb-comments" data-href="detail.jsp?quiz_id=<%=quiz.getQuizID()%>&subject_id=<%=quiz.getSubjectID()%>" data-width="820" data-numposts="5">
                 </div>
             </div>
             <div id="fh5co-course">
