@@ -184,6 +184,15 @@
         <script src="${root}/js/demo/chart-pie-demo.js"></script>
         <script>
             $(document).ready(function () {
+                CKEDITOR.config.pasteFromWordPromptCleanup = true;
+                CKEDITOR.config.pasteFromWordRemoveFontStyles = false;
+                CKEDITOR.config.pasteFromWordRemoveStyles = false;
+                CKEDITOR.config.language = "vi";
+                CKEDITOR.config.htmlEncodeOutput = false;
+                CKEDITOR.config.ProcessHTMLEntities = false;
+                CKEDITOR.config.entities = false;
+                CKEDITOR.config.entities_latin = false;
+                CKEDITOR.config.ForceSimpleAmpersand = false;
                 CKEDITOR.replace('question');
                 CKEDITOR.replace('qa');
                 CKEDITOR.replace('qb');
