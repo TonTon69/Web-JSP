@@ -51,13 +51,16 @@
             .countdown_item #seconds{
                 color: black;
             }
+            .countdown_music{
+                margin-top: 40px;
+            }
             .tryhard{
                 border: 2px solid #fff;
                 padding: 5px 25px;
                 color: #fff;
                 font-size: 18px;
                 font-weight: 600;
-                margin-top: 40px;
+                margin-top: 30px;
                 display: inline-block;
                 cursor: pointer;
             }
@@ -296,6 +299,11 @@
                             <span>🥳</span>
                             <span>🎉</span>
                             <span>🎂</span>
+                        </div>
+                        <div class="countdown_music">
+                            <audio controls>
+                                <source src="music/Demons-Boyce-Avenue-Jennel-Garcia.mp3" type="audio/mpeg">
+                            </audio> 
                         </div>
                         <span class="tryhard">
                             <img src="images/rocket.png" />

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.Time;
+import java.text.DecimalFormat;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -146,8 +147,9 @@ public class CheckQuestionServlet extends HttpServlet {
                     sumCorrectAnswer++;
                 }
             }
-
-            score = ((float) sumCorrectAnswer / sumQuestions) * 10;
+            double temp = ((double) sumCorrectAnswer / sumQuestions) * 10;
+            DecimalFormat df = new DecimalFormat("#.00");
+            score = Float.parseFloat(df.format(temp));
             /*lưu các dữ liệu như điểm thời gian kết thúc số câu đúng vào session*/
             userquiz.setScore(score);
             userquiz.setTotalanswertrue(sumCorrectAnswer);

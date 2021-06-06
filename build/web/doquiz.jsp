@@ -111,8 +111,9 @@
             User u = (User) session.getAttribute("user");
             if (u != null) {
                 userID = u.getUserID();
+            } else {
+                response.sendRedirect("login.jsp");
             }
-
         %>
         <div id="page">
             <jsp:include page="header.jsp"></jsp:include>    
