@@ -4,18 +4,34 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/IT/web/java/jsp/hatquiz/src/java/controller/LoadCorrectAnswerServlet.java</file>
-            <file>file:/D:/IT/web/java/jsp/hatquiz/web/doquiz.jsp</file>
-            <file>file:/D:/IT/web/java/jsp/hatquiz/web/detail.jsp</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/web/WEB-INF/web.xml</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/web/admin/insert_admin.jsp</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/web/content.jsp</file>
             <file>file:/D:/IT/web/java/jsp/hatquiz/src/java/controller/ManagerQuestionServlet.java</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/web/admin/detail_question.jsp</file>
             <file>file:/D:/IT/web/java/jsp/hatquiz/src/java/connect/DBConnect.java</file>
             <file>file:/D:/IT/web/java/jsp/hatquiz/web/admin/manager_question.jsp</file>
-            <file>file:/D:/IT/web/java/jsp/hatquiz/web/admin/manager_quiz.jsp</file>
             <file>file:/D:/IT/web/java/jsp/hatquiz/src/java/controller/CheckQServlet.java</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/src/java/controller/LogoutServlet.java</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/web/admin/update_quiz.jsp</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/web/ckeditor/ckeditor.js</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/web/admin/content.jsp</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/web/admin/manager_subject.jsp</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/src/java/dao/QuestionDAO.java</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/src/java/hibernate.cfg.xml</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/web/doquiz.jsp</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/web/detail.jsp</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/web/admin/update_question.jsp</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/src/java/controller/ManagerMenuServlet.java</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/web/admin/manager_quiz.jsp</file>
             <file>file:/D:/IT/web/java/jsp/hatquiz/web/login.jsp</file>
             <file>file:/D:/IT/web/java/jsp/hatquiz/src/java/model/Question.java</file>
             <file>file:/D:/IT/web/java/jsp/hatquiz/web/js/testdetail.js</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/web/admin/insert_question.jsp</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/web/admin/manager_result.jsp</file>
             <file>file:/D:/IT/web/java/jsp/hatquiz/src/java/controller/CheckUserAnswerServlet.java</file>
-            <file>file:/D:/IT/web/java/jsp/hatquiz/src/java/dao/QuestionDAO.java</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/src/java/controller/TakeAnswerServlet.java</file>
+            <file>file:/D:/IT/web/java/jsp/hatquiz/web/ckeditor/styles.js</file>
             <file>file:/D:/IT/web/java/jsp/hatquiz/src/java/controller/CheckQuestionServlet.java</file>
         </group>
     </open-files>

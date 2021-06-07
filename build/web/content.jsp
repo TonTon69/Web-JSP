@@ -240,7 +240,7 @@
                                 <div class="item">
                                     <div class="testimony-slide active text-center">
                                         <div class="user" style="background-image: url('images/anh-anime-1.jpg');"></div>
-                                        <span>Hoàng cắt moi<br><small>Học sinh</small></span>
+                                        <span>Trần Quang Huy<br><small>Học sinh</small></span>
                                         <blockquote>
                                             <p>&ldquo;Nhờ các khóa học em đã có được định hướng cho bản thân mình, tự tin hơn và không cảm thấy hoang mang về các kĩ năng học nữa!&rdquo;</p>
                                         </blockquote>
@@ -249,7 +249,7 @@
                                 <div class="item">
                                     <div class="testimony-slide active text-center">
                                         <div class="user" style="background-image: url('images/anh-anime-2.jpg');"></div>
-                                        <span>Trọng bụng mỡ<br><small>Học sinh</small></span>
+                                        <span>Nguyễn Hoàng Anh<br><small>Học sinh</small></span>
                                         <blockquote>
                                             <p>&ldquo;Em đã học ở website này từ lâu rồi, thấy rất tốt, những bài thi được làm rất công phu, hình ảnh đẹp và nét!&rdquo;</p>
                                         </blockquote>
@@ -258,7 +258,7 @@
                                 <div class="item">
                                     <div class="testimony-slide active text-center">
                                         <div class="user" style="background-image: url('images/anh-anime-3.jpg');"></div>
-                                        <span>Ân đầu moi<br><small>Học sinh</small></span>
+                                        <span>Trương Quang Minh<br><small>Học sinh</small></span>
                                         <blockquote>
                                             <p>&ldquo;Các khóa học trên website rất bổ ích giúp em có thêm nhiều kỹ năng sống, làm việc. Em cảm thấy rất tự tin vào bản thân!&rdquo;</p>
                                         </blockquote>
