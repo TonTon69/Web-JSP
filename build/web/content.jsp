@@ -203,6 +203,8 @@
                 <div class="row">
                     <%
                         for (Quiz q : quizDAO.getListQuizLatest()) {
+                            int countQExams = quizDAO.getCountQuizExams(q.getQuizID());
+                            request.setAttribute("countQExams", countQExams);
                     %>    
                     <div class="col-md-6 animate-box">
                         <div class="course">
@@ -214,7 +216,7 @@
                                     <span><i class="fa fa-bars" aria-hidden="true"></i> <a href="quiz.jsp?subject_id=<%=q.getSubjectID()%>&pages=1"><%=q.getSubjectName()%></a></span>                                             
                                     <span><i class="fa fa-question-circle" aria-hidden="true"></i> Số câu hỏi: <%=q.getTotalQuestion()%> câu </span>
                                     <span><i class="fa fa-clock" aria-hidden="true"></i>  Thời gian: <%=q.getTime()%> phút</span> 
-                                    <span><i class="fa fa-signal" aria-hidden="true"></i>  Lượt thi: 3071</span>
+                                    <span><i class="fa fa-signal" aria-hidden="true"></i>  Lượt thi: <%=countQExams%></span>
                                     <span><i class="fas fa-edit" aria-hidden="true"></i> Đăng tải: <fmt:formatDate pattern="dd-MM-yyyy" value="<%=q.getCreatedate()%>" /></span>
                                 </p>
                                 <span><a href="detail.jsp?quiz_id=<%=q.getQuizID()%>&subject_id=<%=q.getSubjectID()%>" class="btn btn-primary btn-sm btn-course">Xem chi tiết</a></span>

@@ -136,7 +136,7 @@
                     </ul>
                 </div>
             </div>
-           
+
             <div id="fh5co-course">
                 <div class="container">
                     <div class="animate-box mb-5">
@@ -171,6 +171,8 @@
                     <div class="row">
                         <%
                             for (Quiz q : list) {
+                                int countQExams = quizDAO.getCountQuizExams(q.getQuizID());
+                                request.setAttribute("countQExams", countQExams);
                         %>    
                         <div class="col-md-6 animate-box">
                             <div class="course">
@@ -194,7 +196,7 @@
                                         </span>
                                         <span>
                                             <i class="fa fa-eye"> </i>
-                                            Lượt xem: 9999
+                                            Lượt thi: <%=countQExams%>
                                         </span>
                                         <span>
                                             <i class="far fa-edit"></i>

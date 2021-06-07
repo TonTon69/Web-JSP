@@ -298,11 +298,27 @@ public class QuizDAO {
         }
         return count;
     }
+    
+    //Total quiz number
+    public int getCountQuizExams(int quizID) {
+        Connection conn = DBConnect.getConnecttion();
+        ArrayList<Quiz> list = new ArrayList();
+        String sql = "SELECT count(b.QuizID) FROM quiz a, userquiz b WHERE a.QuizID = b.QuizID and b.QuizID = '" + quizID + "'";
+        int count = 0;
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
 
     public static void main(String[] args) throws SQLException, Exception {
         QuizDAO s = new QuizDAO();
-        System.out.println(s.update(new Quiz(19,13, "Vật Lý 2021",90,45,
-        "https://cdn.vietnammoi.vn/stores/news_dataimages/htt/042018/22/00/5342_blogtoanhoc.com_p001.jpg",
-                new Timestamp(System.currentTimeMillis()))));
+        System.out.println(s.getCountQuizExams(40));
     }
 }
