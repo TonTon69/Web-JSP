@@ -1,3 +1,4 @@
+<%@page import="dao.QuizDAO"%>
 <%@page import="java.util.Map"%>
 <%@page import="dao.UserDAO"%>
 <%@page import="java.sql.Time"%>
@@ -128,6 +129,9 @@
                                         int seconds = (totalTime - hours * 60 * 60 - minutes * 60);
                                         minutes = hours * 60 + minutes;
                                         count++;
+
+                                        int countQExams = new QuizDAO().getCountQuizExams(uq.getQuizID());
+                                        request.setAttribute("countQExams", countQExams);
                                 %>                                
                                 <tr>
                                     <td><%=count%></td>
@@ -137,7 +141,7 @@
                                             <span><i class="fa fa-bars" aria-hidden="true"></i><a href="quiz.jsp?subject_id=<%=uq.getSubjectID()%>&pages=1">Môn <%=uq.getSubjectName()%>;</a></span> 
                                             <span><i class="fa fa-question-circle" aria-hidden="true"></i> Số câu hỏi: <b><%=uq.getTotalquestion()%> câu;</b>
                                                 <i class="fa fa-clock" aria-hidden="true"></i>  Thời gian: <b><%=uq.getTime()%> phút;</b>
-                                                <i class="fa fa-signal" aria-hidden="true"></i>  Lượt thi: 1427
+                                                <i class="fa fa-signal" aria-hidden="true"></i>  Lượt thi: <%=countQExams%>
                                             </span>
                                         </p>
                                     </td>
