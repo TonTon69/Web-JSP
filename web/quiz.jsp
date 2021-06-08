@@ -195,7 +195,7 @@
                                             Thời gian: <%=q.getTime()%> phút
                                         </span>
                                         <span>
-                                            <i class="fa fa-eye"> </i>
+                                            <i class="fa fa-signal"></i>
                                             Lượt thi: <%=countQExams%>
                                         </span>
                                         <span>

@@ -158,7 +158,7 @@ public class CheckQuestionServlet extends HttpServlet {
             userquiz.setEndtime(time);
             userquiz.setEndday(date);
             /*kết thúc lưu trữ vào session*/
- /*hiển thị thời gian làm bài*/
+            /*hiển thị thời gian làm bài*/
             int startTime = 0;
             int endTime = 0;
             int totalTime = 0;

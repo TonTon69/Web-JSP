@@ -1,3 +1,4 @@
+<%@page import="dao.QuestionDAO"%>
 <%@page import="dao.QuizDAO"%>
 <%@page import="java.util.Map"%>
 <%@page import="dao.UserDAO"%>
@@ -148,7 +149,7 @@
                                     <td>
                                         <p>Điểm: <b style="color: red;"><fmt:formatNumber value="<%=uq.getScore()%>" minFractionDigits="0" maxFractionDigits="2"/><sup>đ</sup></b></p>
                                         <p>Thời gian làm: <%=minutes%> phút <%=seconds%> giây</p>
-                                        <p>Trả lời: <%=uq.getTotalanswertrue()%>/<%=uq.getTotalquestion()%> <i>(Đúng <%=uq.getTotalanswertrue()%>)</i></p>
+                                        <p>Số câu đúng: <%=uq.getTotalanswertrue()%>/<%=uq.getTotalquestion()%></p>
                                     </td>
                                     <td>
                                         <fmt:formatDate value="<%=uq.getStarttime()%>" pattern="HH:mm" /> 
