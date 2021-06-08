@@ -160,7 +160,7 @@
         </div>
 
         <div id="fh5co-counter" class="fh5co-counters" data-stellar-background-ratio="0.5">
-            <div class="overlay"></div>
+            <div class="overlay" style="background: #25314f;"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
@@ -228,7 +228,7 @@
             </div>
         </div>
 
-        <div id="fh5co-testimonial" style="background: rgba(0, 0, 0, 0.5);">
+        <div id="fh5co-testimonial" style="background-image: url('images/school.jpg')">
             <div class="container">
                 <div class="row animate-box">
                     <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
