@@ -45,7 +45,7 @@ public class UserQuizDAO {
         Connection connection = DBConnect.getConnecttion();
         String sql = "SELECT * FROM userquiz a, user b, quiz c, subject d "
                 + "where a.UserID = b.UserID and a.QuizID = c.QuizID "
-                + "and c.SubjectID = d.SubjectID and a.UserID = ?";
+                + "and c.SubjectID = d.SubjectID and a.UserID = ? order by a.UserQuizID asc";
         PreparedStatement ps = connection.prepareCall(sql);
         ps.setInt(1, userID);
         ResultSet rs = ps.executeQuery();
